@@ -157,20 +157,35 @@ module l1d_pf3_sms_core #(
     reg  [PHT_TAG_W-1:0]     w_ptag;
     reg  [LIR_W-1:0]         w_line;
     reg  [PATTERN_W-1:0]     w_pat;
-    reg  [PHT_WAYS-1:0]      w_match;
-    reg  [PHT_WAYS-1:0]      w_free;
-    reg  [PHT_WAYS-1:0]      w_way;
-    reg                      w_seen;
-    reg  [WAY_W-1:0]         w_ptr;
-    reg                      w_adv;
+    reg  [PHT_SETS-1:0]      w_set1h;
+    reg  [PHT_TOTAL-1:0]     w_tmatch;
     reg  [PATTERN_W-1:0]     w_all;
     reg  [PATTERN_W-1:0]     w_high;
-    reg  [PATTERN_W-1:0]     w_search;
-    reg  [LIR_W-1:0]         w_first;
+    reg  [PATTERN_W-1:0]     w_above;
+    reg  [PATTERN_W-1:0]     w_ffs_above;
+    reg  [PATTERN_W-1:0]     w_ffs_all;
     reg  [PATTERN_W-1:0]     w_first_oh;
-    reg                      w_first_seen;
+    reg  [LIR_W-1:0]         w_first;
     reg  [NB-1:0]            w_fbank;
+    reg                      w_seen_a;
+    reg                      w_seen_b;
     reg  [LIR_W-1:0]         bit_number;
+    reg                      x_vld;
+    reg  [PHT_SETS-1:0]      x_set1h;
+    reg  [PHT_TAG_W-1:0]     x_ptag;
+    reg  [LIR_W-1:0]         x_line;
+    reg  [PATTERN_W-1:0]     x_rest;
+    reg  [LIR_W-1:0]         x_first;
+    reg  [NB-1:0]            x_fbank;
+    reg                      x_nz;
+    reg  [PHT_TOTAL-1:0]     x_tmatch;
+    reg  [PHT_TOTAL-1:0]     x_write;
+    reg  [PHT_SETS-1:0]      x_adv;
+    reg  [PHT_WAYS-1:0]      x_m;
+    reg  [PHT_WAYS-1:0]      x_f;
+    reg  [PHT_WAYS-1:0]      x_pick;
+    reg                      x_seen;
+    reg  [WAY_W-1:0]         x_ptr;
     always @* begin : hash_proc
         integer lane_idx;
         integer bit_idx;
@@ -502,84 +517,120 @@ module l1d_pf3_sms_core #(
             w_pat  <= vic_pat;
         end
     end
-    always @* begin : w_proc
+    always @* begin : w1_proc
+        integer ent_idx;
         integer bit_idx;
-        integer way_idx;
-        w_ptr   = pht_ptr[w_set*WAY_W +: WAY_W];
-        w_match = {PHT_WAYS{1'b0}};
-        w_free  = {PHT_WAYS{1'b0}};
-        w_way   = {PHT_WAYS{1'b0}};
-        w_seen  = 1'b0;
-        for (way_idx = 0; way_idx < PHT_WAYS; way_idx = way_idx + 1) begin
-            w_match[way_idx] = pht_vld[w_set*PHT_WAYS + way_idx]
-                & (pht_tag[(w_set*PHT_WAYS + way_idx)*PHT_TAG_W +: PHT_TAG_W]
-                   == w_ptag);
-            w_free[way_idx]  = ~pht_vld[w_set*PHT_WAYS + way_idx];
+        for (ent_idx = 0; ent_idx < PHT_SETS; ent_idx = ent_idx + 1) begin
+            w_set1h[ent_idx] = (w_set == ent_idx[SET_W-1:0]);
         end
-        for (way_idx = 0; way_idx < PHT_WAYS; way_idx = way_idx + 1) begin
-            if (w_match[way_idx] && !w_seen) begin
-                w_way[way_idx] = 1'b1;
-                w_seen         = 1'b1;
+        for (ent_idx = 0; ent_idx < PHT_TOTAL; ent_idx = ent_idx + 1) begin
+            if (x_vld && x_write[ent_idx]) begin
+                w_tmatch[ent_idx] = (x_ptag == w_ptag);
+            end
+            else begin
+                w_tmatch[ent_idx] = pht_vld[ent_idx]
+                    & (pht_tag[ent_idx*PHT_TAG_W +: PHT_TAG_W] == w_ptag);
             end
         end
-        for (way_idx = 0; way_idx < PHT_WAYS; way_idx = way_idx + 1) begin
-            if (w_free[way_idx] && !w_seen) begin
-                w_way[way_idx] = 1'b1;
-                w_seen         = 1'b1;
-            end
-        end
-        w_adv = ~w_seen;
-        if (!w_seen) begin
-            w_way[w_ptr] = 1'b1;
-        end
-        w_all  = w_pat & ~({{(PATTERN_W-1){1'b0}}, 1'b1} << w_line);
+        w_all = w_pat & ~({{(PATTERN_W-1){1'b0}}, 1'b1} << w_line);
         for (bit_idx = 0; bit_idx < PATTERN_W; bit_idx = bit_idx + 1) begin
             bit_number      = bit_idx;
             w_high[bit_idx] = (bit_number > w_line);
         end
-        w_search     = (|(w_all & w_high)) ? (w_all & w_high) : w_all;
-        w_first      = {LIR_W{1'b0}};
-        w_first_oh   = {PATTERN_W{1'b0}};
-        w_first_seen = 1'b0;
+        w_above     = w_all & w_high;
+        w_ffs_above = {PATTERN_W{1'b0}};
+        w_ffs_all   = {PATTERN_W{1'b0}};
+        w_seen_a    = 1'b0;
+        w_seen_b    = 1'b0;
+        for (bit_idx = 0; bit_idx < PATTERN_W; bit_idx = bit_idx + 1) begin
+            w_ffs_above[bit_idx] = w_above[bit_idx] & ~w_seen_a;
+            w_seen_a             = w_seen_a | w_above[bit_idx];
+            w_ffs_all[bit_idx]   = w_all[bit_idx] & ~w_seen_b;
+            w_seen_b             = w_seen_b | w_all[bit_idx];
+        end
+        w_first_oh = w_seen_a ? w_ffs_above : w_ffs_all;
+        w_first = {LIR_W{1'b0}};
         for (bit_idx = 0; bit_idx < PATTERN_W; bit_idx = bit_idx + 1) begin
             bit_number = bit_idx;
-            if (w_search[bit_idx] && !w_first_seen) begin
-                w_first             = bit_number;
-                w_first_oh[bit_idx] = 1'b1;
-                w_first_seen        = 1'b1;
-            end
+            w_first = w_first | ({LIR_W{w_first_oh[bit_idx]}} & bit_number);
         end
         for (bit_idx = 0; bit_idx < NB; bit_idx = bit_idx + 1) begin
             w_fbank[bit_idx] = (w_first[BANK_W-1:0] == bit_idx[BANK_W-1:0]);
         end
     end
-    always @(posedge clk) begin : pht_proc
+    always @(posedge clk) begin : w1_reg_proc
+        if (rst) begin
+            x_vld <= 1'b0;
+        end
+        else begin
+            x_vld <= w_vld;
+        end
+        x_set1h  <= w_set1h;
+        x_ptag   <= w_ptag;
+        x_line   <= w_line;
+        x_rest   <= w_all & ~w_first_oh;
+        x_first  <= w_first;
+        x_fbank  <= w_fbank;
+        x_nz     <= |w_all;
+        x_tmatch <= w_tmatch;
+    end
+    always @* begin : w2_proc
+        integer set_idx;
         integer way_idx;
+        for (set_idx = 0; set_idx < PHT_SETS; set_idx = set_idx + 1) begin
+            x_m    = x_tmatch[set_idx*PHT_WAYS +: PHT_WAYS];
+            x_f    = ~pht_vld[set_idx*PHT_WAYS +: PHT_WAYS];
+            x_ptr  = pht_ptr[set_idx*WAY_W +: WAY_W];
+            x_pick = {PHT_WAYS{1'b0}};
+            x_seen = 1'b0;
+            for (way_idx = 0; way_idx < PHT_WAYS; way_idx = way_idx + 1) begin
+                if (x_m[way_idx] && !x_seen) begin
+                    x_pick[way_idx] = 1'b1;
+                    x_seen          = 1'b1;
+                end
+            end
+            for (way_idx = 0; way_idx < PHT_WAYS; way_idx = way_idx + 1) begin
+                if (x_f[way_idx] && !x_seen) begin
+                    x_pick[way_idx] = 1'b1;
+                    x_seen          = 1'b1;
+                end
+            end
+            x_adv[set_idx] = x_vld & x_set1h[set_idx] & ~x_seen;
+            if (!x_seen) begin
+                x_pick[x_ptr] = 1'b1;
+            end
+            x_write[set_idx*PHT_WAYS +: PHT_WAYS] =
+                x_pick & {PHT_WAYS{x_vld & x_set1h[set_idx]}};
+        end
+    end
+    always @(posedge clk) begin : pht_proc
+        integer ent_idx;
+        integer set_idx;
         if (rst) begin
             pht_vld <= {PHT_TOTAL{1'b0}};
             pht_ptr <= {(PHT_SETS*WAY_W){1'b0}};
         end
-        else if (w_vld) begin
-            for (way_idx = 0; way_idx < PHT_WAYS; way_idx = way_idx + 1) begin
-                if (w_way[way_idx]) begin
-                    pht_vld[w_set*PHT_WAYS + way_idx] <= 1'b1;
+        else begin
+            for (ent_idx = 0; ent_idx < PHT_TOTAL; ent_idx = ent_idx + 1) begin
+                if (x_write[ent_idx]) begin
+                    pht_vld[ent_idx] <= 1'b1;
                 end
             end
-            if (w_adv) begin
-                pht_ptr[w_set*WAY_W +: WAY_W] <= w_ptr + 1'b1;
+            for (set_idx = 0; set_idx < PHT_SETS; set_idx = set_idx + 1) begin
+                if (x_adv[set_idx]) begin
+                    pht_ptr[set_idx*WAY_W +: WAY_W] <=
+                        pht_ptr[set_idx*WAY_W +: WAY_W] + 1'b1;
+                end
             end
         end
-        if (w_vld) begin
-            for (way_idx = 0; way_idx < PHT_WAYS; way_idx = way_idx + 1) begin
-                if (w_way[way_idx]) begin
-                    pht_tag[(w_set*PHT_WAYS + way_idx)*PHT_TAG_W +: PHT_TAG_W] <= w_ptag;
-                    pht_line[(w_set*PHT_WAYS + way_idx)*LIR_W +: LIR_W]       <= w_line;
-                    pht_rest[(w_set*PHT_WAYS + way_idx)*PATTERN_W +: PATTERN_W] <=
-                        w_all & ~w_first_oh;
-                    pht_first[(w_set*PHT_WAYS + way_idx)*LIR_W +: LIR_W]      <= w_first;
-                    pht_fbank[(w_set*PHT_WAYS + way_idx)*NB +: NB]            <= w_fbank;
-                    pht_nz[w_set*PHT_WAYS + way_idx]                          <= |w_all;
-                end
+        for (ent_idx = 0; ent_idx < PHT_TOTAL; ent_idx = ent_idx + 1) begin
+            if (x_write[ent_idx]) begin
+                pht_tag[ent_idx*PHT_TAG_W +: PHT_TAG_W]  <= x_ptag;
+                pht_line[ent_idx*LIR_W +: LIR_W]         <= x_line;
+                pht_rest[ent_idx*PATTERN_W +: PATTERN_W] <= x_rest;
+                pht_first[ent_idx*LIR_W +: LIR_W]        <= x_first;
+                pht_fbank[ent_idx*NB +: NB]              <= x_fbank;
+                pht_nz[ent_idx]                          <= x_nz;
             end
         end
     end
