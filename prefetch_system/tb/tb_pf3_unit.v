@@ -157,6 +157,9 @@ module tb_pf3_unit;
     endtask
     integer t1, t2, t3, start;
     reg [ADDR_W-1:0] a;
+    reg [11:0] pc_mid;
+    reg [7:0]  page_sel;
+    reg [11:0] page_off;
     initial begin
         if (!$value$plusargs("SEED=%d", seed)) seed = 1;
         if (!$value$plusargs("NREC=%d", nrec)) nrec = 20000;
@@ -205,9 +208,11 @@ module tb_pf3_unit;
             for (lane = 0; lane < NB; lane = lane + 1) begin
                 if ((($random(seed) & 32'h7fffffff) % 3) == 0) begin
                     train_valid[lane] = 1'b1;
-                    train_pc[lane*PC_W +: PC_W] = {48'd0, 12'h400 + ((($random(seed) & 32'h7fffffff) % 16) * 4), 4'd0};
-                    train_addr[lane*ADDR_W +: ADDR_W] = {8'd0, 36'h000ABCDE, 8'h00 + (($random(seed) & 32'h7fffffff) % 8),
-                                                         ($random(seed) & 32'hfff)};
+                    pc_mid   = 12'h400 + ((($random(seed) & 32'h7fffffff) % 16) * 4);
+                    page_sel = ($random(seed) & 32'h7fffffff) % 8;
+                    page_off = $random(seed);
+                    train_pc[lane*PC_W +: PC_W] = {48'd0, pc_mid, 4'd0};
+                    train_addr[lane*ADDR_W +: ADDR_W] = {8'd0, 36'h000ABCDE, page_sel, page_off};
                     train_is_store[lane] = (($random(seed) & 32'h7fffffff) % 5 == 0);
                     train_miss[lane] = (($random(seed) & 32'h7fffffff) % 2 == 0);
                     train_pf_hit[lane] = (($random(seed) & 32'h7fffffff) % 7 == 0);
@@ -215,8 +220,9 @@ module tb_pf3_unit;
                 end
                 if ((($random(seed) & 32'h7fffffff) % 9) == 0) begin
                     evict_valid[lane] = 1'b1;
-                    evict_line_addr[lane*LINE_W +: LINE_W] = {8'd0, 36'h000ABCDE, 8'h00 + (($random(seed) & 32'h7fffffff) % 8),
-                                                              ($random(seed) & 32'h3f)};
+                    page_sel = ($random(seed) & 32'h7fffffff) % 8;
+                    page_off = $random(seed);
+                    evict_line_addr[lane*LINE_W +: LINE_W] = {8'd0, 36'h000ABCDE, page_sel, page_off[5:0]};
                 end
             end
             if (n == nrec / 2) pf_enable = 1'b0;
