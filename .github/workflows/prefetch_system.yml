@@ -1,0 +1,83 @@
+name: prefetch system
+on:
+  push:
+    paths:
+      - 'prefetch_system/**'
+      - '.github/workflows/prefetch_system.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  sim:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: tools
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq iverilog verilator > /dev/null
+      - name: lint and simulate
+        run: |
+          cd prefetch_system
+          bash scripts/run_tests.sh ../sim_logs 2>&1 | tee ../sim_summary.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sim
+          path: |
+            sim_logs
+            sim_summary.txt
+          retention-days: 30
+  pnr:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 355
+    strategy:
+      fail-fast: false
+      matrix:
+        corner: [BC, TC]
+        period: [240]
+    name: prefetch unit ${{ matrix.corner }} ${{ matrix.period }} ps
+    container:
+      image: openroad/orfs:latest
+      options: --user root
+    env:
+      CORNER: ${{ matrix.corner }}
+      PERIOD: ${{ matrix.period }}
+      OUT: ${{ github.workspace }}/pnr_out
+    steps:
+      - uses: actions/checkout@v4
+      - name: synthesis and place and route
+        timeout-minutes: 340
+        run: bash prefetch_system/flow/run_pnr.sh
+      - name: show summary
+        if: always()
+        run: cat "$OUT/keep/summary.json" || true
+      - name: trim logs
+        if: always()
+        run: |
+          cd "$OUT/keep"
+          for f in synth.log pnr.log paths.log; do [ -f $f ] && tail -n 400 $f > $f.t && mv $f.t $f; done
+          rm -rf logs/*.odb logs/*.def 2>/dev/null || true
+          find . -type f -size +4M -delete
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pf3-${{ matrix.corner }}-${{ matrix.period }}
+          path: ${{ env.OUT }}/keep
+          retention-days: 30
+  collect:
+    needs: [sim, pnr]
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: table and publish
+        run: |
+          python3 prefetch_system/flow/summarize.py all --dir artifacts --out RESULTS.md
+          mkdir -p /tmp/res; cp RESULTS.md /tmp/res/; cp -r artifacts /tmp/res/runs
+          git rev-parse HEAD > /tmp/res/commit.txt
+          git config user.name ci; git config user.email ci@example.invalid
+          git checkout --orphan pf3-results; git rm -rq --cached . ; git clean -fdq
+          cp -r /tmp/res/* .; git add -A; git commit -qm "prefetch system results"; git push -f origin pf3-results

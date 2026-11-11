@@ -1,0 +1,11 @@
+stride_s1          tb_pf3_stride   tb_stride     +SEED=1 +NEV=20000 +RATE=70 +PCS=12 +SAMESET=0 +REF=1
+stride_s2_full     tb_pf3_stride   tb_stride     +SEED=2 +NEV=20000 +RATE=100 +PCS=20 +SAMESET=0 +REF=1
+stride_s3_repl     tb_pf3_stride   tb_stride     +SEED=3 +NEV=20000 +RATE=100 +PCS=12 +SAMESET=1 +REF=0
+stride_s4_repl     tb_pf3_stride   tb_stride     +SEED=4 +NEV=20000 +RATE=40 +PCS=20 +SAMESET=1 +REF=0
+stream_s1          tb_pf3_stream   tb_stream     +SEED=1 +NEV=3000 +GAP=24 +PAGES=6
+stream_s2          tb_pf3_stream   tb_stream     +SEED=2 +NEV=3000 +GAP=30 +PAGES=10
+stream_s3_dense    tb_pf3_stream   tb_stream     +SEED=3 +NEV=20000 +GAP=0 +PAGES=8
+sms_s1             tb_pf3_sms      tb_sms        +SEED=1 +NGEN=400 +GAP=40 +PCS=6
+sms_s2             tb_pf3_sms      tb_sms        +SEED=2 +NGEN=400 +GAP=40 +PCS=8
+unit_s1            tb_pf3_unit     tb_unit       +SEED=1 +NREC=20000
+unit_s2            tb_pf3_unit     tb_unit       +SEED=2 +NREC=20000

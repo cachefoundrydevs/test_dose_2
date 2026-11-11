@@ -1,0 +1,12 @@
+rtl/l1d_pf3_ks_add.v
+rtl/l1d_pf3_add_eq.v
+rtl/l1d_pf3_stride_entry.v
+rtl/l1d_pf3_stride.v
+rtl/l1d_pf3_stream_card.v
+rtl/l1d_pf3_stream.v
+rtl/l1d_pf_sms_fifo.v
+rtl/l1d_pf3_sms_core.v
+rtl/l1d_pf3_sms_expand.v
+rtl/l1d_pf3_rank.v
+rtl/l1d_prefetch_unit.v
+flow/pf3_timing_top.v
