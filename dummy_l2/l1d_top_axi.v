@@ -1,0 +1,197 @@
+`default_nettype none
+`include "l1d_defines.vh"
+module l1d_top_axi #(
+    parameter ADDR_W           = `L1D_ADDR_W,
+    parameter LINE_BYTES       = `L1D_LINE_BYTES,
+    parameter NUM_BANKS        = `L1D_NUM_BANKS,
+    parameter SETS             = `L1D_SETS,
+    parameter WAYS             = `L1D_WAYS,
+    parameter WRITE_DATA_WIDTH = `L1D_WRITE_DATA_WIDTH,
+    parameter MEM_SIZE_BITS    = `L1D_MEM_SIZE_BITS,
+    parameter MASTER_ID_BITS   = `L1D_MASTER_ID_BITS,
+    parameter IDX_BITS         = `L1D_IDX_BITS,
+    parameter PORT_QUEUE_DEPTH = `L1D_PORT_QUEUE_DEPTH,
+    parameter LSU_BUF_DEPTH    = `L1D_LSU_BUF_DEPTH,
+    parameter TRK_ENTRIES      = `L1D_TRK_ENTRIES,
+    parameter TRK_REFILL_RSV   = `L1D_TRK_REFILL_RSV,
+    parameter MSHR_ENTRIES     = `L1D_MSHR_ENTRIES,
+    parameter MSHR_NC_ENTRIES  = `L1D_MSHR_NC_ENTRIES,
+    parameter VC_SLOTS         = `L1D_VC_SLOTS,
+    parameter RESP_FIFO_DEPTH  = `L1D_RESP_FIFO_DEPTH,
+    parameter REFILL_SKIP      = `L1D_REFILL_SKIP,
+    parameter SNP_BUF_DEPTH    = `L1D_SNP_BUF_DEPTH,
+    parameter SNP_RESP_DEPTH   = `L1D_SNP_RESP_DEPTH,
+    parameter PF_FIFO_DEPTH    = `L1D_PF_FIFO_DEPTH,
+    parameter SNP_STARVE       = `L1D_SNP_STARVE,
+    parameter LOCK_TIMEOUT     = `L1D_LOCK_TIMEOUT,
+    parameter RSV_CLR_ON_EVICT = `L1D_RSV_CLR_ON_EVICT,
+    parameter HAS_SNOOP        = `L1D_HAS_SNOOP,
+    parameter HAS_AMO          = `L1D_HAS_AMO,
+    parameter AXI_DATA_W       = `L1D_AXI_DATA_W,
+    parameter AXI_ADDR_W       = `L1D_AXI_ADDR_W,
+    parameter AXI_ID_W         = 6,
+    parameter LSU_PORTS        = `L1D_LSU_PORTS,
+    parameter HAS_MISS         = `L1D_HAS_MISS,
+    parameter HAS_VC           = `L1D_HAS_VC,
+    parameter HAS_NC           = `L1D_HAS_NC,
+    parameter BRIDGE_SLOTS     = 16
+) (
+    input  wire                         clk,
+    input  wire                         rst,
+    input  wire                         flush_request,
+    input  wire                         clean_request,
+    output wire                         flush_complete,
+    output wire                         clean_complete,
+    input  wire                         cpu_request_valid,
+    input  wire                         cpu_request_cacheable,
+    input  wire                         cpu_request_is_write,
+    input  wire [MEM_SIZE_BITS-1:0]     cpu_request_size,
+    input  wire [MASTER_ID_BITS-1:0]    cpu_request_master_id,
+    input  wire [IDX_BITS-1:0]          cpu_request_rob_index,
+    input  wire [ADDR_W-1:0]            cpu_request_addr,
+    input  wire [WRITE_DATA_WIDTH-1:0]  cpu_request_store_data,
+    input  wire                         cpu_request_is_atomic,
+    input  wire                         cpu_request_atomic_is_amo,
+    input  wire [3:0]                   cpu_request_amo_op,
+    output wire                         input_queue_full,
+    input  wire                         lsu_response_read_enable,
+    output wire                         lsu_response_valid,
+    output wire                         lsu_response_is_write_ack,
+    output wire [MEM_SIZE_BITS-1:0]     lsu_response_size,
+    output wire [MASTER_ID_BITS-1:0]    lsu_response_master_id,
+    output wire [IDX_BITS-1:0]          lsu_response_rob_index,
+    output wire [WRITE_DATA_WIDTH-1:0]  lsu_response_data,
+    input  wire                         snoop_request_valid,
+    output wire                         snoop_request_ready,
+    input  wire [ADDR_W-1:0]            snoop_request_addr,
+    input  wire                         snoop_request_invalidate,
+    output wire                         snoop_response_valid,
+    input  wire                         snoop_response_ready,
+    output wire [ADDR_W-1:0]            snoop_response_addr,
+    output wire                         snoop_response_present,
+    output wire                         snoop_response_dirty,
+    output wire [LINE_BYTES*8-1:0]      snoop_response_data,
+    output wire                         axi_error_sticky,
+    output wire                         amo_lock_timeout_sticky,
+    output wire [AXI_ID_W-1:0]          m_axi_awid,
+    output wire [AXI_ADDR_W-1:0]        m_axi_awaddr,
+    output wire [7:0]                   m_axi_awlen,
+    output wire [2:0]                   m_axi_awsize,
+    output wire [1:0]                   m_axi_awburst,
+    output wire [3:0]                   m_axi_awcache,
+    output wire [2:0]                   m_axi_awprot,
+    output wire                         m_axi_awvalid,
+    input  wire                         m_axi_awready,
+    output wire [AXI_DATA_W-1:0]        m_axi_wdata,
+    output wire [AXI_DATA_W/8-1:0]      m_axi_wstrb,
+    output wire                         m_axi_wlast,
+    output wire                         m_axi_wvalid,
+    input  wire                         m_axi_wready,
+    input  wire [AXI_ID_W-1:0]          m_axi_bid,
+    input  wire [1:0]                   m_axi_bresp,
+    input  wire                         m_axi_bvalid,
+    output wire                         m_axi_bready,
+    output wire [AXI_ID_W-1:0]          m_axi_arid,
+    output wire [AXI_ADDR_W-1:0]        m_axi_araddr,
+    output wire [7:0]                   m_axi_arlen,
+    output wire [2:0]                   m_axi_arsize,
+    output wire [1:0]                   m_axi_arburst,
+    output wire [3:0]                   m_axi_arcache,
+    output wire [2:0]                   m_axi_arprot,
+    output wire                         m_axi_aruser,
+    output wire                         m_axi_arvalid,
+    input  wire                         m_axi_arready,
+    input  wire [AXI_ID_W-1:0]          m_axi_rid,
+    input  wire [AXI_DATA_W-1:0]        m_axi_rdata,
+    input  wire [1:0]                   m_axi_rresp,
+    input  wire                         m_axi_rlast,
+    input  wire                         m_axi_ruser,
+    input  wire                         m_axi_rvalid,
+    output wire                         m_axi_rready,
+    output wire [BRIDGE_SLOTS-1:0]            rd_pend_valid,
+    output wire [BRIDGE_SLOTS*AXI_ADDR_W-1:0] rd_pend_addr
+);
+    localparam LD_PORT = 0, ST_PORT = 2;
+    wire [LSU_PORTS-1:0]                  port_stop;
+    wire [LSU_PORTS-1:0]                  port_rsp_valid;
+    wire [LSU_PORTS-1:0]                  port_rsp_is_write_ack;
+    wire [LSU_PORTS*MEM_SIZE_BITS-1:0]    port_rsp_size;
+    wire [LSU_PORTS*MASTER_ID_BITS-1:0]   port_rsp_master_id;
+    wire [LSU_PORTS*IDX_BITS-1:0]         port_rsp_rob_index;
+    wire [LSU_PORTS*WRITE_DATA_WIDTH-1:0] port_rsp_data;
+    wire to_store_port = cpu_request_is_write || (cpu_request_is_atomic && cpu_request_atomic_is_amo);
+    wire valid_ld      = cpu_request_valid && !to_store_port;
+    wire valid_st      = cpu_request_valid &&  to_store_port;
+    wire show_ld = port_rsp_valid[LD_PORT];
+    assign input_queue_full          = port_stop[LD_PORT] || port_stop[ST_PORT];
+    assign lsu_response_valid        = port_rsp_valid[LD_PORT] || port_rsp_valid[ST_PORT];
+    assign lsu_response_is_write_ack = show_ld ? port_rsp_is_write_ack[LD_PORT] : port_rsp_is_write_ack[ST_PORT];
+    assign lsu_response_size         = show_ld ? port_rsp_size[LD_PORT*MEM_SIZE_BITS +: MEM_SIZE_BITS]
+                                               : port_rsp_size[ST_PORT*MEM_SIZE_BITS +: MEM_SIZE_BITS];
+    assign lsu_response_master_id    = show_ld ? port_rsp_master_id[LD_PORT*MASTER_ID_BITS +: MASTER_ID_BITS]
+                                               : port_rsp_master_id[ST_PORT*MASTER_ID_BITS +: MASTER_ID_BITS];
+    assign lsu_response_rob_index    = show_ld ? port_rsp_rob_index[LD_PORT*IDX_BITS +: IDX_BITS]
+                                               : port_rsp_rob_index[ST_PORT*IDX_BITS +: IDX_BITS];
+    assign lsu_response_data         = show_ld ? port_rsp_data[LD_PORT*WRITE_DATA_WIDTH +: WRITE_DATA_WIDTH]
+                                               : port_rsp_data[ST_PORT*WRITE_DATA_WIDTH +: WRITE_DATA_WIDTH];
+    wire take_ld = lsu_response_read_enable &&  show_ld;
+    wire take_st = lsu_response_read_enable && !show_ld;
+    initial if (LSU_PORTS != 4)
+        $display("ERROR l1d_top_axi: LSU_PORTS = %0d, the typed ports need 4", LSU_PORTS);
+    l1d_top_axi_ports #(
+        .ADDR_W(ADDR_W), .LINE_BYTES(LINE_BYTES), .NUM_BANKS(NUM_BANKS), .SETS(SETS), .WAYS(WAYS),
+        .WRITE_DATA_WIDTH(WRITE_DATA_WIDTH), .MEM_SIZE_BITS(MEM_SIZE_BITS), .MASTER_ID_BITS(MASTER_ID_BITS),
+        .IDX_BITS(IDX_BITS), .PORT_QUEUE_DEPTH(PORT_QUEUE_DEPTH), .LSU_BUF_DEPTH(LSU_BUF_DEPTH), .TRK_ENTRIES(TRK_ENTRIES),
+        .TRK_REFILL_RSV(TRK_REFILL_RSV), .MSHR_ENTRIES(MSHR_ENTRIES), .MSHR_NC_ENTRIES(MSHR_NC_ENTRIES),
+        .VC_SLOTS(VC_SLOTS), .RESP_FIFO_DEPTH(RESP_FIFO_DEPTH), .REFILL_SKIP(REFILL_SKIP),
+        .SNP_BUF_DEPTH(SNP_BUF_DEPTH), .SNP_RESP_DEPTH(SNP_RESP_DEPTH), .PF_FIFO_DEPTH(PF_FIFO_DEPTH),
+        .SNP_STARVE(SNP_STARVE), .LOCK_TIMEOUT(LOCK_TIMEOUT), .RSV_CLR_ON_EVICT(RSV_CLR_ON_EVICT),
+        .HAS_SNOOP(HAS_SNOOP), .HAS_AMO(HAS_AMO), .AXI_DATA_W(AXI_DATA_W), .AXI_ADDR_W(AXI_ADDR_W), .AXI_ID_W(AXI_ID_W),
+        .LSU_PORTS(LSU_PORTS), .HAS_MISS(HAS_MISS), .HAS_VC(HAS_VC), .HAS_NC(HAS_NC), .BRIDGE_SLOTS(BRIDGE_SLOTS),
+        .HAS_VPU(0)
+    ) u_ports (
+        .clk(clk), .rst(rst),
+        .flush_request(flush_request), .clean_request(clean_request), .flush_complete(flush_complete), .clean_complete(clean_complete),
+        .cpu_request_valid        ({1'b0, valid_st, 1'b0, valid_ld}),
+        .cpu_request_cacheable    ({1'b0, cpu_request_cacheable, 1'b0, cpu_request_cacheable}),
+        .cpu_request_is_write     ({1'b0, cpu_request_is_write, 1'b0, cpu_request_is_write}),
+        .cpu_request_size         ({{MEM_SIZE_BITS{1'b0}}, cpu_request_size, {MEM_SIZE_BITS{1'b0}}, cpu_request_size}),
+        .cpu_request_master_id    ({{MASTER_ID_BITS{1'b0}}, cpu_request_master_id, {MASTER_ID_BITS{1'b0}}, cpu_request_master_id}),
+        .cpu_request_rob_index    ({{IDX_BITS{1'b0}}, cpu_request_rob_index, {IDX_BITS{1'b0}}, cpu_request_rob_index}),
+        .cpu_request_addr         ({{ADDR_W{1'b0}}, cpu_request_addr, {ADDR_W{1'b0}}, cpu_request_addr}),
+        .cpu_request_store_data   ({{WRITE_DATA_WIDTH{1'b0}}, cpu_request_store_data, {WRITE_DATA_WIDTH{1'b0}}, cpu_request_store_data}),
+        .cpu_request_is_atomic    ({1'b0, cpu_request_is_atomic, 1'b0, cpu_request_is_atomic}),
+        .cpu_request_atomic_is_amo({1'b0, cpu_request_atomic_is_amo, 1'b0, cpu_request_atomic_is_amo}),
+        .cpu_request_amo_op       ({4'd0, cpu_request_amo_op, 4'd0, cpu_request_amo_op}),
+        .input_queue_full         (port_stop),
+        .lsu_response_read_enable ({1'b1, take_st, 1'b1, take_ld}),
+        .lsu_response_valid       (port_rsp_valid),
+        .lsu_response_is_write_ack(port_rsp_is_write_ack),
+        .lsu_response_size        (port_rsp_size),
+        .lsu_response_master_id   (port_rsp_master_id),
+        .lsu_response_rob_index   (port_rsp_rob_index),
+        .lsu_response_data        (port_rsp_data),
+        .vpu_req_valid (1'b0), .vpu_req_is_write (1'b0), .vpu_req_cacheable (1'b1), .vpu_req_master_id ({MASTER_ID_BITS{1'b0}}),
+        .vpu_req_rob_index ({IDX_BITS{1'b0}}), .vpu_req_addr ({ADDR_W{1'b0}}), .vpu_req_wdata ({(LINE_BYTES*8){1'b0}}),
+        .vpu_req_stop (), .vpu_resp_read_enable (1'b1), .vpu_resp_valid (), .vpu_resp_is_write_ack (),
+        .vpu_resp_master_id (), .vpu_resp_rob_index (), .vpu_resp_data (),
+        .snoop_request_valid(snoop_request_valid), .snoop_request_ready(snoop_request_ready), .snoop_request_addr(snoop_request_addr),
+        .snoop_request_invalidate(snoop_request_invalidate),
+        .snoop_response_valid(snoop_response_valid), .snoop_response_ready(snoop_response_ready), .snoop_response_addr(snoop_response_addr),
+        .snoop_response_present(snoop_response_present), .snoop_response_dirty(snoop_response_dirty), .snoop_response_data(snoop_response_data),
+        .axi_error_sticky(axi_error_sticky), .amo_lock_timeout_sticky(amo_lock_timeout_sticky),
+        .m_axi_awid(m_axi_awid), .m_axi_awaddr(m_axi_awaddr), .m_axi_awlen(m_axi_awlen), .m_axi_awsize(m_axi_awsize),
+        .m_axi_awburst(m_axi_awburst), .m_axi_awcache(m_axi_awcache), .m_axi_awprot(m_axi_awprot), .m_axi_awvalid(m_axi_awvalid),
+        .m_axi_awready(m_axi_awready),
+        .m_axi_wdata(m_axi_wdata), .m_axi_wstrb(m_axi_wstrb), .m_axi_wlast(m_axi_wlast), .m_axi_wvalid(m_axi_wvalid),
+        .m_axi_wready(m_axi_wready),
+        .m_axi_bid(m_axi_bid), .m_axi_bresp(m_axi_bresp), .m_axi_bvalid(m_axi_bvalid), .m_axi_bready(m_axi_bready),
+        .m_axi_arid(m_axi_arid), .m_axi_araddr(m_axi_araddr), .m_axi_arlen(m_axi_arlen), .m_axi_arsize(m_axi_arsize),
+        .m_axi_arburst(m_axi_arburst), .m_axi_arcache(m_axi_arcache), .m_axi_arprot(m_axi_arprot), .m_axi_aruser(m_axi_aruser),
+        .m_axi_arvalid(m_axi_arvalid), .m_axi_arready(m_axi_arready),
+        .m_axi_rid(m_axi_rid), .m_axi_rdata(m_axi_rdata), .m_axi_rresp(m_axi_rresp), .m_axi_rlast(m_axi_rlast),
+        .m_axi_ruser(m_axi_ruser), .m_axi_rvalid(m_axi_rvalid), .m_axi_rready(m_axi_rready),
+        .rd_pend_valid(rd_pend_valid), .rd_pend_addr(rd_pend_addr)
+    );
+endmodule
+`default_nettype wire
