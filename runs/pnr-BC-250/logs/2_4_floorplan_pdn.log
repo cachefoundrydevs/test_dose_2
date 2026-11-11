@@ -1,0 +1,36 @@
+OpenROAD unknown 
+Features included (+) or not (-): -GPU +GUI
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+[INFO ORD-0030] Using 4 thread(s).
+source /OpenROAD-flow-scripts/flow/platforms/asap7/liberty_suppressions.tcl
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_AO_RVT_FF_nldm_211120@4256548-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_INVBUF_RVT_FF_nldm_220122@69351-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_OA_RVT_FF_nldm_211120@3829689-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_SIMPLE_RVT_FF_nldm_211120@317193-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_SEQ_RVT_FF_nldm_220123@1510915-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/l1d_macro_data_tdp@6351-1794376605-dee75192.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/l1d_macro_tag_tdp@6341-1794376605-dee75192.blib
+read_db /__w/test_dose_2/test_dose_2/pnr_out/work/results/asap7/l1d_bank/base/2_3_floorplan_tapcell.odb
+read_sdc /__w/test_dose_2/test_dose_2/pnr_out/work/results/asap7/l1d_bank/base/2_3_floorplan_tapcell.sdc
+source /OpenROAD-flow-scripts/flow/platforms/asap7/setRC.tcl
+[WARNING PDN-1051] No instances found for grid (CORE_macro_grid_2).
+[INFO PDN-0001] Inserting grid: top
+[INFO PDN-0001] Inserting grid: CORE_macro_grid_1 - u_r.u_data.g_way\[0\].u_ram.g_data.u_macro
+[INFO PDN-0001] Inserting grid: CORE_macro_grid_1 - u_r.u_data.g_way\[1\].u_ram.g_data.u_macro
+[INFO PDN-0001] Inserting grid: CORE_macro_grid_1 - u_r.u_data.g_way\[2\].u_ram.g_data.u_macro
+[INFO PDN-0001] Inserting grid: CORE_macro_grid_1 - u_r.u_data.g_way\[3\].u_ram.g_data.u_macro
+[INFO PDN-0001] Inserting grid: CORE_macro_grid_1 - u_r.u_tags.g_way\[0\].u_ram.genblk1.g_tag.u_macro
+[INFO PDN-0001] Inserting grid: CORE_macro_grid_1 - u_r.u_tags.g_way\[1\].u_ram.genblk1.g_tag.u_macro
+[INFO PDN-0001] Inserting grid: CORE_macro_grid_1 - u_r.u_tags.g_way\[2\].u_ram.genblk1.g_tag.u_macro
+[INFO PDN-0001] Inserting grid: CORE_macro_grid_1 - u_r.u_tags.g_way\[3\].u_ram.genblk1.g_tag.u_macro
+[INFO PDN-0500] Runtime: 1.43s
+check_placement -fixed -verbose
+Design area 40185 um^2 35% utilization.
+write_sdc -no_timestamp /__w/test_dose_2/test_dose_2/pnr_out/work/results/asap7/l1d_bank/base/2_4_floorplan_pdn.sdc
+write_db /__w/test_dose_2/test_dose_2/pnr_out/work/results/asap7/l1d_bank/base/2_4_floorplan_pdn.odb
+Elapsed time: 0:04.03[h:]min:sec. CPU time: user 3.61 sys 0.40 (99%). Peak memory: 900544KB.
+Log                    Ext     Elapsed      CPU     CPU/ Peak Mem sha1sum
+                                     s        s  Elapsed       MB [0:10)
+2_4_floorplan_pdn      .odb          4        4     1.00      879 bf57feac7b
+2_4_floorplan_pdn      .sdc                                       4a98ffdb3b

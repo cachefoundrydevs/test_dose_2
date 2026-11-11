@@ -1,0 +1,39 @@
+{
+ "top": "l1d_bank",
+ "period_ps": 350.0,
+ "corner": "BC",
+ "synth_rc": "0",
+ "pnr_rc": "2",
+ "stages": {
+  "1_synth.json": {},
+  "2_1_floorplan.json": {
+   "floorplan__timing__setup__tns": -1938410.0,
+   "floorplan__timing__setup__ws": -487.284
+  },
+  "3_3_place_gp.json": {
+   "globalplace__timing__setup__tns": -4856530.0,
+   "globalplace__timing__setup__ws": -527.278
+  },
+  "3_4_place_resized.json": {
+   "placeopt__timing__setup__tns": -4856530.0,
+   "placeopt__timing__setup__ws": -527.278
+  },
+  "3_5_place_dp.json": {
+   "detailedplace__timing__setup__tns": -4833830.0,
+   "detailedplace__timing__setup__ws": -514.962
+  },
+  "4_1_cts.json": {
+   "cts__timing__setup__tns": -5453100.0,
+   "cts__timing__setup__ws": -854.113
+  },
+  "5_1_grt.json": {}
+ },
+ "last_stage": "4_1_cts.json",
+ "setup_ws_ps": -854.113,
+ "crit_ps": 1204.113,
+ "fmax_ghz": 0.83,
+ "setup_tns_ps": -5453100.0,
+ "hold_ws_ps": -386.925,
+ "area_um2": 45721.6,
+ "done": false
+}

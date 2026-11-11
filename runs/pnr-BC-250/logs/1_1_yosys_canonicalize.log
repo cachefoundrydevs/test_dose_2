@@ -1,0 +1,183 @@
+Yosys 0.68+post (git sha1 UNKNOWN, Release, GNU /usr/local/bin/wrapped-cc/g++ 15.2.0)
+Using ABC speed script.
+1. Executing Liberty frontend: /OpenROAD-flow-scripts/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_AO_RVT_FF_nldm_211120.lib.gz
+2. Executing Liberty frontend: /OpenROAD-flow-scripts/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_INVBUF_RVT_FF_nldm_220122.lib.gz
+3. Executing Liberty frontend: /OpenROAD-flow-scripts/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_OA_RVT_FF_nldm_211120.lib.gz
+4. Executing Liberty frontend: /OpenROAD-flow-scripts/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_SIMPLE_RVT_FF_nldm_211120.lib.gz
+5. Executing Liberty frontend: /OpenROAD-flow-scripts/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_SEQ_RVT_FF_nldm_220123.lib
+6. Executing Liberty frontend: /__w/test_dose_2/test_dose_2/pnr_out/macros/l1d_macro_data_tdp.lib
+7. Executing Liberty frontend: /__w/test_dose_2/test_dose_2/pnr_out/macros/l1d_macro_tag_tdp.lib
+8. Executing Liberty frontend: /OpenROAD-flow-scripts/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_AO_RVT_FF_nldm_211120.lib.gz
+9. Executing Liberty frontend: /OpenROAD-flow-scripts/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_INVBUF_RVT_FF_nldm_220122.lib.gz
+10. Executing Liberty frontend: /OpenROAD-flow-scripts/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_OA_RVT_FF_nldm_211120.lib.gz
+11. Executing Liberty frontend: /OpenROAD-flow-scripts/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_SIMPLE_RVT_FF_nldm_211120.lib.gz
+12. Executing Liberty frontend: /OpenROAD-flow-scripts/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_SEQ_RVT_FF_nldm_220123.lib
+13. Executing Liberty frontend: /__w/test_dose_2/test_dose_2/pnr_out/macros/l1d_macro_data_tdp.lib
+14. Executing Liberty frontend: /__w/test_dose_2/test_dose_2/pnr_out/macros/l1d_macro_tag_tdp.lib
+15. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/common/l1d_fifo.v
+16. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/common/l1d_pri_enc.v
+17. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/common/l1d_arb_rr.v
+18. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/common/l1d_age_matrix.v
+19. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/common/l1d_cam.v
+20. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/common/l1d_ecc_enc.v
+21. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/common/l1d_ecc_syn.v
+22. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/common/l1d_ecc_fix.v
+23. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/prefetch/stride/l1d_add_eq.v
+24. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/prefetch/stride/l1d_ks_add.v
+25. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/prefetch/stride/l1d_ks_add_q.v
+26. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/prefetch/stride/l1d_pf_stride.v
+27. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/prefetch/stream/l1d_pf_stream.v
+28. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/prefetch/sms/l1d_pf_sms_fifo.v
+29. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/prefetch/sms/l1d_pf_sms_front.v
+30. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/prefetch/sms/l1d_pf_sms_core.v
+31. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/prefetch/sms/l1d_pf_sms_expand.v
+32. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/prefetch/sms/l1d_pf_sms.v
+33. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/front/l1d_bank_order.v
+34. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/front/l1d_port_front.v
+35. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/front/l1d_resp_merge.v
+36. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/bank/fifo/l1d_snoop_buf.v
+37. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/bank/fifo/l1d_vec_store_buf.v
+38. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/bank/s0/l1d_req_tracker.v
+39. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/bank/s0/l1d_book_select.v
+40. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/bank/s0/l1d_bank_s0.v
+41. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/bank/s1/l1d_plru.v
+42. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/bank/s1/l1d_meta_flops.v
+43. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/bank/s1/l1d_s1_lookup.v
+44. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/bank/s1/l1d_mesi_next.v
+45. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/bank/s1/l1d_reservation_unit.v
+46. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/bank/s2/l1d_resp_gen.v
+47. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/bank/s2/l1d_amo_alu.v
+48. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/bank/s1/l1d_bank_s1.v
+49. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/bank/s2/l1d_bank_s2.v
+50. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/bank/s3/l1d_bank_s3.v
+51. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/bank/arrays/l1d_tag_array.v
+52. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/bank/arrays/l1d_data_array.v
+53. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/bank/arrays/l1d_bank_r.v
+54. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/bank/miss/l1d_mshr_entry.v
+55. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/bank/miss/l1d_mshr.v
+56. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/bank/miss/l1d_mshr_nc.v
+57. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/bank/miss/l1d_victim_cache.v
+58. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/bank/l1d_maint.v
+59. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/bank/l1d_bank.v
+60. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/snoop/l1d_snoop_ctrl.v
+61. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/l2/l1d_l2_port.v
+62. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/top/l1d_prefetch_unit.v
+63. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/rtl/top/l1d_top.v
+64. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/flow/l1d_sram_tdp_asap7.v
+65. Executing Verilog-2005 frontend: /OpenROAD-flow-scripts/flow/platforms/asap7/yoSys/cells_clkgate_R.v
+66. Executing HIERARCHY pass (managing design hierarchy).
+67. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_bank'.
+67.1. Analyzing design hierarchy..
+67.2. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_maint'.
+67.3. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_victim_cache'.
+Warning: Replacing memory \use_c with list of registers. See /__w/test_dose_2/test_dose_2/rtl/bank/miss/l1d_victim_cache.v:236
+Warning: Replacing memory \lka_c with list of registers. See /__w/test_dose_2/test_dose_2/rtl/bank/miss/l1d_victim_cache.v:235
+Warning: Replacing memory \iss with list of registers. See /__w/test_dose_2/test_dose_2/rtl/bank/miss/l1d_victim_cache.v:253
+Warning: Replacing memory \st with list of registers. See /__w/test_dose_2/test_dose_2/rtl/bank/miss/l1d_victim_cache.v:250
+Warning: Replacing memory \st_n with list of registers. See /__w/test_dose_2/test_dose_2/rtl/bank/miss/l1d_victim_cache.v:198
+67.4. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_mshr_nc'.
+67.5. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_mshr'.
+67.6. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_reservation_unit'.
+67.7. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_bank_s3'.
+67.8. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_bank_s2'.
+67.9. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_bank_s1'.
+67.10. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_bank_r'.
+67.11. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_bank_s0'.
+Warning: Replacing memory \book_entry_sel_q with list of registers. See /__w/test_dose_2/test_dose_2/rtl/bank/s0/l1d_bank_s0.v:457
+/__w/test_dose_2/test_dose_2/rtl/bank/s0/l1d_bank_s0.v:178: Warning: Range select [295:148] out of bounds on signal `\arrival_packet_flat': Setting all 148 result bits to undef.
+/__w/test_dose_2/test_dose_2/rtl/bank/s0/l1d_bank_s0.v:178: Warning: Range select [443:296] out of bounds on signal `\arrival_packet_flat': Setting all 148 result bits to undef.
+/__w/test_dose_2/test_dose_2/rtl/bank/s0/l1d_bank_s0.v:178: Warning: Range select [591:444] out of bounds on signal `\arrival_packet_flat': Setting all 148 result bits to undef.
+67.12. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_vec_store_buf'.
+67.13. Analyzing design hierarchy..
+67.14. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_age_matrix'.
+Warning: Replacing memory \older with list of registers. See /__w/test_dose_2/test_dose_2/rtl/common/l1d_age_matrix.v:47
+Warning: Replacing memory \multi_row_next with list of registers. See /__w/test_dose_2/test_dose_2/rtl/common/l1d_age_matrix.v:39
+Warning: Replacing memory \multi_later with list of registers. See /__w/test_dose_2/test_dose_2/rtl/common/l1d_age_matrix.v:36, /__w/test_dose_2/test_dose_2/rtl/common/l1d_age_matrix.v:34
+67.15. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_fifo'.
+Warning: Replacing memory \mem with list of registers. See /__w/test_dose_2/test_dose_2/rtl/common/l1d_fifo.v:62
+67.16. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_mshr_entry'.
+67.17. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_arb_rr'.
+67.18. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_pri_enc'.
+67.19. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_cam'.
+67.20. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_ecc_fix'.
+67.21. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_ecc_fix'.
+67.22. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_amo_alu'.
+67.23. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_resp_gen'.
+67.24. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_ecc_syn'.
+67.25. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_ecc_syn'.
+67.26. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_mesi_next'.
+67.27. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_s1_lookup'.
+67.28. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_meta_flops'.
+67.29. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_ecc_enc'.
+67.30. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_ecc_enc'.
+67.31. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_data_array'.
+67.32. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_tag_array'.
+67.33. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_book_select'.
+67.34. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_snoop_buf'.
+Warning: Replacing memory \sm with list of registers. See /__w/test_dose_2/test_dose_2/rtl/bank/fifo/l1d_snoop_buf.v:149
+Warning: Replacing memory \wid with list of registers. See /__w/test_dose_2/test_dose_2/rtl/bank/fifo/l1d_snoop_buf.v:148
+Warning: Replacing memory \ei with list of registers. See /__w/test_dose_2/test_dose_2/rtl/bank/fifo/l1d_snoop_buf.v:147
+Warning: Replacing memory \el with list of registers. See /__w/test_dose_2/test_dose_2/rtl/bank/fifo/l1d_snoop_buf.v:146
+Warning: Replacing memory \hs with list of registers. See /__w/test_dose_2/test_dose_2/rtl/bank/fifo/l1d_snoop_buf.v:145
+Warning: Replacing memory \ev with list of registers. See /__w/test_dose_2/test_dose_2/rtl/bank/fifo/l1d_snoop_buf.v:144
+67.35. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_req_tracker'.
+Warning: Replacing memory \g_pick_count.free_below with list of registers. See /__w/test_dose_2/test_dose_2/rtl/bank/s0/l1d_req_tracker.v:198, /__w/test_dose_2/test_dose_2/rtl/bank/s0/l1d_req_tracker.v:196
+Warning: Replacing memory \set_q with list of registers. See /__w/test_dose_2/test_dose_2/rtl/bank/s0/l1d_req_tracker.v:426
+Warning: Replacing memory \pc_q with list of registers. See /__w/test_dose_2/test_dose_2/rtl/bank/s0/l1d_req_tracker.v:425
+Warning: Replacing memory \packet_q with list of registers. See /__w/test_dose_2/test_dose_2/rtl/bank/s0/l1d_req_tracker.v:424
+Warning: Replacing memory \wait_vc_q with list of registers. See /__w/test_dose_2/test_dose_2/rtl/bank/s0/l1d_req_tracker.v:418
+Warning: Replacing memory \wait_mshr_q with list of registers. See /__w/test_dose_2/test_dose_2/rtl/bank/s0/l1d_req_tracker.v:417
+Warning: Replacing memory \deps_q with list of registers. See /__w/test_dose_2/test_dose_2/rtl/bank/s0/l1d_req_tracker.v:416
+Warning: Replacing memory \state_q with list of registers. See /__w/test_dose_2/test_dose_2/rtl/bank/s0/l1d_req_tracker.v:415
+Warning: Replacing memory \deps_new with list of registers. See /__w/test_dose_2/test_dose_2/rtl/bank/s0/l1d_req_tracker.v:294, /__w/test_dose_2/test_dose_2/rtl/bank/s0/l1d_req_tracker.v:286
+Warning: Replacing memory \load_pc with list of registers. See /__w/test_dose_2/test_dose_2/rtl/bank/s0/l1d_req_tracker.v:249, /__w/test_dose_2/test_dose_2/rtl/bank/s0/l1d_req_tracker.v:245
+Warning: Replacing memory \load_packet with list of registers. See /__w/test_dose_2/test_dose_2/rtl/bank/s0/l1d_req_tracker.v:248, /__w/test_dose_2/test_dose_2/rtl/bank/s0/l1d_req_tracker.v:244
+Warning: Replacing memory \data_sel with list of registers. See /__w/test_dose_2/test_dose_2/rtl/bank/s0/l1d_req_tracker.v:226
+Warning: Replacing memory \src_entry with list of registers. See /__w/test_dose_2/test_dose_2/rtl/bank/s0/l1d_req_tracker.v:221, /__w/test_dose_2/test_dose_2/rtl/bank/s0/l1d_req_tracker.v:218
+Warning: Replacing memory \rank with list of registers. See /__w/test_dose_2/test_dose_2/rtl/bank/s0/l1d_req_tracker.v:147, /__w/test_dose_2/test_dose_2/rtl/bank/s0/l1d_req_tracker.v:145
+67.36. Analyzing design hierarchy..
+67.37. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_plru'.
+67.38. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_pri_enc'.
+67.39. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_sram_tdp'.
+67.40. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_sram_tdp'.
+67.41. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_age_matrix'.
+67.42. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_age_matrix'.
+67.43. Analyzing design hierarchy..
+67.44. Analyzing design hierarchy..
+68. Executing OPT_CLEAN pass (remove unused cells and wires).
+Warning: Ignoring module $paramod$8d09e3f47d06b6906f61a6742afd94e22a2b729a\l1d_meta_flops because it contains processes (run 'proc' command first).
+Warning: Ignoring module l1d_mesi_next because it contains processes (run 'proc' command first).
+Warning: Ignoring module $paramod$862e2aadd06fc4759615bbfec756a05f4a46841d\l1d_resp_gen because it contains processes (run 'proc' command first).
+Warning: Ignoring module $paramod$3bbac9876d48911eddfc20e30f7a57fd37db5fcb\l1d_amo_alu because it contains processes (run 'proc' command first).
+Warning: Ignoring module $paramod$9eeafe1549ef80e08ee72281c647b8267694184e\l1d_pri_enc because it contains processes (run 'proc' command first).
+Warning: Ignoring module $paramod$9eeafe1549ef80e08ee72281c647b8267694184e\l1d_arb_rr because it contains processes (run 'proc' command first).
+Warning: Ignoring module $paramod$e3bfbf5ca88ecd796f613ca4d54bdbb7c4eeab28\l1d_mshr_entry because it contains processes (run 'proc' command first).
+Warning: Ignoring module $paramod$68e20358c89161098af6841897f78277b4e1dbeb\l1d_fifo because it contains processes (run 'proc' command first).
+Warning: Ignoring module $paramod$9eeafe1549ef80e08ee72281c647b8267694184e\l1d_age_matrix because it contains processes (run 'proc' command first).
+Warning: Ignoring module $paramod$66db83aa9bde3ae8991dd351488361826e499b29\l1d_vec_store_buf because it contains processes (run 'proc' command first).
+Warning: Ignoring module $paramod$66db83aa9bde3ae8991dd351488361826e499b29\l1d_bank_s0 because it contains processes (run 'proc' command first).
+Warning: Ignoring module $paramod$66db83aa9bde3ae8991dd351488361826e499b29\l1d_bank_r because it contains processes (run 'proc' command first).
+Warning: Ignoring module $paramod$66db83aa9bde3ae8991dd351488361826e499b29\l1d_bank_s1 because it contains processes (run 'proc' command first).
+Warning: Ignoring module $paramod$66db83aa9bde3ae8991dd351488361826e499b29\l1d_bank_s2 because it contains processes (run 'proc' command first).
+Warning: Ignoring module $paramod$66db83aa9bde3ae8991dd351488361826e499b29\l1d_bank_s3 because it contains processes (run 'proc' command first).
+Warning: Ignoring module $paramod$e3bfbf5ca88ecd796f613ca4d54bdbb7c4eeab28\l1d_reservation_unit because it contains processes (run 'proc' command first).
+Warning: Ignoring module $paramod$e3bfbf5ca88ecd796f613ca4d54bdbb7c4eeab28\l1d_mshr because it contains processes (run 'proc' command first).
+Warning: Ignoring module $paramod$e3bfbf5ca88ecd796f613ca4d54bdbb7c4eeab28\l1d_mshr_nc because it contains processes (run 'proc' command first).
+Warning: Ignoring module $paramod$e3bfbf5ca88ecd796f613ca4d54bdbb7c4eeab28\l1d_victim_cache because it contains processes (run 'proc' command first).
+Warning: Ignoring module $paramod$e3bfbf5ca88ecd796f613ca4d54bdbb7c4eeab28\l1d_maint because it contains processes (run 'proc' command first).
+Warning: Ignoring module $paramod$2aafe56150e19bce4703863a037fec363396659e\l1d_age_matrix because it contains processes (run 'proc' command first).
+Warning: Ignoring module $paramod$29dbb8b9f6d511fd8b23c10e81dba3114ef784ed\l1d_age_matrix because it contains processes (run 'proc' command first).
+Warning: Ignoring module $paramod$d5afdc3c831df247a77dddb733d1f817c4308982\l1d_pri_enc because it contains processes (run 'proc' command first).
+Warning: Ignoring module $paramod$143cd049a19791751d876fd29769de6d5a0bf693\l1d_plru because it contains processes (run 'proc' command first).
+Warning: Ignoring module $paramod$66db83aa9bde3ae8991dd351488361826e499b29\l1d_req_tracker because it contains processes (run 'proc' command first).
+Warning: Ignoring module $paramod$e3bfbf5ca88ecd796f613ca4d54bdbb7c4eeab28\l1d_snoop_buf because it contains processes (run 'proc' command first).
+Warning: Ignoring module $paramod$1160ef114eff96acd0ed3ea14d91d19c0e431c8a\l1d_book_select because it contains processes (run 'proc' command first).
+69. Executing RTLIL backend.
+Warnings: 60 unique messages, 66 total
+End of script. Logfile hash: aecbb38d36, time: 16.57s, user: 16.44s, system: 0.06s, MEM: 97.84 MB peak
+Yosys 0.68+post (git sha1 UNKNOWN, Release, GNU /usr/local/bin/wrapped-cc/g++ 15.2.0)
+Time spent: 96% 1x hierarchy (15 sec), 2% 16x read_liberty (0 sec), ...
+Elapsed time: 0:16.60[h:]min:sec. CPU time: user 16.52 sys 0.08 (99%). Peak memory: 102656KB.
+Log                    Ext     Elapsed      CPU     CPU/ Peak Mem sha1sum
+                                     s        s  Elapsed       MB [0:10)
+1_1_yosys_canonicalize .rtlil       16       17     1.00      100 08b1270ea5

@@ -1,0 +1,645 @@
+OpenROAD unknown 
+Features included (+) or not (-): -GPU +GUI
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+[INFO ORD-0030] Using 4 thread(s).
+source /OpenROAD-flow-scripts/flow/platforms/asap7/liberty_suppressions.tcl
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_AO_RVT_TT_nldm_211120@4181747-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_INVBUF_RVT_TT_nldm_220122@69356-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_OA_RVT_TT_nldm_211120@3765433-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_SEQ_RVT_TT_nldm_220123@1512690-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_SIMPLE_RVT_TT_nldm_211120@446864-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/l1d_macro_data_tdp@6351-1794376607-dee75192.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/l1d_macro_tag_tdp@6341-1794376607-dee75192.blib
+read_db /__w/test_dose_2/test_dose_2/pnr_out/work/results/asap7/l1d_bank/base/1_synth.odb
+read_sdc /__w/test_dose_2/test_dose_2/pnr_out/work/results/asap7/l1d_bank/base/1_synth.sdc
+source /OpenROAD-flow-scripts/flow/platforms/asap7/setRC.tcl
+source /OpenROAD-flow-scripts/flow/platforms/asap7/openRoad/pdn/global_connect.tcl
+global_connect
+
+==========================================================================
+Floorplan check_setup
+--------------------------------------------------------------------------
+number instances in verilog is 217514
+initialize_floorplan -utilization 35 -aspect_ratio 1.0 -core_space 1.0 -site asap7sc7p5t
+[INFO IFP-0107] Defining die area using utilization: 35.00% and aspect ratio: 1.
+[WARNING IFP-0028] Core area lower left (1.000, 1.000) snapped to (1.026, 1.080).
+[INFO IFP-0001] Added 1247 rows of 6238 site asap7sc7p5t.
+[INFO IFP-0100] Die BBox:  (  0.000  0.000 ) ( 338.892 338.892 ) um
+[INFO IFP-0101] Core BBox: (  1.026  1.080 ) ( 337.878 337.770 ) um
+[INFO IFP-0102] Core area:                       113414.700 um^2
+[INFO IFP-0103] Total instances area:             39723.866 um^2
+[INFO IFP-0104] Effective utilization:                0.350
+[INFO IFP-0105] Number of instances:                 217514
+source /OpenROAD-flow-scripts/flow/platforms/asap7/openRoad/make_tracks.tcl
+source /OpenROAD-flow-scripts/flow/platforms/asap7/fastroute.tcl
+set_dont_use "*x1p*_ASAP7* *xp*_ASAP7* SDF* ICG*"
+repair_tie_fanout -separation 0 asap7sc7p5t_SIMPLE_RVT_TT_nldm_211120/TIELOx1_ASAP7_75t_R/L
+[INFO RSZ-0042] Inserted 2553 tie TIELOx1_ASAP7_75t_R instances.
+repair_tie_fanout -separation 0 asap7sc7p5t_SIMPLE_RVT_TT_nldm_211120/TIEHIx1_ASAP7_75t_R/H
+[INFO RSZ-0042] Inserted 9 tie TIEHIx1_ASAP7_75t_R instances.
+repair_timing -setup_margin 0 -hold_margin 0 -repair_tns 100 -setup -skip_last_gasp -sequence unbuffer,sizeup,swap,vt_swap -verbose
+[WARNING EST-0027] no estimated parasitics. Using wire load models.
+[INFO RSZ-0100] Repair move sequence: UnbufferMove SizeUpMove SwapPinsMove 
+[INFO RSZ-0094] Found 19478 endpoints with setup violations.
+[INFO RSZ-0099] Repairing 19478 out of 19478 (100.00%) violating endpoints...
+   Iter   | Removed | Resized | Inserted | Cloned |  Pin  |   Area   |    WNS   |    TNS     |  Viol  |  Worst
+          | Buffers |  Gates  | Buffers  |  Gates | Swaps |          |          |            | Endpts | Endpoint
+------------------------------------------------------------------------------------------------------------------------------
+       0* |       0 |       0 |        0 |      0 |     0 |    +0.0% | -966.720 | -5199488.0 |  19478 | u_s2.s3_new\[56\]$_DFF_P_/D
+      10* |       0 |       9 |        0 |      0 |     0 |    +0.0% | -899.409 | -5173166.0 |  19478 | u_s2.s3_new\[56\]$_DFF_P_/D
+      20* |       0 |      19 |        0 |      0 |     0 |    +0.0% | -860.865 | -5150533.0 |  19478 | u_s2.s3_new\[56\]$_DFF_P_/D
+      30* |       0 |      25 |        0 |      0 |     4 |    +0.0% | -842.587 | -5129268.0 |  19478 | u_s2.s3_new\[56\]$_DFF_P_/D
+      40* |       0 |      35 |        0 |      0 |     4 |    +0.0% | -824.472 | -5120590.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+      50* |       0 |      44 |        0 |      0 |     5 |    +0.0% | -805.038 | -5112818.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+      60* |       0 |      53 |        0 |      0 |     6 |    +0.0% | -797.984 | -5106787.5 |  19478 | u_s0.book_is_write_q$_DFFE_PN_/D
+      70* |       0 |      57 |        0 |      0 |    12 |    +0.0% | -798.806 | -5104300.0 |  19478 | u_s2.s3_new\[56\]$_DFF_P_/D
+      80* |       0 |      65 |        0 |      0 |    14 |    +0.0% | -791.882 | -5097171.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+      90* |       0 |      70 |        0 |      0 |    19 |    +0.0% | -782.196 | -5093628.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+      92* |       0 |      71 |        0 |      0 |    20 |    +0.0% | -779.898 | -5093173.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     100* |       0 |      77 |        0 |      0 |    21 |    +0.0% | -779.898 | -5093154.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     110* |       0 |      86 |        0 |      0 |    22 |    +0.0% | -779.898 | -5092699.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     120* |       0 |      96 |        0 |      0 |    22 |    +0.0% | -779.898 | -5092009.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     130* |       0 |     105 |        0 |      0 |    23 |    +0.0% | -779.898 | -5093243.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     140* |       0 |     114 |        0 |      0 |    24 |    +0.0% | -779.898 | -5092430.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     148* |       0 |     119 |        0 |      0 |    26 |    +0.0% | -779.898 | -5092122.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     150* |       0 |     119 |        0 |      0 |    27 |    +0.0% | -779.898 | -5092298.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     160* |       0 |     126 |        0 |      0 |    30 |    +0.0% | -779.898 | -5091376.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     170* |       0 |     132 |        0 |      0 |    34 |    +0.0% | -779.898 | -5090897.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     172* |       0 |     132 |        0 |      0 |    36 |    +0.0% | -779.898 | -5090896.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     180* |       0 |     137 |        0 |      0 |    38 |    +0.0% | -779.898 | -5090603.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     182* |       0 |     136 |        0 |      0 |    36 |    +0.0% | -779.898 | -5090411.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     185* |       0 |     137 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090330.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     186* |       0 |     137 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090330.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     187* |       0 |     137 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090330.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     188* |       0 |     137 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090330.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     189* |       0 |     137 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090330.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     190* |       0 |     137 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090330.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     191* |       0 |     138 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090312.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     193* |       0 |     139 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090294.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     194* |       0 |     139 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090294.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     195* |       0 |     139 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090294.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     197* |       0 |     140 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090276.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     198* |       0 |     140 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090276.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     199* |       0 |     140 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090276.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     200* |       0 |     140 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090276.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     200* |       0 |     140 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090276.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     201* |       0 |     140 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090276.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     202* |       0 |     140 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090276.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     203* |       0 |     140 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090276.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     204* |       0 |     140 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090276.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     205* |       0 |     140 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090276.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     206* |       0 |     140 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090276.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     207* |       0 |     140 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090276.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     209* |       0 |     141 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090257.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     210* |       0 |     141 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090257.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     210* |       0 |     141 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090257.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     211* |       0 |     141 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090257.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     212* |       0 |     141 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090257.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     213* |       0 |     141 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090257.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     214* |       0 |     141 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090257.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     215* |       0 |     141 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090257.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     216* |       0 |     141 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090257.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     217* |       0 |     141 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090257.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     218* |       0 |     141 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090257.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     219* |       0 |     141 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090257.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     220* |       0 |     141 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090257.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     220* |       0 |     141 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090257.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     221* |       0 |     141 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090257.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     222* |       0 |     141 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090257.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     223* |       0 |     141 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090257.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     224* |       0 |     141 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090257.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     225* |       0 |     141 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090257.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     226* |       0 |     141 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090257.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     227* |       0 |     141 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090257.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     228* |       0 |     141 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090257.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     229* |       0 |     141 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090257.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     230* |       0 |     141 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090257.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     230* |       0 |     141 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090257.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     231* |       0 |     141 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090257.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     232* |       0 |     141 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090257.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     233* |       0 |     141 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090257.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     234* |       0 |     141 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090257.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     235* |       0 |     141 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090257.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     236* |       0 |     141 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090257.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     237* |       0 |     141 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090257.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     238* |       0 |     141 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090257.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     240* |       0 |     141 |        0 |      0 |    38 |    +0.0% | -779.898 | -5090273.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     240* |       0 |     141 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090257.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     242* |       0 |     141 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090257.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     244* |       0 |     141 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090257.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     246* |       0 |     141 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090257.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     250* |       0 |     144 |        0 |      0 |    37 |    +0.0% | -779.898 | -5090208.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     253* |       0 |     146 |        0 |      0 |    38 |    +0.0% | -779.898 | -5090194.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     255* |       0 |     146 |        0 |      0 |    39 |    +0.0% | -779.898 | -5090178.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     259* |       0 |     146 |        0 |      0 |    40 |    +0.0% | -779.898 | -5090196.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     260* |       0 |     146 |        0 |      0 |    40 |    +0.0% | -779.898 | -5090196.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     269* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     270* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     270* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     271* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     272* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     276* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     280* |       0 |     154 |        0 |      0 |    43 |    +0.0% | -781.796 | -5090123.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     280* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     284* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     288* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     290* |       0 |     153 |        0 |      0 |    42 |    +0.0% | -781.796 | -5090119.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     292* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     296* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     300* |       0 |     154 |        0 |      0 |    43 |    +0.0% | -781.796 | -5090123.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     300* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     304* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     308* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     310* |       0 |     153 |        0 |      0 |    42 |    +0.0% | -781.796 | -5090119.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     312* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     316* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     320* |       0 |     154 |        0 |      0 |    43 |    +0.0% | -781.796 | -5090123.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     320* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     328* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     330* |       0 |     153 |        0 |      0 |    42 |    +0.0% | -781.796 | -5090120.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     337* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     340* |       0 |     154 |        0 |      0 |    42 |    +0.0% | -781.796 | -5090087.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     346* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     350* |       0 |     154 |        0 |      0 |    43 |    +0.0% | -781.796 | -5090087.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     355* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     360* |       0 |     155 |        0 |      0 |    43 |    +0.0% | -784.107 | -5090256.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     364* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     370* |       0 |     156 |        0 |      0 |    43 |    +0.0% | -786.647 | -5091081.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     373* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     380* |       0 |     157 |        0 |      0 |    43 |    +0.0% | -786.647 | -5091090.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     382* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     390* |       0 |     158 |        0 |      0 |    43 |    +0.0% | -786.647 | -5091096.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     391* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     400* |       0 |     159 |        0 |      0 |    43 |    +0.0% | -791.656 | -5091507.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     400* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     409* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     410* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     413* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     417* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     420* |       0 |     153 |        0 |      0 |    43 |    +0.0% | -781.796 | -5090121.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     421* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     425* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     429* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     430* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     433* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     437* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     440* |       0 |     153 |        0 |      0 |    43 |    +0.0% | -781.796 | -5090119.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     441* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     445* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     449* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     450* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     453* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     457* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     460* |       0 |     153 |        0 |      0 |    43 |    +0.0% | -781.796 | -5090119.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     461* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     465* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     469* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     470* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     473* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     477* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     480* |       0 |     154 |        0 |      0 |    42 |    +0.0% | -781.358 | -5090036.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     481* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     484* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     487* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     490* |       0 |     154 |        0 |      0 |    42 |    +0.0% | -781.930 | -5089999.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     490* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     493* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     496* |       0 |     152 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090038.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     500* |       0 |     154 |        0 |      0 |    43 |    +0.0% | -782.635 | -5090217.0 |  19478 | u_s0.book_line_q\[38\]$_DFFE_PN_/D
+     500* |       0 |     153 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090020.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     501* |       0 |     153 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090020.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     505* |       0 |     153 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090020.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     509* |       0 |     153 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090020.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     510* |       0 |     153 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090020.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     512* |       0 |     153 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090020.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     515* |       0 |     153 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090020.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     518* |       0 |     153 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090020.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     520* |       0 |     154 |        0 |      0 |    42 |    +0.0% | -781.251 | -5090040.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     521* |       0 |     153 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090020.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     524* |       0 |     153 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090020.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     527* |       0 |     153 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090020.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     529* |       0 |     153 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090020.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     530* |       0 |     153 |        0 |      0 |    42 |    +0.0% | -779.898 | -5090020.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     531* |       0 |     153 |        0 |      0 |    43 |    +0.0% | -779.898 | -5090018.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     536* |       0 |     154 |        0 |      0 |    43 |    +0.0% | -779.898 | -5089986.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     538* |       0 |     154 |        0 |      0 |    43 |    +0.0% | -779.898 | -5089986.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     540* |       0 |     154 |        0 |      0 |    44 |    +0.0% | -779.928 | -5089986.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     540* |       0 |     154 |        0 |      0 |    43 |    +0.0% | -779.898 | -5089986.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     542* |       0 |     154 |        0 |      0 |    43 |    +0.0% | -779.898 | -5089986.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     544* |       0 |     154 |        0 |      0 |    43 |    +0.0% | -779.898 | -5089986.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     546* |       0 |     154 |        0 |      0 |    43 |    +0.0% | -779.898 | -5089986.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     550* |       0 |     156 |        0 |      0 |    44 |    +0.0% | -782.124 | -5090133.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     550* |       0 |     154 |        0 |      0 |    43 |    +0.0% | -779.898 | -5089986.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     553* |       0 |     154 |        0 |      0 |    43 |    +0.0% | -779.898 | -5089986.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     555* |       0 |     154 |        0 |      0 |    43 |    +0.0% | -779.898 | -5089986.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     558* |       0 |     154 |        0 |      0 |    43 |    +0.0% | -779.898 | -5089986.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     560* |       0 |     154 |        0 |      0 |    44 |    +0.0% | -779.898 | -5089986.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     561* |       0 |     154 |        0 |      0 |    45 |    +0.0% | -779.898 | -5089984.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     563* |       0 |     154 |        0 |      0 |    45 |    +0.0% | -779.898 | -5089984.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     566* |       0 |     154 |        0 |      0 |    45 |    +0.0% | -779.898 | -5089984.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     568* |       0 |     154 |        0 |      0 |    46 |    +0.0% | -779.898 | -5089983.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     570* |       0 |     155 |        0 |      0 |    46 |    +0.0% | -779.900 | -5089977.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     572* |       0 |     154 |        0 |      0 |    46 |    +0.0% | -779.898 | -5089983.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     574* |       0 |     154 |        0 |      0 |    47 |    +0.0% | -779.898 | -5089982.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     577* |       0 |     154 |        0 |      0 |    47 |    +0.0% | -779.898 | -5089982.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     580* |       0 |     156 |        0 |      0 |    47 |    +0.0% | -784.335 | -5090898.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     581* |       0 |     154 |        0 |      0 |    47 |    +0.0% | -779.898 | -5089982.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     583* |       0 |     154 |        0 |      0 |    47 |    +0.0% | -779.898 | -5089982.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     584* |       0 |     154 |        0 |      0 |    47 |    +0.0% | -779.898 | -5089982.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     585* |       0 |     154 |        0 |      0 |    47 |    +0.0% | -779.898 | -5089982.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     587* |       0 |     154 |        0 |      0 |    47 |    +0.0% | -779.898 | -5089982.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     590* |       0 |     155 |        0 |      0 |    48 |    +0.0% | -779.993 | -5089986.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     591* |       0 |     154 |        0 |      0 |    47 |    +0.0% | -779.898 | -5089982.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     592* |       0 |     154 |        0 |      0 |    47 |    +0.0% | -779.898 | -5089982.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     594* |       0 |     154 |        0 |      0 |    48 |    +0.0% | -779.898 | -5089981.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     600* |       0 |     158 |        0 |      0 |    49 |    +0.0% | -779.898 | -5034468.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     610* |       0 |     168 |        0 |      0 |    49 |    +0.0% | -779.898 | -4879116.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     620* |       0 |     174 |        0 |      0 |    53 |    +0.0% | -779.898 | -4805466.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     630* |       0 |     182 |        0 |      0 |    55 |    +0.0% | -779.898 | -4772481.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     631* |       0 |     182 |        0 |      0 |    55 |    +0.0% | -779.898 | -4772481.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     639* |       0 |     182 |        0 |      0 |    57 |    +0.0% | -779.897 | -4772478.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     640* |       0 |     182 |        0 |      0 |    57 |    +0.0% | -779.897 | -4772478.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     640* |       0 |     182 |        0 |      0 |    57 |    +0.0% | -779.897 | -4772478.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     650* |       0 |     191 |        0 |      0 |    57 |    +0.0% | -779.897 | -4765055.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     660* |       0 |     198 |        0 |      0 |    60 |    +0.0% | -779.897 | -4763876.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     666* |       0 |     198 |        0 |      0 |    66 |    +0.0% | -779.897 | -4757010.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     670* |       0 |     201 |        0 |      0 |    66 |    +0.0% | -779.897 | -4757004.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     671* |       0 |     202 |        0 |      0 |    66 |    +0.0% | -779.897 | -4756975.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     673* |       0 |     202 |        0 |      0 |    67 |    +0.0% | -779.897 | -4756975.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     674* |       0 |     202 |        0 |      0 |    67 |    +0.0% | -779.897 | -4756975.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     676* |       0 |     202 |        0 |      0 |    68 |    +0.0% | -779.897 | -4756975.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     677* |       0 |     202 |        0 |      0 |    68 |    +0.0% | -779.897 | -4756975.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     680* |       0 |     204 |        0 |      0 |    68 |    +0.0% | -779.897 | -4756933.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     683* |       0 |     206 |        0 |      0 |    69 |    +0.0% | -779.897 | -4756959.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     684* |       0 |     206 |        0 |      0 |    69 |    +0.0% | -779.897 | -4756959.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     686* |       0 |     206 |        0 |      0 |    70 |    +0.0% | -779.897 | -4756959.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     687* |       0 |     206 |        0 |      0 |    70 |    +0.0% | -779.897 | -4756959.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     689* |       0 |     206 |        0 |      0 |    71 |    +0.0% | -779.897 | -4756959.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     690* |       0 |     206 |        0 |      0 |    71 |    +0.0% | -779.897 | -4756959.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     691* |       0 |     206 |        0 |      0 |    72 |    +0.0% | -779.897 | -4756959.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     692* |       0 |     206 |        0 |      0 |    72 |    +0.0% | -779.897 | -4756959.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     694* |       0 |     206 |        0 |      0 |    73 |    +0.0% | -779.897 | -4756959.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     695* |       0 |     206 |        0 |      0 |    73 |    +0.0% | -779.897 | -4756959.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     697* |       0 |     206 |        0 |      0 |    74 |    +0.0% | -779.897 | -4756959.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     698* |       0 |     206 |        0 |      0 |    74 |    +0.0% | -779.897 | -4756959.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     700* |       0 |     207 |        0 |      0 |    74 |    +0.0% | -779.897 | -4756967.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     704* |       0 |     210 |        0 |      0 |    75 |    +0.0% | -779.897 | -4756952.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     705* |       0 |     210 |        0 |      0 |    75 |    +0.0% | -779.897 | -4756952.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     707* |       0 |     210 |        0 |      0 |    76 |    +0.0% | -779.897 | -4756952.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     708* |       0 |     210 |        0 |      0 |    76 |    +0.0% | -779.897 | -4756952.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     710* |       0 |     210 |        0 |      0 |    77 |    +0.0% | -779.897 | -4756952.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     710* |       0 |     210 |        0 |      0 |    77 |    +0.0% | -779.897 | -4756952.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     711* |       0 |     210 |        0 |      0 |    77 |    +0.0% | -779.897 | -4756952.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     712* |       0 |     210 |        0 |      0 |    77 |    +0.0% | -779.897 | -4756952.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     714* |       0 |     210 |        0 |      0 |    78 |    +0.0% | -779.897 | -4756952.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     715* |       0 |     210 |        0 |      0 |    78 |    +0.0% | -779.897 | -4756952.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     717* |       0 |     210 |        0 |      0 |    79 |    +0.0% | -779.897 | -4756952.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     718* |       0 |     210 |        0 |      0 |    79 |    +0.0% | -779.897 | -4756952.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     720* |       0 |     211 |        0 |      0 |    79 |    +0.0% | -779.897 | -4756954.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     724* |       0 |     214 |        0 |      0 |    80 |    +0.0% | -779.897 | -4756944.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     725* |       0 |     214 |        0 |      0 |    80 |    +0.0% | -779.897 | -4756944.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     727* |       0 |     214 |        0 |      0 |    81 |    +0.0% | -779.897 | -4756944.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     728* |       0 |     214 |        0 |      0 |    81 |    +0.0% | -779.897 | -4756944.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     730* |       0 |     214 |        0 |      0 |    82 |    +0.0% | -779.897 | -4756944.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     730* |       0 |     214 |        0 |      0 |    82 |    +0.0% | -779.897 | -4756944.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     732* |       0 |     214 |        0 |      0 |    83 |    +0.0% | -779.897 | -4756944.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     733* |       0 |     214 |        0 |      0 |    83 |    +0.0% | -779.897 | -4756944.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     735* |       0 |     214 |        0 |      0 |    84 |    +0.0% | -779.897 | -4756944.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     736* |       0 |     214 |        0 |      0 |    84 |    +0.0% | -779.897 | -4756944.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     738* |       0 |     214 |        0 |      0 |    85 |    +0.0% | -779.897 | -4756944.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     739* |       0 |     214 |        0 |      0 |    85 |    +0.0% | -779.897 | -4756944.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     740* |       0 |     214 |        0 |      0 |    85 |    +0.0% | -779.897 | -4756944.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     745* |       0 |     218 |        0 |      0 |    86 |    +0.0% | -779.897 | -4756928.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     746* |       0 |     218 |        0 |      0 |    86 |    +0.0% | -779.897 | -4756928.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     748* |       0 |     218 |        0 |      0 |    87 |    +0.0% | -779.897 | -4756928.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     749* |       0 |     218 |        0 |      0 |    87 |    +0.0% | -779.897 | -4756928.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     750* |       0 |     218 |        0 |      0 |    87 |    +0.0% | -779.897 | -4756928.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     751* |       0 |     218 |        0 |      0 |    88 |    +0.0% | -779.897 | -4756927.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     752* |       0 |     218 |        0 |      0 |    88 |    +0.0% | -779.897 | -4756927.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     753* |       0 |     218 |        0 |      0 |    88 |    +0.0% | -779.897 | -4756927.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     755* |       0 |     218 |        0 |      0 |    89 |    +0.0% | -779.897 | -4756927.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     756* |       0 |     218 |        0 |      0 |    89 |    +0.0% | -779.897 | -4756927.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     758* |       0 |     218 |        0 |      0 |    90 |    +0.0% | -779.897 | -4756927.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     759* |       0 |     218 |        0 |      0 |    90 |    +0.0% | -779.897 | -4756927.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     760* |       0 |     218 |        0 |      0 |    90 |    +0.0% | -779.897 | -4756927.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     760* |       0 |     218 |        0 |      0 |    90 |    +0.0% | -779.897 | -4756927.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     761* |       0 |     218 |        0 |      0 |    90 |    +0.0% | -779.897 | -4756927.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     763* |       0 |     218 |        0 |      0 |    91 |    +0.0% | -779.897 | -4756927.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     765* |       0 |     218 |        0 |      0 |    92 |    +0.0% | -779.897 | -4756927.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     767* |       0 |     218 |        0 |      0 |    93 |    +0.0% | -779.897 | -4756927.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     768* |       0 |     218 |        0 |      0 |    93 |    +0.0% | -779.897 | -4756927.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     769* |       0 |     218 |        0 |      0 |    93 |    +0.0% | -779.897 | -4756927.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     770* |       0 |     218 |        0 |      0 |    93 |    +0.0% | -779.897 | -4756927.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     771* |       0 |     218 |        0 |      0 |    94 |    +0.0% | -779.897 | -4756927.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     772* |       0 |     218 |        0 |      0 |    94 |    +0.0% | -779.897 | -4756927.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     774* |       0 |     218 |        0 |      0 |    95 |    +0.0% | -779.897 | -4756926.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     780* |       0 |     223 |        0 |      0 |    95 |    +0.0% | -779.897 | -4756983.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     782* |       0 |     224 |        0 |      0 |    96 |    +0.0% | -779.897 | -4757062.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     787* |       0 |     228 |        0 |      0 |    96 |    +0.0% | -779.897 | -4757063.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     789* |       0 |     228 |        0 |      0 |    97 |    +0.0% | -779.897 | -4757063.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     790* |       0 |     228 |        0 |      0 |    97 |    +0.0% | -779.897 | -4757063.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     790* |       0 |     228 |        0 |      0 |    97 |    +0.0% | -779.897 | -4757063.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     792* |       0 |     228 |        0 |      0 |    98 |    +0.0% | -779.897 | -4757063.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     793* |       0 |     228 |        0 |      0 |    98 |    +0.0% | -779.897 | -4757063.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     799* |       0 |     232 |        0 |      0 |    99 |    +0.0% | -779.897 | -4757065.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     800* |       0 |     232 |        0 |      0 |    99 |    +0.0% | -779.897 | -4757065.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     800* |       0 |     232 |        0 |      0 |    99 |    +0.0% | -779.897 | -4757065.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     802* |       0 |     232 |        0 |      0 |   100 |    +0.0% | -779.897 | -4757065.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     803* |       0 |     232 |        0 |      0 |   100 |    +0.0% | -779.897 | -4757065.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     805* |       0 |     232 |        0 |      0 |   101 |    +0.0% | -779.897 | -4757065.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     807* |       0 |     232 |        0 |      0 |   102 |    +0.0% | -779.897 | -4757065.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     808* |       0 |     232 |        0 |      0 |   102 |    +0.0% | -779.897 | -4757065.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     810* |       0 |     232 |        0 |      0 |   103 |    +0.0% | -779.897 | -4757064.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     810* |       0 |     232 |        0 |      0 |   103 |    +0.0% | -779.897 | -4757064.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     811* |       0 |     232 |        0 |      0 |   103 |    +0.0% | -779.897 | -4757064.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     813* |       0 |     232 |        0 |      0 |   104 |    +0.0% | -779.897 | -4757064.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     814* |       0 |     232 |        0 |      0 |   104 |    +0.0% | -779.897 | -4757064.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     820* |       0 |     236 |        0 |      0 |   105 |    +0.0% | -779.897 | -4757065.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     820* |       0 |     236 |        0 |      0 |   105 |    +0.0% | -779.897 | -4757065.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     821* |       0 |     236 |        0 |      0 |   105 |    +0.0% | -779.897 | -4757065.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     823* |       0 |     236 |        0 |      0 |   106 |    +0.0% | -779.897 | -4757065.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     824* |       0 |     236 |        0 |      0 |   106 |    +0.0% | -779.897 | -4757065.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     826* |       0 |     236 |        0 |      0 |   107 |    +0.0% | -779.897 | -4757065.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     827* |       0 |     236 |        0 |      0 |   107 |    +0.0% | -779.897 | -4757065.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     828* |       0 |     236 |        0 |      0 |   107 |    +0.0% | -779.897 | -4757065.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     830* |       0 |     236 |        0 |      0 |   108 |    +0.0% | -779.897 | -4757065.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     830* |       0 |     236 |        0 |      0 |   108 |    +0.0% | -779.897 | -4757065.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     831* |       0 |     236 |        0 |      0 |   108 |    +0.0% | -779.897 | -4757065.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     833* |       0 |     236 |        0 |      0 |   109 |    +0.0% | -779.897 | -4757065.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     834* |       0 |     236 |        0 |      0 |   109 |    +0.0% | -779.897 | -4757065.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     840* |       0 |     240 |        0 |      0 |   110 |    +0.0% | -779.897 | -4757065.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     840* |       0 |     240 |        0 |      0 |   110 |    +0.0% | -779.897 | -4757065.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     841* |       0 |     240 |        0 |      0 |   110 |    +0.0% | -779.897 | -4757065.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     843* |       0 |     240 |        0 |      0 |   111 |    +0.0% | -779.897 | -4757065.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     844* |       0 |     240 |        0 |      0 |   111 |    +0.0% | -779.897 | -4757065.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     846* |       0 |     240 |        0 |      0 |   112 |    +0.0% | -779.897 | -4757065.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     848* |       0 |     240 |        0 |      0 |   113 |    +0.0% | -779.897 | -4757065.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     849* |       0 |     240 |        0 |      0 |   113 |    +0.0% | -779.897 | -4757065.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     850* |       0 |     240 |        0 |      0 |   113 |    +0.0% | -779.897 | -4757065.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     851* |       0 |     240 |        0 |      0 |   114 |    +0.0% | -779.897 | -4757065.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     852* |       0 |     240 |        0 |      0 |   114 |    +0.0% | -779.897 | -4757065.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     854* |       0 |     240 |        0 |      0 |   115 |    +0.0% | -779.897 | -4757065.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     855* |       0 |     240 |        0 |      0 |   115 |    +0.0% | -779.897 | -4757065.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     860* |       0 |     244 |        0 |      0 |   115 |    +0.0% | -779.897 | -4757065.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     861* |       0 |     244 |        0 |      0 |   116 |    +0.0% | -779.897 | -4757064.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     862* |       0 |     244 |        0 |      0 |   116 |    +0.0% | -779.897 | -4757064.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     864* |       0 |     244 |        0 |      0 |   117 |    +0.0% | -779.897 | -4757064.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     865* |       0 |     244 |        0 |      0 |   117 |    +0.0% | -779.897 | -4757064.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     867* |       0 |     244 |        0 |      0 |   118 |    +0.0% | -779.897 | -4757064.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     868* |       0 |     244 |        0 |      0 |   118 |    +0.0% | -779.897 | -4757064.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     869* |       0 |     244 |        0 |      0 |   118 |    +0.0% | -779.897 | -4757064.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     870* |       0 |     244 |        0 |      0 |   118 |    +0.0% | -779.897 | -4757064.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     871* |       0 |     244 |        0 |      0 |   119 |    +0.0% | -779.897 | -4757064.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     872* |       0 |     244 |        0 |      0 |   119 |    +0.0% | -779.897 | -4757064.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     874* |       0 |     244 |        0 |      0 |   120 |    +0.0% | -779.897 | -4757064.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     875* |       0 |     244 |        0 |      0 |   120 |    +0.0% | -779.897 | -4757064.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     877* |       0 |     244 |        0 |      0 |   121 |    +0.0% | -779.897 | -4757064.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     878* |       0 |     244 |        0 |      0 |   121 |    +0.0% | -779.897 | -4757064.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     880* |       0 |     244 |        0 |      0 |   122 |    +0.0% | -779.897 | -4757064.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     880* |       0 |     244 |        0 |      0 |   122 |    +0.0% | -779.897 | -4757064.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     881* |       0 |     244 |        0 |      0 |   122 |    +0.0% | -779.897 | -4757064.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     883* |       0 |     244 |        0 |      0 |   123 |    +0.0% | -779.897 | -4757063.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     885* |       0 |     244 |        0 |      0 |   124 |    +0.0% | -779.897 | -4757063.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     886* |       0 |     244 |        0 |      0 |   124 |    +0.0% | -779.897 | -4757063.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     888* |       0 |     244 |        0 |      0 |   125 |    +0.0% | -779.897 | -4757063.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     889* |       0 |     244 |        0 |      0 |   125 |    +0.0% | -779.897 | -4757063.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     890* |       0 |     244 |        0 |      0 |   125 |    +0.0% | -779.897 | -4757063.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     891* |       0 |     244 |        0 |      0 |   126 |    +0.0% | -779.897 | -4757063.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     899* |       0 |     250 |        0 |      0 |   127 |    +0.0% | -779.897 | -4756753.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     900* |       0 |     250 |        0 |      0 |   127 |    +0.0% | -779.897 | -4756753.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     904* |       0 |     254 |        0 |      0 |   127 |    +0.0% | -779.897 | -4756725.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     906* |       0 |     254 |        0 |      0 |   128 |    +0.0% | -779.897 | -4756725.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     910* |       0 |     257 |        0 |      0 |   128 |    +0.0% | -779.897 | -4756752.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     911* |       0 |     258 |        0 |      0 |   128 |    +0.0% | -779.897 | -4756719.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     912* |       0 |     258 |        0 |      0 |   128 |    +0.0% | -779.897 | -4756719.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     913* |       0 |     258 |        0 |      0 |   128 |    +0.0% | -779.897 | -4756719.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     915* |       0 |     258 |        0 |      0 |   129 |    +0.0% | -779.897 | -4756719.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     916* |       0 |     258 |        0 |      0 |   129 |    +0.0% | -779.897 | -4756719.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     918* |       0 |     258 |        0 |      0 |   130 |    +0.0% | -779.897 | -4756719.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     920* |       0 |     258 |        0 |      0 |   131 |    +0.0% | -779.897 | -4756719.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     920* |       0 |     258 |        0 |      0 |   131 |    +0.0% | -779.897 | -4756719.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     921* |       0 |     258 |        0 |      0 |   131 |    +0.0% | -779.897 | -4756719.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     923* |       0 |     258 |        0 |      0 |   132 |    +0.0% | -779.897 | -4756719.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     924* |       0 |     258 |        0 |      0 |   132 |    +0.0% | -779.897 | -4756719.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     926* |       0 |     258 |        0 |      0 |   133 |    +0.0% | -779.897 | -4756718.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     930* |       0 |     261 |        0 |      0 |   133 |    +0.0% | -779.897 | -4756742.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     931* |       0 |     262 |        0 |      0 |   133 |    +0.0% | -779.897 | -4756714.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     933* |       0 |     262 |        0 |      0 |   134 |    +0.0% | -779.897 | -4756713.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     934* |       0 |     262 |        0 |      0 |   134 |    +0.0% | -779.897 | -4756713.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     935* |       0 |     262 |        0 |      0 |   134 |    +0.0% | -779.897 | -4756713.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     937* |       0 |     262 |        0 |      0 |   135 |    +0.0% | -779.897 | -4756713.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     938* |       0 |     262 |        0 |      0 |   135 |    +0.0% | -779.897 | -4756713.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     939* |       0 |     262 |        0 |      0 |   135 |    +0.0% | -779.897 | -4756713.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     940* |       0 |     262 |        0 |      0 |   135 |    +0.0% | -779.897 | -4756713.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     941* |       0 |     262 |        0 |      0 |   136 |    +0.0% | -779.897 | -4756713.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     942* |       0 |     262 |        0 |      0 |   136 |    +0.0% | -779.897 | -4756713.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     944* |       0 |     262 |        0 |      0 |   137 |    +0.0% | -779.897 | -4756713.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     945* |       0 |     262 |        0 |      0 |   137 |    +0.0% | -779.897 | -4756713.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     950* |       0 |     266 |        0 |      0 |   137 |    +0.0% | -779.897 | -4756708.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     951* |       0 |     266 |        0 |      0 |   138 |    +0.0% | -779.897 | -4756708.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     952* |       0 |     266 |        0 |      0 |   138 |    +0.0% | -779.897 | -4756708.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     954* |       0 |     266 |        0 |      0 |   139 |    +0.0% | -779.897 | -4756708.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     955* |       0 |     266 |        0 |      0 |   139 |    +0.0% | -779.897 | -4756708.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     957* |       0 |     266 |        0 |      0 |   140 |    +0.0% | -779.897 | -4756708.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     959* |       0 |     266 |        0 |      0 |   141 |    +0.0% | -779.897 | -4756708.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     960* |       0 |     266 |        0 |      0 |   141 |    +0.0% | -779.897 | -4756708.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     961* |       0 |     266 |        0 |      0 |   142 |    +0.0% | -779.897 | -4756708.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     962* |       0 |     266 |        0 |      0 |   142 |    +0.0% | -779.897 | -4756708.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     964* |       0 |     266 |        0 |      0 |   143 |    +0.0% | -779.897 | -4756707.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     965* |       0 |     266 |        0 |      0 |   143 |    +0.0% | -779.897 | -4756707.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     967* |       0 |     266 |        0 |      0 |   144 |    +0.0% | -779.897 | -4756707.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     970* |       0 |     268 |        0 |      0 |   144 |    +0.0% | -779.897 | -4756670.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     972* |       0 |     270 |        0 |      0 |   144 |    +0.0% | -779.897 | -4756701.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     974* |       0 |     270 |        0 |      0 |   145 |    +0.0% | -779.897 | -4756701.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     975* |       0 |     270 |        0 |      0 |   145 |    +0.0% | -779.897 | -4756701.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     977* |       0 |     270 |        0 |      0 |   146 |    +0.0% | -779.897 | -4756701.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     978* |       0 |     270 |        0 |      0 |   146 |    +0.0% | -779.897 | -4756701.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     979* |       0 |     270 |        0 |      0 |   146 |    +0.0% | -779.897 | -4756701.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     980* |       0 |     270 |        0 |      0 |   146 |    +0.0% | -779.897 | -4756701.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     981* |       0 |     270 |        0 |      0 |   147 |    +0.0% | -779.897 | -4756701.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     982* |       0 |     270 |        0 |      0 |   147 |    +0.0% | -779.897 | -4756701.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     984* |       0 |     270 |        0 |      0 |   148 |    +0.0% | -779.897 | -4756701.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     985* |       0 |     270 |        0 |      0 |   148 |    +0.0% | -779.897 | -4756701.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     987* |       0 |     270 |        0 |      0 |   149 |    +0.0% | -779.897 | -4756700.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     988* |       0 |     270 |        0 |      0 |   149 |    +0.0% | -779.897 | -4756700.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     990* |       0 |     270 |        0 |      0 |   150 |    +0.0% | -779.897 | -4756700.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     990* |       0 |     270 |        0 |      0 |   150 |    +0.0% | -779.897 | -4756700.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     991* |       0 |     270 |        0 |      0 |   150 |    +0.0% | -779.897 | -4756700.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     993* |       0 |     270 |        0 |      0 |   151 |    +0.0% | -779.897 | -4756700.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     995* |       0 |     270 |        0 |      0 |   152 |    +0.0% | -779.897 | -4756700.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     997* |       0 |     270 |        0 |      0 |   153 |    +0.0% | -779.897 | -4756700.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+     999* |       0 |     270 |        0 |      0 |   154 |    +0.0% | -779.897 | -4756700.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1000* |       0 |     270 |        0 |      0 |   154 |    +0.0% | -779.897 | -4756700.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1001* |       0 |     270 |        0 |      0 |   155 |    +0.0% | -779.897 | -4756700.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1002* |       0 |     270 |        0 |      0 |   155 |    +0.0% | -779.897 | -4756700.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1003* |       0 |     270 |        0 |      0 |   155 |    +0.0% | -779.897 | -4756700.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1005* |       0 |     270 |        0 |      0 |   156 |    +0.0% | -779.897 | -4756699.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1006* |       0 |     270 |        0 |      0 |   156 |    +0.0% | -779.897 | -4756699.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1008* |       0 |     270 |        0 |      0 |   157 |    +0.0% | -779.897 | -4756699.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1010* |       0 |     271 |        0 |      0 |   157 |    +0.0% | -779.897 | -4756997.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1015* |       0 |     276 |        0 |      0 |   157 |    +0.0% | -779.897 | -4756616.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1020* |       0 |     280 |        0 |      0 |   157 |    +0.0% | -779.897 | -4756613.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1021* |       0 |     280 |        0 |      0 |   158 |    +0.0% | -779.897 | -4756613.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1022* |       0 |     280 |        0 |      0 |   158 |    +0.0% | -779.897 | -4756613.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1023* |       0 |     280 |        0 |      0 |   158 |    +0.0% | -779.897 | -4756613.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1024* |       0 |     280 |        0 |      0 |   158 |    +0.0% | -779.897 | -4756613.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1026* |       0 |     280 |        0 |      0 |   159 |    +0.0% | -779.897 | -4756612.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1027* |       0 |     280 |        0 |      0 |   159 |    +0.0% | -779.897 | -4756612.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1029* |       0 |     280 |        0 |      0 |   160 |    +0.0% | -779.897 | -4756612.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1030* |       0 |     280 |        0 |      0 |   160 |    +0.0% | -779.897 | -4756612.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1031* |       0 |     280 |        0 |      0 |   161 |    +0.0% | -779.897 | -4756612.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1032* |       0 |     280 |        0 |      0 |   161 |    +0.0% | -779.897 | -4756612.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1034* |       0 |     280 |        0 |      0 |   162 |    +0.0% | -779.897 | -4756612.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1035* |       0 |     280 |        0 |      0 |   162 |    +0.0% | -779.897 | -4756612.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1040* |       0 |     284 |        0 |      0 |   162 |    +0.0% | -779.897 | -4756608.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1041* |       0 |     284 |        0 |      0 |   163 |    +0.0% | -779.897 | -4756608.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1042* |       0 |     284 |        0 |      0 |   163 |    +0.0% | -779.897 | -4756608.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1044* |       0 |     284 |        0 |      0 |   164 |    +0.0% | -779.897 | -4756608.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1045* |       0 |     284 |        0 |      0 |   164 |    +0.0% | -779.897 | -4756608.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1046* |       0 |     284 |        0 |      0 |   164 |    +0.0% | -779.897 | -4756608.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1048* |       0 |     284 |        0 |      0 |   165 |    +0.0% | -779.897 | -4756608.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1049* |       0 |     284 |        0 |      0 |   165 |    +0.0% | -779.897 | -4756608.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1050* |       0 |     284 |        0 |      0 |   165 |    +0.0% | -779.897 | -4756608.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1050* |       0 |     284 |        0 |      0 |   165 |    +0.0% | -779.897 | -4756608.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1052* |       0 |     284 |        0 |      0 |   166 |    +0.0% | -779.897 | -4756608.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1053* |       0 |     284 |        0 |      0 |   166 |    +0.0% | -779.897 | -4756608.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1055* |       0 |     284 |        0 |      0 |   167 |    +0.0% | -779.897 | -4756607.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1060* |       0 |     288 |        0 |      0 |   167 |    +0.0% | -779.897 | -4756602.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1060* |       0 |     288 |        0 |      0 |   167 |    +0.0% | -779.897 | -4756602.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1062* |       0 |     288 |        0 |      0 |   168 |    +0.0% | -779.897 | -4756602.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1063* |       0 |     288 |        0 |      0 |   168 |    +0.0% | -779.897 | -4756602.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1065* |       0 |     288 |        0 |      0 |   169 |    +0.0% | -779.897 | -4756602.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1066* |       0 |     288 |        0 |      0 |   169 |    +0.0% | -779.897 | -4756602.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1068* |       0 |     288 |        0 |      0 |   170 |    +0.0% | -779.897 | -4756602.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1070* |       0 |     288 |        0 |      0 |   171 |    +0.0% | -779.897 | -4756602.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1070* |       0 |     288 |        0 |      0 |   171 |    +0.0% | -779.897 | -4756602.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1075* |       0 |     292 |        0 |      0 |   171 |    +0.0% | -779.897 | -4756585.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1077* |       0 |     292 |        0 |      0 |   172 |    +0.0% | -779.897 | -4756585.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1078* |       0 |     292 |        0 |      0 |   172 |    +0.0% | -779.897 | -4756585.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1080* |       0 |     292 |        0 |      0 |   173 |    +0.0% | -779.897 | -4756585.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1080* |       0 |     292 |        0 |      0 |   173 |    +0.0% | -779.897 | -4756585.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1081* |       0 |     292 |        0 |      0 |   173 |    +0.0% | -779.897 | -4756585.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1087* |       0 |     296 |        0 |      0 |   174 |    +0.0% | -779.897 | -4756567.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1088* |       0 |     296 |        0 |      0 |   174 |    +0.0% | -779.897 | -4756567.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1090* |       0 |     296 |        0 |      0 |   175 |    +0.0% | -779.897 | -4756567.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1090* |       0 |     296 |        0 |      0 |   175 |    +0.0% | -779.897 | -4756567.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1091* |       0 |     296 |        0 |      0 |   175 |    +0.0% | -779.897 | -4756567.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1093* |       0 |     296 |        0 |      0 |   176 |    +0.0% | -779.897 | -4756567.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1094* |       0 |     296 |        0 |      0 |   176 |    +0.0% | -779.897 | -4756567.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1095* |       0 |     296 |        0 |      0 |   176 |    +0.0% | -779.897 | -4756567.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1097* |       0 |     296 |        0 |      0 |   177 |    +0.0% | -779.897 | -4756567.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1098* |       0 |     296 |        0 |      0 |   177 |    +0.0% | -779.897 | -4756567.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1100* |       0 |     296 |        0 |      0 |   178 |    +0.0% | -779.897 | -4756567.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1100* |       0 |     296 |        0 |      0 |   178 |    +0.0% | -779.897 | -4756567.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1101* |       0 |     296 |        0 |      0 |   178 |    +0.0% | -779.897 | -4756567.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1103* |       0 |     296 |        0 |      0 |   179 |    +0.0% | -779.897 | -4756567.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1104* |       0 |     296 |        0 |      0 |   179 |    +0.0% | -779.897 | -4756567.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1106* |       0 |     296 |        0 |      0 |   180 |    +0.0% | -779.897 | -4756567.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1107* |       0 |     296 |        0 |      0 |   180 |    +0.0% | -779.897 | -4756567.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1109* |       0 |     296 |        0 |      0 |   181 |    +0.0% | -779.897 | -4756567.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1110* |       0 |     296 |        0 |      0 |   181 |    +0.0% | -779.897 | -4756567.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1111* |       0 |     296 |        0 |      0 |   182 |    +0.0% | -779.897 | -4756567.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1113* |       0 |     296 |        0 |      0 |   183 |    +0.0% | -779.897 | -4756566.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1115* |       0 |     296 |        0 |      0 |   184 |    +0.0% | -779.897 | -4756566.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1117* |       0 |     296 |        0 |      0 |   185 |    +0.0% | -779.897 | -4756566.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1118* |       0 |     296 |        0 |      0 |   185 |    +0.0% | -779.897 | -4756566.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1119* |       0 |     296 |        0 |      0 |   185 |    +0.0% | -779.897 | -4756566.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1120* |       0 |     296 |        0 |      0 |   185 |    +0.0% | -779.897 | -4756566.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1121* |       0 |     296 |        0 |      0 |   186 |    +0.0% | -779.897 | -4756566.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1122* |       0 |     296 |        0 |      0 |   186 |    +0.0% | -779.897 | -4756566.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1124* |       0 |     296 |        0 |      0 |   187 |    +0.0% | -779.897 | -4756566.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1129* |       0 |     299 |        0 |      0 |   188 |    +0.0% | -779.897 | -4756096.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1130* |       0 |     299 |        0 |      0 |   188 |    +0.0% | -779.897 | -4756096.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1134* |       0 |     302 |        0 |      0 |   189 |    +0.0% | -779.897 | -4755836.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1136* |       0 |     302 |        0 |      0 |   190 |    +0.0% | -779.897 | -4755835.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1138* |       0 |     302 |        0 |      0 |   191 |    +0.0% | -779.897 | -4755835.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1140* |       0 |     302 |        0 |      0 |   192 |    +0.0% | -779.897 | -4755835.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1140* |       0 |     302 |        0 |      0 |   192 |    +0.0% | -779.897 | -4755835.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1142* |       0 |     302 |        0 |      0 |   193 |    +0.0% | -779.897 | -4755835.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1144* |       0 |     302 |        0 |      0 |   194 |    +0.0% | -779.897 | -4755834.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1146* |       0 |     302 |        0 |      0 |   195 |    +0.0% | -779.897 | -4755834.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1148* |       0 |     302 |        0 |      0 |   196 |    +0.0% | -779.897 | -4755834.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1150* |       0 |     303 |        0 |      0 |   196 |    +0.0% | -779.897 | -4755736.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1160* |       0 |     310 |        0 |      0 |   199 |    +0.0% | -779.897 | -4756145.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1160* |       0 |     310 |        0 |      0 |   199 |    +0.0% | -779.897 | -4756145.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1162* |       0 |     310 |        0 |      0 |   199 |    +0.0% | -779.897 | -4756145.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1164* |       0 |     310 |        0 |      0 |   199 |    +0.0% | -779.897 | -4756145.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1166* |       0 |     310 |        0 |      0 |   199 |    +0.0% | -779.897 | -4756145.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1168* |       0 |     310 |        0 |      0 |   199 |    +0.0% | -779.897 | -4756145.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1170* |       0 |     310 |        0 |      0 |   200 |    +0.0% | -779.897 | -4756146.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1170* |       0 |     310 |        0 |      0 |   199 |    +0.0% | -779.897 | -4756145.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1172* |       0 |     310 |        0 |      0 |   199 |    +0.0% | -779.897 | -4756145.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1175* |       0 |     312 |        0 |      0 |   199 |    +0.0% | -779.897 | -4756154.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1180* |       0 |     316 |        0 |      0 |   199 |    +0.0% | -779.897 | -4756708.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1185* |       0 |     319 |        0 |      0 |   199 |    +0.0% | -779.897 | -4755875.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1188* |       0 |     321 |        0 |      0 |   199 |    +0.0% | -779.897 | -4755787.0 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1190* |       0 |     322 |        0 |      0 |   199 |    +0.0% | -779.897 | -4755789.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1191* |       0 |     323 |        0 |      0 |   199 |    +0.0% | -779.897 | -4755777.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1192* |       0 |     323 |        0 |      0 |   199 |    +0.0% | -779.897 | -4755777.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1193* |       0 |     323 |        0 |      0 |   199 |    +0.0% | -779.897 | -4755777.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1194* |       0 |     323 |        0 |      0 |   199 |    +0.0% | -779.897 | -4755777.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1195* |       0 |     323 |        0 |      0 |   199 |    +0.0% | -779.897 | -4755777.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1196* |       0 |     323 |        0 |      0 |   199 |    +0.0% | -779.897 | -4755777.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1197* |       0 |     323 |        0 |      0 |   199 |    +0.0% | -779.897 | -4755777.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1198* |       0 |     323 |        0 |      0 |   199 |    +0.0% | -779.897 | -4755777.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1199* |       0 |     323 |        0 |      0 |   199 |    +0.0% | -779.897 | -4755777.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1200* |       0 |     323 |        0 |      0 |   199 |    +0.0% | -779.897 | -4755777.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1200* |       0 |     323 |        0 |      0 |   199 |    +0.0% | -779.897 | -4755777.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    1200* |       0 |     323 |        0 |      0 |   199 |    +0.0% | -779.897 | -4755777.5 |  19478 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+    final |       0 |     323 |        0 |      0 |   199 |    +0.0% | -779.897 | -4755777.5 |  19476 | u_s0.u_tracker.state_q\[0\]\[0\]$_SDFFE_PP0P_/D
+------------------------------------------------------------------------------------------------------------------------------
+[INFO RSZ-0051] Resized 323 instances: 323 up, 0 up match, 0 down, 0 VT
+[INFO RSZ-0043] Swapped pins on 199 instances.
+[WARNING RSZ-0062] Unable to repair all setup violations.
+[INFO RSZ-0505] Runtime: 48.32s
+Took 48 seconds: repair_timing -setup_margin 0 -hold_margin 0 -repair_tns 100 -setup -skip_last_gasp -sequence unbuffer,sizeup,swap,vt_swap -verbose
+Default units for flow
+ time 1ps
+ capacitance 1fF
+ resistance 1kohm
+ voltage 1v
+ current 1mA
+ power 1pW
+ distance 1um
+   Layer   | Unit Resistance | Unit Capacitance 
+           |       (kohm/um) |          (fF/um)
+------------------------------------------------
+        M1 |        7.04e-02 |         1.00e-10
+        M2 |        2.97e-02 |         1.75e-01
+        M3 |        3.13e-02 |         1.56e-01
+        M4 |        1.80e-02 |         1.78e-01
+        M5 |        1.90e-02 |         1.64e-01
+        M6 |        1.19e-02 |         1.87e-01
+        M7 |        1.25e-02 |         1.63e-01
+        M8 |        8.45e-03 |         1.04e-01
+        M9 |        8.90e-03 |         9.28e-02
+       Pad |        0.00e+00 |         0.00e+00
+------------------------------------------------
+
+   Layer   | Via Resistance 
+           |         (kohm) 
+----------------------------
+        V1 |       1.72e-02 
+        V2 |       1.72e-02 
+        V3 |       1.72e-02 
+        V4 |       1.18e-02 
+        V5 |       1.18e-02 
+        V6 |       8.20e-03 
+        V7 |       8.20e-03 
+        V8 |       6.30e-03 
+        V9 |       6.30e-03 
+----------------------------
+Report metrics stage 2, floorplan final...
+
+==========================================================================
+floorplan final report_design_area
+--------------------------------------------------------------------------
+Design area 39849 um^2 35% utilization.
+write_sdc -no_timestamp /__w/test_dose_2/test_dose_2/pnr_out/work/results/asap7/l1d_bank/base/2_1_floorplan.sdc
+write_db /__w/test_dose_2/test_dose_2/pnr_out/work/results/asap7/l1d_bank/base/2_1_floorplan.odb
+Elapsed time: 1:42.25[h:]min:sec. CPU time: user 147.06 sys 4.21 (147%). Peak memory: 1117356KB.
+Log                    Ext     Elapsed      CPU     CPU/ Peak Mem sha1sum
+                                     s        s  Elapsed       MB [0:10)
+2_1_floorplan          .odb        102      151     1.48     1091 e905fb395f
+2_1_floorplan          .sdc                                       f83bf4cddf
