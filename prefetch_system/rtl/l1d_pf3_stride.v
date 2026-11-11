@@ -65,9 +65,6 @@ module l1d_pf3_stride #(
     reg  [PH_W-1:0]      pick_ph;
     reg  [PPN_W-1:0]     pick_ppn;
     reg  [NS-1:0]        pick_set1h;
-    integer              lane_idx;
-    integer              bit_idx;
-    integer              set_idx;
     reg                  e1_vld;
     reg  [SET_W-1:0]     e1_set;
     reg  [NS-1:0]        e1_set1h;
@@ -104,8 +101,6 @@ module l1d_pf3_stride #(
     reg  [NW*3-1:0]      way_class;
     reg  [NW-1:0]        victim_way;
     reg                  way_beaten;
-    integer              way_idx;
-    integer              other_idx;
     wire                 virt_same_page;
     wire                 virt_correct;
     wire [STRIDE_W-1:0]  virt_delta;
@@ -132,8 +127,9 @@ module l1d_pf3_stride #(
     wire [ENTRIES-1:0]   fire_eff;
     reg  [LIP_W-1:0]     cand_lip;
     reg  [NB-1:0]        cand_bank_or;
-    integer              ent_idx;
     always @* begin : lane_fold_proc
+        integer lane_idx;
+        integer bit_idx;
         lane_tag = {(NB*TAG_W){1'b0}};
         lane_ph  = {(NB*PH_W){1'b0}};
         for (lane_idx = 0; lane_idx < NB; lane_idx = lane_idx + 1) begin
@@ -164,6 +160,8 @@ module l1d_pf3_stride #(
         end
     endgenerate
     always @* begin : lane_pick_proc
+        integer lane_idx;
+        integer set_idx;
         lane_seen = 1'b0;
         pick_any  = 1'b0;
         pick_set  = {SET_W{1'b0}};
@@ -282,6 +280,9 @@ module l1d_pf3_stride #(
                         & (e1_tag == e2_tag) & (e1_st == e2_st);
     assign alloc_next = e1_vld & ~any_hit & ~fwd_alloc;
     always @* begin : victim_proc
+        integer set_idx;
+        integer way_idx;
+        integer other_idx;
         way_class = {(NW*3){1'b0}};
         for (way_idx = 0; way_idx < NW; way_idx = way_idx + 1) begin
             for (set_idx = 0; set_idx < NS; set_idx = set_idx + 1) begin
@@ -379,6 +380,7 @@ module l1d_pf3_stride #(
                       & ~(ent_filt_last_q & {ENTRIES{~prev_ins_q}})
                       & ~(ent_dup_prev_q & {ENTRIES{prev_ins_q}});
     always @* begin : cand_read_proc
+        integer ent_idx;
         cand_lip     = {LIP_W{1'b0}};
         cand_bank_or = {NB{1'b0}};
         for (ent_idx = 0; ent_idx < ENTRIES; ent_idx = ent_idx + 1) begin

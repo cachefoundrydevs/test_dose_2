@@ -88,8 +88,6 @@ module l1d_pf3_stride_entry #(
     reg  [TGT_W-1:0]     s3_next;
     reg  [TGT_W-1:0]     tgt_next;
     wire                 update;
-    integer              slot_idx;
-    integer              bank_idx;
     assign key_match = ev_set_on & valid_q & (tag_q == ev_tag) & (st_q == ev_st);
     assign hit       = key_match & ~ev_mask;
     assign update    = hit;
@@ -109,6 +107,7 @@ module l1d_pf3_stride_entry #(
     assign in_page  = (tgt_q[TGT_W-1:PAGE_W] == {(TGT_W-PAGE_W){1'b0}});
     assign own_line = (tgt_lip == ev_lo[PAGE_W-1:OFFSET_W]);
     always @* begin : filter_proc
+        integer slot_idx;
         filt_main = 1'b0;
         for (slot_idx = 0; slot_idx < FILT_DEPTH - 1; slot_idx = slot_idx + 1) begin
             if (filt_main_pm[slot_idx]
@@ -201,6 +200,7 @@ module l1d_pf3_stride_entry #(
         end
     end
     always @(posedge clk) begin : bank_proc
+        integer bank_idx;
         if (update) begin
             for (bank_idx = 0; bank_idx < NB; bank_idx = bank_idx + 1) begin
                 tgt_prev_bank_q[bank_idx] <=

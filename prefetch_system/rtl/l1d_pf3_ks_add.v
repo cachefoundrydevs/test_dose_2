@@ -20,12 +20,12 @@ module l1d_pf3_ks_add #(
     reg  [W-1:0] prop_next;
     reg  [W-1:0] carry;
     reg  [W-1:0] sum_bits;
-    integer      level_idx;
-    integer      bit_idx;
-    integer      span;
     assign b_eff    = (SUB != 0) ? ~b : b;
     assign carry_in = (SUB != 0) ? 1'b1 : 1'b0;
     always @* begin : prefix_proc
+        integer level_idx;
+        integer bit_idx;
+        integer span;
         gen  = a & b_eff;
         prop = a ^ b_eff;
         gen_level  = gen;

@@ -73,9 +73,6 @@ module l1d_pf3_sms_core #(
     reg                      ev_fresh;
     reg  [PORT_W-1:0]        train_rot_q;
     reg  [PORT_W-1:0]        evt_rot_q;
-    integer                  lane_idx;
-    integer                  scan_idx;
-    integer                  bit_idx;
     wire                     tq_vld;
     wire [TREC_W-1:0]        tq_head;
     wire                     eq_vld;
@@ -155,7 +152,6 @@ module l1d_pf3_sms_core #(
     reg  [LIR_W-1:0]         rd_first;
     reg  [NB-1:0]            rd_fbank;
     reg  [PATTERN_W-1:0]     rd_rest;
-    integer                  ent_idx;
     reg                      w_vld;
     reg  [SET_W-1:0]         w_set;
     reg  [PHT_TAG_W-1:0]     w_ptag;
@@ -175,9 +171,9 @@ module l1d_pf3_sms_core #(
     reg                      w_first_seen;
     reg  [NB-1:0]            w_fbank;
     reg  [LIR_W-1:0]         bit_number;
-    integer                  way_idx;
-    integer                  set_idx;
     always @* begin : hash_proc
+        integer lane_idx;
+        integer bit_idx;
         lane_pch  = {(NB*PC_HASH_W){1'b0}};
         lane_rtag = {(NB*REGION_TAG_W){1'b0}};
         lane_set  = {(NB*SET_W){1'b0}};
@@ -214,6 +210,8 @@ module l1d_pf3_sms_core #(
         end
     end
     always @* begin : pick_proc
+        integer lane_idx;
+        integer scan_idx;
         tr_ok   = train_valid & ~train_no_train & {NB{pf_enable}};
         tr_pick = {NB{1'b0}};
         ev_pick = {NB{1'b0}};
@@ -321,6 +319,7 @@ module l1d_pf3_sms_core #(
         end
     endgenerate
     always @* begin : s2_cam_proc
+        integer ent_idx;
         for (ent_idx = 0; ent_idx < FT_ENTRIES; ent_idx = ent_idx + 1) begin
             ft_hit[ent_idx] = ft_vld[ent_idx]
                 & (ft_tag[ent_idx*REGION_TAG_W +: REGION_TAG_W] == e1_rtag);
@@ -341,6 +340,7 @@ module l1d_pf3_sms_core #(
     assign any_ft = |ft_hit;
     assign any_at = |at_hit;
     always @* begin : s2_read_proc
+        integer ent_idx;
         ft_rd_line = {LIR_W{1'b0}};
         ft_rd_pset = {SET_W{1'b0}};
         ft_rd_ptag = {PHT_TAG_W{1'b0}};
@@ -435,6 +435,7 @@ module l1d_pf3_sms_core #(
     assign load_first_bank = rd_fbank;
     assign load_rest       = rd_rest;
     always @(posedge clk) begin : table_proc
+        integer ent_idx;
         if (rst) begin
             ft_vld  <= {FT_ENTRIES{1'b0}};
             at_vld  <= {AT_ENTRIES{1'b0}};
@@ -502,6 +503,8 @@ module l1d_pf3_sms_core #(
         end
     end
     always @* begin : w_proc
+        integer bit_idx;
+        integer way_idx;
         w_ptr   = pht_ptr[w_set*WAY_W +: WAY_W];
         w_match = {PHT_WAYS{1'b0}};
         w_free  = {PHT_WAYS{1'b0}};
@@ -551,6 +554,7 @@ module l1d_pf3_sms_core #(
         end
     end
     always @(posedge clk) begin : pht_proc
+        integer way_idx;
         if (rst) begin
             pht_vld <= {PHT_TOTAL{1'b0}};
             pht_ptr <= {(PHT_SETS*WAY_W){1'b0}};

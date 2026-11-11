@@ -90,7 +90,6 @@ module l1d_pf3_rank #(
     reg  [NB*LINE_W-1:0] line_next;
     reg  [NB-1:0]        unique_next;
     reg  [LINE_W-1:0]    tm_line;
-    integer              bank_idx;
     assign s_off      = s_valid | s_hold_vld;
     assign s_off_line = s_valid ? s_line : s_hold_line;
     assign s_off_bank = s_valid ? s_bank : (s_hold_bank & {NB{s_hold_vld}});
@@ -115,6 +114,7 @@ module l1d_pf3_rank #(
     assign t_taken = |t_win;
     assign m_taken = |m_win;
     always @* begin : out_next_proc
+        integer bank_idx;
         for (bank_idx = 0; bank_idx < NB; bank_idx = bank_idx + 1) begin
             valid_next[bank_idx] = s_win[bank_idx] | t_win[bank_idx]
                                    | m_win[bank_idx];
@@ -179,6 +179,7 @@ module l1d_pf3_rank #(
     assign m_waits   = m_off & ~(|(m_off_bank & credit_ok_q)) & pf_enable;
     assign m_timeout = m_waits & (wait_q == WAIT_LAST);
     always @* begin : credit_next_proc
+        integer bank_idx;
         for (bank_idx = 0; bank_idx < NB; bank_idx = bank_idx + 1) begin
             one_credit = credit_q[bank_idx*CRED_W +: CRED_W];
             if (m_win[bank_idx] && !(fb_valid[bank_idx]
@@ -196,6 +197,7 @@ module l1d_pf3_rank #(
         end
     end
     always @(posedge clk) begin : credit_proc
+        integer bank_idx;
         if (rst) begin
             credit_q    <= {(NB*CRED_W){1'b0}};
             credit_ok_q <= {NB{1'b1}};

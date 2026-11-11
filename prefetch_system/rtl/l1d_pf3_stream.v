@@ -66,8 +66,6 @@ module l1d_pf3_stream #(
     reg                      pick_same;
     reg                      pick_up;
     reg                      pick_dn;
-    integer                  lane_idx;
-    integer                  bit_idx;
     reg                      e1_vld;
     reg  [TAG_W-1:0]         e1_tag;
     reg  [PAGE_NUM_W-1:0]    e1_page;
@@ -109,8 +107,6 @@ module l1d_pf3_stream #(
     reg  [NC*3-1:0]          card_rank;
     reg  [NC-1:0]            victim;
     reg                      card_beaten;
-    integer                  card_idx;
-    integer                  other_idx;
     reg  [RECENT_N-1:0]       recent_vld;
     reg  [RECENT_N*TAG_W-1:0] recent_tag;
     reg  [RECENT_N*LIP_W-1:0] recent_line;
@@ -141,7 +137,6 @@ module l1d_pf3_stream #(
     reg  [PAGE_NUM_W-1:0]    push_page;
     reg  [LIP_W-1:0]         push_line;
     reg                      push_store;
-    integer                  bank_idx;
     genvar lane_g;
     generate
         for (lane_g = 0; lane_g < NB; lane_g = lane_g + 1) begin : g_lane
@@ -153,6 +148,8 @@ module l1d_pf3_stream #(
         end
     endgenerate
     always @* begin : lane_proc
+        integer lane_idx;
+        integer bit_idx;
         lane_tag    = {(NB*TAG_W){1'b0}};
         for (lane_idx = 0; lane_idx < NB; lane_idx = lane_idx + 1) begin
             for (bit_idx = 0; bit_idx < PAGE_NUM_W; bit_idx = bit_idx + 1) begin
@@ -172,6 +169,7 @@ module l1d_pf3_stream #(
         end
     end
     always @* begin : pick_proc
+        integer lane_idx;
         lane_seen = 1'b0;
         for (lane_idx = 0; lane_idx < NB; lane_idx = lane_idx + 1) begin
             lane_pick[lane_idx] = train_valid[lane_idx]
@@ -320,6 +318,8 @@ module l1d_pf3_stream #(
     assign any_hit = |card_hit;
     assign alloc   = e1_vld & ~any_hit & e1_miss;
     always @* begin : victim_proc
+        integer card_idx;
+        integer other_idx;
         for (card_idx = 0; card_idx < NC; card_idx = card_idx + 1) begin
             card_rank[card_idx*3 +: 3] = card_valid[card_idx]
                 ? ({{(3-CONF_W){1'b0}}, card_conf[card_idx*CONF_W +: CONF_W]}
@@ -344,6 +344,7 @@ module l1d_pf3_stream #(
     assign scan_take = slot_free & pf_enable;
     assign direct_ok = slot_free & pf_enable & ~sel_vld_q;
     always @* begin : cand_sel_proc
+        integer card_idx;
         s_go    = 1'b0;
         s_line  = {LIP_W{1'b0}};
         s_dup   = 1'b0;
@@ -386,6 +387,7 @@ module l1d_pf3_stream #(
         end
     end
     always @* begin : scan_pick_proc
+        integer card_idx;
         pick_high = card_pend & rr_mask_q;
         pick_base = (|pick_high) ? pick_high : card_pend;
         pick_one  = {NC{1'b0}};
@@ -404,6 +406,7 @@ module l1d_pf3_stream #(
         end
     end
     always @(posedge clk) begin : scan_reg_proc
+        integer bank_idx;
         if (rst || !pf_enable) begin
             sel_vld_q   <= 1'b0;
             sel_q       <= {NC{1'b0}};

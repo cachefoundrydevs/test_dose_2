@@ -36,11 +36,10 @@ module l1d_pf3_sms_expand #(
     reg                        free_seen;
     reg  [PATTERN_W-1:0]       load_high;
     reg  [LIR_W-1:0]           bit_number;
+    reg  [LIR_W-1:0]           scan_bit_num;
     wire                       direct_ok;
     wire                       direct_go;
     wire                       load_slot;
-    integer                    slot_idx;
-    integer                    bit_idx;
     reg  [NS-1:0]              rr_mask_q;
     reg  [NS-1:0]              sel_q;
     reg                        sel_vld_q;
@@ -64,11 +63,12 @@ module l1d_pf3_sms_expand #(
     reg  [LIR_W-1:0]           scan_line;
     reg  [PATTERN_W-1:0]       mask_after;
     reg                        fpend_after;
-    integer                    bank_idx;
     assign slot_free = ~cand_valid & ~held;
     assign direct_ok = slot_free & pf_enable & ~sel_vld_q;
     assign direct_go = load_valid & direct_ok;
     always @* begin : load_proc
+        integer slot_idx;
+        integer bit_idx;
         free_one  = {NS{1'b0}};
         free_seen = 1'b0;
         for (slot_idx = 0; slot_idx < NS; slot_idx = slot_idx + 1) begin
@@ -85,6 +85,7 @@ module l1d_pf3_sms_expand #(
     assign load_slot = load_valid & pf_enable & free_seen
                        & ((|load_rest) | ~direct_ok);
     always @* begin : pick_proc
+        integer slot_idx;
         pick_high = slot_vld & rr_mask_q;
         pick_base = (|pick_high) ? pick_high : slot_vld;
         pick_one  = {NS{1'b0}};
@@ -103,6 +104,8 @@ module l1d_pf3_sms_expand #(
         end
     end
     always @* begin : scan_proc
+        integer slot_idx;
+        integer bit_idx;
         rd_vld    = 1'b0;
         rd_region = {REGION_NUM_W{1'b0}};
         rd_mask   = {PATTERN_W{1'b0}};
@@ -126,10 +129,10 @@ module l1d_pf3_sms_expand #(
         ffs_idx  = {LIR_W{1'b0}};
         ffs_seen = 1'b0;
         for (bit_idx = 0; bit_idx < PATTERN_W; bit_idx = bit_idx + 1) begin
-            bit_number = bit_idx;
+            scan_bit_num = bit_idx;
             if (ffs_in[bit_idx] && !ffs_seen) begin
                 ffs_one[bit_idx] = 1'b1;
-                ffs_idx          = bit_number;
+                ffs_idx          = scan_bit_num;
                 ffs_seen         = 1'b1;
             end
         end
@@ -146,6 +149,8 @@ module l1d_pf3_sms_expand #(
     end
     assign scan_take = sel_vld_q & rd_vld & slot_free & pf_enable;
     always @(posedge clk) begin : state_proc
+        integer slot_idx;
+        integer bank_idx;
         if (rst || !pf_enable) begin
             slot_vld   <= {NS{1'b0}};
             sel_vld_q  <= 1'b0;

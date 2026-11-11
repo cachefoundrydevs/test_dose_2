@@ -82,7 +82,6 @@ module l1d_pf3_stream_card #(
     reg  [NB-1:0]         lane_same;
     reg  [NB-1:0]         lane_up;
     reg  [NB-1:0]         lane_dn;
-    integer               lane_idx;
     wire                  c_same;
     wire                  c_up;
     wire                  c_dn;
@@ -108,10 +107,11 @@ module l1d_pf3_stream_card #(
     wire                  cur_done;
     wire [LIP_W-1:0]      cur_next;
     reg                   key_dup;
+    reg                   scan_key_dup;
     reg                   d_dup_r;
     reg                   s_dup_r;
-    integer               key_idx;
     always @* begin : s1_cmp_proc
+        integer lane_idx;
         for (lane_idx = 0; lane_idx < NB; lane_idx = lane_idx + 1) begin
             lane_hit[lane_idx]  = valid_q
                 & (tag_q == lane_tag[lane_idx*TAG_W +: TAG_W]);
@@ -171,6 +171,7 @@ module l1d_pf3_stream_card #(
     assign ahead_p1 = ahead_q + LIP_ONE;
     assign ahead_m1 = ahead_q - LIP_ONE;
     always @* begin : direct_proc
+        integer key_idx;
         if (!c_same && (!step_ok || (conf_q < CONF_ON_V) || ahead_behind)) begin
             d_next = new_dir ? ev_line_p1 : ev_line_m1;
             d_done = new_dir ? ev_top : ev_bot;
@@ -195,12 +196,13 @@ module l1d_pf3_stream_card #(
     assign cur_done = dir_q ? (ahead_q >= tgt_q) : (ahead_q <= tgt_q);
     assign cur_next = dir_q ? ahead_p1 : ahead_m1;
     always @* begin : scan_dup_proc
+        integer key_idx;
         s_dup_r = 1'b0;
         for (key_idx = 0; key_idx < RECENT_N; key_idx = key_idx + 1) begin
-            key_dup = recent_vld[key_idx]
+            scan_key_dup = recent_vld[key_idx]
                       & (recent_tag[key_idx*TAG_W +: TAG_W] == tag_q)
                       & (recent_line[key_idx*LIP_W +: LIP_W] == cur_next);
-            s_dup_r = s_dup_r | key_dup;
+            s_dup_r = s_dup_r | scan_key_dup;
         end
     end
     assign scan_go   = scan_sel & pend_q & ~cur_done;
