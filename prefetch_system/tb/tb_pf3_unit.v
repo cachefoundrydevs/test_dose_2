@@ -140,7 +140,7 @@ module tb_pf3_unit;
         begin
             found = 0;
             for (h = from_idx; h < hint_n; h = h + 1)
-                if (hint_line[h] == line) begin
+                if (!found && hint_line[h] == line) begin
                     found = 1;
                     if (hint_cyc[h] - t != 3) begin
                         $display("ERROR %0s: hint %h %0d cycles after the record (want 3)",

@@ -48,6 +48,7 @@ export PLACE_DENSITY_LB_ADDON = 0.20
 export SYNTH_HIERARCHICAL     = 0
 export ABC_CLOCK_PERIOD_IN_PS = $SYNTH_PERIOD
 export TNS_END_PERCENT        = 100
+export NUM_CORES              = 2
 EOF
 
 W="$OUT/work"
