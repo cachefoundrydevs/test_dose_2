@@ -7,6 +7,7 @@ PERIOD=${PERIOD:-240}
 SYNTH_PERIOD=${SYNTH_PERIOD:-200}
 CORNER=${CORNER:-BC}
 UTIL=${UTIL:-40}
+VT=${VT:-RVT}
 OUT=${OUT:-$ROOT/pnr_out/${TOP}_${CORNER}_p${PERIOD}}
 mkdir -p "$OUT/inputs" "$OUT/keep"
 OUT=$(cd "$OUT" && pwd)
@@ -49,12 +50,13 @@ export SYNTH_HIERARCHICAL     = 0
 export ABC_CLOCK_PERIOD_IN_PS = $SYNTH_PERIOD
 export TNS_END_PERCENT        = 100
 export NUM_CORES              = 2
+export ASAP7_USE_VT           = $VT
 EOF
 
 W="$OUT/work"
 mkdir -p "$W"
 {
-    echo "top=$TOP period=$PERIOD synth_period=$SYNTH_PERIOD corner=$CORNER util=$UTIL"
+    echo "top=$TOP period=$PERIOD synth_period=$SYNTH_PERIOD corner=$CORNER util=$UTIL vt=$VT"
     openroad -version 2>&1 | head -1
     (cd "$FLOW_HOME" && git log -1 --format='ORFS %H' 2>/dev/null)
 } | tee "$OUT/keep/versions.txt"

@@ -42,7 +42,7 @@ def one(a):
     logdir = os.path.join(a.work, "logs", "asap7", a.top, "base")
     rows = stage_metrics(logdir)
     period = float(a.period)
-    res = {"top": a.top, "period_ps": period, "corner": a.corner, "synth_rc": a.synth_rc, "pnr_rc": a.pnr_rc,
+    res = {"vt": os.environ.get("VT", "RVT"), "top": a.top, "period_ps": period, "corner": a.corner, "synth_rc": a.synth_rc, "pnr_rc": a.pnr_rc,
            "stages": {}}
     for name, d in rows.items():
         res["stages"][name] = {k: v for k, v in d.items() if "setup__ws" in k or "setup__tns" in k}
@@ -74,16 +74,16 @@ def allm(a):
             runs.append(json.load(open(f)))
         except Exception:
             pass
-    runs.sort(key=lambda r: (r["top"], r["corner"], r["period_ps"]))
+    runs.sort(key=lambda r: (r["top"], r.get("vt", ""), r["corner"], r["period_ps"]))
     t = ["# Prefetch system: ASAP7 synthesis + place and route", "",
          "Placement, clock tree and routing are done. Harness flops on every pin, pin paths are false paths:",
          "only flop-to-flop paths are timed. Clock uncertainty 5 %. Synthesis (ABC) at 200 ps.",
          "Fmax = 1000 / (period - worst setup slack). GR-1: every stage under 240 ps after place and route.", "",
-         "| top | corner | period ps | synth | pnr | last stage | setup WS ps | TNS ps | hold WS ps | area um2 | Fmax GHz |",
-         "|---|---|---|---|---|---|---|---|---|---|---|"]
+         "| top | vt | corner | period ps | synth | pnr | last stage | setup WS ps | TNS ps | hold WS ps | area um2 | Fmax GHz |",
+         "|---|---|---|---|---|---|---|---|---|---|---|---|"]
     for r in runs:
-        t.append("| %s | %s | %g | %s | %s | %s | %s | %s | %s | %s | %s |" % (
-            r["top"], r["corner"], r["period_ps"], r["synth_rc"], r["pnr_rc"], r.get("last_stage", "-"),
+        t.append("| %s | %s | %s | %g | %s | %s | %s | %s | %s | %s | %s | %s |" % (
+            r["top"], r.get("vt", "RVT"), r["corner"], r["period_ps"], r["synth_rc"], r["pnr_rc"], r.get("last_stage", "-"),
             r.get("setup_ws_ps", "-"), r.get("setup_tns_ps", "-"), r.get("hold_ws_ps", "-"),
             r.get("area_um2", "-"), r.get("fmax_ghz", "-")))
     t += ["", "Exit code 0 = stage finished; na = not started. Per-stage slacks:", ""]

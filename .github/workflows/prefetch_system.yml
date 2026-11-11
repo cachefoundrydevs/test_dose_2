@@ -35,13 +35,15 @@ jobs:
       matrix:
         corner: [BC, TC]
         period: [240]
-    name: prefetch unit ${{ matrix.corner }} ${{ matrix.period }} ps
+        vt: [RVT, MVT]
+    name: prefetch unit ${{ matrix.corner }} ${{ matrix.period }} ps ${{ matrix.vt }}
     container:
       image: openroad/orfs:latest
       options: --user root
     env:
       CORNER: ${{ matrix.corner }}
       PERIOD: ${{ matrix.period }}
+      VT: ${{ matrix.vt == 'MVT' && 'RVT LVT SLVT' || 'RVT' }}
       OUT: ${{ github.workspace }}/pnr_out
     steps:
       - uses: actions/checkout@v4
@@ -61,7 +63,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: pf3-${{ matrix.corner }}-${{ matrix.period }}
+          name: pf3-${{ matrix.corner }}-${{ matrix.period }}-${{ matrix.vt }}
           path: ${{ env.OUT }}/keep
           retention-days: 30
   collect:
