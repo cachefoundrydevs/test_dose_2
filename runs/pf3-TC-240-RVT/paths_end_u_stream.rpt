@@ -1,0 +1,21 @@
+max_delay/setup group clk
+
+                                     Required  Actual
+Endpoint                               Delay   Delay   Slack
+------------------------------------------------------------
+u_prefetch.u_stream.recent_vld[2]$_SDFFE_PP0P_/D (DFFHQNx1_ASAP7_75t_R)  533.42 1138.28 -604.86 (VIOLATED)
+u_prefetch.u_stream.recent_vld[1]$_SDFFE_PP0P_/D (DFFHQNx1_ASAP7_75t_R)  533.57 1137.90 -604.33 (VIOLATED)
+u_prefetch.u_stream.recent_vld[3]$_SDFFE_PP0P_/D (DFFHQNx1_ASAP7_75t_R)  533.51 1137.70 -604.19 (VIOLATED)
+u_prefetch.u_stream.cand_bank[3]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_R)  544.75 1144.89 -600.14 (VIOLATED)
+u_prefetch.u_stream.recent_tag[36]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_R)  532.67 1130.46 -597.78 (VIOLATED)
+u_prefetch.u_stream.recent_tag[38]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_R)  532.87 1130.59 -597.72 (VIOLATED)
+u_prefetch.u_stream.cand_line[17]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_R)  535.65 1133.19 -597.54 (VIOLATED)
+u_prefetch.u_stream.recent_tag[28]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_R)  533.00 1130.51 -597.51 (VIOLATED)
+u_prefetch.u_stream.recent_vld[0]$_SDFFE_PP0P_/D (DFFHQNx1_ASAP7_75t_R)  534.06 1131.32 -597.26 (VIOLATED)
+u_prefetch.u_stream.recent_tag[30]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_R)  533.28 1130.44 -597.16 (VIOLATED)
+u_prefetch.u_stream.cand_line[29]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_R)  536.11 1133.26 -597.15 (VIOLATED)
+u_prefetch.u_stream.cand_line[39]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_R)  535.36 1132.46 -597.11 (VIOLATED)
+u_prefetch.u_stream.recent_tag[2]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_R)  533.47 1130.36 -596.89 (VIOLATED)
+u_prefetch.u_stream.recent_tag[29]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_R)  528.64 1125.46 -596.82 (VIOLATED)
+u_prefetch.u_stream.cand_line[41]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_R)  535.64 1132.39 -596.75 (VIOLATED)
+

@@ -1,0 +1,120 @@
+[2026-11-11 12:52:03.259] [miter_logger] [info] MiterStrategy::run starting
+[2026-11-11 12:52:03.259] [miter_logger] [info] Collecting POs for design 0: pf3_timing_top
+
+[2026-11-11 12:52:03.630] [miter_logger] [info] Collected 22352 PIs for design 0
+
+[2026-11-11 12:52:03.630] [miter_logger] [info] Collected 42906 POs for design 0
+
+[2026-11-11 12:52:03.632] [miter_logger] [info] design 0 PI summary by model/term (22352 total terminals, 21 unique rows):
+| Model                 | Term            | Count |
+|-----------------------|-----------------|-------|
+| DFFHQNx1_ASAP7_75t_SL | QN              | 21273 |
+| pf3_timing_top        | train_addr      |   256 |
+| pf3_timing_top        | train_pc        |   256 |
+| pf3_timing_top        | evict_line_addr |   232 |
+| pf3_timing_top        | pf_fb_line_addr |   232 |
+| DFFHQNx2_ASAP7_75t_R  | QN              |    44 |
+| DFFHQNx3_ASAP7_75t_SL | QN              |    10 |
+| pf3_timing_top        | pf_fb_result    |     8 |
+| pf3_timing_top        | evict_valid     |     4 |
+| pf3_timing_top        | pf_fb_valid     |     4 |
+| pf3_timing_top        | pf_req_ready    |     4 |
+| pf3_timing_top        | train_is_store  |     4 |
+| pf3_timing_top        | train_miss      |     4 |
+| pf3_timing_top        | train_no_train  |     4 |
+| pf3_timing_top        | train_pf_hit    |     4 |
+| pf3_timing_top        | train_valid     |     4 |
+| DFFHQNx1_ASAP7_75t_L  | QN              |     3 |
+| DFFHQNx3_ASAP7_75t_L  | QN              |     3 |
+| pf3_timing_top        | clk             |     1 |
+| pf3_timing_top        | pf_enable       |     1 |
+| pf3_timing_top        | rst             |     1 |
+
+[2026-11-11 12:52:03.635] [miter_logger] [info] design 0 PO summary by model/term (42906 total terminals, 13 unique rows):
+| Model                 | Term             | Count |
+|-----------------------|------------------|-------|
+| DFFHQNx1_ASAP7_75t_SL | CLK              | 21273 |
+| DFFHQNx1_ASAP7_75t_SL | D                | 21273 |
+| pf3_timing_top        | pf_req_line_addr |   232 |
+| DFFHQNx2_ASAP7_75t_R  | CLK              |    44 |
+| DFFHQNx2_ASAP7_75t_R  | D                |    44 |
+| DFFHQNx3_ASAP7_75t_SL | CLK              |    10 |
+| DFFHQNx3_ASAP7_75t_SL | D                |    10 |
+| pf3_timing_top        | pf_req_unique    |     4 |
+| pf3_timing_top        | pf_req_valid     |     4 |
+| DFFHQNx1_ASAP7_75t_L  | CLK              |     3 |
+| DFFHQNx1_ASAP7_75t_L  | D                |     3 |
+| DFFHQNx3_ASAP7_75t_L  | CLK              |     3 |
+| DFFHQNx3_ASAP7_75t_L  | D                |     3 |
+
+[2026-11-11 12:52:03.639] [miter_logger] [info] Collecting POs for design 1: pf3_timing_top
+
+[2026-11-11 12:52:04.049] [miter_logger] [info] size of common inputs: 22352
+[2026-11-11 12:52:04.049] [miter_logger] [info] size of diff0 inputs: 0
+[2026-11-11 12:52:04.049] [miter_logger] [info] size of diff1 inputs: 0
+[2026-11-11 12:52:04.055] [miter_logger] [info] Collected 22352 PIs for design 1
+
+[2026-11-11 12:52:04.055] [miter_logger] [info] Collected 42906 POs for design 1
+
+[2026-11-11 12:52:04.057] [miter_logger] [info] design 1 PI summary by model/term (22352 total terminals, 22 unique rows):
+| Model                 | Term            | Count |
+|-----------------------|-----------------|-------|
+| DFFHQNx1_ASAP7_75t_SL | QN              | 21273 |
+| pf3_timing_top        | train_addr      |   256 |
+| pf3_timing_top        | train_pc        |   256 |
+| pf3_timing_top        | evict_line_addr |   232 |
+| pf3_timing_top        | pf_fb_line_addr |   232 |
+| DFFHQNx2_ASAP7_75t_R  | QN              |    38 |
+| DFFHQNx3_ASAP7_75t_SL | QN              |    10 |
+| pf3_timing_top        | pf_fb_result    |     8 |
+| DFFHQNx2_ASAP7_75t_SL | QN              |     6 |
+| pf3_timing_top        | evict_valid     |     4 |
+| pf3_timing_top        | pf_fb_valid     |     4 |
+| pf3_timing_top        | pf_req_ready    |     4 |
+| pf3_timing_top        | train_is_store  |     4 |
+| pf3_timing_top        | train_miss      |     4 |
+| pf3_timing_top        | train_no_train  |     4 |
+| pf3_timing_top        | train_pf_hit    |     4 |
+| pf3_timing_top        | train_valid     |     4 |
+| DFFHQNx1_ASAP7_75t_L  | QN              |     3 |
+| DFFHQNx3_ASAP7_75t_L  | QN              |     3 |
+| pf3_timing_top        | clk             |     1 |
+| pf3_timing_top        | pf_enable       |     1 |
+| pf3_timing_top        | rst             |     1 |
+
+[2026-11-11 12:52:04.059] [miter_logger] [info] design 1 PO summary by model/term (42906 total terminals, 15 unique rows):
+| Model                 | Term             | Count |
+|-----------------------|------------------|-------|
+| DFFHQNx1_ASAP7_75t_SL | CLK              | 21273 |
+| DFFHQNx1_ASAP7_75t_SL | D                | 21273 |
+| pf3_timing_top        | pf_req_line_addr |   232 |
+| DFFHQNx2_ASAP7_75t_R  | CLK              |    38 |
+| DFFHQNx2_ASAP7_75t_R  | D                |    38 |
+| DFFHQNx3_ASAP7_75t_SL | CLK              |    10 |
+| DFFHQNx3_ASAP7_75t_SL | D                |    10 |
+| DFFHQNx2_ASAP7_75t_SL | CLK              |     6 |
+| DFFHQNx2_ASAP7_75t_SL | D                |     6 |
+| pf3_timing_top        | pf_req_unique    |     4 |
+| pf3_timing_top        | pf_req_valid     |     4 |
+| DFFHQNx1_ASAP7_75t_L  | CLK              |     3 |
+| DFFHQNx1_ASAP7_75t_L  | D                |     3 |
+| DFFHQNx3_ASAP7_75t_L  | CLK              |     3 |
+| DFFHQNx3_ASAP7_75t_L  | D                |     3 |
+
+[2026-11-11 12:52:04.061] [miter_logger] [info] normalizeInputs: starting
+[2026-11-11 12:52:04.110] [miter_logger] [info] size of common inputs: 22352
+[2026-11-11 12:52:04.110] [miter_logger] [info] size of diff0 inputs: 0
+[2026-11-11 12:52:04.110] [miter_logger] [info] size of diff1 inputs: 0
+[2026-11-11 12:52:04.119] [miter_logger] [info] normalizeOutputs: starting
+[2026-11-11 12:52:04.204] [miter_logger] [info] size of common outputs: 42906
+[2026-11-11 12:52:04.204] [miter_logger] [info] size of diff0 outputs: 0
+[2026-11-11 12:52:04.204] [miter_logger] [info] size of diff1 outputs: 0
+[2026-11-11 12:52:04.218] [miter_logger] [info] size of PIs in circuit 0: 22352
+[2026-11-11 12:52:04.218] [miter_logger] [info] size of PIs in circuit 1: 22352
+[2026-11-11 12:52:04.218] [miter_logger] [info] size of POs in circuit 0: 42906
+[2026-11-11 12:52:04.218] [miter_logger] [info] size of POs in circuit 1: 42906
+[2026-11-11 12:52:06.526] [miter_logger] [info] Building miter expression
+[2026-11-11 12:52:06.529] [miter_logger] [info] Finished building miter expression
+[2026-11-11 12:52:06.752] [miter_logger] [info] Starting solver
+[2026-11-11 12:52:19.777] [miter_logger] [info] SAT solver finished: UNSAT
+[2026-11-11 12:52:19.777] [miter_logger] [info] Circuits are IDENTICAL

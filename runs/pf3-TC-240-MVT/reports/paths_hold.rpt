@@ -1,0 +1,16 @@
+min_delay/hold group clk
+
+                                     Required  Actual
+Endpoint                               Delay   Delay   Slack
+------------------------------------------------------------
+pf_req_line_addr[27]$_DFF_P_/D (DFFHQNx1_ASAP7_75t_SL)  346.36  349.38    3.02 (MET)
+pf_req_line_addr[69]$_DFF_P_/D (DFFHQNx1_ASAP7_75t_SL)  346.63  350.72    4.09 (MET)
+pf_req_line_addr[65]$_DFF_P_/D (DFFHQNx1_ASAP7_75t_SL)  345.30  352.27    6.97 (MET)
+pf_req_line_addr[67]$_DFF_P_/D (DFFHQNx1_ASAP7_75t_SL)  345.39  353.11    7.72 (MET)
+pf_req_line_addr[202]$_DFF_P_/D (DFFHQNx1_ASAP7_75t_SL)  346.27  354.09    7.83 (MET)
+pf_req_line_addr[37]$_DFF_P_/D (DFFHQNx1_ASAP7_75t_SL)  338.60  346.92    8.33 (MET)
+pf_req_line_addr[39]$_DFF_P_/D (DFFHQNx1_ASAP7_75t_SL)  338.70  348.18    9.47 (MET)
+pf_req_line_addr[45]$_DFF_P_/D (DFFHQNx1_ASAP7_75t_SL)  338.79  348.95   10.15 (MET)
+pf_req_line_addr[43]$_DFF_P_/D (DFFHQNx1_ASAP7_75t_SL)  338.56  348.86   10.29 (MET)
+pf_req_line_addr[52]$_DFF_P_/D (DFFHQNx1_ASAP7_75t_SL)  338.98  349.43   10.45 (MET)
+

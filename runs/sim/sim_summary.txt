@@ -1,0 +1,25 @@
+lint warnings: 55
+PASS lint
+RUN stride_s1 12:34:18
+PASS stride_s1 | SUMMARY stride seed=195724291 events=6000 requests: dut=1032 model=1032 ref=1032 errors=0
+RUN stride_s2_full 12:38:41
+PASS stride_s2_full | SUMMARY stride seed=-244655110 events=6000 requests: dut=967 model=967 ref=967 errors=0
+RUN stride_s3_repl 12:42:09
+PASS stride_s3_repl | SUMMARY stride seed=-1859640393 events=6000 requests: dut=783 model=783 ref=743 errors=0
+RUN stride_s4_repl 12:45:29
+PASS stride_s4_repl | SUMMARY stride seed=-1585583201 events=6000 requests: dut=415 model=415 ref=410 errors=0
+RUN stream_s1 12:50:42
+PASS stream_s1 | SUMMARY stream seed=-839712743 events=1200 gap=24 requests: new=513 old=513 errors=0
+RUN stream_s2 12:50:51
+PASS stream_s2 | SUMMARY stream seed=-2081990726 events=1200 gap=30 requests: new=522 old=522 errors=0
+RUN stream_s3_dense 12:51:01
+PASS stream_s3_dense | SUMMARY stream seed=-1795040708 events=6000 gap=0 requests: new=494 old=472 errors=0
+RUN sms_s1 12:51:15
+PASS sms_s1 | SUMMARY sms seed=-1122510216 generations=150 requests: new=830 old=830 errors=0
+RUN sms_s2 12:51:55
+PASS sms_s2 | SUMMARY sms seed=-1735877036 generations=150 requests: new=741 old=741 errors=0
+RUN unit_s1 12:52:31
+PASS unit_s1 | SUMMARY unit seed=1651705472 records=4000 hints=394 errors=0
+RUN unit_s2 12:54:38
+PASS unit_s2 | SUMMARY unit seed=-640526205 records=4000 hints=428 errors=0
+RESULT: 12 of 12 passed

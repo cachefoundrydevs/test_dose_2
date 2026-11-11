@@ -1,0 +1,3 @@
+SUMMARY stride seed=-1585583201 events=6000 requests: dut=415 model=415 ref=410 errors=0
+TEST PASSED
+tb/tb_pf3_stride.v:324: $finish called at 153795000 (1ps)

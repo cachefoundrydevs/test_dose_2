@@ -1,0 +1,22 @@
+/opt/orfs-python/bin/python3 /OpenROAD-flow-scripts/flow/scripts/run_command.py --log /__w/test_dose_2/test_dose_2/pnr_out/work/logs/asap7/pf3_timing_top/base/run.log --tee -- /OpenROAD-flow-scripts/tools/install/OpenROAD/bin/openroad -exit -no_init -threads 2  -no_splash  /__w/test_dose_2/test_dose_2/prefetch_system/flow/paths.tcl
+paths.tcl: database 5_1_grt.odb, constraints 4_cts.sdc
+source /OpenROAD-flow-scripts/flow/platforms/asap7/liberty_suppressions.tcl
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_AO_RVT_FF_nldm_211120@4256548-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_INVBUF_RVT_FF_nldm_220122@69351-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_OA_RVT_FF_nldm_211120@3829689-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_SIMPLE_RVT_FF_nldm_211120@317193-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_SEQ_RVT_FF_nldm_220123@1510915-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_AO_LVT_FF_nldm_211120@4317540-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_INVBUF_LVT_FF_nldm_220122@69812-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_OA_LVT_FF_nldm_211120@3894559-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_SIMPLE_LVT_FF_nldm_211120@454251-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_SEQ_LVT_FF_nldm_220123@1506997-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_AO_SLVT_FF_nldm_211120@4358007-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_INVBUF_SLVT_FF_nldm_220122@69753-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_OA_SLVT_FF_nldm_211120@3936499-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_SIMPLE_SLVT_FF_nldm_211120@457521-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_SEQ_SLVT_FF_nldm_220123@1502161-1794015536-fbb2a041.blib
+read_db /__w/test_dose_2/test_dose_2/pnr_out/work/results/asap7/pf3_timing_top/base/5_1_grt.odb
+read_sdc /__w/test_dose_2/test_dose_2/pnr_out/work/results/asap7/pf3_timing_top/base/5_1_grt.sdc
+source /OpenROAD-flow-scripts/flow/platforms/asap7/setRC.tcl
+Elapsed time: 0:18.28[h:]min:sec. CPU time: user 24.24 sys 1.24 (139%). Peak memory: 1857980KB.

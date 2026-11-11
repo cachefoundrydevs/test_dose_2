@@ -1,0 +1,250 @@
+%Warning-WIDTHTRUNC: rtl/l1d_pf3_sms_core.v:55:29: Operator VAR 'PORT_LAST' expects 2 bits on the Initial value, but Initial value's SUB generates 32 or 3 bits.
+                                                 : ... note: In instance 'l1d_prefetch_unit.u_sms_core'
+   55 |     localparam [PORT_W-1:0] PORT_LAST = NB - 1;
+      |                             ^~~~~~~~~
+                     ... For warning description see https://verilator.org/warn/WIDTHTRUNC?v=5.020
+                     ... Use "/* verilator lint_off WIDTHTRUNC */" and lint_on around source to disable this message.
+%Warning-WIDTHTRUNC: rtl/l1d_pf3_sms_expand.v:81:32: Operator ASSIGN expects 5 bits on the Assign RHS, but Assign RHS's VARREF 'bit_idx' generates 32 bits.
+                                                   : ... note: In instance 'l1d_prefetch_unit.u_sms_expand'
+   81 |             bit_number         = bit_idx;
+      |                                ^
+%Warning-WIDTHTRUNC: rtl/l1d_pf3_sms_expand.v:132:26: Operator ASSIGN expects 5 bits on the Assign RHS, but Assign RHS's VARREF 'bit_idx' generates 32 bits.
+                                                    : ... note: In instance 'l1d_prefetch_unit.u_sms_expand'
+  132 |             scan_bit_num = bit_idx;
+      |                          ^
+%Warning-WIDTHTRUNC: rtl/l1d_pf3_sms_core.v:537:29: Operator ASSIGN expects 5 bits on the Assign RHS, but Assign RHS's VARREF 'bit_idx' generates 32 bits.
+                                                  : ... note: In instance 'l1d_prefetch_unit.u_sms_core'
+  537 |             bit_number      = bit_idx;
+      |                             ^
+%Warning-WIDTHTRUNC: rtl/l1d_pf3_sms_core.v:554:24: Operator ASSIGN expects 5 bits on the Assign RHS, but Assign RHS's VARREF 'bit_idx' generates 32 bits.
+                                                  : ... note: In instance 'l1d_prefetch_unit.u_sms_core'
+  554 |             bit_number = bit_idx;
+      |                        ^
+%Warning-UNUSEDPARAM: rtl/l1d_prefetch_unit.v:6:15: Parameter is not used: 'LSU_BUF_DEPTH'
+                                                  : ... note: In instance 'l1d_prefetch_unit'
+    6 |     parameter LSU_BUF_DEPTH    = 8, 
+      |               ^~~~~~~~~~~~~
+%Warning-UNUSEDPARAM: rtl/l1d_prefetch_unit.v:6:15: Parameter is not used: 'TRK_REFILL_RSV'
+                                                  : ... note: In instance 'l1d_prefetch_unit'
+    6 |     parameter TRK_REFILL_RSV   = 2, 
+      |               ^~~~~~~~~~~~~~
+%Warning-UNUSEDPARAM: rtl/l1d_prefetch_unit.v:6:15: Parameter is not used: 'REFILL_SKIP'
+                                                  : ... note: In instance 'l1d_prefetch_unit'
+    6 |     parameter REFILL_SKIP      = 2, 
+      |               ^~~~~~~~~~~
+%Warning-UNUSEDPARAM: rtl/l1d_prefetch_unit.v:6:15: Parameter is not used: 'PF_FIFO_DEPTH'
+                                                  : ... note: In instance 'l1d_prefetch_unit'
+    6 |     parameter PF_FIFO_DEPTH    = 4, 
+      |               ^~~~~~~~~~~~~
+%Warning-UNUSEDPARAM: rtl/l1d_prefetch_unit.v:6:15: Parameter is not used: 'SNP_STARVE'
+                                                  : ... note: In instance 'l1d_prefetch_unit'
+    6 |     parameter SNP_STARVE       = 8, 
+      |               ^~~~~~~~~~
+%Warning-UNUSEDPARAM: rtl/l1d_prefetch_unit.v:6:15: Parameter is not used: 'LOCK_TIMEOUT'
+                                                  : ... note: In instance 'l1d_prefetch_unit'
+    6 |     parameter LOCK_TIMEOUT     = 1024, 
+      |               ^~~~~~~~~~~~
+%Warning-UNUSEDPARAM: rtl/l1d_prefetch_unit.v:6:15: Parameter is not used: 'RSV_CLR_ON_EVICT'
+                                                  : ... note: In instance 'l1d_prefetch_unit'
+    6 |     parameter RSV_CLR_ON_EVICT = 1, 
+      |               ^~~~~~~~~~~~~~~~
+%Warning-UNUSEDPARAM: rtl/l1d_prefetch_unit.v:6:15: Parameter is not used: 'HAS_SNOOP'
+                                                  : ... note: In instance 'l1d_prefetch_unit'
+    6 |     parameter HAS_SNOOP        = 1, 
+      |               ^~~~~~~~~
+%Warning-UNUSEDPARAM: rtl/l1d_prefetch_unit.v:6:15: Parameter is not used: 'HAS_AMO'
+                                                  : ... note: In instance 'l1d_prefetch_unit'
+    6 |     parameter HAS_AMO          = 1, 
+      |               ^~~~~~~
+%Warning-UNUSEDPARAM: rtl/l1d_prefetch_unit.v:6:15: Parameter is not used: 'AXI_ADDR_W'
+                                                  : ... note: In instance 'l1d_prefetch_unit'
+    6 |     parameter AXI_ADDR_W       = 64, 
+      |               ^~~~~~~~~~
+%Warning-UNUSEDPARAM: rtl/l1d_prefetch_unit.v:6:15: Parameter is not used: 'TRK_ALLOC_MAX'
+                                                  : ... note: In instance 'l1d_prefetch_unit'
+    6 |     parameter TRK_ALLOC_MAX    = 4, 
+      |               ^~~~~~~~~~~~~
+%Warning-UNUSEDPARAM: rtl/l1d_prefetch_unit.v:6:15: Parameter is not used: 'PF_MSHR_MAX'
+                                                  : ... note: In instance 'l1d_prefetch_unit'
+    6 |     parameter PF_MSHR_MAX      = 2, 
+      |               ^~~~~~~~~~~
+%Warning-UNUSEDPARAM: rtl/l1d_prefetch_unit.v:6:15: Parameter is not used: 'HAS_PF'
+                                                  : ... note: In instance 'l1d_prefetch_unit'
+    6 |     parameter HAS_PF           = 1,
+      |               ^~~~~~
+%Warning-UNUSEDPARAM: rtl/include/l1d_fields.vh:5:12: Parameter is not used: 'OFFSET_LSB'
+                                                    : ... note: In instance 'l1d_prefetch_unit'
+    5 | localparam OFFSET_LSB  = 0;
+      |            ^~~~~~~~~~
+                      rtl/l1d_prefetch_unit.v:18:1: ... note: In file included from 'l1d_prefetch_unit.v'
+%Warning-UNUSEDPARAM: rtl/include/l1d_fields.vh:6:12: Parameter is not used: 'BANK_LSB'
+                                                    : ... note: In instance 'l1d_prefetch_unit'
+    6 | localparam BANK_LSB    = OFFSET_W;
+      |            ^~~~~~~~
+                      rtl/l1d_prefetch_unit.v:18:1: ... note: In file included from 'l1d_prefetch_unit.v'
+%Warning-UNUSEDPARAM: rtl/include/l1d_fields.vh:7:12: Parameter is not used: 'INDEX_LSB'
+                                                    : ... note: In instance 'l1d_prefetch_unit'
+    7 | localparam INDEX_LSB   = OFFSET_W + BANK_W;
+      |            ^~~~~~~~~
+                      rtl/l1d_prefetch_unit.v:18:1: ... note: In file included from 'l1d_prefetch_unit.v'
+%Warning-UNUSEDPARAM: rtl/include/l1d_fields.vh:8:12: Parameter is not used: 'TAG_LSB'
+                                                    : ... note: In instance 'l1d_prefetch_unit'
+    8 | localparam TAG_LSB     = OFFSET_W + BANK_W + INDEX_W;
+      |            ^~~~~~~
+                      rtl/l1d_prefetch_unit.v:18:1: ... note: In file included from 'l1d_prefetch_unit.v'
+%Warning-UNUSEDPARAM: rtl/include/l1d_fields.vh:10:12: Parameter is not used: 'LA_BANK_LSB'
+                                                     : ... note: In instance 'l1d_prefetch_unit'
+   10 | localparam LA_BANK_LSB = 0;
+      |            ^~~~~~~~~~~
+                      rtl/l1d_prefetch_unit.v:18:1: ... note: In file included from 'l1d_prefetch_unit.v'
+%Warning-UNUSEDPARAM: rtl/include/l1d_fields.vh:11:12: Parameter is not used: 'LA_SET_LSB'
+                                                     : ... note: In instance 'l1d_prefetch_unit'
+   11 | localparam LA_SET_LSB  = BANK_W;
+      |            ^~~~~~~~~~
+                      rtl/l1d_prefetch_unit.v:18:1: ... note: In file included from 'l1d_prefetch_unit.v'
+%Warning-UNUSEDPARAM: rtl/include/l1d_fields.vh:12:12: Parameter is not used: 'LA_TAG_LSB'
+                                                     : ... note: In instance 'l1d_prefetch_unit'
+   12 | localparam LA_TAG_LSB  = BANK_W + INDEX_W;
+      |            ^~~~~~~~~~
+                      rtl/l1d_prefetch_unit.v:18:1: ... note: In file included from 'l1d_prefetch_unit.v'
+%Warning-UNUSEDPARAM: rtl/include/l1d_fields.vh:17:12: Parameter is not used: 'GRAN_W'
+                                                     : ... note: In instance 'l1d_prefetch_unit'
+   17 | localparam GRAN_W      = $clog2(GRANULES);
+      |            ^~~~~~
+                      rtl/l1d_prefetch_unit.v:18:1: ... note: In file included from 'l1d_prefetch_unit.v'
+%Warning-UNUSEDPARAM: rtl/include/l1d_fields.vh:18:12: Parameter is not used: 'GRAN_LSB'
+                                                     : ... note: In instance 'l1d_prefetch_unit'
+   18 | localparam GRAN_LSB    = $clog2(WDATA_BYTES);
+      |            ^~~~~~~~
+                      rtl/l1d_prefetch_unit.v:18:1: ... note: In file included from 'l1d_prefetch_unit.v'
+%Warning-UNUSEDPARAM: rtl/include/l1d_fields.vh:35:12: Parameter is not used: 'REQ_W'
+                                                     : ... note: In instance 'l1d_prefetch_unit'
+   35 | localparam REQ_W         = REQ_PFU_BIT + 1;
+      |            ^~~~~
+                      rtl/l1d_prefetch_unit.v:18:1: ... note: In file included from 'l1d_prefetch_unit.v'
+%Warning-UNUSEDPARAM: rtl/include/l1d_fields.vh:37:12: Parameter is not used: 'VEC_SLOT_W'
+                                                     : ... note: In instance 'l1d_prefetch_unit'
+   37 | localparam VEC_SLOT_W    = (VEC_SLOTS > 1) ? $clog2(VEC_SLOTS) : 1;
+      |            ^~~~~~~~~~
+                      rtl/l1d_prefetch_unit.v:18:1: ... note: In file included from 'l1d_prefetch_unit.v'
+%Warning-UNUSEDPARAM: rtl/include/l1d_fields.vh:44:12: Parameter is not used: 'RESP_W'
+                                                     : ... note: In instance 'l1d_prefetch_unit'
+   44 | localparam RESP_W        = RESP_PORT_LSB + PORT_W;
+      |            ^~~~~~
+                      rtl/l1d_prefetch_unit.v:18:1: ... note: In file included from 'l1d_prefetch_unit.v'
+%Warning-UNUSEDPARAM: rtl/include/l1d_fields.vh:49:12: Parameter is not used: 'SNPR_W'
+                                                     : ... note: In instance 'l1d_prefetch_unit'
+   49 | localparam SNPR_W         = SNPR_PRES_BIT + 1;
+      |            ^~~~~~
+                      rtl/l1d_prefetch_unit.v:18:1: ... note: In file included from 'l1d_prefetch_unit.v'
+%Warning-UNUSEDPARAM: rtl/include/l1d_fields.vh:50:12: Parameter is not used: 'SNPR_CNT_W'
+                                                     : ... note: In instance 'l1d_prefetch_unit'
+   50 | localparam SNPR_CNT_W     = $clog2(SNP_RESP_DEPTH + 1);
+      |            ^~~~~~~~~~
+                      rtl/l1d_prefetch_unit.v:18:1: ... note: In file included from 'l1d_prefetch_unit.v'
+%Warning-UNUSEDPARAM: rtl/include/l1d_fields.vh:51:12: Parameter is not used: 'SNP_ID_W'
+                                                     : ... note: In instance 'l1d_prefetch_unit'
+   51 | localparam SNP_ID_W       = (SNP_BUF_DEPTH > 2) ? $clog2(SNP_BUF_DEPTH) : 1;
+      |            ^~~~~~~~
+                      rtl/l1d_prefetch_unit.v:18:1: ... note: In file included from 'l1d_prefetch_unit.v'
+%Warning-UNUSEDPARAM: rtl/include/l1d_fields.vh:58:12: Parameter is not used: 'AXI_ID_MIN_W'
+                                                     : ... note: In instance 'l1d_prefetch_unit'
+   58 | localparam AXI_ID_MIN_W = 1 + BANK_W + AXI_SUBID_W;
+      |            ^~~~~~~~~~~~
+                      rtl/l1d_prefetch_unit.v:18:1: ... note: In file included from 'l1d_prefetch_unit.v'
+%Warning-UNUSEDPARAM: rtl/include/l1d_fields.vh:59:12: Parameter is not used: 'SEAT_W'
+                                                     : ... note: In instance 'l1d_prefetch_unit'
+   59 | localparam SEAT_W      = (TRK_ENTRIES > 1) ? $clog2(TRK_ENTRIES) : 1;
+      |            ^~~~~~
+                      rtl/l1d_prefetch_unit.v:18:1: ... note: In file included from 'l1d_prefetch_unit.v'
+%Warning-UNUSEDPARAM: rtl/include/l1d_fields.vh:60:12: Parameter is not used: 'TRK_CNT_W'
+                                                     : ... note: In instance 'l1d_prefetch_unit'
+   60 | localparam TRK_CNT_W   = $clog2(TRK_ENTRIES + 1);
+      |            ^~~~~~~~~
+                      rtl/l1d_prefetch_unit.v:18:1: ... note: In file included from 'l1d_prefetch_unit.v'
+%Warning-UNUSEDPARAM: rtl/include/l1d_fields.vh:61:12: Parameter is not used: 'RCNT_W'
+                                                     : ... note: In instance 'l1d_prefetch_unit'
+   61 | localparam RCNT_W      = $clog2(RESP_FIFO_DEPTH + 1);
+      |            ^~~~~~
+                      rtl/l1d_prefetch_unit.v:18:1: ... note: In file included from 'l1d_prefetch_unit.v'
+%Warning-UNUSEDPARAM: rtl/include/l1d_fields.vh:62:12: Parameter is not used: 'WID_W'
+                                                     : ... note: In instance 'l1d_prefetch_unit'
+   62 | localparam WID_W       = (MSHR_ID_W >= VC_ID_W) ? MSHR_ID_W : VC_ID_W;
+      |            ^~~~~
+                      rtl/l1d_prefetch_unit.v:18:1: ... note: In file included from 'l1d_prefetch_unit.v'
+%Warning-UNUSEDPARAM: rtl/include/l1d_fields.vh:63:12: Parameter is not used: 'SET_WAY_W'
+                                                     : ... note: In instance 'l1d_prefetch_unit'
+   63 | localparam SET_WAY_W   = INDEX_W + WAY_W;
+      |            ^~~~~~~~~
+                      rtl/l1d_prefetch_unit.v:18:1: ... note: In file included from 'l1d_prefetch_unit.v'
+%Warning-UNUSEDPARAM: rtl/include/l1d_fields.vh:72:12: Parameter is not used: 'DWORD_W'
+                                                     : ... note: In instance 'l1d_prefetch_unit'
+   72 | localparam DWORD_W     = GRANULES * GWORD_W;
+      |            ^~~~~~~
+                      rtl/l1d_prefetch_unit.v:18:1: ... note: In file included from 'l1d_prefetch_unit.v'
+%Warning-UNUSEDPARAM: rtl/include/l1d_fields.vh:73:12: Parameter is not used: 'LINE_ECC_W'
+                                                     : ... note: In instance 'l1d_prefetch_unit'
+   73 | localparam LINE_ECC_W  = GRANULES * DATA_ECC_W;
+      |            ^~~~~~~~~~
+                      rtl/l1d_prefetch_unit.v:18:1: ... note: In file included from 'l1d_prefetch_unit.v'
+%Warning-UNUSEDPARAM: rtl/include/l1d_fields.vh:74:12: Parameter is not used: 'TWORD_W'
+                                                     : ... note: In instance 'l1d_prefetch_unit'
+   74 | localparam TWORD_W     = TAG_W + TAG_ECC_W;
+      |            ^~~~~~~
+                      rtl/l1d_prefetch_unit.v:18:1: ... note: In file included from 'l1d_prefetch_unit.v'
+%Warning-UNUSEDPARAM: rtl/include/l1d_fields.vh:77:12: Parameter is not used: 'AXI_LEN'
+                                                     : ... note: In instance 'l1d_prefetch_unit'
+   77 | localparam AXI_LEN     = AXI_BEATS - 1;
+      |            ^~~~~~~
+                      rtl/l1d_prefetch_unit.v:18:1: ... note: In file included from 'l1d_prefetch_unit.v'
+%Warning-UNUSEDPARAM: rtl/include/l1d_fields.vh:78:12: Parameter is not used: 'AXI_SIZE'
+                                                     : ... note: In instance 'l1d_prefetch_unit'
+   78 | localparam AXI_SIZE    = $clog2(AXI_STRB_W);
+      |            ^~~~~~~~
+                      rtl/l1d_prefetch_unit.v:18:1: ... note: In file included from 'l1d_prefetch_unit.v'
+%Warning-UNUSEDPARAM: rtl/include/l1d_fields.vh:79:12: Parameter is not used: 'BEAT_W'
+                                                     : ... note: In instance 'l1d_prefetch_unit'
+   79 | localparam BEAT_W      = (AXI_BEATS > 1) ? $clog2(AXI_BEATS) : 1;
+      |            ^~~~~~
+                      rtl/l1d_prefetch_unit.v:18:1: ... note: In file included from 'l1d_prefetch_unit.v'
+%Warning-UNUSEDPARAM: rtl/include/l1d_fields.vh:80:12: Parameter is not used: 'AXI_OFF_W'
+                                                     : ... note: In instance 'l1d_prefetch_unit'
+   80 | localparam AXI_OFF_W   = $clog2(AXI_STRB_W);
+      |            ^~~~~~~~~
+                      rtl/l1d_prefetch_unit.v:18:1: ... note: In file included from 'l1d_prefetch_unit.v'
+%Warning-UNUSEDPARAM: rtl/l1d_pf3_stride.v:41:16: Parameter is not used: 'LINE_W'
+                                                : ... note: In instance 'l1d_prefetch_unit.u_stride'
+   41 |     localparam LINE_W   = ADDR_W - OFFSET_W;
+      |                ^~~~~~
+%Warning-UNUSEDPARAM: rtl/l1d_pf3_stride.v:49:16: Parameter is not used: 'KEY_W'
+                                                : ... note: In instance 'l1d_prefetch_unit.u_stride'
+   49 |     localparam KEY_W    = SET_W + TAG_W + 1;
+      |                ^~~~~
+%Warning-UNUSEDPARAM: rtl/l1d_pf3_stream.v:37:16: Parameter is not used: 'LINE_W'
+                                                : ... note: In instance 'l1d_prefetch_unit.u_stream'
+   37 |     localparam LINE_W     = ADDR_W - OFFSET_W;
+      |                ^~~~~~
+%Warning-UNUSEDSIGNAL: rtl/l1d_pf3_stream.v:55:30: Bits of signal are not used: 'dn_diff'[7:6]
+                                                 : ... note: In instance 'l1d_prefetch_unit.u_stream'
+   55 |     reg  [WIDE_W-1:0]        dn_diff;
+      |                              ^~~~~~~
+%Warning-UNUSEDSIGNAL: rtl/l1d_pf3_stream.v:97:30: Signal is not used: 'card_sdone'
+                                                 : ... note: In instance 'l1d_prefetch_unit.u_stream'
+   97 |     wire [NC-1:0]            card_sdone;
+      |                              ^~~~~~~~~~
+%Warning-UNUSEDSIGNAL: rtl/l1d_pf3_sms_core.v:56:30: Signal is not used: 'lane_pch'
+                                                   : ... note: In instance 'l1d_prefetch_unit.u_sms_core'
+   56 |     reg  [NB*PC_HASH_W-1:0]  lane_pch;
+      |                              ^~~~~~~~
+%Warning-UNUSEDPARAM: rtl/l1d_pf3_stride_entry.v:9:15: Parameter is not used: 'DSH'
+                                                     : ... note: In instance 'l1d_prefetch_unit.u_stride.g_entry[63].u_entry'
+    9 |     parameter DSH        = 1,
+      |               ^~~
+%Warning-UNUSEDSIGNAL: rtl/l1d_pf3_stride_entry.v:62:26: Bits of signal are not used: 'tgt_q'[5:0]
+                                                       : ... note: In instance 'l1d_prefetch_unit.u_stride.g_entry[63].u_entry'
+   62 |     reg  [TGT_W-1:0]     tgt_q;
+      |                          ^~~~~
+%Warning-UNUSEDSIGNAL: rtl/l1d_pf3_add_eq.v:13:18: Bits of signal are not used: 'carry_out'[12]
+                                                 : ... note: In instance 'l1d_prefetch_unit.u_stride.g_entry[63].u_entry.u_stride_check'
+   13 |     wire [W-1:0] carry_out;
+      |                  ^~~~~~~~~

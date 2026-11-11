@@ -1,0 +1,43 @@
+{
+ "vt": "RVT",
+ "top": "pf3_timing_top",
+ "period_ps": 240.0,
+ "corner": "BC",
+ "synth_rc": "0",
+ "pnr_rc": "2",
+ "stages": {
+  "1_synth.json": {},
+  "2_1_floorplan.json": {
+   "floorplan__timing__setup__tns": -2891600.0,
+   "floorplan__timing__setup__ws": -524.881
+  },
+  "3_3_place_gp.json": {
+   "globalplace__timing__setup__tns": -3147110.0,
+   "globalplace__timing__setup__ws": -401.951
+  },
+  "3_4_place_resized.json": {
+   "placeopt__timing__setup__tns": -3147110.0,
+   "placeopt__timing__setup__ws": -401.951
+  },
+  "3_5_place_dp.json": {
+   "detailedplace__timing__setup__tns": -3155350.0,
+   "detailedplace__timing__setup__ws": -400.694
+  },
+  "4_1_cts.json": {
+   "cts__timing__setup__tns": -3122670.0,
+   "cts__timing__setup__ws": -372.584
+  },
+  "5_1_grt.json": {
+   "globalroute__timing__setup__tns": -3020330.0,
+   "globalroute__timing__setup__ws": -367.536
+  }
+ },
+ "last_stage": "5_1_grt.json",
+ "setup_ws_ps": -367.536,
+ "crit_ps": 607.5360000000001,
+ "fmax_ghz": 1.646,
+ "setup_tns_ps": -3020330.0,
+ "hold_ws_ps": 10.7969,
+ "area_um2": 21336.7,
+ "done": false
+}

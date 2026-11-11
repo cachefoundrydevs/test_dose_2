@@ -1,0 +1,44 @@
+Startpoint: u_prefetch.u_stride.e1_lo[9]$_DFF_P_
+            (rising edge-triggered flip-flop clocked by clk)
+Endpoint: u_prefetch.u_stride.g_entry[50].u_entry.tgt_q[10]$_DFFE_PP_
+          (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: max
+
+Fanout    Cap   Slew  Delay   Time   Description
+-------------------------------------------------------------------------
+                        0.0    0.0   clock clk (rise edge)
+                      246.2  246.2   clock network delay (propagated)
+                14.3    0.0  246.2 ^ u_prefetch.u_stride.e1_lo[9]$_DFF_P_/CLK (DFFHQNx3_ASAP7_75t_SL)
+     3    5.4   24.0   38.1  284.3 v u_prefetch.u_stride.e1_lo[9]$_DFF_P_/QN (DFFHQNx3_ASAP7_75t_SL)
+     5   11.4   22.2   22.4  306.7 v place61913/Y (BUFx3_ASAP7_75t_L)
+    10   44.0   42.7   22.9  329.6 v place61901/Y (BUFx6f_ASAP7_75t_L)
+     3   10.3   22.9   53.5  383.1 v place61900/Y (BUFx3_ASAP7_75t_L)
+     8   23.8   25.0   22.3  405.4 v place61899/Y (BUFx6f_ASAP7_75t_L)
+     3   13.3   26.1   32.5  437.9 v place61898/Y (BUFx3_ASAP7_75t_L)
+     1    1.3   35.8   39.6  477.5 ^ _226985_/SN (FAx1_ASAP7_75t_R)
+     1    1.2    8.5   30.5  508.0 v _185303_/Y (XNOR2x2_ASAP7_75t_R)
+     1    1.1   10.1   17.8  525.8 v _185306_/Y (OR4x1_ASAP7_75t_SL)
+     2    4.7   34.0   45.3  571.1 v _185308_/Y (OR5x1_ASAP7_75t_R)
+    10    7.5   20.5   23.0  594.1 v _185309_/Y (AND2x2_ASAP7_75t_SL)
+     1    0.7    9.2   31.5  625.6 v _185364_/Y (OA211x2_ASAP7_75t_R)
+     1    4.0   24.4   24.2  649.8 v _185365_/Y (AO21x1_ASAP7_75t_R)
+     1    1.1   10.0   24.7  674.5 v _185366_/Y (AO22x1_ASAP7_75t_R)
+     1    0.8    8.0   16.4  690.9 v _185367_/Y (AO21x1_ASAP7_75t_R)
+                 8.0    0.0  691.0 v u_prefetch.u_stride.g_entry[50].u_entry.tgt_q[10]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_SL)
+                             691.0   data arrival time
+
+                      240.0  240.0   clock clk (rise edge)
+                      239.9  479.9   clock network delay (propagated)
+                      -12.0  467.9   clock uncertainty
+                        2.2  470.1   clock reconvergence pessimism
+                             470.1 ^ u_prefetch.u_stride.g_entry[50].u_entry.tgt_q[10]$_DFFE_PP_/CLK (DFFHQNx1_ASAP7_75t_SL)
+                       -1.5  468.6   library setup time
+                             468.6   data required time
+-------------------------------------------------------------------------
+                             468.6   data required time
+                            -691.0   data arrival time
+-------------------------------------------------------------------------
+                            -222.4   slack (VIOLATED)
+
+

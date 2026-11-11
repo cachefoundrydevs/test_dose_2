@@ -1,0 +1,988 @@
+OpenROAD unknown 
+Features included (+) or not (-): -GPU +GUI
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+[INFO ORD-0030] Using 2 thread(s).
+source /OpenROAD-flow-scripts/flow/platforms/asap7/liberty_suppressions.tcl
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_AO_RVT_FF_nldm_211120@4256548-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_INVBUF_RVT_FF_nldm_220122@69351-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_OA_RVT_FF_nldm_211120@3829689-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_SIMPLE_RVT_FF_nldm_211120@317193-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_SEQ_RVT_FF_nldm_220123@1510915-1794015536-fbb2a041.blib
+read_db /__w/test_dose_2/test_dose_2/pnr_out/work/results/asap7/pf3_timing_top/base/1_synth.odb
+read_sdc /__w/test_dose_2/test_dose_2/pnr_out/work/results/asap7/pf3_timing_top/base/1_synth.sdc
+source /OpenROAD-flow-scripts/flow/platforms/asap7/setRC.tcl
+source /OpenROAD-flow-scripts/flow/platforms/asap7/openRoad/pdn/global_connect.tcl
+global_connect
+
+==========================================================================
+Floorplan check_setup
+--------------------------------------------------------------------------
+Warning: There are 714 unconstrained endpoints.
+number instances in verilog is 127268
+initialize_floorplan -utilization 40 -aspect_ratio 1.0 -core_space 1.0 -site asap7sc7p5t
+[INFO IFP-0107] Defining die area using utilization: 40.00% and aspect ratio: 1.
+[WARNING IFP-0028] Core area lower left (1.000, 1.000) snapped to (1.026, 1.080).
+[INFO IFP-0001] Added 780 rows of 3905 site asap7sc7p5t.
+[INFO IFP-0100] Die BBox:  (  0.000  0.000 ) ( 212.901 212.901 ) um
+[INFO IFP-0101] Core BBox: (  1.026  1.080 ) ( 211.896 211.680 ) um
+[INFO IFP-0102] Core area:                        44409.222 um^2
+[INFO IFP-0103] Total instances area:             17791.828 um^2
+[INFO IFP-0104] Effective utilization:                0.401
+[INFO IFP-0105] Number of instances:                 127268
+source /OpenROAD-flow-scripts/flow/platforms/asap7/openRoad/make_tracks.tcl
+source /OpenROAD-flow-scripts/flow/platforms/asap7/fastroute.tcl
+set_dont_use "*x1p*_ASAP7* *xp*_ASAP7* SDF* ICG*"
+repair_tie_fanout -separation 0 asap7sc7p5t_SIMPLE_RVT_FF_nldm_250407/TIELOx1_ASAP7_75t_R/L
+repair_tie_fanout -separation 0 asap7sc7p5t_SIMPLE_RVT_FF_nldm_250407/TIEHIx1_ASAP7_75t_R/H
+repair_timing -setup_margin 0 -hold_margin 0 -repair_tns 100 -setup -skip_last_gasp -sequence unbuffer,sizeup,swap,vt_swap -verbose
+[WARNING EST-0027] no estimated parasitics. Using wire load models.
+[INFO RSZ-0100] Repair move sequence: UnbufferMove SizeUpMove SwapPinsMove 
+[INFO RSZ-0094] Found 13735 endpoints with setup violations.
+[INFO RSZ-0099] Repairing 13735 out of 13735 (100.00%) violating endpoints...
+   Iter   | Removed | Resized | Inserted | Cloned |  Pin  |   Area   |    WNS   |    TNS     |  Viol  |  Worst
+          | Buffers |  Gates  | Buffers  |  Gates | Swaps |          |          |            | Endpts | Endpoint
+------------------------------------------------------------------------------------------------------------------------------
+       0* |       0 |       0 |        0 |      0 |     0 |    +0.0% | -1308.605 | -5400678.0 |  13735 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+      10* |       0 |       9 |        0 |      0 |     0 |    +0.0% | -956.327 | -4340686.0 |  13735 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+      20* |       0 |      19 |        0 |      0 |     0 |    +0.0% | -751.175 | -3675167.8 |  13735 | u_prefetch.u_stride.g_entry\[29\].u_entry.stride_q\[11\]$_DFFE_PP_/D
+      30* |       0 |      29 |        0 |      0 |     0 |    +0.0% | -607.774 | -3269488.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+      40* |       0 |      37 |        0 |      0 |     2 |    +0.0% | -561.735 | -3158050.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+      50* |       0 |      43 |        0 |      0 |     6 |    +0.0% | -547.359 | -3105443.0 |  13735 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+      60* |       0 |      52 |        0 |      0 |     7 |    +0.0% | -540.112 | -3093963.0 |  13735 | u_prefetch.u_stream.recent_line\[18\]$_DFFE_PP_/D
+      70* |       0 |      62 |        0 |      0 |     7 |    +0.0% | -532.479 | -3040517.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+      80* |       0 |      72 |        0 |      0 |     7 |    +0.0% | -531.700 | -3040459.8 |  13735 | u_prefetch.u_stream.recent_line\[12\]$_DFFE_PP_/D
+      90* |       0 |      80 |        0 |      0 |     9 |    +0.0% | -528.050 | -3038516.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+      94* |       0 |      82 |        0 |      0 |    11 |    +0.0% | -524.881 | -3038079.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     100* |       0 |      86 |        0 |      0 |    12 |    +0.0% | -524.881 | -3037917.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     103* |       0 |      87 |        0 |      0 |    13 |    +0.0% | -524.881 | -3037917.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     106* |       0 |      87 |        0 |      0 |    15 |    +0.0% | -524.881 | -3037900.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     109* |       0 |      87 |        0 |      0 |    17 |    +0.0% | -524.881 | -3037884.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     110* |       0 |      87 |        0 |      0 |    17 |    +0.0% | -524.881 | -3037884.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     112* |       0 |      87 |        0 |      0 |    18 |    +0.0% | -524.881 | -3037868.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     115* |       0 |      87 |        0 |      0 |    19 |    +0.0% | -524.881 | -3037852.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     118* |       0 |      87 |        0 |      0 |    20 |    +0.0% | -524.881 | -3037837.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     120* |       0 |      87 |        0 |      0 |    21 |    +0.0% | -524.881 | -3037821.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     121* |       0 |      87 |        0 |      0 |    21 |    +0.0% | -524.881 | -3037821.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     124* |       0 |      87 |        0 |      0 |    22 |    +0.0% | -524.881 | -3037805.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     127* |       0 |      87 |        0 |      0 |    23 |    +0.0% | -524.881 | -3037789.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     130* |       0 |      88 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037649.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     132* |       0 |      90 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037811.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     135* |       0 |      92 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037779.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     138* |       0 |      94 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037746.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     139* |       0 |      94 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037746.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     140* |       0 |      94 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037746.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     140* |       0 |      94 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037746.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     143* |       0 |      96 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037713.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     144* |       0 |      96 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037713.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     145* |       0 |      96 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037713.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     146* |       0 |      96 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037713.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     149* |       0 |      98 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037680.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     150* |       0 |      98 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037680.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     150* |       0 |      98 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037680.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     151* |       0 |      98 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037680.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     152* |       0 |      98 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037680.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     153* |       0 |      98 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037680.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     154* |       0 |      98 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037680.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     155* |       0 |      98 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037680.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     156* |       0 |      98 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037680.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     157* |       0 |      98 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037680.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     158* |       0 |      98 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037680.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     159* |       0 |      98 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037680.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     160* |       0 |      98 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037680.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     160* |       0 |      98 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037680.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     161* |       0 |      98 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037680.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     162* |       0 |      98 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037680.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     163* |       0 |      98 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037680.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     164* |       0 |      98 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037680.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     165* |       0 |      98 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037680.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     166* |       0 |      98 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037680.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     167* |       0 |      98 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037680.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     168* |       0 |      98 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037680.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     169* |       0 |      98 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037680.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     170* |       0 |      98 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037680.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     170* |       0 |      98 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037680.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     171* |       0 |      98 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037680.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     172* |       0 |      98 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037680.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     173* |       0 |      98 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037680.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     174* |       0 |      98 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037680.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     175* |       0 |      98 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037680.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     176* |       0 |      98 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037680.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     177* |       0 |      98 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037680.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     178* |       0 |      98 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037680.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     179* |       0 |      98 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037680.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     180* |       0 |      98 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037680.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     180* |       0 |      98 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037680.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     181* |       0 |      98 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037680.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     182* |       0 |      98 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037680.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     183* |       0 |      98 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037680.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     184* |       0 |      98 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037680.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     185* |       0 |      98 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037680.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     186* |       0 |      98 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037680.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     187* |       0 |      98 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037680.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     188* |       0 |      98 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037680.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     189* |       0 |      98 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037680.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     190* |       0 |      98 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037680.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     192* |       0 |     100 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037648.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     193* |       0 |     100 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037648.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     194* |       0 |     100 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037648.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     195* |       0 |     100 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037648.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     196* |       0 |     100 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037648.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     197* |       0 |     100 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037648.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     198* |       0 |     100 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037648.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     199* |       0 |     100 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037648.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     200* |       0 |     100 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037648.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     200* |       0 |     100 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037648.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     201* |       0 |     100 |        0 |      0 |    24 |    +0.0% | -524.881 | -3037648.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     206* |       0 |     103 |        0 |      0 |    24 |    +0.0% | -524.881 | -3038938.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     207* |       0 |     103 |        0 |      0 |    24 |    +0.0% | -524.881 | -3038938.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     208* |       0 |     103 |        0 |      0 |    24 |    +0.0% | -524.881 | -3038938.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     209* |       0 |     103 |        0 |      0 |    24 |    +0.0% | -524.881 | -3038938.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     210* |       0 |     103 |        0 |      0 |    24 |    +0.0% | -524.881 | -3038938.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     210* |       0 |     103 |        0 |      0 |    24 |    +0.0% | -524.881 | -3038938.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     213* |       0 |     103 |        0 |      0 |    26 |    +0.0% | -524.881 | -3038914.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     216* |       0 |     103 |        0 |      0 |    28 |    +0.0% | -524.881 | -3038895.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     219* |       0 |     103 |        0 |      0 |    30 |    +0.0% | -524.881 | -3038876.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     220* |       0 |     103 |        0 |      0 |    30 |    +0.0% | -524.881 | -3038876.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     222* |       0 |     103 |        0 |      0 |    32 |    +0.0% | -524.881 | -3038857.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     224* |       0 |     103 |        0 |      0 |    33 |    +0.0% | -524.881 | -3038844.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     226* |       0 |     103 |        0 |      0 |    34 |    +0.0% | -524.881 | -3038833.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     229* |       0 |     103 |        0 |      0 |    36 |    +0.0% | -524.881 | -3038814.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     230* |       0 |     103 |        0 |      0 |    36 |    +0.0% | -524.881 | -3038814.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     233* |       0 |     104 |        0 |      0 |    38 |    +0.0% | -524.881 | -3038800.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     236* |       0 |     104 |        0 |      0 |    40 |    +0.0% | -524.881 | -3038779.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     238* |       0 |     104 |        0 |      0 |    41 |    +0.0% | -524.881 | -3038779.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     240* |       0 |     105 |        0 |      0 |    41 |    +0.0% | -524.881 | -3038746.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     242* |       0 |     106 |        0 |      0 |    42 |    +0.0% | -524.881 | -3038746.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     246* |       0 |     108 |        0 |      0 |    43 |    +0.0% | -524.881 | -3038712.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     248* |       0 |     108 |        0 |      0 |    44 |    +0.0% | -524.881 | -3038711.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     250* |       0 |     109 |        0 |      0 |    44 |    +0.0% | -524.881 | -3038679.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     252* |       0 |     110 |        0 |      0 |    45 |    +0.0% | -524.881 | -3038678.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     256* |       0 |     112 |        0 |      0 |    46 |    +0.0% | -524.881 | -3038644.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     258* |       0 |     112 |        0 |      0 |    47 |    +0.0% | -524.881 | -3038643.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     260* |       0 |     112 |        0 |      0 |    48 |    +0.0% | -524.881 | -3038643.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     260* |       0 |     112 |        0 |      0 |    48 |    +0.0% | -524.881 | -3038643.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     262* |       0 |     112 |        0 |      0 |    49 |    +0.0% | -524.881 | -3038642.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     264* |       0 |     112 |        0 |      0 |    50 |    +0.0% | -524.881 | -3038641.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     266* |       0 |     112 |        0 |      0 |    51 |    +0.0% | -524.881 | -3038640.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     268* |       0 |     112 |        0 |      0 |    52 |    +0.0% | -524.881 | -3038640.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     270* |       0 |     112 |        0 |      0 |    53 |    +0.0% | -524.881 | -3038639.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     270* |       0 |     112 |        0 |      0 |    53 |    +0.0% | -524.881 | -3038639.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     272* |       0 |     112 |        0 |      0 |    54 |    +0.0% | -524.881 | -3038638.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     276* |       0 |     114 |        0 |      0 |    55 |    +0.0% | -524.881 | -3038604.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     278* |       0 |     114 |        0 |      0 |    56 |    +0.0% | -524.881 | -3038603.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     280* |       0 |     114 |        0 |      0 |    57 |    +0.0% | -524.881 | -3038603.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     280* |       0 |     114 |        0 |      0 |    57 |    +0.0% | -524.881 | -3038603.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     282* |       0 |     114 |        0 |      0 |    58 |    +0.0% | -524.881 | -3038602.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     284* |       0 |     114 |        0 |      0 |    59 |    +0.0% | -524.881 | -3038601.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     286* |       0 |     114 |        0 |      0 |    60 |    +0.0% | -524.881 | -3038601.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     288* |       0 |     114 |        0 |      0 |    61 |    +0.0% | -524.881 | -3038600.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     290* |       0 |     114 |        0 |      0 |    62 |    +0.0% | -524.881 | -3038599.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     290* |       0 |     114 |        0 |      0 |    62 |    +0.0% | -524.881 | -3038599.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     292* |       0 |     114 |        0 |      0 |    63 |    +0.0% | -524.881 | -3038598.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     294* |       0 |     114 |        0 |      0 |    64 |    +0.0% | -524.881 | -3038598.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     296* |       0 |     114 |        0 |      0 |    65 |    +0.0% | -524.881 | -3038597.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     298* |       0 |     114 |        0 |      0 |    66 |    +0.0% | -524.881 | -3038596.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     300* |       0 |     114 |        0 |      0 |    67 |    +0.0% | -524.881 | -3038596.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     300* |       0 |     114 |        0 |      0 |    67 |    +0.0% | -524.881 | -3038596.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     302* |       0 |     114 |        0 |      0 |    68 |    +0.0% | -524.881 | -3038595.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     304* |       0 |     114 |        0 |      0 |    69 |    +0.0% | -524.881 | -3038594.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     306* |       0 |     114 |        0 |      0 |    70 |    +0.0% | -524.881 | -3038593.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     308* |       0 |     114 |        0 |      0 |    71 |    +0.0% | -524.881 | -3038593.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     310* |       0 |     114 |        0 |      0 |    72 |    +0.0% | -524.881 | -3038592.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     310* |       0 |     114 |        0 |      0 |    72 |    +0.0% | -524.881 | -3038592.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     312* |       0 |     114 |        0 |      0 |    73 |    +0.0% | -524.881 | -3038591.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     314* |       0 |     114 |        0 |      0 |    74 |    +0.0% | -524.881 | -3038590.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     316* |       0 |     114 |        0 |      0 |    75 |    +0.0% | -524.881 | -3038590.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     318* |       0 |     114 |        0 |      0 |    76 |    +0.0% | -524.881 | -3038589.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     320* |       0 |     114 |        0 |      0 |    77 |    +0.0% | -524.881 | -3038588.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     320* |       0 |     114 |        0 |      0 |    77 |    +0.0% | -524.881 | -3038588.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     322* |       0 |     114 |        0 |      0 |    78 |    +0.0% | -524.881 | -3038588.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     324* |       0 |     114 |        0 |      0 |    79 |    +0.0% | -524.881 | -3038587.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     326* |       0 |     114 |        0 |      0 |    80 |    +0.0% | -524.881 | -3038586.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     328* |       0 |     114 |        0 |      0 |    81 |    +0.0% | -524.881 | -3038585.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     330* |       0 |     114 |        0 |      0 |    82 |    +0.0% | -524.881 | -3038585.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     330* |       0 |     114 |        0 |      0 |    82 |    +0.0% | -524.881 | -3038585.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     332* |       0 |     114 |        0 |      0 |    83 |    +0.0% | -524.881 | -3038584.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     334* |       0 |     114 |        0 |      0 |    84 |    +0.0% | -524.881 | -3038583.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     336* |       0 |     114 |        0 |      0 |    85 |    +0.0% | -524.881 | -3038582.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     338* |       0 |     114 |        0 |      0 |    86 |    +0.0% | -524.881 | -3038582.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     340* |       0 |     114 |        0 |      0 |    87 |    +0.0% | -524.881 | -3038581.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     340* |       0 |     114 |        0 |      0 |    87 |    +0.0% | -524.881 | -3038581.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     342* |       0 |     114 |        0 |      0 |    88 |    +0.0% | -524.881 | -3038580.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     344* |       0 |     114 |        0 |      0 |    89 |    +0.0% | -524.881 | -3038579.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     346* |       0 |     114 |        0 |      0 |    90 |    +0.0% | -524.881 | -3038579.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     348* |       0 |     114 |        0 |      0 |    91 |    +0.0% | -524.881 | -3038578.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     350* |       0 |     114 |        0 |      0 |    92 |    +0.0% | -524.881 | -3038577.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     350* |       0 |     114 |        0 |      0 |    92 |    +0.0% | -524.881 | -3038577.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     352* |       0 |     114 |        0 |      0 |    93 |    +0.0% | -524.881 | -3038577.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     354* |       0 |     114 |        0 |      0 |    94 |    +0.0% | -524.881 | -3038576.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     356* |       0 |     114 |        0 |      0 |    95 |    +0.0% | -524.881 | -3038575.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     360* |       0 |     117 |        0 |      0 |    95 |    +0.0% | -524.881 | -3038298.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     361* |       0 |     118 |        0 |      0 |    95 |    +0.0% | -524.881 | -3038078.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     362* |       0 |     118 |        0 |      0 |    95 |    +0.0% | -524.881 | -3038078.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     363* |       0 |     118 |        0 |      0 |    95 |    +0.0% | -524.881 | -3038078.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     364* |       0 |     118 |        0 |      0 |    95 |    +0.0% | -524.881 | -3038078.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     365* |       0 |     118 |        0 |      0 |    95 |    +0.0% | -524.881 | -3038078.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     366* |       0 |     118 |        0 |      0 |    95 |    +0.0% | -524.881 | -3038078.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     367* |       0 |     118 |        0 |      0 |    95 |    +0.0% | -524.881 | -3038078.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     370* |       0 |     118 |        0 |      0 |    97 |    +0.0% | -524.881 | -3038063.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     370* |       0 |     118 |        0 |      0 |    96 |    +0.0% | -524.881 | -3038068.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     373* |       0 |     118 |        0 |      0 |    97 |    +0.0% | -524.881 | -3038058.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     376* |       0 |     118 |        0 |      0 |    98 |    +0.0% | -524.881 | -3038049.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     379* |       0 |     118 |        0 |      0 |   100 |    +0.0% | -524.881 | -3038037.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     380* |       0 |     118 |        0 |      0 |   100 |    +0.0% | -524.881 | -3038037.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     382* |       0 |     118 |        0 |      0 |   101 |    +0.0% | -524.881 | -3038029.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     385* |       0 |     118 |        0 |      0 |   103 |    +0.0% | -524.881 | -3038020.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     388* |       0 |     118 |        0 |      0 |   105 |    +0.0% | -524.881 | -3038012.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     390* |       0 |     118 |        0 |      0 |   106 |    +0.0% | -524.881 | -3038005.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     391* |       0 |     118 |        0 |      0 |   107 |    +0.0% | -524.881 | -3038004.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     394* |       0 |     118 |        0 |      0 |   109 |    +0.0% | -524.881 | -3037996.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     397* |       0 |     118 |        0 |      0 |   111 |    +0.0% | -524.881 | -3037988.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     400* |       0 |     118 |        0 |      0 |   113 |    +0.0% | -524.881 | -3037980.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     400* |       0 |     118 |        0 |      0 |   112 |    +0.0% | -524.881 | -3037980.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     403* |       0 |     118 |        0 |      0 |   114 |    +0.0% | -524.881 | -3037972.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     406* |       0 |     118 |        0 |      0 |   116 |    +0.0% | -524.881 | -3037964.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     409* |       0 |     118 |        0 |      0 |   118 |    +0.0% | -524.881 | -3037955.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     410* |       0 |     118 |        0 |      0 |   118 |    +0.0% | -524.881 | -3037955.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     412* |       0 |     118 |        0 |      0 |   120 |    +0.0% | -524.881 | -3037947.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     415* |       0 |     118 |        0 |      0 |   122 |    +0.0% | -524.881 | -3037939.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     418* |       0 |     118 |        0 |      0 |   123 |    +0.0% | -524.881 | -3037931.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     420* |       0 |     118 |        0 |      0 |   124 |    +0.0% | -524.881 | -3037924.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     421* |       0 |     118 |        0 |      0 |   125 |    +0.0% | -524.881 | -3037923.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     424* |       0 |     118 |        0 |      0 |   126 |    +0.0% | -524.881 | -3037915.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     427* |       0 |     118 |        0 |      0 |   127 |    +0.0% | -524.881 | -3037908.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     430* |       0 |     118 |        0 |      0 |   129 |    +0.0% | -524.881 | -3037900.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     430* |       0 |     118 |        0 |      0 |   128 |    +0.0% | -524.881 | -3037900.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     433* |       0 |     118 |        0 |      0 |   129 |    +0.0% | -524.881 | -3037890.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     436* |       0 |     118 |        0 |      0 |   130 |    +0.0% | -524.881 | -3037881.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     439* |       0 |     118 |        0 |      0 |   131 |    +0.0% | -524.881 | -3037873.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     440* |       0 |     118 |        0 |      0 |   131 |    +0.0% | -524.881 | -3037873.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     442* |       0 |     118 |        0 |      0 |   132 |    +0.0% | -524.881 | -3037865.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     445* |       0 |     118 |        0 |      0 |   134 |    +0.0% | -524.881 | -3037857.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     448* |       0 |     118 |        0 |      0 |   135 |    +0.0% | -524.881 | -3037850.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     450* |       0 |     118 |        0 |      0 |   136 |    +0.0% | -524.881 | -3037842.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     451* |       0 |     118 |        0 |      0 |   136 |    +0.0% | -524.881 | -3037842.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     454* |       0 |     118 |        0 |      0 |   137 |    +0.0% | -524.881 | -3037834.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     457* |       0 |     118 |        0 |      0 |   138 |    +0.0% | -524.881 | -3037826.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     460* |       0 |     118 |        0 |      0 |   140 |    +0.0% | -524.881 | -3037818.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     460* |       0 |     118 |        0 |      0 |   139 |    +0.0% | -524.881 | -3037818.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     463* |       0 |     118 |        0 |      0 |   141 |    +0.0% | -524.881 | -3037810.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     466* |       0 |     118 |        0 |      0 |   142 |    +0.0% | -524.881 | -3037800.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     469* |       0 |     118 |        0 |      0 |   144 |    +0.0% | -524.881 | -3037792.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     470* |       0 |     118 |        0 |      0 |   144 |    +0.0% | -524.881 | -3037792.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     472* |       0 |     118 |        0 |      0 |   146 |    +0.0% | -524.881 | -3037784.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     475* |       0 |     118 |        0 |      0 |   147 |    +0.0% | -524.881 | -3037776.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     478* |       0 |     118 |        0 |      0 |   148 |    +0.0% | -524.881 | -3037769.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     480* |       0 |     118 |        0 |      0 |   149 |    +0.0% | -524.881 | -3037761.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     481* |       0 |     118 |        0 |      0 |   149 |    +0.0% | -524.881 | -3037761.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     483* |       0 |     118 |        0 |      0 |   150 |    +0.0% | -524.881 | -3037757.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     485* |       0 |     118 |        0 |      0 |   151 |    +0.0% | -524.881 | -3037754.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     487* |       0 |     118 |        0 |      0 |   152 |    +0.0% | -524.881 | -3037750.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     490* |       0 |     118 |        0 |      0 |   154 |    +0.0% | -524.881 | -3037742.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     490* |       0 |     118 |        0 |      0 |   154 |    +0.0% | -524.881 | -3037742.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     493* |       0 |     118 |        0 |      0 |   156 |    +0.0% | -524.881 | -3037734.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     495* |       0 |     118 |        0 |      0 |   157 |    +0.0% | -524.881 | -3037726.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     498* |       0 |     118 |        0 |      0 |   159 |    +0.0% | -524.881 | -3037718.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     500* |       0 |     118 |        0 |      0 |   160 |    +0.0% | -524.881 | -3037710.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     501* |       0 |     118 |        0 |      0 |   161 |    +0.0% | -524.881 | -3037709.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     504* |       0 |     118 |        0 |      0 |   163 |    +0.0% | -524.881 | -3037701.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     505* |       0 |     118 |        0 |      0 |   163 |    +0.0% | -524.881 | -3037701.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     506* |       0 |     118 |        0 |      0 |   163 |    +0.0% | -524.881 | -3037701.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     508* |       0 |     118 |        0 |      0 |   164 |    +0.0% | -524.881 | -3037694.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     510* |       0 |     119 |        0 |      0 |   164 |    +0.0% | -524.881 | -3037665.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     512* |       0 |     121 |        0 |      0 |   164 |    +0.0% | -524.881 | -3038994.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     513* |       0 |     121 |        0 |      0 |   164 |    +0.0% | -524.881 | -3038994.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     514* |       0 |     121 |        0 |      0 |   164 |    +0.0% | -524.881 | -3038994.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     515* |       0 |     121 |        0 |      0 |   164 |    +0.0% | -524.881 | -3038994.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     516* |       0 |     121 |        0 |      0 |   164 |    +0.0% | -524.881 | -3038994.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     517* |       0 |     121 |        0 |      0 |   164 |    +0.0% | -524.881 | -3038994.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     520* |       0 |     121 |        0 |      0 |   166 |    +0.0% | -524.881 | -3038984.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     520* |       0 |     121 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038984.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     521* |       0 |     121 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038984.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     524* |       0 |     123 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038945.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     527* |       0 |     125 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038907.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     530* |       0 |     127 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038869.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     530* |       0 |     127 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038869.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     531* |       0 |     127 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038869.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     534* |       0 |     129 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038831.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     535* |       0 |     129 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038831.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     538* |       0 |     131 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038785.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     540* |       0 |     132 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038750.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     541* |       0 |     133 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038739.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     544* |       0 |     135 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038693.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     547* |       0 |     137 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038647.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     548* |       0 |     137 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038647.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     550* |       0 |     138 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038612.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     551* |       0 |     139 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038609.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     552* |       0 |     139 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038609.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     553* |       0 |     139 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038609.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     554* |       0 |     139 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038609.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     557* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     558* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     559* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     560* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     560* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     561* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     562* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     563* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     564* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     565* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     566* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     567* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     568* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     569* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     570* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     570* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     571* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     572* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     573* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     574* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     575* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     576* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     577* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     578* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     579* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     580* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     580* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     581* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     582* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     583* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     584* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     585* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     586* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     587* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     588* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     589* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     590* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     590* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     591* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     592* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     593* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     594* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     595* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     596* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     597* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     598* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     599* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     600* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     600* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     601* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     602* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     603* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     604* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     605* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     606* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     607* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     608* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     609* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     610* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     610* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     611* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     612* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     613* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     614* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     615* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     616* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     617* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     618* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     619* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     620* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     620* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     621* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     622* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     623* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     624* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     625* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     626* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     627* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     628* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     629* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     630* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     630* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     631* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     632* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     633* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     634* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     635* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     636* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     637* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     638* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     639* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     640* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     640* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     641* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     642* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     643* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     644* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     645* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     646* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     647* |       0 |     141 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038562.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     650* |       0 |     143 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038573.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     654* |       0 |     147 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038148.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     656* |       0 |     148 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038149.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     658* |       0 |     149 |        0 |      0 |   165 |    +0.0% | -524.881 | -3038149.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     660* |       0 |     150 |        0 |      0 |   165 |    +0.0% | -524.881 | -3030848.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     660* |       0 |     150 |        0 |      0 |   165 |    +0.0% | -524.881 | -3030848.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     662* |       0 |     151 |        0 |      0 |   165 |    +0.0% | -524.881 | -3030848.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     670* |       0 |     156 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991369.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     671* |       0 |     157 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991613.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     672* |       0 |     157 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991613.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     673* |       0 |     157 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991613.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     674* |       0 |     157 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991613.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     675* |       0 |     157 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991613.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     676* |       0 |     157 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991613.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     677* |       0 |     157 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991613.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     678* |       0 |     157 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991613.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     679* |       0 |     157 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991613.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     680* |       0 |     157 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991613.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     682* |       0 |     159 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991580.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     683* |       0 |     159 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991580.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     686* |       0 |     161 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991547.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     689* |       0 |     163 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991513.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     690* |       0 |     163 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991513.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     692* |       0 |     165 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991480.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     693* |       0 |     165 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991480.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     694* |       0 |     165 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991480.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     697* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     698* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     699* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     700* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     700* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     701* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     702* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     703* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     704* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     705* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     706* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     707* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     708* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     709* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     710* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     710* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     711* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     712* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     713* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     714* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     715* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     716* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     717* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     718* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     719* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     720* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     720* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     721* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     722* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     723* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     724* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     725* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     726* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     727* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     728* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     729* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     730* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     730* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     731* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     732* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     733* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     734* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     735* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     736* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     737* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     738* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     739* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     740* |       0 |     167 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991446.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     743* |       0 |     170 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991356.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     744* |       0 |     170 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991356.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     745* |       0 |     170 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991356.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     746* |       0 |     170 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991356.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     747* |       0 |     170 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991356.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     748* |       0 |     170 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991356.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     749* |       0 |     170 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991356.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     750* |       0 |     170 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991356.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     750* |       0 |     170 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991356.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     751* |       0 |     170 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991356.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     752* |       0 |     170 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991356.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     753* |       0 |     170 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991356.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     757* |       0 |     173 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991331.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     760* |       0 |     175 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991303.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     761* |       0 |     176 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991304.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     763* |       0 |     177 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991306.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     767* |       0 |     180 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991280.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     769* |       0 |     181 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991283.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     770* |       0 |     181 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991283.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     771* |       0 |     182 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991285.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     775* |       0 |     185 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991255.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     777* |       0 |     186 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991256.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     779* |       0 |     187 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991256.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     780* |       0 |     187 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991256.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     781* |       0 |     188 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991259.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     783* |       0 |     189 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991259.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     785* |       0 |     190 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991260.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     787* |       0 |     191 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991260.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     789* |       0 |     192 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991260.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     790* |       0 |     192 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991260.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     791* |       0 |     193 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991261.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     793* |       0 |     194 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991261.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     795* |       0 |     195 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991262.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     797* |       0 |     196 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991262.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     799* |       0 |     197 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991262.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     800* |       0 |     197 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991262.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     801* |       0 |     198 |        0 |      0 |   167 |    +0.0% | -524.881 | -2991263.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     803* |       0 |     199 |        0 |      0 |   167 |    +0.1% | -524.881 | -2991265.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     805* |       0 |     200 |        0 |      0 |   167 |    +0.1% | -524.881 | -2991266.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     807* |       0 |     201 |        0 |      0 |   167 |    +0.1% | -524.881 | -2991268.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     809* |       0 |     202 |        0 |      0 |   167 |    +0.1% | -524.881 | -2991270.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     810* |       0 |     202 |        0 |      0 |   167 |    +0.1% | -524.881 | -2991270.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     811* |       0 |     203 |        0 |      0 |   167 |    +0.1% | -524.881 | -2991270.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     813* |       0 |     204 |        0 |      0 |   167 |    +0.1% | -524.881 | -2991270.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     815* |       0 |     205 |        0 |      0 |   167 |    +0.1% | -524.881 | -2991271.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     817* |       0 |     206 |        0 |      0 |   167 |    +0.1% | -524.881 | -2991271.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     819* |       0 |     207 |        0 |      0 |   167 |    +0.1% | -524.881 | -2991272.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     820* |       0 |     207 |        0 |      0 |   167 |    +0.1% | -524.881 | -2991272.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     821* |       0 |     208 |        0 |      0 |   167 |    +0.1% | -524.881 | -2991273.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     823* |       0 |     209 |        0 |      0 |   167 |    +0.1% | -524.881 | -2991274.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     825* |       0 |     210 |        0 |      0 |   167 |    +0.1% | -524.881 | -2991275.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     827* |       0 |     211 |        0 |      0 |   167 |    +0.1% | -524.881 | -2991277.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     829* |       0 |     212 |        0 |      0 |   167 |    +0.1% | -524.881 | -2991277.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     830* |       0 |     212 |        0 |      0 |   167 |    +0.1% | -524.881 | -2991277.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     831* |       0 |     213 |        0 |      0 |   167 |    +0.1% | -524.881 | -2991278.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     833* |       0 |     214 |        0 |      0 |   167 |    +0.1% | -524.881 | -2991278.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     835* |       0 |     215 |        0 |      0 |   167 |    +0.1% | -524.881 | -2991279.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     837* |       0 |     216 |        0 |      0 |   167 |    +0.1% | -524.881 | -2991279.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     839* |       0 |     217 |        0 |      0 |   167 |    +0.1% | -524.881 | -2982027.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     840* |       0 |     217 |        0 |      0 |   167 |    +0.1% | -524.881 | -2982027.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     841* |       0 |     218 |        0 |      0 |   167 |    +0.1% | -524.881 | -2982029.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     843* |       0 |     219 |        0 |      0 |   167 |    +0.1% | -524.881 | -2982031.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     844* |       0 |     219 |        0 |      0 |   167 |    +0.1% | -524.881 | -2982031.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     845* |       0 |     219 |        0 |      0 |   167 |    +0.1% | -524.881 | -2982031.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     846* |       0 |     219 |        0 |      0 |   167 |    +0.1% | -524.881 | -2982031.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     847* |       0 |     219 |        0 |      0 |   167 |    +0.1% | -524.881 | -2982031.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     848* |       0 |     219 |        0 |      0 |   167 |    +0.1% | -524.881 | -2982031.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     849* |       0 |     219 |        0 |      0 |   167 |    +0.1% | -524.881 | -2982031.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     850* |       0 |     219 |        0 |      0 |   167 |    +0.1% | -524.881 | -2982031.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     850* |       0 |     219 |        0 |      0 |   167 |    +0.1% | -524.881 | -2982031.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     851* |       0 |     219 |        0 |      0 |   167 |    +0.1% | -524.881 | -2982031.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     852* |       0 |     219 |        0 |      0 |   167 |    +0.1% | -524.881 | -2982031.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     853* |       0 |     219 |        0 |      0 |   167 |    +0.1% | -524.881 | -2982031.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     854* |       0 |     219 |        0 |      0 |   167 |    +0.1% | -524.881 | -2982031.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     855* |       0 |     219 |        0 |      0 |   167 |    +0.1% | -524.881 | -2982031.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     856* |       0 |     219 |        0 |      0 |   167 |    +0.1% | -524.881 | -2982031.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     857* |       0 |     219 |        0 |      0 |   167 |    +0.1% | -524.881 | -2982031.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     860* |       0 |     221 |        0 |      0 |   167 |    +0.1% | -524.881 | -2982041.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     864* |       0 |     225 |        0 |      0 |   167 |    +0.1% | -524.881 | -2981617.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     866* |       0 |     226 |        0 |      0 |   167 |    +0.1% | -524.881 | -2981617.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     868* |       0 |     227 |        0 |      0 |   167 |    +0.1% | -524.881 | -2981617.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     870* |       0 |     228 |        0 |      0 |   167 |    +0.1% | -524.881 | -2981617.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     870* |       0 |     228 |        0 |      0 |   167 |    +0.1% | -524.881 | -2981617.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     874* |       0 |     231 |        0 |      0 |   167 |    +0.1% | -524.881 | -2981527.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     875* |       0 |     231 |        0 |      0 |   167 |    +0.1% | -524.881 | -2981527.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     876* |       0 |     231 |        0 |      0 |   167 |    +0.1% | -524.881 | -2981527.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     877* |       0 |     231 |        0 |      0 |   167 |    +0.1% | -524.881 | -2981527.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     878* |       0 |     231 |        0 |      0 |   167 |    +0.1% | -524.881 | -2981527.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     879* |       0 |     231 |        0 |      0 |   167 |    +0.1% | -524.881 | -2981527.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     880* |       0 |     231 |        0 |      0 |   167 |    +0.1% | -524.881 | -2981527.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     880* |       0 |     231 |        0 |      0 |   167 |    +0.1% | -524.881 | -2981527.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     881* |       0 |     231 |        0 |      0 |   167 |    +0.1% | -524.881 | -2981527.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     882* |       0 |     231 |        0 |      0 |   167 |    +0.1% | -524.881 | -2981527.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     883* |       0 |     231 |        0 |      0 |   167 |    +0.1% | -524.881 | -2981527.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     885* |       0 |     231 |        0 |      0 |   168 |    +0.1% | -524.881 | -2981523.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     887* |       0 |     231 |        0 |      0 |   169 |    +0.1% | -524.881 | -2981520.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     889* |       0 |     231 |        0 |      0 |   170 |    +0.1% | -524.881 | -2981516.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     890* |       0 |     231 |        0 |      0 |   170 |    +0.1% | -524.881 | -2981516.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     891* |       0 |     232 |        0 |      0 |   170 |    +0.1% | -524.881 | -2981522.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     893* |       0 |     233 |        0 |      0 |   170 |    +0.1% | -524.881 | -2981530.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     896* |       0 |     234 |        0 |      0 |   170 |    +0.1% | -524.881 | -2981537.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     899* |       0 |     235 |        0 |      0 |   170 |    +0.1% | -524.881 | -2981544.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     900* |       0 |     235 |        0 |      0 |   170 |    +0.1% | -524.881 | -2981544.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     902* |       0 |     237 |        0 |      0 |   170 |    +0.1% | -524.881 | -2969035.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     906* |       0 |     240 |        0 |      0 |   170 |    +0.1% | -524.881 | -2969011.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     910* |       0 |     243 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968983.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     910* |       0 |     243 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968983.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     912* |       0 |     244 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968986.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     916* |       0 |     247 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968959.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     918* |       0 |     248 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968962.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     920* |       0 |     249 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968964.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     920* |       0 |     249 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968964.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     924* |       0 |     252 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968934.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     926* |       0 |     253 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968935.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     928* |       0 |     254 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968935.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     930* |       0 |     255 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968938.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     930* |       0 |     255 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968938.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     932* |       0 |     256 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968938.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     934* |       0 |     257 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968938.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     936* |       0 |     258 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968939.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     938* |       0 |     259 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968939.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     940* |       0 |     260 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968940.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     940* |       0 |     260 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968940.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     942* |       0 |     261 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968940.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     944* |       0 |     262 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968940.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     946* |       0 |     263 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968941.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     948* |       0 |     264 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968941.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     950* |       0 |     265 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968942.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     950* |       0 |     265 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968942.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     952* |       0 |     266 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968944.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     954* |       0 |     267 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968944.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     956* |       0 |     268 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968946.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     958* |       0 |     269 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968948.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     960* |       0 |     270 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968948.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     960* |       0 |     270 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968948.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     962* |       0 |     271 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968949.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     964* |       0 |     272 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968949.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     966* |       0 |     273 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968949.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     968* |       0 |     274 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968951.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     970* |       0 |     275 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968952.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     970* |       0 |     275 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968952.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     972* |       0 |     276 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968952.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     974* |       0 |     277 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968954.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     976* |       0 |     278 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968955.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     978* |       0 |     279 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968956.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     980* |       0 |     280 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968956.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     980* |       0 |     280 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968956.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     982* |       0 |     281 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968957.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     984* |       0 |     282 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968957.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     986* |       0 |     283 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968958.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     988* |       0 |     284 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968960.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     990* |       0 |     285 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968961.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     990* |       0 |     285 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968961.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     991* |       0 |     285 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968961.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     992* |       0 |     285 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968961.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     993* |       0 |     285 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968961.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     994* |       0 |     285 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968961.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     995* |       0 |     285 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968961.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+     996* |       0 |     285 |        0 |      0 |   170 |    +0.1% | -524.881 | -2968961.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1000* |       0 |     288 |        0 |      0 |   170 |    +0.1% | -524.881 | -2946127.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1007* |       0 |     295 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929402.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1008* |       0 |     295 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929402.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1009* |       0 |     295 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929402.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1010* |       0 |     295 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929402.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1010* |       0 |     295 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929402.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1011* |       0 |     295 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929402.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1012* |       0 |     295 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929402.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1013* |       0 |     295 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929402.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1014* |       0 |     295 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929402.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1015* |       0 |     295 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929402.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1018* |       0 |     297 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929369.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1020* |       0 |     298 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929335.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1021* |       0 |     299 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929337.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1024* |       0 |     301 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929303.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1025* |       0 |     301 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929303.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1028* |       0 |     303 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929270.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1029* |       0 |     303 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929270.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1030* |       0 |     303 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929270.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1030* |       0 |     303 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929270.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1033* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1034* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1035* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1036* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1037* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1038* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1039* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1040* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1040* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1041* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1042* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1043* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1044* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1045* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1046* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1047* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1048* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1049* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1050* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1050* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1051* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1052* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1053* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1054* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1055* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1056* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1057* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1058* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1059* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1060* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1060* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1061* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1062* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1063* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1064* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1065* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1066* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1067* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1068* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1069* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1070* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1070* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1071* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1072* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1073* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1074* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1075* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1076* |       0 |     305 |        0 |      0 |   170 |    +0.1% | -524.881 | -2929236.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1080* |       0 |     308 |        0 |      0 |   170 |    +0.1% | -524.881 | -2920813.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1090* |       0 |     315 |        0 |      0 |   173 |    +0.1% | -524.881 | -2906599.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1092* |       0 |     317 |        0 |      0 |   173 |    +0.1% | -524.881 | -2906751.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1094* |       0 |     318 |        0 |      0 |   173 |    +0.1% | -524.881 | -2906754.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1096* |       0 |     319 |        0 |      0 |   173 |    +0.1% | -524.881 | -2906757.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1100* |       0 |     322 |        0 |      0 |   173 |    +0.1% | -524.881 | -2906496.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1103* |       0 |     325 |        0 |      0 |   173 |    +0.1% | -524.881 | -2906343.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1105* |       0 |     326 |        0 |      0 |   173 |    +0.1% | -524.881 | -2906344.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1107* |       0 |     327 |        0 |      0 |   173 |    +0.1% | -524.881 | -2906344.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1110* |       0 |     329 |        0 |      0 |   173 |    +0.1% | -524.881 | -2906281.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1114* |       0 |     332 |        0 |      0 |   174 |    +0.1% | -524.881 | -2904068.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1118* |       0 |     335 |        0 |      0 |   174 |    +0.1% | -524.881 | -2903756.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1120* |       0 |     336 |        0 |      0 |   174 |    +0.1% | -524.881 | -2903730.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1122* |       0 |     338 |        0 |      0 |   174 |    +0.1% | -524.881 | -2903443.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1126* |       0 |     341 |        0 |      0 |   174 |    +0.1% | -524.881 | -2903131.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1130* |       0 |     344 |        0 |      0 |   174 |    +0.1% | -524.881 | -2902876.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1130* |       0 |     344 |        0 |      0 |   174 |    +0.1% | -524.881 | -2902876.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1131* |       0 |     344 |        0 |      0 |   174 |    +0.1% | -524.881 | -2902876.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1132* |       0 |     344 |        0 |      0 |   174 |    +0.1% | -524.881 | -2902876.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1133* |       0 |     344 |        0 |      0 |   174 |    +0.1% | -524.881 | -2902876.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1134* |       0 |     344 |        0 |      0 |   174 |    +0.1% | -524.881 | -2902876.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1135* |       0 |     344 |        0 |      0 |   174 |    +0.1% | -524.881 | -2902876.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1136* |       0 |     344 |        0 |      0 |   174 |    +0.1% | -524.881 | -2902876.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1137* |       0 |     344 |        0 |      0 |   174 |    +0.1% | -524.881 | -2902876.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1138* |       0 |     344 |        0 |      0 |   174 |    +0.1% | -524.881 | -2902876.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1140* |       0 |     345 |        0 |      0 |   174 |    +0.1% | -524.881 | -2902850.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1143* |       0 |     347 |        0 |      0 |   175 |    +0.1% | -524.881 | -2902502.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1144* |       0 |     347 |        0 |      0 |   175 |    +0.1% | -524.881 | -2902502.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1149* |       0 |     350 |        0 |      0 |   176 |    +0.1% | -524.881 | -2902127.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1150* |       0 |     350 |        0 |      0 |   176 |    +0.1% | -524.881 | -2902127.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1154* |       0 |     353 |        0 |      0 |   177 |    +0.1% | -524.881 | -2901751.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1155* |       0 |     353 |        0 |      0 |   177 |    +0.1% | -524.881 | -2901751.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1156* |       0 |     353 |        0 |      0 |   177 |    +0.1% | -524.881 | -2901751.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1157* |       0 |     353 |        0 |      0 |   177 |    +0.1% | -524.881 | -2901751.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1158* |       0 |     353 |        0 |      0 |   177 |    +0.1% | -524.881 | -2901751.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1159* |       0 |     353 |        0 |      0 |   177 |    +0.1% | -524.881 | -2901751.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1160* |       0 |     353 |        0 |      0 |   177 |    +0.1% | -524.881 | -2901751.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1160* |       0 |     353 |        0 |      0 |   177 |    +0.1% | -524.881 | -2901751.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1161* |       0 |     353 |        0 |      0 |   177 |    +0.1% | -524.881 | -2901751.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1163* |       0 |     354 |        0 |      0 |   177 |    +0.1% | -524.881 | -2901751.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1164* |       0 |     354 |        0 |      0 |   177 |    +0.1% | -524.881 | -2901751.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1165* |       0 |     354 |        0 |      0 |   177 |    +0.1% | -524.881 | -2901751.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1166* |       0 |     354 |        0 |      0 |   177 |    +0.1% | -524.881 | -2901751.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1170* |       0 |     357 |        0 |      0 |   177 |    +0.1% | -524.881 | -2901392.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1170* |       0 |     357 |        0 |      0 |   177 |    +0.1% | -524.881 | -2901392.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1175* |       0 |     361 |        0 |      0 |   177 |    +0.1% | -524.881 | -2894025.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1179* |       0 |     364 |        0 |      0 |   177 |    +0.1% | -524.881 | -2893716.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1180* |       0 |     364 |        0 |      0 |   177 |    +0.1% | -524.881 | -2893716.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1184* |       0 |     367 |        0 |      0 |   178 |    +0.1% | -524.881 | -2893344.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1186* |       0 |     367 |        0 |      0 |   179 |    +0.1% | -524.881 | -2893281.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1188* |       0 |     367 |        0 |      0 |   180 |    +0.1% | -524.881 | -2893218.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1189* |       0 |     367 |        0 |      0 |   180 |    +0.1% | -524.881 | -2893218.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1190* |       0 |     367 |        0 |      0 |   180 |    +0.1% | -524.881 | -2893218.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1194* |       0 |     370 |        0 |      0 |   181 |    +0.1% | -524.881 | -2892845.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1195* |       0 |     370 |        0 |      0 |   181 |    +0.1% | -524.881 | -2892845.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1198* |       0 |     372 |        0 |      0 |   181 |    +0.1% | -524.881 | -2892824.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1200* |       0 |     373 |        0 |      0 |   181 |    +0.1% | -524.881 | -2892798.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1201* |       0 |     374 |        0 |      0 |   181 |    +0.1% | -524.881 | -2892803.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1204* |       0 |     376 |        0 |      0 |   181 |    +0.1% | -524.881 | -2892782.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1207* |       0 |     378 |        0 |      0 |   181 |    +0.1% | -524.881 | -2892761.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1210* |       0 |     380 |        0 |      0 |   181 |    +0.1% | -524.881 | -2892739.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1210* |       0 |     380 |        0 |      0 |   181 |    +0.1% | -524.881 | -2892739.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1213* |       0 |     382 |        0 |      0 |   181 |    +0.1% | -524.881 | -2892718.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1216* |       0 |     384 |        0 |      0 |   181 |    +0.1% | -524.881 | -2892697.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1219* |       0 |     386 |        0 |      0 |   181 |    +0.1% | -524.881 | -2892676.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1220* |       0 |     386 |        0 |      0 |   181 |    +0.1% | -524.881 | -2892676.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1222* |       0 |     388 |        0 |      0 |   181 |    +0.1% | -524.881 | -2892655.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1225* |       0 |     390 |        0 |      0 |   181 |    +0.1% | -524.881 | -2892634.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1226* |       0 |     390 |        0 |      0 |   181 |    +0.1% | -524.881 | -2892634.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1227* |       0 |     390 |        0 |      0 |   181 |    +0.1% | -524.881 | -2892634.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1228* |       0 |     390 |        0 |      0 |   181 |    +0.1% | -524.881 | -2892634.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1229* |       0 |     390 |        0 |      0 |   181 |    +0.1% | -524.881 | -2892634.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1230* |       0 |     390 |        0 |      0 |   181 |    +0.1% | -524.881 | -2892634.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1232* |       0 |     392 |        0 |      0 |   181 |    +0.1% | -524.881 | -2892613.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1235* |       0 |     394 |        0 |      0 |   181 |    +0.1% | -524.881 | -2892591.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1238* |       0 |     396 |        0 |      0 |   181 |    +0.1% | -524.881 | -2892570.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1240* |       0 |     397 |        0 |      0 |   181 |    +0.1% | -524.881 | -2892544.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1241* |       0 |     398 |        0 |      0 |   181 |    +0.1% | -524.881 | -2892549.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1242* |       0 |     398 |        0 |      0 |   181 |    +0.1% | -524.881 | -2892549.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1243* |       0 |     398 |        0 |      0 |   181 |    +0.1% | -524.881 | -2892549.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1244* |       0 |     398 |        0 |      0 |   181 |    +0.1% | -524.881 | -2892549.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1245* |       0 |     398 |        0 |      0 |   181 |    +0.1% | -524.881 | -2892549.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1248* |       0 |     400 |        0 |      0 |   181 |    +0.1% | -524.881 | -2892528.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1250* |       0 |     401 |        0 |      0 |   181 |    +0.1% | -524.881 | -2892501.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1251* |       0 |     402 |        0 |      0 |   181 |    +0.1% | -524.881 | -2892507.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1254* |       0 |     404 |        0 |      0 |   181 |    +0.1% | -524.881 | -2892485.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1257* |       0 |     406 |        0 |      0 |   181 |    +0.1% | -524.881 | -2892464.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1258* |       0 |     406 |        0 |      0 |   181 |    +0.1% | -524.881 | -2892464.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1259* |       0 |     406 |        0 |      0 |   181 |    +0.1% | -524.881 | -2892464.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1260* |       0 |     406 |        0 |      0 |   181 |    +0.1% | -524.881 | -2892464.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1260* |       0 |     406 |        0 |      0 |   181 |    +0.1% | -524.881 | -2892464.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1261* |       0 |     406 |        0 |      0 |   181 |    +0.1% | -524.881 | -2892464.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1266* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1267* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1268* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1269* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1270* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1270* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1271* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1272* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1273* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1274* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1275* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1276* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1277* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1278* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1279* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1280* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1280* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1281* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1282* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1283* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1284* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1285* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1286* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1287* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1288* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1289* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1290* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1290* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1291* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1292* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1293* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1294* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1295* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1296* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1297* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1298* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1299* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1300* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1300* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1301* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1302* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1303* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1304* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1305* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1306* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1307* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1308* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1309* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1310* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1310* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1311* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1312* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1313* |       0 |     409 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892091.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1316* |       0 |     411 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892070.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1319* |       0 |     413 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892048.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1320* |       0 |     413 |        0 |      0 |   182 |    +0.1% | -524.881 | -2892048.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1323* |       0 |     416 |        0 |      0 |   182 |    +0.1% | -524.881 | -2891958.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1324* |       0 |     416 |        0 |      0 |   182 |    +0.1% | -524.881 | -2891958.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1325* |       0 |     416 |        0 |      0 |   182 |    +0.1% | -524.881 | -2891958.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1326* |       0 |     416 |        0 |      0 |   182 |    +0.1% | -524.881 | -2891958.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1327* |       0 |     416 |        0 |      0 |   182 |    +0.1% | -524.881 | -2891958.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1328* |       0 |     416 |        0 |      0 |   182 |    +0.1% | -524.881 | -2891958.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1329* |       0 |     416 |        0 |      0 |   182 |    +0.1% | -524.881 | -2891958.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1330* |       0 |     416 |        0 |      0 |   182 |    +0.1% | -524.881 | -2891958.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1330* |       0 |     416 |        0 |      0 |   182 |    +0.1% | -524.881 | -2891958.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1331* |       0 |     416 |        0 |      0 |   182 |    +0.1% | -524.881 | -2891958.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1332* |       0 |     416 |        0 |      0 |   182 |    +0.1% | -524.881 | -2891958.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1333* |       0 |     416 |        0 |      0 |   182 |    +0.1% | -524.881 | -2891958.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1334* |       0 |     416 |        0 |      0 |   182 |    +0.1% | -524.881 | -2891958.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1335* |       0 |     416 |        0 |      0 |   182 |    +0.1% | -524.881 | -2891958.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1338* |       0 |     418 |        0 |      0 |   182 |    +0.1% | -524.881 | -2891937.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1340* |       0 |     419 |        0 |      0 |   182 |    +0.1% | -524.881 | -2891910.8 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1341* |       0 |     420 |        0 |      0 |   182 |    +0.1% | -524.881 | -2891916.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1342* |       0 |     420 |        0 |      0 |   182 |    +0.1% | -524.881 | -2891916.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1345* |       0 |     422 |        0 |      0 |   182 |    +0.1% | -524.881 | -2891895.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1348* |       0 |     424 |        0 |      0 |   182 |    +0.1% | -524.881 | -2891874.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1350* |       0 |     425 |        0 |      0 |   182 |    +0.1% | -524.881 | -2891847.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1351* |       0 |     426 |        0 |      0 |   182 |    +0.1% | -524.881 | -2891852.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1352* |       0 |     426 |        0 |      0 |   182 |    +0.1% | -524.881 | -2891852.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1353* |       0 |     426 |        0 |      0 |   182 |    +0.1% | -524.881 | -2891852.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1357* |       0 |     428 |        0 |      0 |   183 |    +0.1% | -524.881 | -2891768.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1360* |       0 |     430 |        0 |      0 |   183 |    +0.1% | -524.881 | -2891747.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1361* |       0 |     430 |        0 |      0 |   184 |    +0.1% | -524.881 | -2891684.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1364* |       0 |     432 |        0 |      0 |   184 |    +0.1% | -524.881 | -2891663.0 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1367* |       0 |     434 |        0 |      0 |   184 |    +0.1% | -524.881 | -2891641.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1370* |       0 |     436 |        0 |      0 |   184 |    +0.1% | -524.881 | -2891620.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1370* |       0 |     436 |        0 |      0 |   184 |    +0.1% | -524.881 | -2891620.5 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1373* |       0 |     438 |        0 |      0 |   184 |    +0.1% | -524.881 | -2891599.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1374* |       0 |     438 |        0 |      0 |   184 |    +0.1% | -524.881 | -2891599.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1375* |       0 |     438 |        0 |      0 |   184 |    +0.1% | -524.881 | -2891599.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1376* |       0 |     438 |        0 |      0 |   184 |    +0.1% | -524.881 | -2891599.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1377* |       0 |     438 |        0 |      0 |   184 |    +0.1% | -524.881 | -2891599.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1378* |       0 |     438 |        0 |      0 |   184 |    +0.1% | -524.881 | -2891599.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1379* |       0 |     438 |        0 |      0 |   184 |    +0.1% | -524.881 | -2891599.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1380* |       0 |     438 |        0 |      0 |   184 |    +0.1% | -524.881 | -2891599.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1380* |       0 |     438 |        0 |      0 |   184 |    +0.1% | -524.881 | -2891599.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1381* |       0 |     438 |        0 |      0 |   184 |    +0.1% | -524.881 | -2891599.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1382* |       0 |     438 |        0 |      0 |   184 |    +0.1% | -524.881 | -2891599.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1383* |       0 |     438 |        0 |      0 |   184 |    +0.1% | -524.881 | -2891599.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1384* |       0 |     438 |        0 |      0 |   184 |    +0.1% | -524.881 | -2891599.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1385* |       0 |     438 |        0 |      0 |   184 |    +0.1% | -524.881 | -2891599.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1386* |       0 |     438 |        0 |      0 |   184 |    +0.1% | -524.881 | -2891599.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1387* |       0 |     438 |        0 |      0 |   184 |    +0.1% | -524.881 | -2891599.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1388* |       0 |     438 |        0 |      0 |   184 |    +0.1% | -524.881 | -2891599.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1389* |       0 |     438 |        0 |      0 |   184 |    +0.1% | -524.881 | -2891599.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1390* |       0 |     438 |        0 |      0 |   184 |    +0.1% | -524.881 | -2891599.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1390* |       0 |     438 |        0 |      0 |   184 |    +0.1% | -524.881 | -2891599.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1391* |       0 |     438 |        0 |      0 |   184 |    +0.1% | -524.881 | -2891599.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1392* |       0 |     438 |        0 |      0 |   184 |    +0.1% | -524.881 | -2891599.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1393* |       0 |     438 |        0 |      0 |   184 |    +0.1% | -524.881 | -2891599.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1394* |       0 |     438 |        0 |      0 |   184 |    +0.1% | -524.881 | -2891599.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1395* |       0 |     438 |        0 |      0 |   184 |    +0.1% | -524.881 | -2891599.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1396* |       0 |     438 |        0 |      0 |   184 |    +0.1% | -524.881 | -2891599.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1397* |       0 |     438 |        0 |      0 |   184 |    +0.1% | -524.881 | -2891599.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1398* |       0 |     438 |        0 |      0 |   184 |    +0.1% | -524.881 | -2891599.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1399* |       0 |     438 |        0 |      0 |   184 |    +0.1% | -524.881 | -2891599.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1400* |       0 |     438 |        0 |      0 |   184 |    +0.1% | -524.881 | -2891599.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1400* |       0 |     438 |        0 |      0 |   184 |    +0.1% | -524.881 | -2891599.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    1400* |       0 |     438 |        0 |      0 |   184 |    +0.1% | -524.881 | -2891599.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+    final |       0 |     438 |        0 |      0 |   184 |    +0.1% | -524.881 | -2891599.2 |  13735 | u_prefetch.u_stream.recent_line\[4\]$_DFFE_PP_/D
+------------------------------------------------------------------------------------------------------------------------------
+[INFO RSZ-0051] Resized 438 instances: 438 up, 0 up match, 0 down, 0 VT
+[INFO RSZ-0043] Swapped pins on 184 instances.
+[WARNING RSZ-0062] Unable to repair all setup violations.
+[INFO RSZ-0505] Runtime: 50.38s
+Took 51 seconds: repair_timing -setup_margin 0 -hold_margin 0 -repair_tns 100 -setup -skip_last_gasp -sequence unbuffer,sizeup,swap,vt_swap -verbose
+Default units for flow
+ time 1ps
+ capacitance 1fF
+ resistance 1kohm
+ voltage 1v
+ current 1mA
+ power 1pW
+ distance 1um
+   Layer   | Unit Resistance | Unit Capacitance 
+           |       (kohm/um) |          (fF/um)
+------------------------------------------------
+        M1 |        7.04e-02 |         1.00e-10
+        M2 |        2.97e-02 |         1.75e-01
+        M3 |        3.13e-02 |         1.56e-01
+        M4 |        1.80e-02 |         1.78e-01
+        M5 |        1.90e-02 |         1.64e-01
+        M6 |        1.19e-02 |         1.87e-01
+        M7 |        1.25e-02 |         1.63e-01
+        M8 |        8.45e-03 |         1.04e-01
+        M9 |        8.90e-03 |         9.28e-02
+       Pad |        0.00e+00 |         0.00e+00
+------------------------------------------------
+
+   Layer   | Via Resistance 
+           |         (kohm) 
+----------------------------
+        V1 |       1.72e-02 
+        V2 |       1.72e-02 
+        V3 |       1.72e-02 
+        V4 |       1.18e-02 
+        V5 |       1.18e-02 
+        V6 |       8.20e-03 
+        V7 |       8.20e-03 
+        V8 |       6.30e-03 
+        V9 |       6.30e-03 
+----------------------------
+Report metrics stage 2, floorplan final...
+
+==========================================================================
+floorplan final report_design_area
+--------------------------------------------------------------------------
+Design area 17809 um^2 40% utilization.
+write_sdc -no_timestamp /__w/test_dose_2/test_dose_2/pnr_out/work/results/asap7/pf3_timing_top/base/2_1_floorplan.sdc
+write_db /__w/test_dose_2/test_dose_2/pnr_out/work/results/asap7/pf3_timing_top/base/2_1_floorplan.odb
+Elapsed time: 1:17.45[h:]min:sec. CPU time: user 102.73 sys 1.61 (134%). Peak memory: 718264KB.
+Log                    Ext     Elapsed      CPU     CPU/ Peak Mem sha1sum
+                                     s        s  Elapsed       MB [0:10)
+2_1_floorplan          .odb         77      104     1.35      701 1cf3277fd4
+2_1_floorplan          .sdc                                       dd6c2f3eac

@@ -1,0 +1,21 @@
+max_delay/setup group clk
+
+                                     Required  Actual
+Endpoint                               Delay   Delay   Slack
+------------------------------------------------------------
+u_prefetch.u_stride.g_entry[54].u_entry.tgt_q[14]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_R)  476.78  789.59 -312.81 (VIOLATED)
+u_prefetch.u_stride.g_entry[5].u_entry.stride_q[3]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_R)  473.51  780.24 -306.72 (VIOLATED)
+u_prefetch.u_stride.g_entry[5].u_entry.stride_q[1]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_R)  474.70  780.77 -306.06 (VIOLATED)
+u_prefetch.u_stride.g_entry[5].u_entry.s3_q[1]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_R)  474.55  780.06 -305.51 (VIOLATED)
+u_prefetch.u_stride.g_entry[54].u_entry.tgt_q[6]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_R)  471.66  776.78 -305.12 (VIOLATED)
+u_prefetch.u_stride.g_entry[5].u_entry.tgt_q[7]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_R)  478.45  783.24 -304.79 (VIOLATED)
+u_prefetch.u_stride.g_entry[54].u_entry.tgt_q[13]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_R)  476.68  780.37 -303.69 (VIOLATED)
+u_prefetch.u_stride.g_entry[0].u_entry.s3_q[13]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_R)  474.10  777.69 -303.59 (VIOLATED)
+u_prefetch.u_stride.g_entry[54].u_entry.tgt_q[7]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_R)  472.72  776.17 -303.46 (VIOLATED)
+u_prefetch.u_stride.g_entry[5].u_entry.tgt_q[6]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_R)  478.75  781.68 -302.93 (VIOLATED)
+u_prefetch.u_stride.g_entry[0].u_entry.stride_q[8]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_R)  478.61  781.37 -302.77 (VIOLATED)
+u_prefetch.u_stride.g_entry[54].u_entry.tgt_q[8]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_R)  472.79  774.92 -302.13 (VIOLATED)
+u_prefetch.u_stride.g_entry[0].u_entry.stride_q[2]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_R)  479.29  781.41 -302.12 (VIOLATED)
+u_prefetch.u_stride.g_entry[0].u_entry.s3_q[2]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_R)  478.47  780.56 -302.09 (VIOLATED)
+u_prefetch.u_stride.g_entry[0].u_entry.stride_q[10]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_R)  478.62  780.47 -301.86 (VIOLATED)
+

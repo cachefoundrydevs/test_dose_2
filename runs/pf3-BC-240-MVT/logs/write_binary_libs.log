@@ -1,0 +1,22 @@
+OpenROAD unknown 
+Features included (+) or not (-): -GPU +GUI
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+[INFO ORD-0030] Using 2 thread(s).
+write_liberty_binary /OpenROAD-flow-scripts/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_AO_RVT_FF_nldm_211120.lib.gz /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_AO_RVT_FF_nldm_211120@4256548-1794015536-fbb2a041.blib.tmp.fcd4cc9f55d1.789
+write_liberty_binary /OpenROAD-flow-scripts/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_INVBUF_RVT_FF_nldm_220122.lib.gz /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_INVBUF_RVT_FF_nldm_220122@69351-1794015536-fbb2a041.blib.tmp.fcd4cc9f55d1.789
+write_liberty_binary /OpenROAD-flow-scripts/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_OA_RVT_FF_nldm_211120.lib.gz /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_OA_RVT_FF_nldm_211120@3829689-1794015536-fbb2a041.blib.tmp.fcd4cc9f55d1.789
+write_liberty_binary /OpenROAD-flow-scripts/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_SIMPLE_RVT_FF_nldm_211120.lib.gz /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_SIMPLE_RVT_FF_nldm_211120@317193-1794015536-fbb2a041.blib.tmp.fcd4cc9f55d1.789
+write_liberty_binary /OpenROAD-flow-scripts/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_SEQ_RVT_FF_nldm_220123.lib /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_SEQ_RVT_FF_nldm_220123@1510915-1794015536-fbb2a041.blib.tmp.fcd4cc9f55d1.789
+write_liberty_binary /OpenROAD-flow-scripts/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_AO_LVT_FF_nldm_211120.lib.gz /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_AO_LVT_FF_nldm_211120@4317540-1794015536-fbb2a041.blib.tmp.fcd4cc9f55d1.789
+write_liberty_binary /OpenROAD-flow-scripts/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_INVBUF_LVT_FF_nldm_220122.lib.gz /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_INVBUF_LVT_FF_nldm_220122@69812-1794015536-fbb2a041.blib.tmp.fcd4cc9f55d1.789
+write_liberty_binary /OpenROAD-flow-scripts/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_OA_LVT_FF_nldm_211120.lib.gz /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_OA_LVT_FF_nldm_211120@3894559-1794015536-fbb2a041.blib.tmp.fcd4cc9f55d1.789
+write_liberty_binary /OpenROAD-flow-scripts/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_SIMPLE_LVT_FF_nldm_211120.lib.gz /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_SIMPLE_LVT_FF_nldm_211120@454251-1794015536-fbb2a041.blib.tmp.fcd4cc9f55d1.789
+write_liberty_binary /OpenROAD-flow-scripts/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_SEQ_LVT_FF_nldm_220123.lib /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_SEQ_LVT_FF_nldm_220123@1506997-1794015536-fbb2a041.blib.tmp.fcd4cc9f55d1.789
+write_liberty_binary /OpenROAD-flow-scripts/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_AO_SLVT_FF_nldm_211120.lib.gz /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_AO_SLVT_FF_nldm_211120@4358007-1794015536-fbb2a041.blib.tmp.fcd4cc9f55d1.789
+write_liberty_binary /OpenROAD-flow-scripts/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_INVBUF_SLVT_FF_nldm_220122.lib.gz /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_INVBUF_SLVT_FF_nldm_220122@69753-1794015536-fbb2a041.blib.tmp.fcd4cc9f55d1.789
+write_liberty_binary /OpenROAD-flow-scripts/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_OA_SLVT_FF_nldm_211120.lib.gz /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_OA_SLVT_FF_nldm_211120@3936499-1794015536-fbb2a041.blib.tmp.fcd4cc9f55d1.789
+write_liberty_binary /OpenROAD-flow-scripts/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_SIMPLE_SLVT_FF_nldm_211120.lib.gz /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_SIMPLE_SLVT_FF_nldm_211120@457521-1794015536-fbb2a041.blib.tmp.fcd4cc9f55d1.789
+write_liberty_binary /OpenROAD-flow-scripts/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_SEQ_SLVT_FF_nldm_220123.lib /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_SEQ_SLVT_FF_nldm_220123@1502161-1794015536-fbb2a041.blib.tmp.fcd4cc9f55d1.789
+Binary liberty files: 15 written, 0 already cached
+Elapsed time: 0:03.22[h:]min:sec. CPU time: user 3.11 sys 0.11 (99%). Peak memory: 100272KB.

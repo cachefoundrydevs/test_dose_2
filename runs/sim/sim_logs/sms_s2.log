@@ -1,0 +1,3 @@
+SUMMARY sms seed=-1735877036 generations=150 requests: new=741 old=741 errors=0
+TEST PASSED
+tb/tb_pf3_sms.v:251: $finish called at 448935000 (1ps)

@@ -1,0 +1,21 @@
+max_delay/setup group clk
+
+                                     Required  Actual
+Endpoint                               Delay   Delay   Slack
+------------------------------------------------------------
+u_prefetch.u_sms_expand.slot_mask[122]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_SL)  521.24  891.15 -369.91 (VIOLATED)
+u_prefetch.u_sms_expand.slot_mask[111]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_SL)  521.36  891.22 -369.86 (VIOLATED)
+u_prefetch.u_sms_expand.slot_mask[124]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_SL)  521.34  891.10 -369.76 (VIOLATED)
+u_prefetch.u_sms_expand.slot_mask[127]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_SL)  521.79  891.54 -369.74 (VIOLATED)
+u_prefetch.u_sms_expand.slot_mask[101]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_SL)  521.54  891.18 -369.64 (VIOLATED)
+u_prefetch.u_sms_expand.slot_mask[121]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_SL)  521.23  890.83 -369.60 (VIOLATED)
+u_prefetch.u_sms_expand.slot_mask[100]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_SL)  521.80  891.09 -369.29 (VIOLATED)
+u_prefetch.u_sms_expand.slot_mask[115]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_SL)  521.72  890.99 -369.27 (VIOLATED)
+u_prefetch.u_sms_expand.slot_mask[104]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_SL)  521.53  890.55 -369.02 (VIOLATED)
+u_prefetch.u_sms_expand.slot_mask[112]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_SL)  521.88  890.85 -368.97 (VIOLATED)
+u_prefetch.u_sms_expand.slot_mask[125]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_SL)  521.83  890.25 -368.41 (VIOLATED)
+u_prefetch.u_sms_expand.slot_mask[96]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_SL)  522.07  890.48 -368.41 (VIOLATED)
+u_prefetch.u_sms_expand.slot_mask[97]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_SL)  521.58  889.95 -368.37 (VIOLATED)
+u_prefetch.u_sms_expand.slot_mask[117]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_SL)  522.05  890.12 -368.07 (VIOLATED)
+u_prefetch.u_sms_expand.slot_region[169]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_SL)  525.24  892.42 -367.17 (VIOLATED)
+

@@ -1,0 +1,481 @@
+OpenROAD unknown 
+Features included (+) or not (-): -GPU +GUI
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+[INFO ORD-0030] Using 2 thread(s).
+source /OpenROAD-flow-scripts/flow/platforms/asap7/liberty_suppressions.tcl
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_AO_RVT_TT_nldm_211120@4181747-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_INVBUF_RVT_TT_nldm_220122@69356-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_OA_RVT_TT_nldm_211120@3765433-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_SEQ_RVT_TT_nldm_220123@1512690-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_SIMPLE_RVT_TT_nldm_211120@446864-1794015536-fbb2a041.blib
+read_db /__w/test_dose_2/test_dose_2/pnr_out/work/results/asap7/pf3_timing_top/base/3_place.odb
+read_sdc /__w/test_dose_2/test_dose_2/pnr_out/work/results/asap7/pf3_timing_top/base/3_place.sdc
+source /OpenROAD-flow-scripts/flow/platforms/asap7/setRC.tcl
+clock_tree_synthesis -sink_clustering_enable -repair_clock_nets
+[INFO CTS-0050] Root buffer is BUFx24_ASAP7_75t_R.
+[INFO CTS-0051] Sink buffer is BUFx24_ASAP7_75t_R.
+[INFO CTS-0052] The following clock buffers will be used for CTS:
+                    BUFx24_ASAP7_75t_R
+[INFO CTS-0049] Characterization buffer is BUFx24_ASAP7_75t_R.
+[INFO CTS-0007] Net "clk" found for clock "clk".
+[INFO CTS-0010]  Clock net "clk" has 21333 sinks.
+[INFO CTS-0008] TritonCTS found 1 clock nets.
+[INFO CTS-0097] Characterization used 1 buffer(s) types.
+[INFO CTS-0201] 0 blockages from hard placement blockages and placed macros will be used.
+[INFO CTS-0027] Generating H-Tree topology for net clk.
+[INFO CTS-0028]  Total number of sinks: 21333.
+[INFO CTS-0090]  Sinks will be clustered based on buffer max cap.
+[INFO CTS-0030]  Number of static layers: 0.
+[INFO CTS-0020]  Wire segment unit: 1350  dbu (1 um).
+[INFO CTS-0206] Best clustering solution was found from max clustering size of 27 and max clustering diameter of 25.
+[INFO CTS-0019]  Total number of sinks after clustering: 1115.
+[INFO CTS-0024]  Normalized sink region: [(1.4064, 1.68095), (150.736, 155.748)].
+[INFO CTS-0025]     Width:  149.3299.
+[INFO CTS-0026]     Height: 154.0667.
+ Level 1
+    Direction: Vertical
+    Sinks per sub-region: 558
+    Sub-region size: 149.3299 X 77.0333
+[INFO CTS-0034]     Segment length (rounded): 38.
+ Level 2
+    Direction: Horizontal
+    Sinks per sub-region: 279
+    Sub-region size: 74.6649 X 77.0333
+[INFO CTS-0034]     Segment length (rounded): 38.
+ Level 3
+    Direction: Vertical
+    Sinks per sub-region: 140
+    Sub-region size: 74.6649 X 38.5167
+[INFO CTS-0034]     Segment length (rounded): 20.
+ Level 4
+    Direction: Horizontal
+    Sinks per sub-region: 70
+    Sub-region size: 37.3325 X 38.5167
+[INFO CTS-0034]     Segment length (rounded): 18.
+ Level 5
+    Direction: Vertical
+    Sinks per sub-region: 35
+    Sub-region size: 37.3325 X 19.2583
+[INFO CTS-0034]     Segment length (rounded): 10.
+ Level 6
+    Direction: Horizontal
+    Sinks per sub-region: 18
+    Sub-region size: 18.6662 X 19.2583
+[INFO CTS-0034]     Segment length (rounded): 10.
+ Level 7
+    Direction: Vertical
+    Sinks per sub-region: 9
+    Sub-region size: 18.6662 X 9.6292
+[INFO CTS-0034]     Segment length (rounded): 4.
+[INFO CTS-0038]  Stop criterion found. Sink region hpwl is smaller than max wirelength (162.640 um) and max number of sinks is 15.
+[INFO CTS-0035]  Number of sinks covered: 1115.
+[INFO CTS-0018]     Created 1338 clock buffers.
+[INFO CTS-0012]     Minimum number of buffers in the clock path: 8.
+[INFO CTS-0013]     Maximum number of buffers in the clock path: 8.
+[INFO CTS-0015]     Created 1338 clock nets.
+[INFO CTS-0016]     Fanout distribution for the current clock = 4:2, 5:5, 6:15, 7:18, 8:21, 9:27, 10:24, 11:17, 12:13, 13:15, 14:14, 15:29, 16:69, 17:107, 18:173, 19:180, 20:195, 21:141, 22:93, 23:48, 24:22, 25:10, 26:2, 27:3..
+[INFO CTS-0017]     Max level of the clock tree: 7.
+[INFO CTS-0098] Clock net "clk"
+[INFO CTS-0099]  Sinks 22320
+[INFO CTS-0100]  Leaf buffers 1115
+[INFO CTS-0101]  Average sink wire length 392.79 um
+[INFO CTS-0102]  Path depth 7 - 8
+[INFO CTS-0207]  Dummy loads inserted 987
+[INFO RSZ-0047] Found 1 long wires.
+[INFO RSZ-0048] Inserted 1 buffers in 1 nets.
+[INFO CTS-0500] Runtime: 5.57s
+Took 5 seconds: clock_tree_synthesis -sink_clustering_enable -repair_clock_nets
+detailed_placement -quiet
+[INFO DPL-0009] Utilization: 48.4%
+[INFO DPL-0501] Legalized with 80089 moves: displacement total 27478.7 u, max 2.4 u; HPWL 740296.6 -> 755020.5 u (+2.0 %).
+[INFO DPL-0500] Runtime: 2.70s
+estimate_parasitics
+repair_timing -setup_margin 0 -hold_margin 0 -repair_tns 100 -verbose
+[INFO RSZ-0100] Repair move sequence: UnbufferMove SizeUpMove SwapPinsMove BufferMove CloneMove SplitLoadMove 
+[INFO RSZ-0094] Found 20244 endpoints with setup violations.
+[INFO RSZ-0099] Repairing 20244 out of 20244 (100.00%) violating endpoints...
+   Iter   | Removed | Resized | Inserted | Cloned |  Pin  |   Area   |    WNS   |    TNS     |  Viol  |  Worst
+          | Buffers |  Gates  | Buffers  |  Gates | Swaps |          |          |            | Endpts | Endpoint
+------------------------------------------------------------------------------------------------------------------------------
+       0* |       0 |       0 |        0 |      0 |     0 |    +0.0% | -675.450 | -6244562.0 |  20244 | u_prefetch.u_sms_expand.slot_region\[161\]$_DFFE_PP_/D
+      10* |       0 |       9 |        0 |      0 |     0 |    +0.0% | -663.282 | -6238660.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[106\]$_DFFE_PP_/D
+      20* |       0 |      18 |        0 |      0 |     1 |    +0.0% | -655.981 | -6237428.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[122\]$_DFFE_PP_/D
+      30* |       0 |      27 |        0 |      1 |     1 |    +0.0% | -659.874 | -6237108.0 |  20244 | u_prefetch.u_sms_expand.slot_region\[165\]$_DFFE_PP_/D
+      40* |       0 |      33 |        1 |      4 |     1 |    +0.0% | -664.328 | -6237067.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[106\]$_DFFE_PP_/D
+      50* |       0 |      43 |        1 |      4 |     1 |    +0.0% | -657.633 | -6235346.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[122\]$_DFFE_PP_/D
+      60* |       0 |      52 |        3 |      4 |     1 |    +0.0% | -656.448 | -6234829.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+      70* |       0 |      62 |        3 |      4 |     1 |    +0.0% | -655.006 | -6234168.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+      80* |       0 |      70 |        4 |      4 |     2 |    +0.0% | -653.124 | -6233030.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+      90* |       0 |      78 |        5 |      4 |     3 |    +0.0% | -652.874 | -6232728.5 |  20244 | u_prefetch.u_sms_expand.slot_high\[121\]$_DFFE_PP_/D
+     100* |       0 |      87 |        6 |      4 |     3 |    +0.0% | -650.849 | -6231817.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[106\]$_DFFE_PP_/D
+     110* |       0 |      94 |        8 |      4 |     5 |    +0.0% | -649.394 | -6231556.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     120* |       0 |     100 |       13 |      4 |     6 |    +0.0% | -649.094 | -6231576.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     130* |       0 |     106 |       16 |      5 |     7 |    +0.0% | -647.667 | -6231497.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[101\]$_DFFE_PP_/D
+     140* |       0 |     113 |       18 |      5 |     8 |    +0.0% | -645.646 | -6230427.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     150* |       0 |     122 |       19 |      5 |     8 |    +0.0% | -646.069 | -6229980.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[122\]$_DFFE_PP_/D
+     160* |       0 |     130 |       21 |      5 |     9 |    +0.0% | -645.547 | -6229753.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     170* |       0 |     137 |       21 |      6 |    11 |    +0.1% | -646.981 | -6230078.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[106\]$_DFFE_PP_/D
+     180* |       0 |     144 |       24 |      7 |    11 |    +0.1% | -646.315 | -6229591.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[122\]$_DFFE_PP_/D
+     190* |       0 |     149 |       27 |      7 |    14 |    +0.1% | -646.526 | -6229594.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     200* |       0 |     155 |       30 |      7 |    15 |    +0.1% | -643.706 | -6229474.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     210* |       0 |     162 |       30 |      7 |    18 |    +0.1% | -642.505 | -6229324.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     220* |       0 |     170 |       31 |      8 |    18 |    +0.1% | -651.192 | -6233133.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     230* |       0 |     180 |       31 |      8 |    18 |    +0.1% | -648.579 | -6233422.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     240* |       0 |     188 |       32 |      8 |    19 |    +0.1% | -646.558 | -6231564.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     250* |       0 |     192 |       37 |      8 |    22 |    +0.1% | -646.042 | -6232233.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     260* |       0 |     200 |       38 |      8 |    23 |    +0.1% | -645.458 | -6231883.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     261* |       0 |     163 |       30 |      7 |    18 |    +0.1% | -642.446 | -6229324.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     270* |       0 |     169 |       31 |      8 |    18 |    +0.1% | -647.394 | -6229803.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     280* |       0 |     176 |       32 |      9 |    19 |    +0.1% | -641.700 | -6229010.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     290* |       0 |     184 |       32 |     10 |    20 |    +0.1% | -662.594 | -6239291.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     300* |       0 |     193 |       33 |     10 |    20 |    +0.1% | -648.666 | -6231751.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     310* |       0 |     201 |       34 |     10 |    21 |    +0.1% | -644.792 | -6231164.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     320* |       0 |     209 |       38 |     10 |    21 |    +0.1% | -645.305 | -6231390.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     330* |       0 |     216 |       41 |     10 |    22 |    +0.1% | -646.731 | -6229691.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     332* |       0 |     177 |       32 |      9 |    20 |    +0.1% | -641.700 | -6229205.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     340* |       0 |     183 |       32 |     10 |    20 |    +0.1% | -662.046 | -6238247.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     350* |       0 |     192 |       33 |     10 |    20 |    +0.1% | -647.357 | -6231509.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     360* |       0 |     201 |       34 |     10 |    20 |    +0.1% | -645.066 | -6230978.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     370* |       0 |     210 |       36 |     10 |    20 |    +0.1% | -648.200 | -6229730.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     380* |       0 |     216 |       43 |     10 |    20 |    +0.1% | -643.929 | -6229956.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     383* |       0 |     177 |       32 |      9 |    20 |    +0.1% | -641.700 | -6229205.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     390* |       0 |     182 |       32 |     10 |    20 |    +0.1% | -660.498 | -6237372.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     400* |       0 |     191 |       33 |     10 |    20 |    +0.1% | -647.804 | -6231531.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     410* |       0 |     200 |       34 |     10 |    20 |    +0.1% | -646.725 | -6231056.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     420* |       0 |     209 |       36 |     10 |    20 |    +0.1% | -644.940 | -6231282.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     430* |       0 |     215 |       43 |     10 |    20 |    +0.1% | -644.442 | -6229993.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     434* |       0 |     177 |       32 |      9 |    20 |    +0.1% | -641.700 | -6229205.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     440* |       0 |     181 |       32 |     10 |    20 |    +0.1% | -660.956 | -6239106.5 |  20244 | u_prefetch.u_sms_expand.slot_region\[168\]$_DFFE_PP_/D
+     450* |       0 |     190 |       33 |     10 |    20 |    +0.1% | -647.975 | -6232410.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     460* |       0 |     200 |       33 |     10 |    20 |    +0.1% | -647.277 | -6231086.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     470* |       0 |     208 |       36 |     10 |    20 |    +0.1% | -645.402 | -6231290.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     480* |       0 |     214 |       43 |     10 |    20 |    +0.1% | -644.585 | -6230001.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     485* |       0 |     177 |       32 |      9 |    20 |    +0.1% | -641.700 | -6229205.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     490* |       0 |     180 |       32 |     10 |    20 |    +0.1% | -669.414 | -6242505.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     500* |       0 |     189 |       33 |     10 |    20 |    +0.1% | -647.975 | -6232675.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     510* |       0 |     199 |       33 |     10 |    20 |    +0.1% | -646.115 | -6230943.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     520* |       0 |     207 |       36 |     10 |    20 |    +0.1% | -643.358 | -6230335.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     530* |       0 |     214 |       41 |     10 |    20 |    +0.1% | -644.917 | -6230016.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     536* |       0 |     177 |       32 |      9 |    20 |    +0.1% | -641.700 | -6229205.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     540* |       0 |     179 |       32 |     10 |    20 |    +0.1% | -672.754 | -6244620.5 |  20244 | u_prefetch.u_sms_expand.slot_region\[168\]$_DFFE_PP_/D
+     550* |       0 |     188 |       33 |     10 |    20 |    +0.1% | -648.664 | -6232689.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     560* |       0 |     198 |       33 |     10 |    20 |    +0.1% | -644.537 | -6231025.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     570* |       0 |     207 |       34 |     10 |    20 |    +0.1% | -643.944 | -6230360.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     580* |       0 |     213 |       41 |     10 |    20 |    +0.1% | -644.940 | -6230018.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     587* |       0 |     177 |       32 |      9 |    20 |    +0.1% | -641.700 | -6229205.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     590* |       0 |     178 |       32 |     10 |    20 |    +0.1% | -678.092 | -6247164.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     600* |       0 |     187 |       33 |     10 |    20 |    +0.1% | -650.089 | -6232806.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     610* |       0 |     196 |       33 |     10 |    21 |    +0.1% | -646.425 | -6231685.5 |  20244 | u_prefetch.u_sms_expand.slot_region\[168\]$_DFFE_PP_/D
+     620* |       0 |     205 |       34 |     10 |    21 |    +0.1% | -644.269 | -6230417.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     630* |       0 |     212 |       39 |     10 |    21 |    +0.1% | -644.365 | -6228650.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     638* |       0 |     177 |       32 |      9 |    20 |    +0.1% | -641.700 | -6229205.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     640* |       0 |     177 |       32 |     10 |    20 |    +0.1% | -693.020 | -6253428.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     650* |       0 |     186 |       33 |     10 |    20 |    +0.1% | -650.446 | -6232827.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     660* |       0 |     196 |       33 |     10 |    20 |    +0.1% | -646.425 | -6231685.5 |  20244 | u_prefetch.u_sms_expand.slot_region\[168\]$_DFFE_PP_/D
+     670* |       0 |     205 |       34 |     10 |    20 |    +0.1% | -644.537 | -6230735.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     680* |       0 |     212 |       39 |     10 |    20 |    +0.1% | -644.365 | -6228650.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     689* |       0 |     177 |       32 |      9 |    20 |    +0.1% | -641.700 | -6229205.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     690* |       0 |     177 |       32 |      9 |    20 |    +0.1% | -641.700 | -6229205.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     700* |       0 |     185 |       33 |     10 |    20 |    +0.1% | -650.446 | -6232784.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     710* |       0 |     195 |       33 |     10 |    20 |    +0.1% | -647.356 | -6231729.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     720* |       0 |     204 |       34 |     10 |    20 |    +0.1% | -644.586 | -6230881.5 |  20244 | u_prefetch.u_sms_expand.slot_region\[168\]$_DFFE_PP_/D
+     730* |       0 |     211 |       39 |     10 |    20 |    +0.1% | -644.678 | -6228678.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     740* |       0 |     219 |       43 |     10 |    20 |    +0.1% | -643.893 | -6229990.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     740* |       0 |     177 |       32 |      9 |    20 |    +0.1% | -641.700 | -6229205.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     750* |       0 |     186 |       32 |      9 |    20 |    +0.1% | -642.116 | -6228270.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     760* |       0 |     195 |       33 |      9 |    20 |    +0.1% | -642.116 | -6228184.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     770* |       0 |     201 |       36 |     10 |    21 |    +0.1% | -642.477 | -6228116.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     780* |       0 |     205 |       40 |     10 |    23 |    +0.1% | -644.639 | -6228378.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     790* |       0 |     213 |       41 |     11 |    23 |    +0.1% | -646.927 | -6231275.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     793* |       0 |     179 |       32 |      9 |    20 |    +0.1% | -641.700 | -6228946.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     800* |       0 |     184 |       32 |     10 |    20 |    +0.1% | -662.046 | -6238247.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     810* |       0 |     193 |       33 |     10 |    20 |    +0.1% | -647.804 | -6231574.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     820* |       0 |     202 |       34 |     10 |    20 |    +0.1% | -646.282 | -6230994.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     830* |       0 |     210 |       38 |     10 |    20 |    +0.1% | -646.007 | -6228802.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     840* |       0 |     217 |       43 |     10 |    20 |    +0.1% | -644.442 | -6230029.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     844* |       0 |     179 |       32 |      9 |    20 |    +0.1% | -641.700 | -6228946.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     850* |       0 |     183 |       32 |     10 |    20 |    +0.1% | -662.871 | -6240006.5 |  20244 | u_prefetch.u_sms_expand.slot_region\[168\]$_DFFE_PP_/D
+     860* |       0 |     191 |       34 |     10 |    20 |    +0.1% | -647.663 | -6232852.5 |  20244 | u_prefetch.u_sms_expand.slot_region\[168\]$_DFFE_PP_/D
+     870* |       0 |     200 |       35 |     10 |    20 |    +0.1% | -648.399 | -6233159.5 |  20244 | u_prefetch.u_sms_expand.slot_region\[168\]$_DFFE_PP_/D
+     880* |       0 |     207 |       40 |     10 |    20 |    +0.1% | -648.026 | -6232990.0 |  20244 | u_prefetch.u_sms_expand.slot_region\[168\]$_DFFE_PP_/D
+     890* |       0 |     213 |       44 |     10 |    21 |    +0.1% | -646.386 | -6232265.5 |  20244 | u_prefetch.u_sms_expand.slot_region\[168\]$_DFFE_PP_/D
+     895* |       0 |     179 |       32 |      9 |    20 |    +0.1% | -641.700 | -6228946.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     900* |       0 |     182 |       32 |     10 |    20 |    +0.1% | -660.956 | -6239106.5 |  20244 | u_prefetch.u_sms_expand.slot_region\[168\]$_DFFE_PP_/D
+     910* |       0 |     190 |       34 |     10 |    20 |    +0.1% | -647.663 | -6232856.0 |  20244 | u_prefetch.u_sms_expand.slot_region\[168\]$_DFFE_PP_/D
+     920* |       0 |     199 |       35 |     10 |    20 |    +0.1% | -648.399 | -6233171.5 |  20244 | u_prefetch.u_sms_expand.slot_region\[168\]$_DFFE_PP_/D
+     930* |       0 |     207 |       39 |     10 |    20 |    +0.1% | -648.026 | -6232990.0 |  20244 | u_prefetch.u_sms_expand.slot_region\[168\]$_DFFE_PP_/D
+     940* |       0 |     212 |       44 |     10 |    21 |    +0.1% | -646.386 | -6232239.5 |  20244 | u_prefetch.u_sms_expand.slot_region\[168\]$_DFFE_PP_/D
+     946* |       0 |     179 |       32 |      9 |    20 |    +0.1% | -641.700 | -6228946.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     950* |       0 |     181 |       32 |     10 |    20 |    +0.1% | -669.414 | -6242505.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     960* |       0 |     189 |       34 |     10 |    20 |    +0.1% | -648.013 | -6232863.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+     970* |       0 |     199 |       34 |     10 |    20 |    +0.1% | -648.399 | -6233178.0 |  20244 | u_prefetch.u_sms_expand.slot_region\[168\]$_DFFE_PP_/D
+     980* |       0 |     207 |       37 |     10 |    20 |    +0.1% | -646.386 | -6232254.0 |  20244 | u_prefetch.u_sms_expand.slot_region\[168\]$_DFFE_PP_/D
+     990* |       0 |     212 |       44 |     10 |    20 |    +0.1% | -646.049 | -6232105.0 |  20244 | u_prefetch.u_sms_expand.slot_region\[168\]$_DFFE_PP_/D
+     997* |       0 |     179 |       32 |      9 |    20 |    +0.1% | -641.700 | -6228946.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1000* |       0 |     180 |       32 |      9 |    21 |    +0.1% | -641.582 | -6228304.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1010* |       0 |     190 |       32 |      9 |    21 |    +0.1% | -641.998 | -6227786.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1020* |       0 |     197 |       35 |     10 |    21 |    +0.1% | -641.998 | -6227827.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1030* |       0 |     205 |       37 |     11 |    21 |    +0.1% | -641.997 | -6228330.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1040* |       0 |     211 |       40 |     11 |    22 |    +0.1% | -645.309 | -6228746.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1050* |       0 |     218 |       43 |     12 |    22 |    +0.1% | -646.551 | -6229256.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1050* |       0 |     180 |       32 |      9 |    21 |    +0.1% | -641.582 | -6228304.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1060* |       0 |     187 |       33 |     10 |    21 |    +0.1% | -660.747 | -6237757.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1070* |       0 |     196 |       34 |     10 |    21 |    +0.1% | -648.290 | -6232527.5 |  20244 | u_prefetch.u_sms_expand.slot_region\[168\]$_DFFE_PP_/D
+    1080* |       0 |     205 |       35 |     10 |    21 |    +0.1% | -644.237 | -6230674.0 |  20244 | u_prefetch.u_sms_expand.slot_region\[168\]$_DFFE_PP_/D
+    1090* |       0 |     211 |       41 |     10 |    21 |    +0.1% | -646.278 | -6231599.5 |  20244 | u_prefetch.u_sms_expand.slot_region\[168\]$_DFFE_PP_/D
+    1100* |       0 |     218 |       45 |     10 |    21 |    +0.1% | -645.885 | -6231420.5 |  20244 | u_prefetch.u_sms_expand.slot_region\[168\]$_DFFE_PP_/D
+    1100* |       0 |     180 |       32 |      9 |    21 |    +0.1% | -641.582 | -6228304.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1110* |       0 |     187 |       33 |     10 |    21 |    +0.1% | -660.747 | -6237757.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1120* |       0 |     196 |       34 |     10 |    21 |    +0.1% | -648.290 | -6232527.5 |  20244 | u_prefetch.u_sms_expand.slot_region\[168\]$_DFFE_PP_/D
+    1130* |       0 |     205 |       35 |     10 |    21 |    +0.1% | -647.555 | -6232177.5 |  20244 | u_prefetch.u_sms_expand.slot_region\[168\]$_DFFE_PP_/D
+    1140* |       0 |     211 |       41 |     10 |    21 |    +0.1% | -646.278 | -6231599.5 |  20244 | u_prefetch.u_sms_expand.slot_region\[168\]$_DFFE_PP_/D
+    1150* |       0 |     218 |       45 |     10 |    21 |    +0.1% | -645.885 | -6231420.5 |  20244 | u_prefetch.u_sms_expand.slot_region\[168\]$_DFFE_PP_/D
+    1151* |       0 |     180 |       32 |      9 |    21 |    +0.1% | -641.582 | -6228304.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1160* |       0 |     186 |       33 |     10 |    21 |    +0.1% | -660.381 | -6237658.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1170* |       0 |     195 |       34 |     10 |    21 |    +0.1% | -648.290 | -6232544.0 |  20244 | u_prefetch.u_sms_expand.slot_region\[168\]$_DFFE_PP_/D
+    1180* |       0 |     204 |       35 |     10 |    21 |    +0.1% | -645.237 | -6230687.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1190* |       0 |     210 |       41 |     10 |    21 |    +0.1% | -646.278 | -6231604.5 |  20244 | u_prefetch.u_sms_expand.slot_region\[168\]$_DFFE_PP_/D
+    1200* |       0 |     217 |       45 |     10 |    21 |    +0.1% | -645.941 | -6231448.5 |  20244 | u_prefetch.u_sms_expand.slot_region\[168\]$_DFFE_PP_/D
+    1200* |       0 |     180 |       32 |      9 |    21 |    +0.1% | -641.582 | -6228304.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1200* |       0 |     180 |       32 |      9 |    21 |    +0.1% | -641.582 | -6228304.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1200+ |       0 |     180 |       32 |      9 |    21 |    +0.1% | -641.582 | -6228304.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1203+ |       0 |     182 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228283.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1204+ |       0 |     182 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228283.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1205+ |       0 |     182 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228283.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1206+ |       0 |     182 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228283.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1207+ |       0 |     182 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228283.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1208+ |       0 |     182 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228283.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1209+ |       0 |     182 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228283.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1210+ |       0 |     182 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228283.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1211+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1212+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1213+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1214+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1215+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1216+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1217+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1218+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1219+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1220+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1220+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1221+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1222+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1223+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1224+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1225+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1226+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1227+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1228+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1229+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1230+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1230+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1231+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1232+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1233+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1234+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1235+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1236+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1237+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1238+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1239+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1240+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1240+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1241+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1242+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1243+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1244+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1245+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1246+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1247+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1248+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1249+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1250+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1250+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1251+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1252+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1253+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1254+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1255+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1256+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1257+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1258+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1259+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1260+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1260+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1261+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1262+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1263+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1264+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1265+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1266+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1267+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1268+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1269+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1270+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1270+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1271+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1272+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1273+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1274+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1275+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1276+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1277+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1278+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1279+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1280+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1280+ |       0 |     183 |       32 |      9 |    21 |    +0.1% | -641.123 | -6228034.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1282+ |       0 |     183 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227724.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1283+ |       0 |     183 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227724.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1284+ |       0 |     183 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227724.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1285+ |       0 |     183 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227724.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1286+ |       0 |     183 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227724.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1287+ |       0 |     183 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227724.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1288+ |       0 |     183 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227724.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1289+ |       0 |     183 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227724.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1290+ |       0 |     183 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227724.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1290+ |       0 |     183 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227724.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1291+ |       0 |     183 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227724.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1293+ |       0 |     184 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227725.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1294+ |       0 |     184 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227725.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1295+ |       0 |     184 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227725.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1296+ |       0 |     184 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227725.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1297+ |       0 |     184 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227725.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1298+ |       0 |     184 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227725.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1299+ |       0 |     184 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227725.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1300+ |       0 |     184 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227725.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1301+ |       0 |     184 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227725.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1302+ |       0 |     184 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227725.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1304+ |       0 |     185 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227697.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1305+ |       0 |     185 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227697.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1306+ |       0 |     185 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227697.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1307+ |       0 |     185 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227697.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1308+ |       0 |     185 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227697.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1309+ |       0 |     185 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227697.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1310+ |       0 |     185 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227697.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1310+ |       0 |     185 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227697.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1311+ |       0 |     185 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227697.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1312+ |       0 |     185 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227697.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1313+ |       0 |     185 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227697.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1314+ |       0 |     185 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227697.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1315+ |       0 |     185 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227697.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1316+ |       0 |     185 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227697.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1318+ |       0 |     186 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227667.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1319+ |       0 |     186 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227667.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1320+ |       0 |     186 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227667.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1320+ |       0 |     186 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227667.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1321+ |       0 |     186 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227667.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1322+ |       0 |     186 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227667.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1323+ |       0 |     186 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227667.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1324+ |       0 |     186 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227667.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1326+ |       0 |     187 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227590.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1327+ |       0 |     187 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227590.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1328+ |       0 |     187 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227590.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1329+ |       0 |     187 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227590.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1330+ |       0 |     187 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227590.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1330+ |       0 |     187 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227590.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1331+ |       0 |     187 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227590.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1332+ |       0 |     187 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227590.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1333+ |       0 |     187 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227590.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1334+ |       0 |     187 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227590.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1335+ |       0 |     187 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227590.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1336+ |       0 |     187 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227590.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1337+ |       0 |     187 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227590.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1338+ |       0 |     187 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227590.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1339+ |       0 |     187 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227590.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1340+ |       0 |     187 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227590.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1340+ |       0 |     187 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227590.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1341+ |       0 |     187 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227590.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1342+ |       0 |     187 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227590.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1343+ |       0 |     187 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227590.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1344+ |       0 |     187 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227590.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1345+ |       0 |     187 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227590.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1346+ |       0 |     187 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227590.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1347+ |       0 |     187 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227590.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1348+ |       0 |     187 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227590.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1349+ |       0 |     187 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227590.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1350+ |       0 |     187 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227590.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1350+ |       0 |     187 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227590.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1351+ |       0 |     187 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227590.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1352+ |       0 |     187 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227590.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1353+ |       0 |     187 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227590.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1354+ |       0 |     187 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227590.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1355+ |       0 |     187 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227590.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1356+ |       0 |     187 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227590.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1357+ |       0 |     187 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227590.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1358+ |       0 |     187 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227590.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1359+ |       0 |     187 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227590.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1360+ |       0 |     187 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227590.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1360+ |       0 |     187 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227590.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1361+ |       0 |     187 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227590.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1362+ |       0 |     187 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227590.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1363+ |       0 |     187 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227590.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1366+ |       0 |     189 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227260.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1367+ |       0 |     189 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227260.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1368+ |       0 |     189 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227260.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1369+ |       0 |     189 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227260.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1370+ |       0 |     189 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227260.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1370+ |       0 |     189 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227260.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1371+ |       0 |     189 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227260.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1372+ |       0 |     189 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227260.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1373+ |       0 |     189 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227260.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1375+ |       0 |     190 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227253.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1376+ |       0 |     190 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227253.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1377+ |       0 |     190 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227253.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1378+ |       0 |     190 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227253.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1379+ |       0 |     190 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227253.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1380+ |       0 |     190 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227253.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1380+ |       0 |     190 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227253.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1381+ |       0 |     190 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227253.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1382+ |       0 |     190 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227253.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1383+ |       0 |     190 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227253.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1384+ |       0 |     190 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227253.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1385+ |       0 |     190 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227253.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1386+ |       0 |     190 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227253.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1387+ |       0 |     190 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227253.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1388+ |       0 |     190 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227253.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1389+ |       0 |     190 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227253.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1390+ |       0 |     190 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227253.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1390+ |       0 |     190 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227253.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1391+ |       0 |     190 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227253.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1392+ |       0 |     190 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227253.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1393+ |       0 |     190 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227253.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1394+ |       0 |     190 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227253.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1395+ |       0 |     190 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227253.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1396+ |       0 |     190 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227253.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1397+ |       0 |     190 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227253.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1398+ |       0 |     190 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227253.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1399+ |       0 |     190 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227253.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    1400+ |       0 |     190 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227253.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+    final |       0 |     190 |       32 |      9 |    22 |    +0.1% | -641.104 | -6227253.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[123\]$_DFFE_PP_/D
+------------------------------------------------------------------------------------------------------------------------------
+[INFO RSZ-0040] Inserted 32 buffers.
+[INFO RSZ-0051] Resized 190 instances: 190 up, 0 up match, 0 down, 0 VT
+[INFO RSZ-0043] Swapped pins on 22 instances.
+[INFO RSZ-0049] Cloned 9 instances.
+[WARNING RSZ-0062] Unable to repair all setup violations.
+[INFO RSZ-0505] Runtime: 180.96s
+[INFO RSZ-0033] No hold violations found.
+[INFO RSZ-0506] Runtime: 0.26s
+Took 181 seconds: repair_timing -setup_margin 0 -hold_margin 0 -repair_tns 100 -verbose
+Elapsed time: 0:15.80[h:]min:sec. CPU time: user 17.70 sys 0.51 (115%). Peak memory: 859152KB.
+Repair timing output passed lec test
+detailed_placement -quiet
+[INFO DPL-0009] Utilization: 48.5%
+[INFO DPL-0501] Legalized with 4063 moves: displacement total 47.7 u, max 1.1 u; HPWL 755359.3 -> 755386.7 u (+0.0 %).
+[INFO DPL-0500] Runtime: 1.57s
+check_placement -placeable -verbose
+estimate_parasitics
+Report metrics stage 4, cts final...
+
+==========================================================================
+cts final report_design_area
+--------------------------------------------------------------------------
+Design area 21519 um^2 48% utilization.
+write_sdc -no_timestamp /__w/test_dose_2/test_dose_2/pnr_out/work/results/asap7/pf3_timing_top/base/4_1_cts.sdc
+write_db /__w/test_dose_2/test_dose_2/pnr_out/work/results/asap7/pf3_timing_top/base/4_1_cts.odb
+Elapsed time: 4:40.00[h:]min:sec. CPU time: user 448.01 sys 14.55 (165%). Peak memory: 1396304KB.
+Log                    Ext     Elapsed      CPU     CPU/ Peak Mem sha1sum
+                                     s        s  Elapsed       MB [0:10)
+4_1_cts                .odb         15       18     1.15      839 a16a3022fb
+4_1_cts                .sdc                                       1fc8fd2ed0

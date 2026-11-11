@@ -1,0 +1,72 @@
+Yosys 0.68+post (git sha1 UNKNOWN, Release, GNU /usr/local/bin/wrapped-cc/g++ 15.2.0)
+Using ABC speed script.
+1. Executing Liberty frontend: /OpenROAD-flow-scripts/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_AO_RVT_TT_nldm_211120.lib.gz
+2. Executing Liberty frontend: /OpenROAD-flow-scripts/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_INVBUF_RVT_TT_nldm_220122.lib.gz
+3. Executing Liberty frontend: /OpenROAD-flow-scripts/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_OA_RVT_TT_nldm_211120.lib.gz
+4. Executing Liberty frontend: /OpenROAD-flow-scripts/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_SEQ_RVT_TT_nldm_220123.lib
+5. Executing Liberty frontend: /OpenROAD-flow-scripts/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_SIMPLE_RVT_TT_nldm_211120.lib.gz
+6. Executing Liberty frontend: /OpenROAD-flow-scripts/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_AO_RVT_TT_nldm_211120.lib.gz
+7. Executing Liberty frontend: /OpenROAD-flow-scripts/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_INVBUF_RVT_TT_nldm_220122.lib.gz
+8. Executing Liberty frontend: /OpenROAD-flow-scripts/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_OA_RVT_TT_nldm_211120.lib.gz
+9. Executing Liberty frontend: /OpenROAD-flow-scripts/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_SEQ_RVT_TT_nldm_220123.lib
+10. Executing Liberty frontend: /OpenROAD-flow-scripts/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_SIMPLE_RVT_TT_nldm_211120.lib.gz
+11. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/prefetch_system/rtl/l1d_pf3_ks_add.v
+12. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/prefetch_system/rtl/l1d_pf3_add_eq.v
+13. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/prefetch_system/rtl/l1d_pf3_stride_entry.v
+14. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/prefetch_system/rtl/l1d_pf3_stride.v
+15. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/prefetch_system/rtl/l1d_pf3_stream_card.v
+16. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/prefetch_system/rtl/l1d_pf3_stream.v
+17. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/prefetch_system/rtl/l1d_pf_sms_fifo.v
+18. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/prefetch_system/rtl/l1d_pf3_sms_core.v
+19. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/prefetch_system/rtl/l1d_pf3_sms_expand.v
+20. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/prefetch_system/rtl/l1d_pf3_rank.v
+21. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/prefetch_system/rtl/l1d_prefetch_unit.v
+22. Executing Verilog-2005 frontend: /__w/test_dose_2/test_dose_2/prefetch_system/flow/pf3_timing_top.v
+23. Executing Verilog-2005 frontend: /OpenROAD-flow-scripts/flow/platforms/asap7/yoSys/cells_clkgate_R.v
+24. Executing HIERARCHY pass (managing design hierarchy).
+25. Executing AST frontend in derive mode using pre-parsed AST for module `\pf3_timing_top'.
+25.1. Analyzing design hierarchy..
+25.2. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_prefetch_unit'.
+25.3. Analyzing design hierarchy..
+25.4. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_pf3_rank'.
+25.5. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_pf3_sms_expand'.
+25.6. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_pf3_sms_core'.
+25.7. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_pf3_stream'.
+25.8. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_pf3_stride'.
+25.9. Analyzing design hierarchy..
+25.10. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_pf_sms_fifo'.
+25.11. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_pf_sms_fifo'.
+25.12. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_pf3_stream_card'.
+25.13. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_pf3_stride_entry'.
+25.14. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_pf3_ks_add'.
+25.15. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_pf3_ks_add'.
+25.16. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_pf3_ks_add'.
+25.17. Analyzing design hierarchy..
+25.18. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_pf3_ks_add'.
+25.19. Executing AST frontend in derive mode using pre-parsed AST for module `\l1d_pf3_add_eq'.
+25.20. Analyzing design hierarchy..
+25.21. Analyzing design hierarchy..
+26. Executing OPT_CLEAN pass (remove unused cells and wires).
+Warning: Ignoring module $paramod$ad549268e66e704658e036de735c81e1e0c22bc8\l1d_pf3_rank because it contains processes (run 'proc' command first).
+Warning: Ignoring module pf3_timing_top because it contains processes (run 'proc' command first).
+Warning: Ignoring module $paramod$7e708994949511d5825c315b15742a9bede5f857\l1d_pf3_ks_add because it contains processes (run 'proc' command first).
+Warning: Ignoring module $paramod$618b545d22c4c042e64a07f455ec47bb01c09fe4\l1d_pf3_ks_add because it contains processes (run 'proc' command first).
+Warning: Ignoring module $paramod$3b31362d02e2a8ea26617e2830c75f5e9f953a48\l1d_pf3_ks_add because it contains processes (run 'proc' command first).
+Warning: Ignoring module $paramod$5d7f0236a379a58adf5423f29037dadfbef7d69b\l1d_pf3_ks_add because it contains processes (run 'proc' command first).
+Warning: Ignoring module $paramod$60752d5b8ec4e2d71a3260d2c45114c59f1c386e\l1d_pf3_stride_entry because it contains processes (run 'proc' command first).
+Warning: Ignoring module $paramod$ea772d61986f819b23fc8e61c0e7927affb65926\l1d_pf3_stream_card because it contains processes (run 'proc' command first).
+Warning: Ignoring module $paramod$3601c9b597402ae160c50e19a66e73765322a0d6\l1d_pf_sms_fifo because it contains processes (run 'proc' command first).
+Warning: Ignoring module $paramod$1f892addd645452616cc86704d8b3c4d4d3f7ac9\l1d_pf_sms_fifo because it contains processes (run 'proc' command first).
+Warning: Ignoring module $paramod$6ca9503c10f9c592d3c499c157183431eb83ee89\l1d_pf3_stride because it contains processes (run 'proc' command first).
+Warning: Ignoring module $paramod$507c8c26b2d1e09c3224bf1ffd21d1a5db2dfeff\l1d_pf3_stream because it contains processes (run 'proc' command first).
+Warning: Ignoring module $paramod$94a0e3934c1f56ca2ac36f47e9fd3389e5f36a6a\l1d_pf3_sms_core because it contains processes (run 'proc' command first).
+Warning: Ignoring module $paramod$e083d464c3fae7c6555fcb5a560bc8a933c34f20\l1d_pf3_sms_expand because it contains processes (run 'proc' command first).
+27. Executing RTLIL backend.
+Warnings: 14 unique messages, 14 total
+End of script. Logfile hash: 277a493fd3, time: 1.23s, user: 1.15s, system: 0.04s, MEM: 82.18 MB peak
+Yosys 0.68+post (git sha1 UNKNOWN, Release, GNU /usr/local/bin/wrapped-cc/g++ 15.2.0)
+Time spent: 50% 1x hierarchy (0 sec), 42% 12x read_liberty (0 sec), ...
+Elapsed time: 0:01.26[h:]min:sec. CPU time: user 1.23 sys 0.04 (100%). Peak memory: 86768KB.
+Log                    Ext     Elapsed      CPU     CPU/ Peak Mem sha1sum
+                                     s        s  Elapsed       MB [0:10)
+1_1_yosys_canonicalize .rtlil        1        1     1.01       84 370f64a4db

@@ -1,0 +1,51 @@
+Startpoint: u_prefetch.u_stride.e1_lo[0]$_DFF_P_
+            (rising edge-triggered flip-flop clocked by clk)
+Endpoint: u_prefetch.u_stride.g_entry[3].u_entry.s3_q[13]$_DFFE_PP_
+          (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: max
+
+Fanout    Cap   Slew  Delay   Time   Description
+-------------------------------------------------------------------------
+                        0.0    0.0   clock clk (rise edge)
+                      312.1  312.1   clock network delay (propagated)
+                16.4    0.0  312.1 ^ u_prefetch.u_stride.e1_lo[0]$_DFF_P_/CLK (DFFHQNx3_ASAP7_75t_SL)
+     2    3.0   25.7   45.5  357.6 v u_prefetch.u_stride.e1_lo[0]$_DFF_P_/QN (DFFHQNx3_ASAP7_75t_SL)
+     6   22.4   28.5   19.6  377.2 v place70177/Y (BUFx6f_ASAP7_75t_SL)
+     5    9.8   23.4   32.0  409.1 v place70160/Y (BUFx3_ASAP7_75t_SL)
+    21   32.3   31.1   28.6  437.7 v place70156/Y (BUFx10_ASAP7_75t_L)
+     4    5.2   20.7   34.3  472.1 v place70154/Y (BUFx2_ASAP7_75t_L)
+     1    0.7   23.9   19.2  491.2 ^ _228952_/CON (HAxp5_ASAP7_75t_R)
+     2    2.8   24.4   19.4  510.6 v _195579_/Y (INVx1_ASAP7_75t_R)
+     3    3.9   16.3   24.2  534.8 v place55416/Y (BUFx2_ASAP7_75t_L)
+     1    0.8    9.0   25.8  560.6 v _195580_/Y (OA21x2_ASAP7_75t_R)
+     2    1.5   12.3   25.0  585.6 v _195581_/Y (OA21x2_ASAP7_75t_R)
+     1    0.8    8.9   24.3  609.9 v _195582_/Y (OA21x2_ASAP7_75t_R)
+     2    1.4   12.0   24.7  634.7 v _195583_/Y (OA21x2_ASAP7_75t_R)
+     1    1.1   11.0   25.0  659.7 v _195584_/Y (OA21x2_ASAP7_75t_R)
+     2    1.9   14.0   26.7  686.4 v _195585_/Y (OA21x2_ASAP7_75t_R)
+     1    0.8   10.0   25.1  711.4 v _195586_/Y (OA21x2_ASAP7_75t_R)
+     2    2.0   14.2   26.4  737.8 v _195587_/Y (OA21x2_ASAP7_75t_R)
+     2    1.4   12.0   26.6  764.4 v _195588_/Y (OA21x2_ASAP7_75t_R)
+     1    1.0    9.8   24.7  789.1 v _195591_/Y (OA21x2_ASAP7_75t_R)
+     1    1.2   10.7   24.5  813.6 v _195592_/Y (OA21x2_ASAP7_75t_R)
+     1    0.5    9.0   32.1  845.7 ^ _195593_/Y (XOR2x2_ASAP7_75t_R)
+     1    0.7   11.8   21.4  867.1 ^ _195594_/Y (AO22x1_ASAP7_75t_R)
+     1    0.9   10.5   11.5  878.6 ^ _195595_/Y (AO21x1_ASAP7_75t_SL)
+                10.5    0.1  878.7 ^ u_prefetch.u_stride.g_entry[3].u_entry.s3_q[13]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_SL)
+                             878.7   data arrival time
+
+                      240.0  240.0   clock clk (rise edge)
+                      304.7  544.7   clock network delay (propagated)
+                      -12.0  532.7   clock uncertainty
+                        4.0  536.7   clock reconvergence pessimism
+                             536.7 ^ u_prefetch.u_stride.g_entry[3].u_entry.s3_q[13]$_DFFE_PP_/CLK (DFFHQNx1_ASAP7_75t_SL)
+                       -7.0  529.7   library setup time
+                             529.7   data required time
+-------------------------------------------------------------------------
+                             529.7   data required time
+                            -878.7   data arrival time
+-------------------------------------------------------------------------
+                            -349.0   slack (VIOLATED)
+
+

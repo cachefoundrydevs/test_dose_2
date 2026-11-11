@@ -1,0 +1,7 @@
+OK L1 stride: hint 000000048d159cc 3 cycles after the record
+OK L2 stream: hint 0000000d159e253 3 cycles after the record
+OK L2 stride: hint 0000000d159e254 3 cycles after the record
+OK L3 SMS: hint 00000000048d163 3 cycles after the record
+SUMMARY unit seed=1651705472 records=4000 hints=394 errors=0
+TEST PASSED
+tb/tb_pf3_unit.v:237: $finish called at 43545000 (1ps)

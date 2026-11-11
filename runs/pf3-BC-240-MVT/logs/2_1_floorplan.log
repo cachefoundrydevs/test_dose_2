@@ -1,0 +1,365 @@
+OpenROAD unknown 
+Features included (+) or not (-): -GPU +GUI
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+[INFO ORD-0030] Using 2 thread(s).
+source /OpenROAD-flow-scripts/flow/platforms/asap7/liberty_suppressions.tcl
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_AO_RVT_FF_nldm_211120@4256548-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_INVBUF_RVT_FF_nldm_220122@69351-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_OA_RVT_FF_nldm_211120@3829689-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_SIMPLE_RVT_FF_nldm_211120@317193-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_SEQ_RVT_FF_nldm_220123@1510915-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_AO_LVT_FF_nldm_211120@4317540-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_INVBUF_LVT_FF_nldm_220122@69812-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_OA_LVT_FF_nldm_211120@3894559-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_SIMPLE_LVT_FF_nldm_211120@454251-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_SEQ_LVT_FF_nldm_220123@1506997-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_AO_SLVT_FF_nldm_211120@4358007-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_INVBUF_SLVT_FF_nldm_220122@69753-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_OA_SLVT_FF_nldm_211120@3936499-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_SIMPLE_SLVT_FF_nldm_211120@457521-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_SEQ_SLVT_FF_nldm_220123@1502161-1794015536-fbb2a041.blib
+read_db /__w/test_dose_2/test_dose_2/pnr_out/work/results/asap7/pf3_timing_top/base/1_synth.odb
+read_sdc /__w/test_dose_2/test_dose_2/pnr_out/work/results/asap7/pf3_timing_top/base/1_synth.sdc
+source /OpenROAD-flow-scripts/flow/platforms/asap7/setRC.tcl
+source /OpenROAD-flow-scripts/flow/platforms/asap7/openRoad/pdn/global_connect.tcl
+global_connect
+
+==========================================================================
+Floorplan check_setup
+--------------------------------------------------------------------------
+Warning: There are 714 unconstrained endpoints.
+number instances in verilog is 127251
+initialize_floorplan -utilization 40 -aspect_ratio 1.0 -core_space 1.0 -site asap7sc7p5t
+[INFO IFP-0107] Defining die area using utilization: 40.00% and aspect ratio: 1.
+[WARNING IFP-0028] Core area lower left (1.000, 1.000) snapped to (1.026, 1.080).
+[INFO IFP-0001] Added 781 rows of 3906 site asap7sc7p5t.
+[INFO IFP-0100] Die BBox:  (  0.000  0.000 ) ( 212.999 212.999 ) um
+[INFO IFP-0101] Core BBox: (  1.026  1.080 ) ( 211.950 211.950 ) um
+[INFO IFP-0102] Core area:                        44477.544 um^2
+[INFO IFP-0103] Total instances area:             17808.304 um^2
+[INFO IFP-0104] Effective utilization:                0.400
+[INFO IFP-0105] Number of instances:                 127251
+source /OpenROAD-flow-scripts/flow/platforms/asap7/openRoad/make_tracks.tcl
+source /OpenROAD-flow-scripts/flow/platforms/asap7/fastroute.tcl
+set_dont_use "*x1p*_ASAP7* *xp*_ASAP7* SDF* ICG*"
+repair_tie_fanout -separation 0 asap7sc7p5t_SIMPLE_RVT_FF_nldm_250407/TIELOx1_ASAP7_75t_R/L
+repair_tie_fanout -separation 0 asap7sc7p5t_SIMPLE_RVT_FF_nldm_250407/TIEHIx1_ASAP7_75t_R/H
+repair_timing -setup_margin 0 -hold_margin 0 -repair_tns 100 -setup -skip_last_gasp -sequence unbuffer,sizeup,swap,vt_swap -verbose
+[WARNING EST-0027] no estimated parasitics. Using wire load models.
+[INFO RSZ-0100] Repair move sequence: UnbufferMove SizeUpMove SwapPinsMove VtSwapMove 
+[INFO RSZ-0094] Found 11493 endpoints with setup violations.
+[INFO RSZ-0099] Repairing 11493 out of 11493 (100.00%) violating endpoints...
+   Iter   | Removed | Resized | Inserted | Cloned |  Pin  |   Area   |    WNS   |    TNS     |  Viol  |  Worst
+          | Buffers |  Gates  | Buffers  |  Gates | Swaps |          |          |            | Endpts | Endpoint
+------------------------------------------------------------------------------------------------------------------------------
+       0* |       0 |       0 |        0 |      0 |     0 |    +0.0% | -1045.910 | -3774027.2 |  11493 | u_prefetch.u_stride.g_entry\[26\].u_entry.stride_q\[11\]$_DFFE_PP_/D
+      10* |       0 |       9 |        0 |      0 |     0 |    +0.0% | -747.589 | -2960575.2 |  11493 | u_prefetch.u_stride.g_entry\[41\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+      20* |       0 |      19 |        0 |      0 |     0 |    +0.0% | -607.273 | -2465624.8 |  11493 | u_prefetch.u_stride.g_entry\[41\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+      30* |       0 |      29 |        0 |      0 |     0 |    +0.0% | -425.193 | -1938014.2 |  11493 | u_prefetch.u_stream.cand_line\[37\]$_DFFE_PP_/D
+      40* |       0 |      38 |        0 |      0 |     1 |    +0.0% | -398.216 | -1897291.4 |  11493 | u_prefetch.u_stride.g_entry\[10\].u_entry.stride_q\[11\]$_DFFE_PP_/D
+      50* |       0 |      47 |        0 |      0 |     2 |    +0.0% | -393.075 | -1895261.2 |  11493 | u_prefetch.u_stride.g_entry\[10\].u_entry.stride_q\[11\]$_DFFE_PP_/D
+      60* |       0 |      51 |        0 |      0 |     8 |    +0.0% | -389.036 | -1891997.4 |  11493 | u_prefetch.u_stride.g_entry\[51\].u_entry.s3_q\[13\]$_DFFE_PP_/D
+      70* |       0 |      55 |        0 |      0 |    14 |    +0.0% | -386.413 | -1889270.2 |  11493 | u_prefetch.u_stride.g_entry\[45\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+      80* |       0 |      63 |        0 |      0 |    16 |    +0.0% | -384.837 | -1888503.4 |  11493 | u_prefetch.u_stride.g_entry\[60\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+      90* |       0 |      71 |        0 |      0 |    18 |    +0.0% | -380.982 | -1869233.2 |  11493 | u_prefetch.u_stride.g_entry\[34\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+     100* |       0 |      79 |        0 |      0 |    20 |    +0.0% | -382.909 | -1867651.5 |  11493 | u_prefetch.u_stride.g_entry\[45\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+     110* |       0 |      87 |        0 |      0 |    22 |    +0.0% | -379.279 | -1857271.6 |  11493 | u_prefetch.u_stream.cand_line\[37\]$_DFFE_PP_/D
+     120* |       0 |      97 |        0 |      0 |    22 |    +0.0% | -373.717 | -1856834.0 |  11493 | u_prefetch.u_stride.g_entry\[18\].u_entry.stride_q\[12\]$_DFFE_PP_/D
+     130* |       0 |     106 |        0 |      0 |    23 |    +0.0% | -371.006 | -1845308.9 |  11493 | u_prefetch.u_stride.g_entry\[1\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+     140* |       0 |     108 |        0 |      0 |    31 |    +0.0% | -370.206 | -1836642.2 |  11493 | u_prefetch.u_stride.g_entry\[35\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+     150* |       0 |     113 |        0 |      0 |    36 |    +0.0% | -368.816 | -1835770.4 |  11493 | u_prefetch.u_stride.g_entry\[56\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+     160* |       0 |     123 |        0 |      0 |    36 |    +0.0% | -368.268 | -1835705.8 |  11493 | u_prefetch.u_stride.g_entry\[45\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+     170* |       0 |     131 |        0 |      0 |    38 |    +0.0% | -367.843 | -1835606.4 |  11493 | u_prefetch.u_stride.g_entry\[14\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+     180* |       0 |     133 |        0 |      0 |    46 |    +0.0% | -366.729 | -1835370.5 |  11493 | u_prefetch.u_stride.g_entry\[3\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+     190* |       0 |     136 |        0 |      0 |    53 |    +0.0% | -368.379 | -1832981.0 |  11493 | u_prefetch.u_stream.recent_tag\[36\]$_DFFE_PP_/D
+     200* |       0 |     140 |        0 |      0 |    59 |    +0.0% | -366.327 | -1832665.9 |  11493 | u_prefetch.u_stride.g_entry\[11\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+     210* |       0 |     141 |        0 |      0 |    68 |    +0.0% | -366.033 | -1831164.1 |  11493 | u_prefetch.u_stride.g_entry\[54\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+     220* |       0 |     141 |        0 |      0 |    78 |    +0.0% | -365.687 | -1830983.9 |  11493 | u_prefetch.u_stride.g_entry\[47\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+     230* |       0 |     147 |        0 |      0 |    82 |    +0.0% | -364.572 | -1822572.9 |  11493 | u_prefetch.u_stride.g_entry\[51\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+     240* |       0 |     148 |        0 |      0 |    91 |    +0.0% | -363.748 | -1822049.4 |  11493 | u_prefetch.u_stride.g_entry\[33\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+     250* |       0 |     157 |        0 |      0 |    92 |    +0.0% | -363.689 | -1821954.4 |  11493 | u_prefetch.u_stride.g_entry\[19\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+     260* |       0 |     167 |        0 |      0 |    92 |    +0.0% | -363.583 | -1821869.8 |  11493 | u_prefetch.u_stride.g_entry\[23\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+     270* |       0 |     177 |        0 |      0 |    92 |    +0.0% | -363.583 | -1821782.9 |  11493 | u_prefetch.u_stride.g_entry\[62\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+     280* |       0 |     184 |        0 |      0 |    95 |    +0.0% | -362.657 | -1821673.9 |  11493 | u_prefetch.u_stride.g_entry\[34\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+     290* |       0 |     191 |        0 |      0 |    98 |    +0.0% | -362.228 | -1814651.6 |  11493 | u_prefetch.u_stride.g_entry\[8\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+     300* |       0 |     198 |        0 |      0 |   101 |    +0.0% | -361.972 | -1814558.0 |  11493 | u_prefetch.u_stride.g_entry\[14\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+     310* |       0 |     198 |        0 |      0 |   111 |    +0.0% | -361.699 | -1814348.9 |  11493 | u_prefetch.u_stride.g_entry\[28\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+     320* |       0 |     199 |        0 |      0 |   120 |    +0.0% | -361.400 | -1814151.2 |  11493 | u_prefetch.u_stride.g_entry\[0\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+     330* |       0 |     199 |        0 |      0 |   130 |    +0.0% | -361.085 | -1813984.1 |  11493 | u_prefetch.u_stream.recent_tag\[36\]$_DFFE_PP_/D
+     340* |       0 |     206 |        0 |      0 |   133 |    +0.0% | -361.982 | -1813976.4 |  11493 | u_prefetch.u_stream.recent_tag\[36\]$_DFFE_PP_/D
+     350* |       0 |     215 |        0 |      0 |   134 |    +0.0% | -360.450 | -1811450.6 |  11493 | u_prefetch.u_stride.g_entry\[27\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+     360* |       0 |     225 |        0 |      0 |   134 |    +0.0% | -359.955 | -1811365.9 |  11493 | u_prefetch.u_stride.g_entry\[7\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+     370* |       0 |     233 |        0 |      0 |   136 |    +0.0% | -359.597 | -1809390.1 |  11493 | u_prefetch.u_stride.g_entry\[45\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+     380* |       0 |     243 |        0 |      0 |   136 |    +0.0% | -359.221 | -1804186.8 |  11493 | u_prefetch.u_stride.g_entry\[25\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+     390* |       0 |     253 |        0 |      0 |   136 |    +0.0% | -359.209 | -1804136.6 |  11493 | u_prefetch.u_stride.g_entry\[62\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+     400* |       0 |     263 |        0 |      0 |   136 |    +0.0% | -359.203 | -1804084.2 |  11493 | u_prefetch.u_stride.g_entry\[26\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+     410* |       0 |     271 |        0 |      0 |   138 |    +0.0% | -357.924 | -1804015.4 |  11493 | u_prefetch.u_stride.g_entry\[56\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+     420* |       0 |     280 |        0 |      0 |   139 |    +0.0% | -356.854 | -1801027.6 |  11493 | u_prefetch.u_stride.g_entry\[38\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+     430* |       0 |     290 |        0 |      0 |   139 |    +0.0% | -356.852 | -1800959.9 |  11493 | u_prefetch.u_stride.g_entry\[6\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+     440* |       0 |     300 |        0 |      0 |   139 |    +0.0% | -356.764 | -1800900.6 |  11493 | u_prefetch.u_stride.g_entry\[30\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+     450* |       0 |     310 |        0 |      0 |   139 |    +0.0% | -356.745 | -1800824.6 |  11493 | u_prefetch.u_stride.g_entry\[4\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+     460* |       0 |     320 |        0 |      0 |   139 |    +0.0% | -356.711 | -1800749.0 |  11493 | u_prefetch.u_stride.g_entry\[42\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+     470* |       0 |     330 |        0 |      0 |   139 |    +0.0% | -356.077 | -1797941.4 |  11493 | u_prefetch.u_stride.g_entry\[20\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+     480* |       0 |     339 |        0 |      0 |   140 |    +0.0% | -355.670 | -1797865.5 |  11493 | u_prefetch.u_stride.g_entry\[13\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+     490* |       0 |     349 |        0 |      0 |   140 |    +0.0% | -355.252 | -1797824.2 |  11493 | u_prefetch.u_stride.g_entry\[45\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+     500* |       0 |     358 |        0 |      0 |   141 |    +0.0% | -354.649 | -1794333.8 |  11493 | u_prefetch.u_stride.g_entry\[35\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+     510* |       0 |     366 |        0 |      0 |   143 |    +0.0% | -354.098 | -1794189.9 |  11493 | u_prefetch.u_stream.recent_tag\[36\]$_DFFE_PP_/D
+     520* |       0 |     371 |        0 |      0 |   148 |    +0.0% | -353.956 | -1794133.5 |  11493 | u_prefetch.u_stride.g_entry\[25\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+     530* |       0 |     376 |        0 |      0 |   153 |    +0.0% | -353.945 | -1794119.4 |  11493 | u_prefetch.u_stride.g_entry\[24\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+     540* |       0 |     381 |        0 |      0 |   158 |    +0.0% | -353.943 | -1794102.5 |  11493 | u_prefetch.u_stride.g_entry\[62\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+     550* |       0 |     386 |        0 |      0 |   163 |    +0.0% | -353.941 | -1794088.2 |  11493 | u_prefetch.u_stride.g_entry\[0\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+     560* |       0 |     391 |        0 |      0 |   168 |    +0.0% | -353.937 | -1794071.2 |  11493 | u_prefetch.u_stride.g_entry\[26\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+     570* |       0 |     396 |        0 |      0 |   173 |    +0.0% | -353.936 | -1794057.2 |  11493 | u_prefetch.u_stride.g_entry\[48\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+     580* |       0 |     401 |        0 |      0 |   178 |    +0.0% | -353.520 | -1787412.5 |  11493 | u_prefetch.u_stream.cand_line\[37\]$_DFFE_PP_/D
+     590* |       0 |     406 |        0 |      0 |   183 |    +0.0% | -354.223 | -1787200.2 |  11493 | u_prefetch.u_stride.g_entry\[56\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+     600* |       0 |     415 |        0 |      0 |   184 |    +0.0% | -351.949 | -1787053.9 |  11493 | u_prefetch.u_stream.recent_tag\[36\]$_DFFE_PP_/D
+     610* |       0 |     424 |        0 |      0 |   185 |    +0.0% | -351.699 | -1786301.1 |  11493 | u_prefetch.u_stride.g_entry\[58\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+     620* |       0 |     434 |        0 |      0 |   185 |    +0.0% | -351.695 | -1786229.1 |  11493 | u_prefetch.u_stride.g_entry\[29\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+     630* |       0 |     444 |        0 |      0 |   185 |    +0.0% | -351.590 | -1786160.8 |  11493 | u_prefetch.u_stride.g_entry\[11\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+     640* |       0 |     454 |        0 |      0 |   185 |    +0.0% | -351.590 | -1786085.2 |  11493 | u_prefetch.u_stride.g_entry\[55\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+     650* |       0 |     464 |        0 |      0 |   185 |    +0.0% | -351.556 | -1786010.2 |  11493 | u_prefetch.u_stride.g_entry\[48\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+     660* |       0 |     468 |        0 |      0 |   191 |    +0.0% | -351.041 | -1785845.0 |  11493 | u_prefetch.u_stride.g_entry\[7\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+     670* |       0 |     476 |        0 |      0 |   193 |    +0.0% | -350.751 | -1785655.2 |  11493 | u_prefetch.u_stride.g_entry\[30\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+     680* |       0 |     486 |        0 |      0 |   193 |    +0.0% | -350.739 | -1785617.9 |  11493 | u_prefetch.u_stride.g_entry\[63\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+     690* |       0 |     496 |        0 |      0 |   193 |    +0.0% | -350.732 | -1785573.4 |  11493 | u_prefetch.u_stride.g_entry\[54\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+     700* |       0 |     506 |        0 |      0 |   193 |    +0.0% | -350.478 | -1785545.5 |  11493 | u_prefetch.u_stride.g_entry\[50\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+     710* |       0 |     516 |        0 |      0 |   193 |    +0.0% | -349.992 | -1776570.4 |  11493 | u_prefetch.u_stride.g_entry\[1\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+     720* |       0 |     525 |        0 |      0 |   194 |    +0.0% | -349.885 | -1775957.6 |  11493 | u_prefetch.u_stride.g_entry\[27\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+     730* |       0 |     535 |        0 |      0 |   194 |    +0.0% | -349.408 | -1775919.0 |  11493 | u_prefetch.u_stream.recent_tag\[36\]$_DFFE_PP_/D
+     740* |       0 |     545 |        0 |      0 |   194 |    +0.0% | -349.274 | -1775781.9 |  11493 | u_prefetch.u_stride.g_entry\[7\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+     750* |       0 |     553 |        0 |      0 |   196 |    +0.0% | -348.720 | -1775588.9 |  11493 | u_prefetch.u_stride.g_entry\[44\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+     760* |       0 |     562 |        0 |      0 |   197 |    +0.0% | -348.100 | -1775540.2 |  11493 | u_prefetch.u_stream.recent_tag\[36\]$_DFFE_PP_/D
+     770* |       0 |     568 |        0 |      0 |   201 |    +0.0% | -347.324 | -1775068.2 |  11493 | u_prefetch.u_stride.g_entry\[33\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+     780* |       0 |     577 |        0 |      0 |   202 |    +0.0% | -347.090 | -1774410.2 |  11493 | u_prefetch.u_stride.g_entry\[35\].u_entry.tgt_q\[11\]$_DFFE_PP_/D
+     790* |       0 |     578 |        0 |      0 |   211 |    +0.0% | -346.464 | -1773987.6 |  11493 | u_prefetch.u_stride.g_entry\[17\].u_entry.stride_q\[11\]$_DFFE_PP_/D
+     800* |       0 |     578 |        0 |      0 |   221 |    +0.0% | -346.132 | -1773822.2 |  11493 | u_prefetch.u_stride.g_entry\[49\].u_entry.stride_q\[11\]$_DFFE_PP_/D
+     810* |       0 |     581 |        0 |      0 |   228 |    +0.0% | -346.635 | -1773777.1 |  11493 | u_prefetch.u_stride.g_entry\[56\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+     820* |       0 |     591 |        0 |      0 |   228 |    +0.0% | -346.521 | -1773740.4 |  11493 | u_prefetch.u_stride.g_entry\[10\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+     830* |       0 |     601 |        0 |      0 |   228 |    +0.0% | -345.664 | -1773690.2 |  11493 | u_prefetch.u_stride.g_entry\[13\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+     840* |       0 |     611 |        0 |      0 |   228 |    +0.0% | -345.629 | -1773653.1 |  11493 | u_prefetch.u_stride.g_entry\[51\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+     850* |       0 |     621 |        0 |      0 |   228 |    +0.0% | -345.556 | -1773614.4 |  11493 | u_prefetch.u_stride.g_entry\[22\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+     860* |       0 |     631 |        0 |      0 |   228 |    +0.0% | -345.556 | -1773554.8 |  11493 | u_prefetch.u_stride.g_entry\[61\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+     870* |       0 |     641 |        0 |      0 |   228 |    +0.0% | -345.428 | -1773508.4 |  11493 | u_prefetch.u_stride.g_entry\[10\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+     880* |       0 |     651 |        0 |      0 |   228 |    +0.0% | -345.159 | -1773184.8 |  11493 | u_prefetch.u_stride.g_entry\[18\].u_entry.stride_q\[12\]$_DFFE_PP_/D
+     890* |       0 |     661 |        0 |      0 |   228 |    +0.0% | -345.084 | -1761957.0 |  11493 | u_prefetch.u_stride.g_entry\[24\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+     900* |       0 |     670 |        0 |      0 |   229 |    +0.0% | -345.039 | -1761895.2 |  11493 | u_prefetch.u_stride.g_entry\[23\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+     910* |       0 |     679 |        0 |      0 |   230 |    +0.0% | -344.637 | -1761850.2 |  11493 | u_prefetch.u_stride.g_entry\[43\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+     920* |       0 |     689 |        0 |      0 |   230 |    +0.0% | -344.638 | -1761813.2 |  11493 | u_prefetch.u_stride.g_entry\[1\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+     930* |       0 |     699 |        0 |      0 |   230 |    +0.0% | -344.480 | -1761777.0 |  11493 | u_prefetch.u_stride.g_entry\[3\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+     940* |       0 |     709 |        0 |      0 |   230 |    +0.0% | -344.332 | -1761712.9 |  11493 | u_prefetch.u_stride.g_entry\[0\].u_entry.stride_q\[11\]$_DFFE_PP_/D
+     950* |       0 |     710 |        0 |      0 |   239 |    +0.0% | -344.036 | -1761526.1 |  11493 | u_prefetch.u_stream.recent_tag\[36\]$_DFFE_PP_/D
+     960* |       0 |     713 |        0 |      0 |   246 |    +0.0% | -343.749 | -1761309.1 |  11493 | u_prefetch.u_stride.g_entry\[47\].u_entry.stride_q\[11\]$_DFFE_PP_/D
+     970* |       0 |     714 |        0 |      0 |   255 |    +0.0% | -343.487 | -1754238.0 |  11493 | u_prefetch.u_stream.cand_line\[37\]$_DFFE_PP_/D
+     980* |       0 |     717 |        0 |      0 |   262 |    +0.0% | -343.238 | -1754032.5 |  11493 | u_prefetch.u_stride.g_entry\[38\].u_entry.stride_q\[11\]$_DFFE_PP_/D
+     990* |       0 |     719 |        0 |      0 |   270 |    +0.0% | -342.813 | -1753848.5 |  11493 | u_prefetch.u_stream.recent_tag\[36\]$_DFFE_PP_/D
+    1000* |       0 |     728 |        0 |      0 |   271 |    +0.0% | -342.792 | -1753820.2 |  11493 | u_prefetch.u_stride.g_entry\[15\].u_entry.stride_q\[11\]$_DFFE_PP_/D
+    1010* |       0 |     738 |        0 |      0 |   271 |    +0.0% | -342.792 | -1753800.1 |  11493 | u_prefetch.u_stride.g_entry\[44\].u_entry.stride_q\[11\]$_DFFE_PP_/D
+    1020* |       0 |     748 |        0 |      0 |   271 |    +0.0% | -342.755 | -1753324.8 |  11493 | u_prefetch.u_stride.g_entry\[44\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1030* |       0 |     757 |        0 |      0 |   272 |    +0.0% | -345.315 | -1753494.2 |  11493 | u_prefetch.u_stream.recent_tag\[36\]$_DFFE_PP_/D
+    1040* |       0 |     766 |        0 |      0 |   273 |    +0.0% | -342.029 | -1753176.5 |  11493 | u_prefetch.u_stride.g_entry\[41\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+    1050* |       0 |     774 |        0 |      0 |   275 |    +0.0% | -341.670 | -1753119.4 |  11493 | u_prefetch.u_stream.recent_tag\[36\]$_DFFE_PP_/D
+    1060* |       0 |     781 |        0 |      0 |   278 |    +0.0% | -341.330 | -1751935.6 |  11493 | u_prefetch.u_stride.g_entry\[0\].u_entry.stride_q\[11\]$_DFFE_PP_/D
+    1070* |       0 |     791 |        0 |      0 |   278 |    +0.0% | -341.330 | -1751925.2 |  11493 | u_prefetch.u_stride.g_entry\[28\].u_entry.stride_q\[11\]$_DFFE_PP_/D
+    1080* |       0 |     801 |        0 |      0 |   278 |    +0.0% | -341.330 | -1751909.5 |  11493 | u_prefetch.u_stride.g_entry\[54\].u_entry.stride_q\[11\]$_DFFE_PP_/D
+    1090* |       0 |     811 |        0 |      0 |   278 |    +0.0% | -341.329 | -1751904.0 |  11493 | u_prefetch.u_stride.g_entry\[38\].u_entry.stride_q\[11\]$_DFFE_PP_/D
+    1100* |       0 |     820 |        0 |      0 |   279 |    +0.0% | -341.065 | -1751874.5 |  11493 | u_prefetch.u_stream.recent_tag\[36\]$_DFFE_PP_/D
+    1110* |       0 |     827 |        0 |      0 |   282 |    +0.0% | -340.151 | -1751313.2 |  11493 | u_prefetch.u_stride.g_entry\[33\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+    1120* |       0 |     834 |        0 |      0 |   285 |    +0.0% | -340.120 | -1751290.1 |  11493 | u_prefetch.u_stride.g_entry\[54\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1130* |       0 |     840 |        0 |      0 |   289 |    +0.0% | -339.851 | -1751195.6 |  11493 | u_prefetch.u_stream.recent_tag\[36\]$_DFFE_PP_/D
+    1140* |       0 |     848 |        0 |      0 |   291 |    +0.0% | -340.286 | -1751191.4 |  11493 | u_prefetch.u_stream.recent_tag\[36\]$_DFFE_PP_/D
+    1150* |       0 |     856 |        0 |      0 |   293 |    +0.0% | -339.324 | -1751083.8 |  11493 | u_prefetch.u_stride.g_entry\[13\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+    1160* |       0 |     866 |        0 |      0 |   293 |    +0.0% | -339.287 | -1751034.2 |  11493 | u_prefetch.u_stride.g_entry\[32\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+    1170* |       0 |     876 |        0 |      0 |   293 |    +0.0% | -339.216 | -1750985.8 |  11493 | u_prefetch.u_stride.g_entry\[11\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+    1180* |       0 |     886 |        0 |      0 |   293 |    +0.0% | -339.216 | -1750930.1 |  11493 | u_prefetch.u_stride.g_entry\[54\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+    1190* |       0 |     895 |        0 |      0 |   294 |    +0.0% | -339.179 | -1750864.0 |  11493 | u_prefetch.u_stride.g_entry\[31\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+    1200* |       0 |     904 |        0 |      0 |   295 |    +0.0% | -339.006 | -1750803.0 |  11493 | u_prefetch.u_stream.cand_line\[37\]$_DFFE_PP_/D
+    1210* |       0 |     913 |        0 |      0 |   296 |    +0.0% | -338.854 | -1750746.4 |  11493 | u_prefetch.u_stride.g_entry\[9\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1220* |       0 |     923 |        0 |      0 |   296 |    +0.0% | -338.841 | -1750695.6 |  11493 | u_prefetch.u_stride.g_entry\[21\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1230* |       0 |     932 |        0 |      0 |   297 |    +0.0% | -338.568 | -1750638.9 |  11493 | u_prefetch.u_stream.cand_line\[37\]$_DFFE_PP_/D
+    1240* |       0 |     942 |        0 |      0 |   297 |    +0.0% | -338.490 | -1750600.1 |  11493 | u_prefetch.u_stride.g_entry\[15\].u_entry.stride_q\[11\]$_DFFE_PP_/D
+    1250* |       0 |     952 |        0 |      0 |   297 |    +0.0% | -338.490 | -1750580.0 |  11493 | u_prefetch.u_stride.g_entry\[44\].u_entry.stride_q\[11\]$_DFFE_PP_/D
+    1260* |       0 |     962 |        0 |      0 |   297 |    +0.0% | -338.350 | -1750503.1 |  11493 | u_prefetch.u_stream.recent_tag\[36\]$_DFFE_PP_/D
+    1270* |       0 |     970 |        0 |      0 |   299 |    +0.0% | -338.222 | -1750368.8 |  11493 | u_prefetch.u_stride.g_entry\[5\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1280* |       0 |     978 |        0 |      0 |   301 |    +0.0% | -337.910 | -1750064.9 |  11493 | u_prefetch.u_stream.recent_tag\[36\]$_DFFE_PP_/D
+    1290* |       0 |     986 |        0 |      0 |   303 |    +0.0% | -337.636 | -1749996.0 |  11493 | u_prefetch.u_stream.recent_tag\[36\]$_DFFE_PP_/D
+    1300* |       0 |     994 |        0 |      0 |   305 |    +0.0% | -337.327 | -1749952.8 |  11493 | u_prefetch.u_stream.recent_tag\[36\]$_DFFE_PP_/D
+    1302* |       0 |     996 |        0 |      0 |   305 |    +0.0% | -337.321 | -1749925.4 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1305* |       0 |     998 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751401.6 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1307* |       0 |     999 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751397.4 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1309* |       0 |    1000 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751395.9 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1310* |       0 |    1000 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751395.9 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1311* |       0 |    1001 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751394.4 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1313* |       0 |    1002 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751390.1 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1315* |       0 |    1003 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751385.8 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1317* |       0 |    1004 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751381.5 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1319* |       0 |    1005 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751380.0 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1320* |       0 |    1005 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751380.0 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1322* |       0 |    1007 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751374.2 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1325* |       0 |    1009 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751369.4 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1327* |       0 |    1010 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751365.1 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1329* |       0 |    1011 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751360.8 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1330* |       0 |    1011 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751360.8 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1331* |       0 |    1012 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751356.4 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1333* |       0 |    1013 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751352.2 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1335* |       0 |    1014 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751347.9 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1337* |       0 |    1015 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751343.6 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1339* |       0 |    1016 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751342.1 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1340* |       0 |    1016 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751342.1 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1341* |       0 |    1017 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751340.6 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1343* |       0 |    1018 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751339.1 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1345* |       0 |    1019 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751335.0 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1347* |       0 |    1020 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751333.5 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1349* |       0 |    1021 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751329.1 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1350* |       0 |    1021 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751329.1 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1351* |       0 |    1022 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751324.9 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1353* |       0 |    1023 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751320.6 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1355* |       0 |    1024 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751316.2 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1357* |       0 |    1025 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751312.0 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1359* |       0 |    1026 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751310.5 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1360* |       0 |    1026 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751310.5 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1361* |       0 |    1027 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751306.1 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1363* |       0 |    1028 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751302.0 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1365* |       0 |    1029 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751300.5 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1367* |       0 |    1030 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751299.0 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1369* |       0 |    1031 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751297.5 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1370* |       0 |    1031 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751297.5 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1371* |       0 |    1032 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751293.2 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1373* |       0 |    1033 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751288.9 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1375* |       0 |    1034 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751287.4 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1377* |       0 |    1035 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751283.1 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1379* |       0 |    1036 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751278.9 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1380* |       0 |    1036 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751278.9 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1381* |       0 |    1037 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751274.6 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1383* |       0 |    1038 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751270.2 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1385* |       0 |    1039 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751265.9 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1387* |       0 |    1040 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751264.6 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1389* |       0 |    1041 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751260.2 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1390* |       0 |    1041 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751260.2 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1391* |       0 |    1042 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751255.9 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1393* |       0 |    1043 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751251.6 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1395* |       0 |    1044 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751250.1 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1397* |       0 |    1045 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751248.8 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1399* |       0 |    1046 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751247.2 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1400* |       0 |    1046 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751247.2 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1400* |       0 |    1046 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751247.2 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1402* |       0 |    1047 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751245.8 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1404* |       0 |    1048 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751244.4 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1406* |       0 |    1049 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751240.0 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1408* |       0 |    1050 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751238.5 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1410* |       0 |    1051 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751237.0 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1410* |       0 |    1051 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751237.0 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1412* |       0 |    1052 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751232.8 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1414* |       0 |    1053 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751228.5 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1416* |       0 |    1054 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751227.0 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1418* |       0 |    1055 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751222.8 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1420* |       0 |    1056 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751218.4 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1420* |       0 |    1056 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751218.4 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1422* |       0 |    1057 |        0 |      0 |   305 |    +0.0% | -337.321 | -1751214.1 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1425* |       0 |    1058 |        0 |      0 |   306 |    +0.0% | -337.321 | -1751211.8 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1430* |       0 |    1061 |        0 |      0 |   307 |    +0.0% | -337.321 | -1751210.5 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1430* |       0 |    1061 |        0 |      0 |   307 |    +0.0% | -337.321 | -1751210.5 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1433* |       0 |    1062 |        0 |      0 |   308 |    +0.0% | -337.321 | -1751208.4 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1436* |       0 |    1063 |        0 |      0 |   309 |    +0.0% | -337.321 | -1751206.1 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1439* |       0 |    1064 |        0 |      0 |   310 |    +0.0% | -337.321 | -1751204.4 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1440* |       0 |    1064 |        0 |      0 |   310 |    +0.0% | -337.321 | -1751204.4 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1442* |       0 |    1065 |        0 |      0 |   311 |    +0.0% | -337.321 | -1751201.9 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1443* |       0 |    1065 |        0 |      0 |   311 |    +0.0% | -337.321 | -1751201.9 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1444* |       0 |    1065 |        0 |      0 |   311 |    +0.0% | -337.321 | -1751201.9 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1445* |       0 |    1065 |        0 |      0 |   311 |    +0.0% | -337.321 | -1751201.9 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1446* |       0 |    1065 |        0 |      0 |   311 |    +0.0% | -337.321 | -1751201.9 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1447* |       0 |    1065 |        0 |      0 |   311 |    +0.0% | -337.321 | -1751201.9 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1448* |       0 |    1065 |        0 |      0 |   311 |    +0.0% | -337.321 | -1751201.9 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1449* |       0 |    1065 |        0 |      0 |   311 |    +0.0% | -337.321 | -1751201.9 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1450* |       0 |    1065 |        0 |      0 |   311 |    +0.0% | -337.321 | -1751201.9 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1450* |       0 |    1065 |        0 |      0 |   311 |    +0.0% | -337.321 | -1751201.9 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1451* |       0 |    1065 |        0 |      0 |   311 |    +0.0% | -337.321 | -1751201.9 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1452* |       0 |    1065 |        0 |      0 |   311 |    +0.0% | -337.321 | -1751201.9 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1453* |       0 |    1065 |        0 |      0 |   311 |    +0.0% | -337.321 | -1751201.9 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1454* |       0 |    1065 |        0 |      0 |   311 |    +0.0% | -337.321 | -1751201.9 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1455* |       0 |    1065 |        0 |      0 |   311 |    +0.0% | -337.321 | -1751201.9 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1456* |       0 |    1065 |        0 |      0 |   311 |    +0.0% | -337.321 | -1751201.9 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1458* |       0 |    1066 |        0 |      0 |   311 |    +0.0% | -337.321 | -1751200.1 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1460* |       0 |    1067 |        0 |      0 |   311 |    +0.0% | -337.321 | -1751194.2 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1460* |       0 |    1067 |        0 |      0 |   311 |    +0.0% | -337.321 | -1751194.2 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1461* |       0 |    1067 |        0 |      0 |   311 |    +0.0% | -337.321 | -1751194.2 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1462* |       0 |    1067 |        0 |      0 |   311 |    +0.0% | -337.321 | -1751194.2 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1463* |       0 |    1067 |        0 |      0 |   311 |    +0.0% | -337.321 | -1751194.2 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1464* |       0 |    1067 |        0 |      0 |   311 |    +0.0% | -337.321 | -1751194.2 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1465* |       0 |    1067 |        0 |      0 |   311 |    +0.0% | -337.321 | -1751194.2 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1467* |       0 |    1068 |        0 |      0 |   311 |    +0.0% | -337.321 | -1751190.1 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1469* |       0 |    1069 |        0 |      0 |   311 |    +0.0% | -337.321 | -1751188.1 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1470* |       0 |    1069 |        0 |      0 |   311 |    +0.0% | -337.321 | -1751188.1 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1470* |       0 |    1069 |        0 |      0 |   311 |    +0.0% | -337.321 | -1751188.1 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1471* |       0 |    1069 |        0 |      0 |   311 |    +0.0% | -337.321 | -1751188.1 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1472* |       0 |    1069 |        0 |      0 |   311 |    +0.0% | -337.321 | -1751188.1 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1474* |       0 |    1070 |        0 |      0 |   311 |    +0.0% | -337.321 | -1751186.4 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1476* |       0 |    1071 |        0 |      0 |   311 |    +0.0% | -337.321 | -1751172.6 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1478* |       0 |    1072 |        0 |      0 |   311 |    +0.0% | -337.321 | -1751170.8 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1480* |       0 |    1073 |        0 |      0 |   311 |    +0.0% | -337.321 | -1751168.9 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1480* |       0 |    1073 |        0 |      0 |   311 |    +0.0% | -337.321 | -1751168.9 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1481* |       0 |    1073 |        0 |      0 |   311 |    +0.0% | -337.321 | -1751168.9 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1482* |       0 |    1073 |        0 |      0 |   311 |    +0.0% | -337.321 | -1751168.9 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1487* |       0 |    1076 |        0 |      0 |   312 |    +0.0% | -337.321 | -1751154.5 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1490* |       0 |    1078 |        0 |      0 |   312 |    +0.0% | -337.321 | -1751144.8 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1493* |       0 |    1080 |        0 |      0 |   313 |    +0.0% | -337.321 | -1751137.1 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1499* |       0 |    1084 |        0 |      0 |   314 |    +0.0% | -337.321 | -1751119.8 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1500* |       0 |    1084 |        0 |      0 |   314 |    +0.0% | -337.321 | -1751119.8 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1500* |       0 |    1084 |        0 |      0 |   314 |    +0.0% | -337.321 | -1751119.8 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    1500* |       0 |    1084 |        0 |      0 |   314 |    +0.0% | -337.321 | -1751119.8 |  11493 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[13\]$_DFFE_PP_/D
+    final |       0 |    2660 |        0 |      0 |   314 |    +0.0% | -337.301 | -1706158.1 |  11485 | u_prefetch.u_stride.g_entry\[36\].u_entry.tgt_q\[14\]$_DFFE_PP_/D
+------------------------------------------------------------------------------------------------------------------------------
+[INFO RSZ-0051] Resized 2660 instances: 151 up, 0 up match, 0 down, 2509 VT
+[INFO RSZ-0043] Swapped pins on 314 instances.
+[WARNING RSZ-0062] Unable to repair all setup violations.
+[INFO RSZ-0505] Runtime: 67.61s
+Took 68 seconds: repair_timing -setup_margin 0 -hold_margin 0 -repair_tns 100 -setup -skip_last_gasp -sequence unbuffer,sizeup,swap,vt_swap -verbose
+Default units for flow
+ time 1ps
+ capacitance 1fF
+ resistance 1kohm
+ voltage 1v
+ current 1mA
+ power 1pW
+ distance 1um
+   Layer   | Unit Resistance | Unit Capacitance 
+           |       (kohm/um) |          (fF/um)
+------------------------------------------------
+        M1 |        7.04e-02 |         1.00e-10
+        M2 |        2.97e-02 |         1.75e-01
+        M3 |        3.13e-02 |         1.56e-01
+        M4 |        1.80e-02 |         1.78e-01
+        M5 |        1.90e-02 |         1.64e-01
+        M6 |        1.19e-02 |         1.87e-01
+        M7 |        1.25e-02 |         1.63e-01
+        M8 |        8.45e-03 |         1.04e-01
+        M9 |        8.90e-03 |         9.28e-02
+       Pad |        0.00e+00 |         0.00e+00
+------------------------------------------------
+
+   Layer   | Via Resistance 
+           |         (kohm) 
+----------------------------
+        V1 |       1.72e-02 
+        V2 |       1.72e-02 
+        V3 |       1.72e-02 
+        V4 |       1.18e-02 
+        V5 |       1.18e-02 
+        V6 |       8.20e-03 
+        V7 |       8.20e-03 
+        V8 |       6.30e-03 
+        V9 |       6.30e-03 
+----------------------------
+Report metrics stage 2, floorplan final...
+
+==========================================================================
+floorplan final report_design_area
+--------------------------------------------------------------------------
+Design area 17817 um^2 40% utilization.
+write_sdc -no_timestamp /__w/test_dose_2/test_dose_2/pnr_out/work/results/asap7/pf3_timing_top/base/2_1_floorplan.sdc
+write_db /__w/test_dose_2/test_dose_2/pnr_out/work/results/asap7/pf3_timing_top/base/2_1_floorplan.odb
+Elapsed time: 1:31.56[h:]min:sec. CPU time: user 120.41 sys 2.66 (134%). Peak memory: 875448KB.
+Log                    Ext     Elapsed      CPU     CPU/ Peak Mem sha1sum
+                                     s        s  Elapsed       MB [0:10)
+2_1_floorplan          .odb         91      123     1.34      854 5b11d3194a
+2_1_floorplan          .sdc                                       dd6c2f3eac

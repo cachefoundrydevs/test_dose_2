@@ -1,0 +1,50 @@
+Startpoint: u_prefetch.u_sms_core.e1_rtag[3]$_DFF_P_
+            (rising edge-triggered flip-flop clocked by clk)
+Endpoint: u_prefetch.u_sms_core.at_pat[259]$_DFFE_PP_
+          (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: max
+
+Fanout    Cap   Slew  Delay   Time   Description
+-------------------------------------------------------------------------
+                        0.0    0.0   clock clk (rise edge)
+                      314.6  314.6   clock network delay (propagated)
+                16.6    0.0  314.6 ^ u_prefetch.u_sms_core.e1_rtag[3]$_DFF_P_/CLK (DFFHQNx1_ASAP7_75t_SL)
+     1    1.4   18.4   36.2  350.9 ^ u_prefetch.u_sms_core.e1_rtag[3]$_DFF_P_/QN (DFFHQNx1_ASAP7_75t_SL)
+     5    7.9   13.7   15.2  366.1 ^ place77925/Y (BUFx6f_ASAP7_75t_SL)
+     7   10.8   23.4   25.6  391.6 ^ place77912/Y (BUFx5_ASAP7_75t_L)
+     4    3.5    8.9   18.9  410.6 ^ place77910/Y (BUFx6f_ASAP7_75t_L)
+     1    0.9    9.8   26.8  437.3 v _146878_/Y (XOR2x2_ASAP7_75t_R)
+     1    1.4   19.4   41.1  478.4 v _146880_/Y (OR4x1_ASAP7_75t_R)
+     1    0.7   11.2   23.2  501.6 v _146884_/Y (OR4x1_ASAP7_75t_SL)
+     2    3.7   27.8   32.5  534.1 v _146885_/Y (OR4x1_ASAP7_75t_SL)
+     6    7.1   26.5   30.2  564.3 v place53861/Y (BUFx2_ASAP7_75t_L)
+     1    0.7   22.9   18.3  582.6 ^ _148625_/Y (OAI22x1_ASAP7_75t_R)
+     1    1.2   11.4   12.6  595.2 ^ _148629_/Y (OR4x1_ASAP7_75t_SL)
+     2    7.0   28.3   22.2  617.4 ^ _148630_/Y (OR2x2_ASAP7_75t_SL)
+     1    0.6   10.4   39.9  657.3 v _148693_/Y (XNOR2x2_ASAP7_75t_R)
+     1    1.8   19.3   32.7  690.0 v _148694_/Y (OR5x1_ASAP7_75t_SL)
+     2    6.7   12.2   19.0  709.0 v place46624/Y (BUFx6f_ASAP7_75t_L)
+     7   16.9   75.9   30.8  739.9 ^ _148696_/Y (NAND3x2_ASAP7_75t_SL)
+     9    7.1   15.2   33.5  773.3 ^ place45645/Y (BUFx6f_ASAP7_75t_L)
+     4    6.0   25.7   22.4  795.7 ^ _149455_/Y (OR2x2_ASAP7_75t_SL)
+    13   16.2   69.1   42.1  837.8 ^ place44938/Y (BUFx2_ASAP7_75t_L)
+     1    1.2   15.1   42.6  880.5 ^ _149518_/Y (OA211x2_ASAP7_75t_R)
+     1    0.8   17.5    9.8  890.3 v _149519_/Y (AOI21x1_ASAP7_75t_R)
+                17.5    0.0  890.3 v u_prefetch.u_sms_core.at_pat[259]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_SL)
+                             890.3   data arrival time
+
+                      240.0  240.0   clock clk (rise edge)
+                      301.6  541.6   clock network delay (propagated)
+                      -12.0  529.6   clock uncertainty
+                        5.1  534.7   clock reconvergence pessimism
+                             534.7 ^ u_prefetch.u_sms_core.at_pat[259]$_DFFE_PP_/CLK (DFFHQNx1_ASAP7_75t_SL)
+                       -3.3  531.4   library setup time
+                             531.4   data required time
+-------------------------------------------------------------------------
+                             531.4   data required time
+                            -890.3   data arrival time
+-------------------------------------------------------------------------
+                            -358.9   slack (VIOLATED)
+
+

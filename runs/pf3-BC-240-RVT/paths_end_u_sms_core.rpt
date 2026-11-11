@@ -1,0 +1,21 @@
+max_delay/setup group clk
+
+                                     Required  Actual
+Endpoint                               Delay   Delay   Slack
+------------------------------------------------------------
+u_prefetch.u_sms_core.w_pat[19]$_DFF_P_/D (DFFHQNx1_ASAP7_75t_R)  476.84  814.37 -337.53 (VIOLATED)
+u_prefetch.u_sms_core.w_pat[27]$_DFF_P_/D (DFFHQNx1_ASAP7_75t_R)  478.72  815.51 -336.79 (VIOLATED)
+u_prefetch.u_sms_core.at_ptag[45]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_R)  479.54  815.24 -335.70 (VIOLATED)
+u_prefetch.u_sms_core.at_pset[81]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_R)  469.72  804.49 -334.78 (VIOLATED)
+u_prefetch.u_sms_core.at_pset[84]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_R)  469.70  804.47 -334.77 (VIOLATED)
+u_prefetch.u_sms_core.at_pset[80]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_R)  469.69  804.29 -334.60 (VIOLATED)
+u_prefetch.u_sms_core.at_pset[26]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_R)  468.40  802.15 -333.76 (VIOLATED)
+u_prefetch.u_sms_core.w_line[1]$_DFF_P_/D (DFFHQNx1_ASAP7_75t_R)  477.32  810.28 -332.97 (VIOLATED)
+u_prefetch.u_sms_core.at_pat[543]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_R)  473.30  806.02 -332.72 (VIOLATED)
+u_prefetch.u_sms_core.at_pset[25]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_R)  469.75  802.13 -332.37 (VIOLATED)
+u_prefetch.u_sms_core.w_pat[25]$_DFF_P_/D (DFFHQNx1_ASAP7_75t_R)  478.53  810.85 -332.32 (VIOLATED)
+u_prefetch.u_sms_core.at_pat[202]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_R)  473.44  805.61 -332.18 (VIOLATED)
+u_prefetch.u_sms_core.at_pat[523]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_R)  474.72  805.94 -331.22 (VIOLATED)
+u_prefetch.u_sms_core.at_pat[223]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_R)  474.43  805.55 -331.12 (VIOLATED)
+u_prefetch.u_sms_core.at_pat[640]$_DFFE_PP_/D (DFFHQNx1_ASAP7_75t_R)  466.05  797.15 -331.10 (VIOLATED)
+

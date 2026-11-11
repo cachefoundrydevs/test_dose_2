@@ -1,0 +1,1417 @@
+OpenROAD unknown 
+Features included (+) or not (-): -GPU +GUI
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+[INFO ORD-0030] Using 2 thread(s).
+source /OpenROAD-flow-scripts/flow/platforms/asap7/liberty_suppressions.tcl
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_AO_RVT_TT_nldm_211120@4181747-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_INVBUF_RVT_TT_nldm_220122@69356-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_OA_RVT_TT_nldm_211120@3765433-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_SEQ_RVT_TT_nldm_220123@1512690-1794015536-fbb2a041.blib
+read_liberty /__w/test_dose_2/test_dose_2/pnr_out/work/objects/binary_libs/asap7/asap7sc7p5t_SIMPLE_RVT_TT_nldm_211120@446864-1794015536-fbb2a041.blib
+read_db /__w/test_dose_2/test_dose_2/pnr_out/work/results/asap7/pf3_timing_top/base/4_cts.odb
+read_sdc /__w/test_dose_2/test_dose_2/pnr_out/work/results/asap7/pf3_timing_top/base/4_cts.sdc
+source /OpenROAD-flow-scripts/flow/platforms/asap7/setRC.tcl
+pin_access
+[INFO DRT-0149] Reading tech and libs.
+
+Units:                1000
+Number of layers:     21
+Number of macros:     212
+Number of vias:       14
+Number of viarulegen: 11
+
+[INFO DRT-0150] Reading design.
+
+Design:                   pf3_timing_top
+Die area:                 ( 0 0 ) ( 212900 212900 )
+Number of track patterns: 32
+Number of DEF vias:       0
+Number of components:     159995
+Number of terminals:      1261
+Number of snets:          2
+Number of nets:           160443
+
+[INFO DRT-0167] List of default vias:
+  Layer V2
+    default via: VIA23
+  Layer V3
+    default via: VIA34
+  Layer V4
+    default via: VIA45
+  Layer V5
+    default via: VIA56
+  Layer V6
+    default via: VIA67
+  Layer V7
+    default via: VIA78
+  Layer V8
+    default via: VIA89
+  Layer V9
+    default via: VIA9Pad
+[INFO DRT-0162] Library cell analysis.
+[INFO DRT-0163] Instance analysis.
+  Complete 100000 instances.
+[INFO DRT-0164] Number of unique instances = 291.
+[INFO DRT-0168] Init region query.
+[INFO DRT-0018]   Complete 100000 insts.
+[INFO DRT-0024]   Complete Active.
+[INFO DRT-0024]   Complete V0.
+[INFO DRT-0024]   Complete M1.
+[INFO DRT-0024]   Complete V1.
+[INFO DRT-0024]   Complete M2.
+[INFO DRT-0024]   Complete V2.
+[INFO DRT-0024]   Complete M3.
+[INFO DRT-0024]   Complete V3.
+[INFO DRT-0024]   Complete M4.
+[INFO DRT-0024]   Complete V4.
+[INFO DRT-0024]   Complete M5.
+[INFO DRT-0024]   Complete V5.
+[INFO DRT-0024]   Complete M6.
+[INFO DRT-0024]   Complete V6.
+[INFO DRT-0024]   Complete M7.
+[INFO DRT-0024]   Complete V7.
+[INFO DRT-0024]   Complete M8.
+[INFO DRT-0024]   Complete V8.
+[INFO DRT-0024]   Complete M9.
+[INFO DRT-0024]   Complete V9.
+[INFO DRT-0024]   Complete Pad.
+[INFO DRT-0033] Active shape region query size = 0.
+[INFO DRT-0033] V0 shape region query size = 0.
+[INFO DRT-0033] M1 shape region query size = 3030711.
+[INFO DRT-0033] V1 shape region query size = 4776262.
+[INFO DRT-0033] M2 shape region query size = 99638.
+[INFO DRT-0033] V2 shape region query size = 91377.
+[INFO DRT-0033] M3 shape region query size = 91377.
+[INFO DRT-0033] V3 shape region query size = 60918.
+[INFO DRT-0033] M4 shape region query size = 61398.
+[INFO DRT-0033] V4 shape region query size = 60918.
+[INFO DRT-0033] M5 shape region query size = 34358.
+[INFO DRT-0033] V5 shape region query size = 6084.
+[INFO DRT-0033] M6 shape region query size = 3198.
+[INFO DRT-0033] V6 shape region query size = 0.
+[INFO DRT-0033] M7 shape region query size = 0.
+[INFO DRT-0033] V7 shape region query size = 0.
+[INFO DRT-0033] M8 shape region query size = 0.
+[INFO DRT-0033] V8 shape region query size = 0.
+[INFO DRT-0033] M9 shape region query size = 0.
+[INFO DRT-0033] V9 shape region query size = 0.
+[INFO DRT-0033] Pad shape region query size = 0.
+[INFO DRT-0165] Start pin access.
+[INFO DRT-0076]   Complete 1000 pins.
+[INFO DRT-0078]   Complete 1688 pins.
+[INFO DRT-0079]   Complete 100 unique inst patterns.
+[INFO DRT-0079]   Complete 200 unique inst patterns.
+[INFO DRT-0081]   Complete 291 unique inst patterns.
+[INFO DRT-0082]   Complete 10000 groups.
+[INFO DRT-0082]   Complete 20000 groups.
+[INFO DRT-0082]   Complete 30000 groups.
+[INFO DRT-0082]   Complete 40000 groups.
+[INFO DRT-0082]   Complete 50000 groups.
+[INFO DRT-0082]   Complete 60000 groups.
+[INFO DRT-0082]   Complete 70000 groups.
+[INFO DRT-0082]   Complete 80000 groups.
+[INFO DRT-0082]   Complete 90000 groups.
+[INFO DRT-0084]   Complete 97929 groups.
+#scanned instances     = 159995
+#unique  instances     = 291
+#stdCellGenAp          = 8470
+#stdCellValidPlanarAp  = 52
+#stdCellValidViaAp     = 6954
+#stdCellPinNoAp        = 0
+#stdCellPinCnt         = 502998
+#instTermValidViaApCnt = 0
+#macroGenAp            = 0
+#macroValidPlanarAp    = 0
+#macroValidViaAp       = 0
+#macroNoAp             = 0
+[INFO DRT-0166] Complete pin access.
+[INFO DRT-0267] cpu time = 00:10:23, elapsed time = 00:05:11, memory = 894.46 (MB), peak = 1046.47 (MB)
+Took 314 seconds: pin_access
+global_route -congestion_report_file /__w/test_dose_2/test_dose_2/pnr_out/work/reports/asap7/pf3_timing_top/base/congestion.rpt -congestion_iterations 30 -congestion_report_iter_step 5 -verbose -resistance_aware
+[INFO GRT-0020] Min routing layer: M2
+[INFO GRT-0021] Max routing layer: M7
+[INFO GRT-0022] Global adjustment: 0%
+[INFO GRT-0023] Grid origin: (0, 0)
+[INFO GRT-0088] Layer M1      Track-Pitch = 0.0360  line-2-Via Pitch: 0.0360
+[INFO GRT-0088] Layer M2      Track-Pitch = 0.0390  line-2-Via Pitch: 0.0360
+[INFO GRT-0088] Layer M3      Track-Pitch = 0.0360  line-2-Via Pitch: 0.0360
+[INFO GRT-0088] Layer M4      Track-Pitch = 0.0480  line-2-Via Pitch: 0.0480
+[INFO GRT-0088] Layer M5      Track-Pitch = 0.0480  line-2-Via Pitch: 0.0480
+[INFO GRT-0088] Layer M6      Track-Pitch = 0.0640  line-2-Via Pitch: 0.0640
+[INFO GRT-0088] Layer M7      Track-Pitch = 0.0640  line-2-Via Pitch: 0.0640
+[INFO GRT-0003] Macros: 0
+[INFO GRT-0004] Blockages: 63999
+[INFO GRT-0019] Found 1340 clock nets.
+[INFO GRT-0001] Minimum degree: 2
+[INFO GRT-0002] Maximum degree: 51
+
+[INFO GRT-0053] Routing resources analysis:
+          Routing      Original      Derated      Resource
+Layer     Direction    Resources     Resources    Reduction (%)
+---------------------------------------------------------------
+M1         Vertical            0             0          0.00%
+M2         Horizontal    1818722       1293398          28.88%
+M3         Vertical      2120431       1577590          25.60%
+M4         Horizontal    1627971       1210959          25.62%
+M5         Vertical      1570981       1166154          25.77%
+M6         Horizontal    1091864        740044          32.22%
+M7         Vertical      1237644        834024          32.61%
+---------------------------------------------------------------
+
+[INFO GRT-0197] Via related to pin nodes: 1508859
+[INFO GRT-0198] Via related Steiner nodes: 42415
+[INFO GRT-0199] Via filling finished.
+[INFO GRT-0111] Final number of vias: 2166378
+[INFO GRT-0112] Final usage 3D: 7998126
+
+[INFO GRT-0096] Final congestion report:
+Layer         Resource        Demand        Usage (%)    Max H / Max V / Total Congestion
+---------------------------------------------------------------------------------------
+M1                   0             0            0.00%             0 /  0 /  0
+M2             1293398        124000            9.59%             0 /  0 /  0
+M3             1577590        109226            6.92%             0 /  0 /  0
+M4             1210959        193705           16.00%             0 /  0 /  0
+M5             1166154        156836           13.45%             0 /  0 /  0
+M6              740044        456466           61.68%             0 /  0 /  0
+M7              834024        458759           55.01%             0 /  0 /  0
+---------------------------------------------------------------------------------------
+Total          6822169       1498992           21.97%             0 /  0 /  0
+
+[INFO GRT-0018] Total wirelength: 1116286 um
+[INFO GRT-0014] Routed nets: 159780
+[INFO GRT-0303] Global routing runtime = 00:01:42
+Took 102 seconds: global_route -congestion_report_file /__w/test_dose_2/test_dose_2/pnr_out/work/reports/asap7/pf3_timing_top/base/congestion.rpt -congestion_iterations 30 -congestion_report_iter_step 5 -verbose -resistance_aware
+estimate_parasitics
+Perform buffer insertion and gate resizing...
+repair_design -verbose
+Iteration |   Area    | Resized | Buffers | Nets repaired | Remaining
+---------------------------------------------------------------------
+        0 |     +0.0% |       0 |       0 |             0 |    161430
+     1000 |     +0.0% |       0 |       0 |             0 |    160430
+     2000 |     +0.0% |       0 |       0 |             0 |    159430
+     3000 |     +0.0% |       0 |       0 |             0 |    158430
+     4000 |     +0.0% |       0 |       0 |             0 |    157430
+     5000 |     +0.0% |       0 |       0 |             0 |    156430
+     6000 |     +0.0% |       0 |       0 |             0 |    155430
+     7000 |     +0.0% |       0 |       0 |             0 |    154430
+     8000 |     +0.0% |       0 |       0 |             0 |    153430
+     9000 |     +0.0% |       0 |       0 |             0 |    152430
+    10000 |     +0.0% |       0 |       0 |             0 |    151430
+    11000 |     +0.0% |       0 |       0 |             0 |    150430
+    12000 |     +0.0% |       0 |       0 |             0 |    149430
+    13000 |     +0.0% |       0 |       0 |             0 |    148430
+    14000 |     +0.0% |       0 |       0 |             0 |    147430
+    15000 |     +0.0% |       0 |       0 |             0 |    146430
+    16000 |     +0.0% |       0 |       0 |             0 |    145430
+    17000 |     +0.0% |       0 |       0 |             0 |    144430
+    18000 |     +0.0% |       0 |       0 |             0 |    143430
+    19000 |     +0.0% |       0 |       0 |             0 |    142430
+    20000 |     +0.0% |       0 |       0 |             0 |    141430
+    21000 |     +0.0% |       0 |       0 |             0 |    140430
+    22000 |     +0.0% |       0 |       0 |             0 |    139430
+    23000 |     +0.0% |       0 |       0 |             0 |    138430
+    24000 |     +0.0% |       0 |       0 |             0 |    137430
+    25000 |     +0.0% |       0 |       0 |             0 |    136430
+    26000 |     +0.0% |       0 |       0 |             0 |    135430
+    27000 |     +0.0% |       0 |       0 |             0 |    134430
+    28000 |     +0.0% |       0 |       0 |             0 |    133430
+    29000 |     +0.0% |       0 |       0 |             0 |    132430
+    30000 |     +0.0% |       0 |       0 |             0 |    131430
+    31000 |     +0.0% |       0 |       0 |             0 |    130430
+    32000 |     +0.0% |       0 |       0 |             0 |    129430
+[WARNING RSZ-0104] Net _125288_ only has one pin. Check if it is intended to be dangling.
+    33000 |     +0.0% |       0 |       0 |             0 |    128430
+    34000 |     +0.0% |       0 |       0 |             0 |    127430
+    35000 |     +0.0% |       0 |       0 |             0 |    126430
+    36000 |     +0.0% |       0 |       0 |             0 |    125430
+    37000 |     +0.0% |       0 |       0 |             0 |    124430
+    38000 |     +0.0% |       0 |       0 |             0 |    123430
+[WARNING RSZ-0104] Net _125289_ only has one pin. Check if it is intended to be dangling.
+    39000 |     +0.0% |       0 |       0 |             0 |    122430
+[WARNING RSZ-0104] Net _125494_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125354_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125308_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125201_ only has one pin. Check if it is intended to be dangling.
+    40000 |     +0.0% |       0 |       0 |             0 |    121430
+    41000 |     +0.0% |       0 |       0 |             0 |    120430
+    42000 |     +0.0% |       0 |       0 |             0 |    119430
+    43000 |     +0.0% |       0 |       0 |             0 |    118430
+[WARNING RSZ-0104] Net _125309_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125202_ only has one pin. Check if it is intended to be dangling.
+    44000 |     +0.0% |       0 |       0 |             0 |    117430
+    45000 |     +0.0% |       0 |       0 |             0 |    116430
+[WARNING RSZ-0104] Net _125433_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125431_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125406_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125366_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125360_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125262_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125242_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125193_ only has one pin. Check if it is intended to be dangling.
+    46000 |     +0.0% |       0 |       0 |             0 |    115430
+    47000 |     +0.0% |       0 |       0 |             0 |    114430
+    48000 |     +0.0% |       0 |       0 |             0 |    113430
+    49000 |     +0.0% |       0 |       0 |             0 |    112430
+    50000 |     +0.0% |       0 |       0 |             0 |    111430
+    51000 |     +0.0% |       0 |       0 |             0 |    110430
+[WARNING RSZ-0104] Net _125495_ only has one pin. Check if it is intended to be dangling.
+    52000 |     +0.0% |       0 |       0 |             0 |    109430
+[WARNING RSZ-0104] Net _125355_ only has one pin. Check if it is intended to be dangling.
+    53000 |     +0.0% |       0 |       0 |             0 |    108430
+[WARNING RSZ-0104] Net _125295_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125286_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125211_ only has one pin. Check if it is intended to be dangling.
+    54000 |     +0.0% |       0 |       0 |             0 |    107430
+    55000 |     +0.0% |       0 |       0 |             0 |    106430
+    56000 |     +0.0% |       0 |       0 |             0 |    105430
+    57000 |     +0.0% |       0 |       0 |             0 |    104430
+    58000 |     +0.0% |       0 |       0 |             0 |    103430
+    59000 |     +0.0% |       0 |       0 |             0 |    102430
+    60000 |     +0.0% |       0 |       0 |             0 |    101430
+    61000 |     +0.0% |       0 |       0 |             0 |    100430
+    62000 |     +0.0% |       0 |       0 |             0 |     99430
+    63000 |     +0.0% |       0 |       0 |             0 |     98430
+[WARNING RSZ-0104] Net _125434_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125432_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125407_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125367_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125361_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125287_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125263_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125243_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125212_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125194_ only has one pin. Check if it is intended to be dangling.
+    64000 |     +0.0% |       0 |       0 |             0 |     97430
+    65000 |     +0.0% |       0 |       0 |             0 |     96430
+[WARNING RSZ-0104] Net _125349_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125292_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125291_ only has one pin. Check if it is intended to be dangling.
+    66000 |     +0.0% |       0 |       0 |             0 |     95430
+    67000 |     +0.0% |       0 |       0 |             0 |     94430
+    68000 |     +0.0% |       0 |       0 |             0 |     93430
+    69000 |     +0.0% |       0 |       0 |             0 |     92430
+    70000 |     +0.0% |       0 |       0 |             0 |     91430
+    71000 |     +0.0% |       0 |       0 |             0 |     90430
+    72000 |     +0.0% |       0 |       0 |             0 |     89430
+    73000 |     +0.0% |       0 |       0 |             0 |     88430
+    74000 |     +0.0% |       0 |       0 |             0 |     87430
+[WARNING RSZ-0104] Net _125350_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125296_ only has one pin. Check if it is intended to be dangling.
+    75000 |     +0.0% |       0 |       0 |             0 |     86430
+    76000 |     +0.0% |       0 |       0 |             0 |     85430
+    77000 |     +0.0% |       0 |       0 |             0 |     84430
+[WARNING RSZ-0104] Net _125290_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125182_ only has one pin. Check if it is intended to be dangling.
+    78000 |     +0.0% |       0 |       0 |             0 |     83430
+    79000 |     +0.0% |       0 |       0 |             0 |     82430
+    80000 |     +0.0% |       0 |       0 |             0 |     81430
+    81000 |     +0.0% |       0 |       0 |             0 |     80430
+    82000 |     +0.0% |       0 |       0 |             0 |     79430
+    83000 |     +0.0% |       0 |       0 |             0 |     78430
+[WARNING RSZ-0104] Net _125404_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125402_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125401_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125399_ only has one pin. Check if it is intended to be dangling.
+    84000 |     +0.0% |       0 |       0 |             0 |     77430
+    85000 |     +0.0% |       0 |       0 |             0 |     76430
+    86000 |     +0.0% |       0 |       0 |             0 |     75430
+    87000 |     +0.0% |       0 |       0 |             0 |     74430
+    88000 |     +0.0% |       0 |       0 |             0 |     73430
+    89000 |     +0.0% |       0 |       0 |             0 |     72430
+[WARNING RSZ-0104] Net _125403_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125184_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125400_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125183_ only has one pin. Check if it is intended to be dangling.
+    90000 |     +0.0% |       0 |       0 |             0 |     71430
+    91000 |     +0.0% |       0 |       0 |             0 |     70430
+    92000 |     +0.0% |       0 |       0 |             0 |     69430
+    93000 |     +0.0% |       0 |       0 |             0 |     68430
+[WARNING RSZ-0104] Net _125539_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125533_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125532_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125530_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125528_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125512_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125510_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125501_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125485_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125484_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125483_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125480_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125474_ only has one pin. Check if it is intended to be dangling.
+    94000 |     +0.0% |       0 |       0 |             0 |     67430
+[WARNING RSZ-0104] Net _125386_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125371_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125357_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125331_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125320_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125316_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125307_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125306_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125301_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125280_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125236_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125234_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125232_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125230_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125228_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125226_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125224_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125216_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125208_ only has one pin. Check if it is intended to be dangling.
+    95000 |     +0.0% |       0 |       0 |             0 |     66430
+    96000 |     +0.0% |       0 |       0 |             0 |     65430
+[WARNING RSZ-0104] Net _125414_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125200_ only has one pin. Check if it is intended to be dangling.
+    97000 |     +0.0% |       0 |       0 |             0 |     64430
+    98000 |     +0.0% |       0 |       0 |             0 |     63430
+    99000 |     +0.0% |       0 |       0 |             0 |     62430
+   100000 |     +0.0% |       0 |       0 |             0 |     61430
+   101000 |     +0.0% |       0 |       0 |             0 |     60430
+   102000 |     +0.0% |       0 |       0 |             0 |     59430
+[WARNING RSZ-0104] Net _125540_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125538_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125537_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125536_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125535_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125534_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125531_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125529_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125523_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125521_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125518_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125517_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125513_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125511_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125509_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125505_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125503_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125502_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125500_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125498_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125497_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125496_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125493_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125490_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125488_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125482_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125481_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125479_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125477_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125475_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125473_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125472_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125469_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125468_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125467_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125465_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125463_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125460_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125457_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125451_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125449_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125448_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125445_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125442_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125437_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125435_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125430_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125425_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125422_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125418_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125416_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125413_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125411_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125409_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125397_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125391_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125387_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125385_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125378_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125373_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125372_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125365_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125364_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125363_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125362_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125353_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125351_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125347_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125345_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125341_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125340_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125336_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125334_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125332_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125328_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125327_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125326_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125323_ only has one pin. Check if it is intended to be dangling.
+   103000 |     +0.0% |       0 |       0 |             0 |     58430
+[WARNING RSZ-0104] Net _125321_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125318_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125317_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125314_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125310_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125303_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125302_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125300_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125298_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125294_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125293_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125285_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125284_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125283_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125282_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125281_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125279_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125278_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125277_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125276_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125275_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125273_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125271_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125267_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125266_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125264_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125261_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125259_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125253_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125251_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125249_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125247_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125241_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125237_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125235_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125233_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125231_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125229_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125227_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125225_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125223_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125220_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125218_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125217_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125214_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125206_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125204_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125198_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125196_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125186_ only has one pin. Check if it is intended to be dangling.
+   104000 |     +0.0% |       0 |       0 |             0 |     57430
+   105000 |     +0.0% |       0 |       0 |             0 |     56430
+[WARNING RSZ-0104] Net _125526_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125522_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125520_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125508_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125464_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125453_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125444_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125443_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125429_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125427_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125424_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125417_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125412_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125410_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125352_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125346_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125330_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125325_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125311_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125299_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125297_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125250_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125248_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125222_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125221_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125219_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125210_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125209_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125205_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125203_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125195_ only has one pin. Check if it is intended to be dangling.
+   106000 |     +0.0% |       0 |       0 |             0 |     55430
+   107000 |     +0.0% |       0 |       0 |             0 |     54430
+   108000 |     +0.0% |       0 |       0 |             0 |     53430
+   109000 |     +0.0% |       0 |       0 |             0 |     52430
+   110000 |     +0.0% |       0 |       0 |             0 |     51430
+   111000 |     +0.0% |       0 |       0 |             0 |     50430
+[WARNING RSZ-0104] Net _125519_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125516_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125515_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125514_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125506_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125504_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125492_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125491_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125489_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125478_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125476_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125471_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125461_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125459_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125456_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125455_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125454_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125452_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125450_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125447_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125446_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125441_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125440_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125439_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125438_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125436_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125428_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125423_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125421_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125415_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125398_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125396_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125395_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125394_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125393_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125392_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125390_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125389_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125388_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125384_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125383_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125382_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125381_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125380_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125379_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125377_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125376_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125375_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125348_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125344_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125343_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125342_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125339_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125338_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125337_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125335_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125329_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125324_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125322_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125319_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125315_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125313_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125312_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125305_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125304_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125274_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125272_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125270_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125269_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125268_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125265_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125258_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125257_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125256_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125255_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125254_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125252_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125246_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125245_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125244_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125240_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125239_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125238_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125215_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125213_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125199_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125197_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125192_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125191_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125190_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125189_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125188_ only has one pin. Check if it is intended to be dangling.
+   112000 |     +0.0% |       0 |       0 |             0 |     49430
+   113000 |     +0.0% |       0 |       0 |             0 |     48430
+   114000 |     +0.0% |       0 |       0 |             0 |     47430
+[WARNING RSZ-0104] Net _125527_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125524_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125507_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125499_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125487_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125486_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125470_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125466_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125462_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125458_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125426_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125420_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125419_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125408_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125405_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125374_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125370_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125369_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125368_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125359_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125358_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125356_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125333_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125260_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125207_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125187_ only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net _125185_ only has one pin. Check if it is intended to be dangling.
+   115000 |     +0.0% |       0 |       0 |             0 |     46430
+   116000 |     +0.0% |       0 |       0 |             0 |     45430
+   117000 |     +0.0% |       0 |       0 |             0 |     44430
+[WARNING RSZ-0104] Net _125525_ only has one pin. Check if it is intended to be dangling.
+   118000 |     +0.0% |       0 |       0 |             0 |     43430
+   119000 |     +0.0% |       0 |       0 |             0 |     42430
+   120000 |     +0.0% |       0 |       0 |             0 |     41430
+   121000 |     +0.0% |       0 |       0 |             0 |     40430
+   122000 |     +0.0% |       0 |       0 |             0 |     39430
+   123000 |     +0.0% |       0 |       0 |             0 |     38430
+   124000 |     +0.0% |       0 |       0 |             0 |     37430
+   125000 |     +0.0% |       0 |       0 |             0 |     36430
+   126000 |     +0.0% |       0 |       0 |             0 |     35430
+   127000 |     +0.0% |       0 |       0 |             0 |     34430
+   128000 |     +0.0% |       0 |       0 |             0 |     33430
+   129000 |     +0.0% |       0 |       0 |             0 |     32430
+   130000 |     +0.0% |       0 |       0 |             0 |     31430
+   131000 |     +0.0% |       0 |       0 |             0 |     30430
+   132000 |     +0.0% |       0 |       0 |             0 |     29430
+   133000 |     +0.0% |       0 |       0 |             0 |     28430
+   134000 |     +0.0% |       0 |       0 |             0 |     27430
+   135000 |     +0.0% |       0 |       0 |             0 |     26430
+   136000 |     +0.0% |       0 |       0 |             0 |     25430
+   137000 |     +0.0% |       0 |       0 |             0 |     24430
+   138000 |     +0.0% |       0 |       0 |             0 |     23430
+   139000 |     +0.0% |       0 |       0 |             0 |     22430
+   140000 |     +0.0% |       0 |       0 |             0 |     21430
+   141000 |     +0.0% |       0 |       0 |             0 |     20430
+   142000 |     +0.0% |       0 |       0 |             0 |     19430
+   143000 |     +0.0% |       0 |       0 |             0 |     18430
+   144000 |     +0.0% |       0 |       0 |             0 |     17430
+   145000 |     +0.0% |       0 |       0 |             0 |     16430
+   146000 |     +0.0% |       0 |       0 |             0 |     15430
+   147000 |     +0.0% |       0 |       0 |             0 |     14430
+   148000 |     +0.0% |       0 |       0 |             0 |     13430
+   149000 |     +0.0% |       0 |       0 |             0 |     12430
+   150000 |     +0.0% |       0 |       0 |             0 |     11430
+   151000 |     +0.0% |       0 |       0 |             0 |     10430
+   152000 |     +0.0% |       0 |       0 |             0 |      9430
+   153000 |     +0.0% |       0 |       0 |             0 |      8430
+   154000 |     +0.0% |       0 |       0 |             0 |      7430
+   155000 |     +0.0% |       0 |       0 |             0 |      6430
+   156000 |     +0.0% |       0 |       0 |             0 |      5430
+   157000 |     +0.0% |       0 |       0 |             0 |      4430
+   158000 |     +0.0% |       0 |       0 |             0 |      3430
+   159000 |     +0.0% |       0 |       0 |             0 |      2430
+   160000 |     +0.0% |       0 |       0 |             0 |      1430
+[WARNING RSZ-0104] Net train_addr[63] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net train_addr[62] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net train_addr[61] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net train_addr[60] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net train_addr[59] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net train_addr[58] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net train_addr[57] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net train_addr[56] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net train_addr[255] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net train_addr[254] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net train_addr[253] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net train_addr[252] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net train_addr[251] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net train_addr[250] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net train_addr[249] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net train_addr[248] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net train_addr[191] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net train_addr[190] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net train_addr[189] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net train_addr[188] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net train_addr[187] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net train_addr[186] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net train_addr[185] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net train_addr[184] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net train_addr[127] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net train_addr[126] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net train_addr[125] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net train_addr[124] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net train_addr[123] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net train_addr[122] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net train_addr[121] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net train_addr[120] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_result[7] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_result[6] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_result[5] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_result[4] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_result[3] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_result[2] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_result[1] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_result[0] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[9] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[99] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[98] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[97] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[96] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[95] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[94] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[93] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[92] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[91] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[90] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[8] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[89] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[88] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[87] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[86] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[85] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[84] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[83] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[82] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[81] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[80] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[7] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[79] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[78] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[77] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[76] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[75] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[74] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[73] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[72] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[71] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[70] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[6] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[69] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[68] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[67] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[66] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[65] only has one pin. Check if it is intended to be dangling.
+   161000 |     +0.0% |       0 |       0 |             0 |       430
+[WARNING RSZ-0104] Net pf_fb_line_addr[64] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[63] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[62] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[61] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[60] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[5] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[59] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[58] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[57] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[56] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[55] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[54] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[53] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[52] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[51] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[50] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[4] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[49] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[48] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[47] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[46] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[45] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[44] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[43] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[42] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[41] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[40] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[3] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[39] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[38] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[37] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[36] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[35] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[34] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[33] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[32] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[31] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[30] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[2] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[29] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[28] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[27] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[26] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[25] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[24] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[23] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[231] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[230] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[22] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[229] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[228] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[227] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[226] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[225] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[224] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[223] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[222] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[221] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[220] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[21] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[219] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[218] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[217] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[216] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[215] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[214] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[213] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[212] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[211] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[210] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[20] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[209] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[208] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[207] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[206] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[205] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[204] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[203] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[202] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[201] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[200] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[1] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[19] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[199] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[198] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[197] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[196] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[195] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[194] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[193] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[192] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[191] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[190] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[18] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[189] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[188] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[187] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[186] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[185] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[184] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[183] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[182] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[181] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[180] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[17] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[179] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[178] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[177] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[176] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[175] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[174] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[173] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[172] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[171] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[170] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[16] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[169] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[168] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[167] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[166] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[165] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[164] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[163] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[162] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[161] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[160] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[15] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[159] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[158] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[157] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[156] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[155] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[154] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[153] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[152] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[151] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[150] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[14] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[149] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[148] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[147] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[146] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[145] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[144] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[143] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[142] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[141] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[140] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[13] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[139] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[138] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[137] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[136] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[135] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[134] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[133] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[132] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[131] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[130] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[12] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[129] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[128] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[127] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[126] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[125] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[124] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[123] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[122] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[121] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[120] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[11] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[119] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[118] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[117] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[116] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[115] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[114] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[113] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[112] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[111] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[110] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[10] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[109] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[108] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[107] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[106] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[105] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[104] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[103] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[102] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[101] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[100] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net pf_fb_line_addr[0] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net evict_line_addr[57] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net evict_line_addr[56] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net evict_line_addr[55] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net evict_line_addr[54] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net evict_line_addr[53] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net evict_line_addr[52] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net evict_line_addr[51] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net evict_line_addr[50] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net evict_line_addr[231] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net evict_line_addr[230] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net evict_line_addr[229] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net evict_line_addr[228] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net evict_line_addr[227] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net evict_line_addr[226] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net evict_line_addr[225] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net evict_line_addr[224] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net evict_line_addr[173] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net evict_line_addr[172] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net evict_line_addr[171] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net evict_line_addr[170] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net evict_line_addr[169] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net evict_line_addr[168] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net evict_line_addr[167] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net evict_line_addr[166] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net evict_line_addr[115] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net evict_line_addr[114] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net evict_line_addr[113] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net evict_line_addr[112] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net evict_line_addr[111] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net evict_line_addr[110] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net evict_line_addr[109] only has one pin. Check if it is intended to be dangling.
+[WARNING RSZ-0104] Net evict_line_addr[108] only has one pin. Check if it is intended to be dangling.
+    final |     +0.0% |       0 |       0 |             0 |         0
+---------------------------------------------------------------------
+[INFO RSZ-0504] Runtime: 11.97s
+Took 12 seconds: repair_design -verbose
+global_route -start_incremental
+detailed_placement -quiet
+[INFO DPL-0009] Utilization: 48.5%
+[INFO DPL-0501] Legalized with 0 moves: displacement total 0.0 u, max 0.0 u; HPWL 755386.7 -> 755386.7 u (+0.0 %).
+[INFO DPL-0500] Runtime: 1.25s
+global_route -end_incremental -resistance_aware -congestion_report_file /__w/test_dose_2/test_dose_2/pnr_out/work/reports/asap7/pf3_timing_top/base/congestion_post_repair_design.rpt
+Repair setup and hold violations...
+estimate_parasitics
+repair_timing -setup_margin 0 -hold_margin 0 -repair_tns 100 -verbose
+[INFO RSZ-0100] Repair move sequence: UnbufferMove SizeUpMove SwapPinsMove BufferMove CloneMove SplitLoadMove 
+[INFO RSZ-0094] Found 20244 endpoints with setup violations.
+[INFO RSZ-0099] Repairing 20244 out of 20244 (100.00%) violating endpoints...
+   Iter   | Removed | Resized | Inserted | Cloned |  Pin  |   Area   |    WNS   |    TNS     |  Viol  |  Worst
+          | Buffers |  Gates  | Buffers  |  Gates | Swaps |          |          |            | Endpts | Endpoint
+------------------------------------------------------------------------------------------------------------------------------
+       0* |       0 |       0 |        0 |      0 |     0 |    +0.0% | -643.406 | -6181531.5 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+      10* |       0 |       9 |        0 |      0 |     0 |    +0.0% | -635.555 | -6177894.0 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+      20* |       0 |      19 |        0 |      0 |     0 |    +0.0% | -633.209 | -6176500.0 |  20244 | u_prefetch.u_stream.cand_bank\[3\]$_DFFE_PP_/D
+      30* |       0 |      26 |        3 |      1 |     0 |    +0.0% | -648.974 | -6183840.5 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+      40* |       0 |      34 |        3 |      1 |     2 |    +0.0% | -644.975 | -6183005.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+      50* |       0 |      37 |       15 |      1 |     6 |    +0.0% | -643.392 | -6182488.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[122\]$_DFFE_PP_/D
+      60* |       0 |      44 |       17 |      1 |     7 |    +0.0% | -641.906 | -6181799.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[122\]$_DFFE_PP_/D
+      70* |       0 |      52 |       18 |      1 |     8 |    +0.0% | -634.377 | -6178365.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[122\]$_DFFE_PP_/D
+      74* |       0 |      22 |        1 |      0 |     0 |    +0.0% | -631.909 | -6175970.5 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+      80* |       0 |      26 |        1 |      1 |     0 |    +0.0% | -660.860 | -6189569.5 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+      90* |       0 |      33 |       14 |      1 |     0 |    +0.0% | -645.034 | -6182013.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+     100* |       0 |      39 |       18 |      1 |     0 |    +0.0% | -643.544 | -6181812.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+     110* |       0 |      48 |       18 |      2 |     0 |    +0.0% | -636.708 | -6178305.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+     120* |       0 |      55 |       21 |      2 |     2 |    +0.0% | -635.813 | -6176371.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+     125* |       0 |      22 |        1 |      0 |     0 |    +0.0% | -632.166 | -6175971.0 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     130* |       0 |      25 |        1 |      1 |     0 |    +0.0% | -661.328 | -6189663.5 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     140* |       0 |      33 |       13 |      1 |     0 |    +0.0% | -645.034 | -6182076.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+     150* |       0 |      38 |       18 |      1 |     0 |    +0.0% | -644.150 | -6183299.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[122\]$_DFFE_PP_/D
+     160* |       0 |      47 |       18 |      2 |     0 |    +0.0% | -635.323 | -6178382.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+     170* |       0 |      56 |       21 |      2 |     0 |    +0.0% | -635.813 | -6176365.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+     176* |       0 |      22 |        1 |      0 |     0 |    +0.0% | -632.166 | -6175970.5 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     180* |       0 |      24 |        1 |      1 |     0 |    +0.0% | -666.489 | -6191959.0 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     190* |       0 |      32 |       13 |      1 |     0 |    +0.0% | -645.023 | -6182105.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+     200* |       0 |      38 |       17 |      1 |     0 |    +0.0% | -646.510 | -6184389.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[122\]$_DFFE_PP_/D
+     210* |       0 |      46 |       18 |      2 |     0 |    +0.0% | -638.356 | -6178491.5 |  20244 | u_prefetch.u_sms_expand.slot_high\[126\]$_DFFE_PP_/D
+     220* |       0 |      56 |       18 |      2 |     0 |    +0.0% | -635.813 | -6176574.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+     227* |       0 |      22 |        1 |      0 |     0 |    +0.0% | -632.166 | -6175970.5 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     230* |       0 |      23 |        1 |      1 |     0 |    +0.0% | -674.935 | -6196044.5 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     240* |       0 |      31 |       13 |      1 |     0 |    +0.0% | -645.023 | -6182174.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+     250* |       0 |      37 |       17 |      1 |     0 |    +0.0% | -646.856 | -6184549.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[122\]$_DFFE_PP_/D
+     260* |       0 |      46 |       18 |      1 |     0 |    +0.0% | -635.323 | -6178353.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+     270* |       0 |      55 |       18 |      2 |     0 |    +0.0% | -635.813 | -6176749.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+     278* |       0 |      22 |        1 |      0 |     0 |    +0.0% | -632.166 | -6175970.5 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     280* |       0 |      22 |        1 |      1 |     0 |    +0.0% | -690.028 | -6203151.0 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     290* |       0 |      31 |        3 |      1 |     0 |    +0.0% | -645.023 | -6182434.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+     300* |       0 |      37 |       16 |      1 |     0 |    +0.0% | -643.543 | -6182172.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+     310* |       0 |      45 |       18 |      1 |     0 |    +0.0% | -637.404 | -6179272.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+     320* |       0 |      54 |       18 |      2 |     0 |    +0.0% | -635.813 | -6177177.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+     329* |       0 |      22 |        1 |      0 |     0 |    +0.0% | -632.166 | -6175970.5 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     330* |       0 |      22 |        1 |      0 |     0 |    +0.0% | -632.166 | -6175970.5 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     340* |       0 |      30 |        3 |      1 |     0 |    +0.0% | -646.665 | -6182734.5 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     350* |       0 |      36 |       16 |      1 |     0 |    +0.0% | -645.921 | -6182109.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+     360* |       0 |      44 |       18 |      1 |     0 |    +0.0% | -638.550 | -6179806.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+     370* |       0 |      53 |       18 |      2 |     0 |    +0.0% | -635.813 | -6177147.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+     380* |       0 |      61 |       23 |      2 |     0 |    +0.0% | -635.078 | -6175371.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+     380* |       0 |      22 |        1 |      0 |     0 |    +0.0% | -632.166 | -6175970.5 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     390* |       0 |      29 |        3 |      1 |     0 |    +0.0% | -646.936 | -6182852.0 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     400* |       0 |      35 |       16 |      1 |     0 |    +0.0% | -645.921 | -6182127.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+     410* |       0 |      43 |       18 |      1 |     0 |    +0.0% | -638.550 | -6179999.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+     420* |       0 |      52 |       18 |      2 |     0 |    +0.0% | -636.361 | -6177486.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+     430* |       0 |      61 |       21 |      2 |     0 |    +0.0% | -636.604 | -6175441.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+     431* |       0 |      22 |        1 |      0 |     0 |    +0.0% | -632.166 | -6175970.5 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     440* |       0 |      28 |        3 |      1 |     0 |    +0.0% | -648.082 | -6183345.0 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     450* |       0 |      34 |       16 |      1 |     0 |    +0.0% | -645.921 | -6182357.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+     460* |       0 |      42 |       18 |      1 |     0 |    +0.0% | -639.029 | -6179403.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+     470* |       0 |      51 |       18 |      2 |     0 |    +0.0% | -636.361 | -6177765.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+     480* |       0 |      60 |       21 |      2 |     0 |    +0.0% | -636.604 | -6175447.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+     482* |       0 |      22 |        1 |      0 |     0 |    +0.0% | -632.166 | -6175970.5 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     490* |       0 |      26 |        2 |      0 |     2 |    +0.0% | -631.897 | -6175742.0 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     500* |       0 |      33 |        2 |      0 |     5 |    +0.0% | -631.841 | -6175639.0 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     510* |       0 |      40 |        5 |      1 |     5 |    +0.0% | -653.949 | -6186185.5 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     520* |       0 |      49 |        6 |      1 |     5 |    +0.0% | -650.608 | -6184505.0 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     530* |       0 |      59 |        6 |      1 |     5 |    +0.0% | -646.625 | -6182617.0 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     540* |       0 |      65 |        9 |      1 |     7 |    +0.0% | -645.451 | -6182082.0 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     550* |       0 |      71 |       14 |      1 |     9 |    +0.0% | -643.731 | -6181287.5 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     556* |       0 |      37 |        5 |      0 |     5 |    +0.0% | -631.877 | -6175654.5 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     560* |       0 |      37 |        7 |      0 |     6 |    +0.0% | -631.877 | -6175734.0 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     570* |       0 |      42 |        7 |      1 |    10 |    +0.0% | -658.109 | -6187998.0 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     580* |       0 |      52 |        7 |      1 |    10 |    +0.0% | -652.183 | -6185189.5 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     590* |       0 |      61 |        9 |      1 |    10 |    +0.0% | -649.705 | -6184059.5 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     600* |       0 |      69 |       14 |      1 |    10 |    +0.0% | -646.933 | -6182765.0 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     607* |       0 |      37 |        5 |      0 |     5 |    +0.0% | -631.877 | -6175655.0 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     610* |       0 |      38 |        5 |      1 |     5 |    +0.0% | -661.366 | -6189587.0 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     620* |       0 |      47 |        6 |      1 |     5 |    +0.0% | -651.297 | -6184826.5 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     630* |       0 |      57 |        6 |      1 |     5 |    +0.0% | -646.600 | -6182619.0 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     640* |       0 |      65 |        9 |      1 |     5 |    +0.0% | -645.451 | -6182064.0 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     650* |       0 |      73 |       20 |      1 |     5 |    +0.0% | -643.393 | -6181107.5 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     658* |       0 |      37 |        5 |      0 |     5 |    +0.0% | -631.877 | -6175655.0 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     660* |       0 |      38 |        5 |      0 |     5 |    +0.0% | -631.877 | -6175665.5 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     670* |       0 |      43 |        7 |      1 |     7 |    +0.0% | -647.736 | -6183193.5 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     680* |       0 |      52 |        8 |      1 |     7 |    +0.0% | -643.145 | -6180944.0 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     690* |       0 |      58 |       11 |      1 |     8 |    +0.0% | -640.069 | -6179519.0 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     700* |       0 |      67 |       12 |      1 |     8 |    +0.0% | -637.422 | -6178291.0 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     710* |       0 |      72 |       15 |      1 |    11 |    +0.0% | -641.139 | -6180035.0 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     713* |       0 |      38 |        6 |      0 |     7 |    +0.0% | -631.877 | -6175648.5 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     720* |       0 |      43 |        6 |      1 |     7 |    +0.0% | -649.025 | -6185066.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+     730* |       0 |      52 |        7 |      1 |     7 |    +0.0% | -648.289 | -6183124.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+     740* |       0 |      60 |       11 |      1 |     7 |    +0.0% | -648.289 | -6181825.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+     750* |       0 |      68 |       13 |      1 |     7 |    +0.0% | -648.289 | -6183752.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+     760* |       0 |      75 |       14 |      1 |     9 |    +0.0% | -645.592 | -6180505.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+     764* |       0 |      38 |        6 |      0 |     7 |    +0.0% | -631.877 | -6175648.5 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     770* |       0 |      41 |        7 |      1 |     7 |    +0.0% | -647.736 | -6183231.5 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     780* |       0 |      50 |        8 |      1 |     7 |    +0.0% | -643.144 | -6180967.0 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     790* |       0 |      57 |       11 |      1 |     7 |    +0.0% | -640.068 | -6179519.5 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     800* |       0 |      66 |       12 |      1 |     7 |    +0.0% | -637.422 | -6178291.5 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     810* |       0 |      75 |       14 |      1 |     7 |    +0.0% | -641.139 | -6180035.0 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     815* |       0 |      38 |        6 |      0 |     7 |    +0.0% | -631.877 | -6175648.5 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     820* |       0 |      41 |        6 |      1 |     7 |    +0.0% | -654.235 | -6186320.0 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     830* |       0 |      50 |        7 |      1 |     7 |    +0.0% | -648.435 | -6183379.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+     840* |       0 |      59 |        8 |      1 |     7 |    +0.0% | -648.435 | -6182125.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+     850* |       0 |      67 |       12 |      1 |     7 |    +0.0% | -648.361 | -6183074.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+     860* |       0 |      76 |       13 |      1 |     7 |    +0.0% | -648.361 | -6182302.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+     866* |       0 |      38 |        6 |      0 |     7 |    +0.0% | -631.877 | -6175648.5 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     870* |       0 |      40 |        6 |      1 |     7 |    +0.0% | -654.570 | -6186364.0 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     880* |       0 |      50 |        6 |      1 |     7 |    +0.0% | -649.172 | -6183529.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+     890* |       0 |      58 |        8 |      1 |     7 |    +0.0% | -648.435 | -6182150.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+     900* |       0 |      66 |       12 |      1 |     7 |    +0.0% | -648.435 | -6183078.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+     910* |       0 |      75 |       13 |      1 |     7 |    +0.0% | -648.435 | -6182310.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+     917* |       0 |      38 |        6 |      0 |     7 |    +0.0% | -631.877 | -6175648.5 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     920* |       0 |      40 |        6 |      0 |     7 |    +0.0% | -631.877 | -6175647.5 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     930* |       0 |      48 |        7 |      1 |     7 |    +0.0% | -646.756 | -6182703.0 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     940* |       0 |      57 |        8 |      1 |     7 |    +0.0% | -641.892 | -6180364.5 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     950* |       0 |      63 |       12 |      1 |     7 |    +0.0% | -640.068 | -6179517.0 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     960* |       0 |      72 |       14 |      1 |     7 |    +0.0% | -637.422 | -6178287.0 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     970* |       0 |      80 |       18 |      1 |     7 |    +0.0% | -653.451 | -6184890.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+     970* |       0 |      40 |        6 |      0 |     7 |    +0.0% | -631.877 | -6175647.5 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     980* |       0 |      46 |        7 |      1 |     8 |    +0.0% | -647.862 | -6183292.0 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+     990* |       0 |      55 |        8 |      1 |     8 |    +0.0% | -643.144 | -6180969.5 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+    1000* |       0 |      64 |        9 |      1 |     8 |    +0.0% | -640.745 | -6179834.5 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+    1010* |       0 |      72 |       11 |      1 |     8 |    +0.0% | -637.424 | -6178315.0 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+    1020* |       0 |      79 |       17 |      1 |     8 |    +0.0% | -657.630 | -6185482.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1025* |       0 |      43 |        6 |      0 |     8 |    +0.0% | -631.877 | -6175647.0 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+    1030* |       0 |      46 |        6 |      1 |     8 |    +0.0% | -654.235 | -6186320.0 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+    1040* |       0 |      55 |        7 |      1 |     8 |    +0.0% | -648.435 | -6183305.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1050* |       0 |      63 |       11 |      1 |     8 |    +0.0% | -648.435 | -6181993.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1060* |       0 |      72 |       12 |      1 |     8 |    +0.0% | -647.648 | -6183163.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1070* |       0 |      79 |       15 |      1 |     8 |    +0.0% | -647.779 | -6182044.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1076* |       0 |      43 |        6 |      0 |     8 |    +0.0% | -631.877 | -6175647.0 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+    1080* |       0 |      45 |        6 |      1 |     8 |    +0.0% | -654.570 | -6186364.0 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+    1090* |       0 |      54 |        7 |      1 |     8 |    +0.0% | -648.435 | -6183379.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1100* |       0 |      63 |        8 |      1 |     8 |    +0.0% | -648.435 | -6182125.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1100* |       0 |      43 |        6 |      0 |     8 |    +0.0% | -631.877 | -6175647.0 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+    1110* |       0 |      50 |        7 |      1 |     8 |    +0.0% | -649.852 | -6184099.0 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+    1120* |       0 |      59 |        8 |      1 |     8 |    +0.0% | -642.447 | -6180620.5 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+    1130* |       0 |      67 |       10 |      1 |     8 |    +0.0% | -639.490 | -6179253.0 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+    1140* |       0 |      75 |       13 |      1 |     8 |    +0.0% | -642.367 | -6180608.5 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+    1150* |       0 |      83 |       17 |      1 |     8 |    +0.0% | -650.877 | -6184635.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1151* |       0 |      43 |        6 |      0 |     8 |    +0.0% | -631.877 | -6175647.0 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+    1160* |       0 |      50 |        6 |      1 |     8 |    +0.0% | -649.172 | -6184306.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1170* |       0 |      59 |        7 |      1 |     8 |    +0.0% | -648.435 | -6182557.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1180* |       0 |      67 |       11 |      1 |     8 |    +0.0% | -648.435 | -6181536.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1190* |       0 |      74 |       14 |      1 |     8 |    +0.0% | -648.435 | -6183040.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1200* |       0 |      83 |       15 |      1 |     8 |    +0.0% | -647.740 | -6181395.5 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1200* |       0 |      43 |        6 |      0 |     8 |    +0.0% | -631.877 | -6175647.0 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+    1200* |       0 |      43 |        6 |      0 |     8 |    +0.0% | -631.877 | -6175647.0 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+    1200+ |       0 |      43 |        6 |      0 |     8 |    +0.0% | -631.877 | -6175647.0 |  20244 | u_prefetch.u_sms_expand.slot_high\[114\]$_DFFE_PP_/D
+    1205+ |       0 |      47 |        6 |      0 |     8 |    +0.0% | -626.054 | -6174956.0 |  20244 | u_prefetch.u_stream.recent_vld\[2\]$_SDFFE_PP0P_/D
+    1210+ |       0 |      51 |        6 |      0 |     8 |    +0.0% | -626.054 | -6174313.0 |  20244 | u_prefetch.u_stream.recent_vld\[2\]$_SDFFE_PP0P_/D
+    1215+ |       0 |      57 |        6 |      0 |     8 |    +0.0% | -626.054 | -6173879.0 |  20244 | u_prefetch.u_stream.recent_vld\[2\]$_SDFFE_PP0P_/D
+    1220+ |       0 |      61 |        6 |      0 |     8 |    +0.0% | -626.054 | -6173615.5 |  20244 | u_prefetch.u_stream.recent_vld\[2\]$_SDFFE_PP0P_/D
+    1224+ |       0 |      65 |        6 |      0 |     8 |    +0.0% | -626.054 | -6173184.5 |  20244 | u_prefetch.u_stream.recent_vld\[2\]$_SDFFE_PP0P_/D
+    1225+ |       0 |      65 |        6 |      0 |     8 |    +0.0% | -626.054 | -6173184.5 |  20244 | u_prefetch.u_stream.recent_vld\[2\]$_SDFFE_PP0P_/D
+    1226+ |       0 |      65 |        6 |      0 |     8 |    +0.0% | -626.054 | -6173184.5 |  20244 | u_prefetch.u_stream.recent_vld\[2\]$_SDFFE_PP0P_/D
+    1227+ |       0 |      65 |        6 |      0 |     8 |    +0.0% | -626.054 | -6173184.5 |  20244 | u_prefetch.u_stream.recent_vld\[2\]$_SDFFE_PP0P_/D
+    1228+ |       0 |      65 |        6 |      0 |     8 |    +0.0% | -626.054 | -6173184.5 |  20244 | u_prefetch.u_stream.recent_vld\[2\]$_SDFFE_PP0P_/D
+    1229+ |       0 |      65 |        6 |      0 |     8 |    +0.0% | -626.054 | -6173184.5 |  20244 | u_prefetch.u_stream.recent_vld\[2\]$_SDFFE_PP0P_/D
+    1230+ |       0 |      65 |        6 |      0 |     8 |    +0.0% | -626.054 | -6173184.5 |  20244 | u_prefetch.u_stream.recent_vld\[2\]$_SDFFE_PP0P_/D
+    1230+ |       0 |      65 |        6 |      0 |     8 |    +0.0% | -626.054 | -6173184.5 |  20244 | u_prefetch.u_stream.recent_vld\[2\]$_SDFFE_PP0P_/D
+    1231+ |       0 |      65 |        6 |      0 |     8 |    +0.0% | -626.054 | -6173184.5 |  20244 | u_prefetch.u_stream.recent_vld\[2\]$_SDFFE_PP0P_/D
+    1232+ |       0 |      65 |        6 |      0 |     8 |    +0.0% | -626.054 | -6173184.5 |  20244 | u_prefetch.u_stream.recent_vld\[2\]$_SDFFE_PP0P_/D
+    1233+ |       0 |      65 |        6 |      0 |     8 |    +0.0% | -626.054 | -6173184.5 |  20244 | u_prefetch.u_stream.recent_vld\[2\]$_SDFFE_PP0P_/D
+    1234+ |       0 |      65 |        6 |      0 |     8 |    +0.0% | -626.054 | -6173184.5 |  20244 | u_prefetch.u_stream.recent_vld\[2\]$_SDFFE_PP0P_/D
+    1235+ |       0 |      65 |        6 |      0 |     8 |    +0.0% | -626.054 | -6173184.5 |  20244 | u_prefetch.u_stream.recent_vld\[2\]$_SDFFE_PP0P_/D
+    1236+ |       0 |      65 |        6 |      0 |     8 |    +0.0% | -626.054 | -6173184.5 |  20244 | u_prefetch.u_stream.recent_vld\[2\]$_SDFFE_PP0P_/D
+    1237+ |       0 |      65 |        6 |      0 |     8 |    +0.0% | -626.054 | -6173184.5 |  20244 | u_prefetch.u_stream.recent_vld\[2\]$_SDFFE_PP0P_/D
+    1238+ |       0 |      65 |        6 |      0 |     8 |    +0.0% | -626.054 | -6173184.5 |  20244 | u_prefetch.u_stream.recent_vld\[2\]$_SDFFE_PP0P_/D
+    1239+ |       0 |      65 |        6 |      0 |     8 |    +0.0% | -626.054 | -6173184.5 |  20244 | u_prefetch.u_stream.recent_vld\[2\]$_SDFFE_PP0P_/D
+    1240+ |       0 |      65 |        6 |      0 |     8 |    +0.0% | -626.054 | -6173184.5 |  20244 | u_prefetch.u_stream.recent_vld\[2\]$_SDFFE_PP0P_/D
+    1240+ |       0 |      65 |        6 |      0 |     8 |    +0.0% | -626.054 | -6173184.5 |  20244 | u_prefetch.u_stream.recent_vld\[2\]$_SDFFE_PP0P_/D
+    1241+ |       0 |      65 |        6 |      0 |     8 |    +0.0% | -626.054 | -6173184.5 |  20244 | u_prefetch.u_stream.recent_vld\[2\]$_SDFFE_PP0P_/D
+    1242+ |       0 |      65 |        6 |      0 |     8 |    +0.0% | -626.054 | -6173184.5 |  20244 | u_prefetch.u_stream.recent_vld\[2\]$_SDFFE_PP0P_/D
+    1243+ |       0 |      65 |        6 |      0 |     8 |    +0.0% | -626.054 | -6173184.5 |  20244 | u_prefetch.u_stream.recent_vld\[2\]$_SDFFE_PP0P_/D
+    1244+ |       0 |      65 |        6 |      0 |     8 |    +0.0% | -626.054 | -6173184.5 |  20244 | u_prefetch.u_stream.recent_vld\[2\]$_SDFFE_PP0P_/D
+    1247+ |       0 |      67 |        6 |      0 |     8 |    +0.0% | -626.054 | -6173182.0 |  20244 | u_prefetch.u_stream.recent_vld\[2\]$_SDFFE_PP0P_/D
+    1248+ |       0 |      67 |        6 |      0 |     8 |    +0.0% | -626.054 | -6173182.0 |  20244 | u_prefetch.u_stream.recent_vld\[2\]$_SDFFE_PP0P_/D
+    1249+ |       0 |      67 |        6 |      0 |     8 |    +0.0% | -626.054 | -6173182.0 |  20244 | u_prefetch.u_stream.recent_vld\[2\]$_SDFFE_PP0P_/D
+    1250+ |       0 |      67 |        6 |      0 |     8 |    +0.0% | -626.054 | -6173182.0 |  20244 | u_prefetch.u_stream.recent_vld\[2\]$_SDFFE_PP0P_/D
+    1250+ |       0 |      67 |        6 |      0 |     8 |    +0.0% | -626.054 | -6173182.0 |  20244 | u_prefetch.u_stream.recent_vld\[2\]$_SDFFE_PP0P_/D
+    1251+ |       0 |      67 |        6 |      0 |     8 |    +0.0% | -626.054 | -6173182.0 |  20244 | u_prefetch.u_stream.recent_vld\[2\]$_SDFFE_PP0P_/D
+    1252+ |       0 |      67 |        6 |      0 |     8 |    +0.0% | -626.054 | -6173182.0 |  20244 | u_prefetch.u_stream.recent_vld\[2\]$_SDFFE_PP0P_/D
+    1253+ |       0 |      67 |        6 |      0 |     8 |    +0.0% | -626.054 | -6173182.0 |  20244 | u_prefetch.u_stream.recent_vld\[2\]$_SDFFE_PP0P_/D
+    1254+ |       0 |      67 |        6 |      0 |     8 |    +0.0% | -626.054 | -6173182.0 |  20244 | u_prefetch.u_stream.recent_vld\[2\]$_SDFFE_PP0P_/D
+    1255+ |       0 |      67 |        6 |      0 |     8 |    +0.0% | -626.054 | -6173182.0 |  20244 | u_prefetch.u_stream.recent_vld\[2\]$_SDFFE_PP0P_/D
+    1256+ |       0 |      67 |        6 |      0 |     8 |    +0.0% | -626.054 | -6173182.0 |  20244 | u_prefetch.u_stream.recent_vld\[2\]$_SDFFE_PP0P_/D
+    1257+ |       0 |      67 |        6 |      0 |     8 |    +0.0% | -626.054 | -6173182.0 |  20244 | u_prefetch.u_stream.recent_vld\[2\]$_SDFFE_PP0P_/D
+    1258+ |       0 |      67 |        6 |      0 |     8 |    +0.0% | -626.054 | -6173182.0 |  20244 | u_prefetch.u_stream.recent_vld\[2\]$_SDFFE_PP0P_/D
+    1260+ |       0 |      68 |        6 |      0 |     8 |    +0.0% | -626.054 | -6172953.0 |  20244 | u_prefetch.u_stream.recent_vld\[2\]$_SDFFE_PP0P_/D
+    1263+ |       0 |      69 |        6 |      0 |    10 |    +0.0% | -624.538 | -6171138.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1264+ |       0 |      69 |        6 |      0 |    10 |    +0.0% | -624.538 | -6171138.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1265+ |       0 |      69 |        6 |      0 |    10 |    +0.0% | -624.538 | -6171138.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1266+ |       0 |      69 |        6 |      0 |    10 |    +0.0% | -624.538 | -6171138.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1268+ |       0 |      70 |        6 |      0 |    10 |    +0.0% | -624.538 | -6171116.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1269+ |       0 |      70 |        6 |      0 |    10 |    +0.0% | -624.538 | -6171116.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1270+ |       0 |      70 |        6 |      0 |    10 |    +0.0% | -624.538 | -6171116.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1270+ |       0 |      70 |        6 |      0 |    10 |    +0.0% | -624.538 | -6171116.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1271+ |       0 |      70 |        6 |      0 |    10 |    +0.0% | -624.538 | -6171116.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1272+ |       0 |      70 |        6 |      0 |    10 |    +0.0% | -624.538 | -6171116.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1273+ |       0 |      70 |        6 |      0 |    10 |    +0.0% | -624.538 | -6171116.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1274+ |       0 |      70 |        6 |      0 |    10 |    +0.0% | -624.538 | -6171116.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1275+ |       0 |      70 |        6 |      0 |    10 |    +0.0% | -624.538 | -6171116.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1276+ |       0 |      70 |        6 |      0 |    10 |    +0.0% | -624.538 | -6171116.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1277+ |       0 |      70 |        6 |      0 |    10 |    +0.0% | -624.538 | -6171116.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1278+ |       0 |      70 |        6 |      0 |    10 |    +0.0% | -624.538 | -6171116.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1279+ |       0 |      70 |        6 |      0 |    10 |    +0.0% | -624.538 | -6171116.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1280+ |       0 |      70 |        6 |      0 |    10 |    +0.0% | -624.538 | -6171116.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1280+ |       0 |      70 |        6 |      0 |    10 |    +0.0% | -624.538 | -6171116.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1281+ |       0 |      70 |        6 |      0 |    10 |    +0.0% | -624.538 | -6171116.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1282+ |       0 |      70 |        6 |      0 |    10 |    +0.0% | -624.538 | -6171116.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1283+ |       0 |      70 |        6 |      0 |    10 |    +0.0% | -624.538 | -6171116.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1284+ |       0 |      70 |        6 |      0 |    10 |    +0.0% | -624.538 | -6171116.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1285+ |       0 |      70 |        6 |      0 |    10 |    +0.0% | -624.538 | -6171116.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1286+ |       0 |      70 |        6 |      0 |    10 |    +0.0% | -624.538 | -6171116.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1287+ |       0 |      70 |        6 |      0 |    10 |    +0.0% | -624.538 | -6171116.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1288+ |       0 |      70 |        6 |      0 |    10 |    +0.0% | -624.538 | -6171116.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1289+ |       0 |      70 |        6 |      0 |    10 |    +0.0% | -624.538 | -6171116.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1290+ |       0 |      70 |        6 |      0 |    10 |    +0.0% | -624.538 | -6171116.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1290+ |       0 |      70 |        6 |      0 |    10 |    +0.0% | -624.538 | -6171116.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1291+ |       0 |      70 |        6 |      0 |    10 |    +0.0% | -624.538 | -6171116.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1292+ |       0 |      70 |        6 |      0 |    10 |    +0.0% | -624.538 | -6171116.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1293+ |       0 |      70 |        6 |      0 |    10 |    +0.0% | -624.538 | -6171116.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1294+ |       0 |      70 |        6 |      0 |    10 |    +0.0% | -624.538 | -6171116.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1300+ |       0 |      73 |        6 |      0 |    12 |    +0.0% | -624.538 | -6170607.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1301+ |       0 |      73 |        6 |      0 |    12 |    +0.0% | -624.538 | -6170607.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1302+ |       0 |      73 |        6 |      0 |    12 |    +0.0% | -624.538 | -6170607.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1307+ |       0 |      76 |        6 |      0 |    13 |    +0.0% | -624.538 | -6170046.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1308+ |       0 |      76 |        6 |      0 |    13 |    +0.0% | -624.538 | -6170046.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1309+ |       0 |      76 |        6 |      0 |    13 |    +0.0% | -624.538 | -6170046.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1310+ |       0 |      76 |        6 |      0 |    13 |    +0.0% | -624.538 | -6170046.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1310+ |       0 |      76 |        6 |      0 |    13 |    +0.0% | -624.538 | -6170046.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1311+ |       0 |      76 |        6 |      0 |    13 |    +0.0% | -624.538 | -6170046.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1312+ |       0 |      76 |        6 |      0 |    13 |    +0.0% | -624.538 | -6170046.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1314+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1315+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1316+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1317+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1318+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1319+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1320+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1320+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1321+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1322+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1323+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1324+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1325+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1326+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1327+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1328+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1329+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1330+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1330+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1331+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1332+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1333+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1334+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1335+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1336+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1337+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1338+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1339+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1340+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1340+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1341+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1342+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1343+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1344+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1345+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1346+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1347+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1348+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1349+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1350+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1350+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1351+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1352+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1353+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1354+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1355+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1356+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1357+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1358+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1359+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1360+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1360+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1361+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1362+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1363+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1364+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1365+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1366+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1367+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1368+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1369+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1370+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1370+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1371+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1372+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1373+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1374+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1375+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1376+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1377+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1378+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1379+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1380+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1380+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1381+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1382+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1383+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1384+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1385+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1386+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1387+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1388+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1389+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1390+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1390+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1391+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1392+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1393+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1394+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1395+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1396+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1397+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1398+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1399+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    1400+ |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    final |       0 |      77 |        6 |      0 |    13 |    +0.0% | -624.538 | -6169893.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+------------------------------------------------------------------------------------------------------------------------------
+[INFO RSZ-0040] Inserted 6 buffers.
+[INFO RSZ-0051] Resized 77 instances: 77 up, 0 up match, 0 down, 0 VT
+[INFO RSZ-0043] Swapped pins on 13 instances.
+[WARNING RSZ-0062] Unable to repair all setup violations.
+[INFO RSZ-0505] Runtime: 231.52s
+[INFO RSZ-0033] No hold violations found.
+[INFO RSZ-0506] Runtime: 1.45s
+Took 233 seconds: repair_timing -setup_margin 0 -hold_margin 0 -repair_tns 100 -verbose
+global_route -start_incremental
+detailed_placement -quiet
+[INFO DPL-0009] Utilization: 48.5%
+[INFO DPL-0501] Legalized with 1864 moves: displacement total 13.3 u, max 0.8 u; HPWL 755391.1 -> 755400.1 u (+0.0 %).
+[INFO DPL-0500] Runtime: 1.54s
+check_placement -placeable -verbose
+global_route -end_incremental -resistance_aware -congestion_report_file /__w/test_dose_2/test_dose_2/pnr_out/work/reports/asap7/pf3_timing_top/base/congestion_post_repair_timing.rpt
+estimate_parasitics
+repair_timing -setup -sequence "vt_swap reroute" -skip_last_gasp -repair_tns 0 -verbose
+[INFO RSZ-0100] Repair move sequence: RerouteMove 
+[INFO RSZ-0094] Found 20244 endpoints with setup violations.
+[INFO RSZ-0099] Repairing 1 out of 20244 (0.00%) violating endpoints...
+   Iter   | Removed | Resized | Inserted | Cloned |  Pin  |   Area   |    WNS   |    TNS     |  Viol  |  Worst
+          | Buffers |  Gates  | Buffers  |  Gates | Swaps |          |          |            | Endpts | Endpoint
+------------------------------------------------------------------------------------------------------------------------------
+       0* |       0 |       0 |        0 |      0 |     0 |    +0.0% | -624.538 | -6170033.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+       1* |       0 |       0 |        0 |      0 |     0 |    +0.0% | -624.538 | -6170033.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+       1* |       0 |       0 |        0 |      0 |     0 |    +0.0% | -624.538 | -6170033.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+    final |       0 |       0 |        0 |      0 |     0 |    +0.0% | -624.538 | -6170033.0 |  20244 | u_prefetch.u_sms_expand.slot_mask\[109\]$_DFFE_PP_/D
+------------------------------------------------------------------------------------------------------------------------------
+[WARNING RSZ-0062] Unable to repair all setup violations.
+[INFO RSZ-0505] Runtime: 6.78s
+Took 7 seconds: repair_timing -setup -sequence "vt_swap reroute" -skip_last_gasp -repair_tns 0 -verbose
+Repair antennas...
+[WARNING GRT-0246] No diode with LEF class CORE ANTENNACELL found.
+check_placement -placeable -verbose
+[INFO ANT-0002] Found 0 net violations.
+[INFO ANT-0001] Found 0 pin violations.
+Estimate parasitics...
+estimate_parasitics
+Report metrics stage 5, global route...
+
+==========================================================================
+global route report_design_area
+--------------------------------------------------------------------------
+Design area 21523 um^2 48% utilization.
+[INFO FLW-0007] clock clk period 240.000000
+[INFO FLW-0008] Clock clk period 821.311
+[INFO FLW-0009] Clock clk slack -624.538
+write_sdc -no_timestamp /__w/test_dose_2/test_dose_2/pnr_out/work/results/asap7/pf3_timing_top/base/updated_clks.sdc
+[INFO FLW-0011] Path endpoint path count 22843
+write_sdc -no_timestamp /__w/test_dose_2/test_dose_2/pnr_out/work/results/asap7/pf3_timing_top/base/5_1_grt.sdc
+write_db /__w/test_dose_2/test_dose_2/pnr_out/work/results/asap7/pf3_timing_top/base/5_1_grt.odb
+Elapsed time: 13:19.74[h:]min:sec. CPU time: user 1393.58 sys 16.63 (176%). Peak memory: 2868464KB.
+Log                    Ext     Elapsed      CPU     CPU/ Peak Mem sha1sum
+                                     s        s  Elapsed       MB [0:10)
+5_1_grt                .odb        799     1410     1.76     2801 28f5f262c5
+5_1_grt                .sdc                                       1fc8fd2ed0
