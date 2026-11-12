@@ -169,13 +169,15 @@ module l1d_bank_s0 #(
     assign lowest_req[3]   = arrival_request[3] & ~arrival_request[2] & ~arrival_request[1] & ~arrival_request[0];
     assign any_pins_arrival = |arrival_request;
     reg  [REQ_W-1:0]   fresh_packet;
-    wire [REQ_W-1:0]   arrival_packet_flat;
+    wire [LSU_PORTS*REQ_W-1:0] arrival_packet_flat;
     assign arrival_packet_flat = {arrival_packet_3, arrival_packet_2, arrival_packet_1, arrival_packet_0};
     integer fp_port;
     always @* begin
         fresh_packet = {REQ_W{1'b0}};
         for (fp_port = 0; fp_port < LSU_PORTS; fp_port = fp_port + 1)
             fresh_packet = fresh_packet | ({REQ_W{lowest_req[fp_port]}} & arrival_packet_flat[fp_port*REQ_W +: REQ_W]);
+        if (fresh_packet[REQ_LINE_BIT] && fresh_packet[REQ_RDWR_BIT])
+            fresh_packet[REQ_DATA_LSB +: VEC_SLOT_W] = vec_write_slot;
     end
     wire [INDEX_W-1:0]     fresh_set;
     wire [LINE_ADDR_W-1:0] fresh_line;
@@ -299,6 +301,8 @@ module l1d_bank_s0 #(
     reg  [LSU_PORTS-1:0] issue_is_port;
     reg  [LSU_PORTS-1:0] credit_next;
     reg  [LSU_PORTS-1:0] credit_book_next;
+    reg  [LSU_PORTS-1:0] credit_book_if_none;
+    reg  [LSU_PORTS-1:0] credit_book_if_issue;
     reg  [LSU_PORTS-1:0] port_miss_ok;
     reg  [RCNT_W:0]      promised_next;
     integer cr_port;
@@ -309,8 +313,11 @@ module l1d_bank_s0 #(
             issue_is_port[cr_port] = (book_entry_issue && (book_port_q == cr_port)) || (fresh_issue && fresh_port_onehot[cr_port]);
             promised_next          = {{RCNT_W{1'b0}}, r_is_port[cr_port]} + {{RCNT_W{1'b0}}, issue_is_port[cr_port]} + CREDIT_TWO;
             credit_next[cr_port]   = ({1'b0, free_next_flat[cr_port*RCNT_W +: RCNT_W]} >= promised_next);
-            credit_book_next[cr_port] = ({1'b0, free_next_flat[cr_port*RCNT_W +: RCNT_W]} >=
-                                         ({{RCNT_W{1'b0}}, r_is_port[cr_port]} + CREDIT_THREE));
+            credit_book_if_none[cr_port]  = ({1'b0, free_next_flat[cr_port*RCNT_W +: RCNT_W]} >=
+                                             ({{RCNT_W{1'b0}}, r_is_port[cr_port]} + CREDIT_TWO));
+            credit_book_if_issue[cr_port] = ({1'b0, free_next_flat[cr_port*RCNT_W +: RCNT_W]} >=
+                                             ({{RCNT_W{1'b0}}, r_is_port[cr_port]} + CREDIT_THREE));
+            credit_book_next[cr_port] = issue_is_port[cr_port] ? credit_book_if_issue[cr_port] : credit_book_if_none[cr_port];
             port_miss_ok[cr_port]  = ({1'b0, free_now_flat[cr_port*RCNT_W +: RCNT_W]} >
                                       ({{RCNT_W{1'b0}}, r_is_port[cr_port]} + {{RCNT_W{1'b0}}, s1_is_port[cr_port]}));
         end
@@ -386,6 +393,8 @@ module l1d_bank_s0 #(
     wire s2_amo_served;
     assign amo_issued_now       = (book_entry_issue && book_is_amo_q) || (fresh_issue && fresh_is_amo);
     assign s2_amo_served        = s2_cpu && s2_hit && !s2_kill && s2_req[REQ_AMO_BIT] && s2_req[REQ_SEQ_BIT];
+    wire s2_amo_in_s2;
+    assign s2_amo_in_s2         = s2_cpu && s2_req[REQ_AMO_BIT] && s2_req[REQ_SEQ_BIT];
     assign store_in_flight_next = (book_entry_issue && book_is_write_q) || (fresh_issue && fresh_is_write) ||
                                   (r_cpu_q && r_wr) || (s1_lsu && !s1_pf && s1_wr) || s2_amo_served;
     l1d_book_select #(.REFILL_SKIP(REFILL_SKIP + 1), .SNP_STARVE(SNP_STARVE), .BOOK_KIND_W(BOOK_KIND_W)) u_book (
@@ -402,6 +411,7 @@ module l1d_bank_s0 #(
         .prefetch_valid       (pf_valid_q),
         .amo_issued_now       (amo_issued_now),
         .store_in_flight_next (store_in_flight_next),
+        .amo_write_next       (s2_amo_in_s2),
         .book_valid_q         (book_valid_q),
         .book_kind_q          (book_kind_q),
         .fresh_allowed_q      (fresh_allowed_q),

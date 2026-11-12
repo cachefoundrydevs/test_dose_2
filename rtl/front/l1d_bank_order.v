@@ -31,8 +31,8 @@ module l1d_bank_order #(
     reg  [ORDER_DEPTH-1:0] order_read_onehot;
     reg  [ORDER_DEPTH-1:0] order_write_onehot;
     reg  [ORDER_CNT_W-1:0] order_count;
-    wire [LSU_PORTS-1:0]   join;
-    assign join = {join_3, join_2, join_1, join_0};
+    wire [LSU_PORTS-1:0]   join_now;
+    assign join_now = {join_3, join_2, join_1, join_0};
     function [ORDER_DEPTH-1:0] rotate_left;
         input [ORDER_DEPTH-1:0] pointer_onehot;
         input integer           step_cnt;
@@ -72,20 +72,20 @@ module l1d_bank_order #(
     reg  [JOIN_CNT_W-1:0]  join_cnt;
     integer                place_idx;
     always @* begin
-        rank_1   = {2'b00, join[0]};
-        rank_2   = {2'b00, join[0]} + {2'b00, join[1]};
-        rank_3   = {2'b00, join[0]} + {2'b00, join[1]} + {2'b00, join[2]};
-        join_cnt = rank_3 + {2'b00, join[3]};
+        rank_1   = {2'b00, join_now[0]};
+        rank_2   = {2'b00, join_now[0]} + {2'b00, join_now[1]};
+        rank_3   = {2'b00, join_now[0]} + {2'b00, join_now[1]} + {2'b00, join_now[2]};
+        join_cnt = rank_3 + {2'b00, join_now[3]};
         place_0  = order_write_onehot;
         place_1  = rotate_by_count(order_write_onehot, rank_1);
         place_2  = rotate_by_count(order_write_onehot, rank_2);
         place_3  = rotate_by_count(order_write_onehot, rank_3);
-        place_write_en = ({ORDER_DEPTH{join[0]}} & place_0) | ({ORDER_DEPTH{join[1]}} & place_1) |
-                         ({ORDER_DEPTH{join[2]}} & place_2) | ({ORDER_DEPTH{join[3]}} & place_3);
+        place_write_en = ({ORDER_DEPTH{join_now[0]}} & place_0) | ({ORDER_DEPTH{join_now[1]}} & place_1) |
+                         ({ORDER_DEPTH{join_now[2]}} & place_2) | ({ORDER_DEPTH{join_now[3]}} & place_3);
         for (place_idx = 0; place_idx < ORDER_DEPTH; place_idx = place_idx + 1)
-            place_write_port[place_idx*PORT_W +: PORT_W] = ({PORT_W{join[1] && place_1[place_idx]}} & 2'd1) |
-                                                           ({PORT_W{join[2] && place_2[place_idx]}} & 2'd2) |
-                                                           ({PORT_W{join[3] && place_3[place_idx]}} & 2'd3);
+            place_write_port[place_idx*PORT_W +: PORT_W] = ({PORT_W{join_now[1] && place_1[place_idx]}} & 2'd1) |
+                                                           ({PORT_W{join_now[2] && place_2[place_idx]}} & 2'd2) |
+                                                           ({PORT_W{join_now[3] && place_3[place_idx]}} & 2'd3);
     end
     wire [ORDER_CNT_W-1:0] order_count_next;
     assign order_count_next = order_count + {{(ORDER_CNT_W-JOIN_CNT_W){1'b0}}, join_cnt} - {{(ORDER_CNT_W-1){1'b0}}, pop};
@@ -119,8 +119,8 @@ module l1d_bank_order #(
 `endif
 `ifdef L1D_DEBUG
     always @(posedge clk) begin
-        if (!rst && (|join))
-            $display("[%0t] L1D ORDER bank %0d: ports %b join the ring (%0d waiting after)", $time, BANK_ID, join, order_count_next);
+        if (!rst && (|join_now))
+            $display("[%0t] L1D ORDER bank %0d: ports %b join the ring (%0d waiting after)", $time, BANK_ID, join_now, order_count_next);
         if (!rst && pop)
             $display("[%0t] L1D ORDER bank %0d: head port %0d drained", $time, BANK_ID, oldest_port);
     end

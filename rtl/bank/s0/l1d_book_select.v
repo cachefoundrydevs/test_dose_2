@@ -20,6 +20,7 @@ module l1d_book_select #(
     input  wire                   prefetch_valid,
     input  wire                   amo_issued_now,
     input  wire                   store_in_flight_next,
+    input  wire                   amo_write_next,
     output reg                    book_valid_q,
     output reg  [BOOK_KIND_W-1:0] book_kind_q,
     output reg                    fresh_allowed_q,
@@ -56,7 +57,8 @@ module l1d_book_select #(
     assign snoop_waits    = snoop_request && store_in_flight_next;
     assign refill_ok      = refill_token_valid && !snoop_ok && !store_in_flight_next;
     assign maint_ok       = maint_token_valid && !snoop_ok && !refill_token_valid && !store_in_flight_next;
-    assign cpu_go         = door_open_next && !snoop_ok && !snoop_waits && !refill_token_valid && !maint_token_valid;
+    assign cpu_go         = door_open_next && !snoop_ok && !snoop_waits && !refill_token_valid && !maint_token_valid &&
+                            !amo_write_next;
     assign book_now_snoop    = door_open_next && snoop_ok;
     assign book_now_refill   = door_open_next && refill_ok;
     assign book_now_maint    = door_open_next && maint_ok;
