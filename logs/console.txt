@@ -1,0 +1,938 @@
+Verilator 5.020 2024-01-01 rev (Debian 5.020-1)
+Icarus Verilog version 12.0 (stable) ()
+lint warnings: 1090
+LINT: PASS
+--- tb_smoke ---
+TEST PASSED: tb_smoke
+tb/tests/tb_smoke.sv:106: $finish called at 545000 (1ps)
+PASS tb_smoke
+--- tb_l1d_random ---
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+flush finished after 1306 cycles
+memory matches the reference after flush
+events: hits 3697, line fetches 3341, victim-cache load hits 550, swaps 1007, writebacks 1670
+        wait-for-MSHR 1802, MSHR full 0, wait-for-writeback 12, refill held 0, NC accesses 393
+        v2: lines installed S 0, S-to-M upgrades 0
+TEST PASSED: tb_l1d_random (6520 requests, seed 1)
+tb/tests/tb_l1d_random.v:361: $finish called at 684410000 (1ps)
+PASS tb_l1d_random
+--- tb_l1d_random_TINY ---
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+flush finished after 84 cycles
+memory matches the reference after flush
+events: hits 2633, line fetches 3204, victim-cache load hits 254, swaps 247, writebacks 1574
+        wait-for-MSHR 977, MSHR full 1546, wait-for-writeback 23, refill held 1, NC accesses 387
+        v2: lines installed S 0, S-to-M upgrades 0
+TEST PASSED: tb_l1d_random (5496 requests, seed 1)
+tb/tests/tb_l1d_random.v:361: $finish called at 632310000 (1ps)
+PASS tb_l1d_random_TINY
+--- tb_l1d_random_TINY_SEED_5 ---
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+flush finished after 76 cycles
+memory matches the reference after flush
+events: hits 2659, line fetches 3240, victim-cache load hits 248, swaps 252, writebacks 1608
+        wait-for-MSHR 973, MSHR full 1517, wait-for-writeback 31, refill held 2, NC accesses 359
+        v2: lines installed S 0, S-to-M upgrades 0
+TEST PASSED: tb_l1d_random (5496 requests, seed 5)
+tb/tests/tb_l1d_random.v:361: $finish called at 639220000 (1ps)
+PASS tb_l1d_random_TINY_SEED_5
+--- tb_latency ---
+    c0+6  S2  seat 1 -> action 0 (1=WMSHR 2=WANY 3=WVC 4=WNC 5=OWNED) id 0              
+    c0+8  G   issue BOOKED tracker entry (waited, or arrived behind another request)
+    c0+10  S1  tag hit way 0 (                      load)
+    c0+11  S2  response built (  data array)
+    c0+11  S2  answer pushed to the merger (pipeline), seat 1 freed
+    c0+12  OUT response idx 1 (load data)
+  RESULT 17: store hit: latency 4 cycles (expected 4) OK
+  RESULT  of the stored bytes (blocked one cycle): latency 9 cycles (expected 9) OK
+  RESULT 17: load returns the store's data 000045185a5a0000 OK
+
+TEST PASSED
+tb/tests/tb_latency.v:477: $finish called at 15710000 (1ps)
+PASS tb_latency
+--- tb_l1d_soc ---
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+issued 3000, answered 3000; AR 257 (one-beat 175), AW 185 (one-beat 127), W beats 359; stop cycles 0
+TEST PASSED
+tb/tests/tb_l1d_soc.v:482: $finish called at 85800000 (1ps)
+PASS tb_l1d_soc
+--- tb_l1d_soc_L1D_DEBUG_NOPS_200 ---
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S1 MAINT set=63 way=3 state=0        
+[0] L1D B0 S2 MAINT                                done
+[0] L1D MAINT tb_l1d_soc.dcache_dut.u_l1d.u_ports.u_dcache.g_bank[0].u_bank.u_maint walked sets 0..63
+[0] L1D MAINT tb_l1d_soc.dcache_dut.u_l1d.u_ports.u_dcache.g_bank[0].u_bank.u_maint: RUN -> FINAL (clean)
+[0] L1D MAINT tb_l1d_soc.dcache_dut.u_l1d.u_ports.u_dcache.g_bank[0].u_bank.u_maint: FINAL -> IDLE (clean)
+[0] L1D MAINT tb_l1d_soc.dcache_dut.u_l1d.u_ports.u_dcache.g_bank[0].u_bank.u_maint done
+[0] L1D TOP  MAINT all banks done
+[0] L1D SOC  clean_complete
+issued 200, answered 200; AR 75 (one-beat 15), AW 47 (one-beat 11), W beats 155; stop cycles 0
+TEST PASSED
+tb/tests/tb_l1d_soc.v:482: $finish called at 28180000 (1ps)
+PASS tb_l1d_soc_L1D_DEBUG_NOPS_200
+--- tb_l1d_random_TINY_L1D_DEBUG_NOPS_300 ---
+[0] L1D B3 S2 TRAIN port=0 pc=0000000000000000 addr=00000000000019f8 LD miss=0 pf_hit=0           
+[0] L1D B3 S3 RESP from pipeline  seat=5 idx=2     LD data=0be61117440bad88 (resp_free=170)
+[0] L1D MERGE bank 3 -> output  idx=2     LD (visible next cycle)
+[0] L1D B3 S1 PF  entry=0 idx=0 LD C  addr=00000000000019c0 set=1 ->           HIT way=0 state=2                                                     
+[0] L1D B3 S1 PF  entry=0 idx=0 LD C  addr=00000000000019c0 set=1 ->           HIT way=0 state=2                                                     
+[0] L1D B3 S2 PF   line=00000000000019c0 unique=0 ->        dropped: in the cache
+[0] L1D TOP  DONE  port 0 idx=2 LD C  addr=00000000000019f8 latency=17 cycles
+events: hits 1194, line fetches 730, victim-cache load hits 46, swaps 46, writebacks 327
+        wait-for-MSHR 482, MSHR full 302, wait-for-writeback 3, refill held 1, NC accesses 77
+        v2: lines installed S 0, S-to-M upgrades 0
+TEST PASSED: tb_l1d_random (1796 requests, seed 1)
+tb/tests/tb_l1d_random.v:361: $finish called at 149100000 (1ps)
+PASS tb_l1d_random_TINY_L1D_DEBUG_NOPS_300
+--- tb_l1d_random_SHARED_30 ---
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+flush finished after 1328 cycles
+memory matches the reference after flush
+events: hits 3473, line fetches 3536, victim-cache load hits 599, swaps 1038, writebacks 1638
+        wait-for-MSHR 1612, MSHR full 0, wait-for-writeback 8, refill held 0, NC accesses 356
+        v2: lines installed S 1072, S-to-M upgrades 257
+TEST PASSED: tb_l1d_random (6520 requests, seed 1)
+tb/tests/tb_l1d_random.v:361: $finish called at 725770000 (1ps)
+PASS tb_l1d_random_SHARED_30
+--- tb_l1d_random_TINY_SHARED_40_SEED_7 ---
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+flush finished after 69 cycles
+memory matches the reference after flush
+events: hits 2372, line fetches 3467, victim-cache load hits 279, swaps 259, writebacks 1576
+        wait-for-MSHR 949, MSHR full 1665, wait-for-writeback 32, refill held 1, NC accesses 364
+        v2: lines installed S 990, S-to-M upgrades 227
+TEST PASSED: tb_l1d_random (5496 requests, seed 7)
+tb/tests/tb_l1d_random.v:361: $finish called at 683230000 (1ps)
+PASS tb_l1d_random_TINY_SHARED_40_SEED_7
+--- tb_l1d_atomic ---
+  T11 MINU: old 8000000000000005 new 0000000000000007 OK
+  T11 MAXU: old 8000000000000005 new 8000000000000005 OK
+  T12 MIN.W (signed: -16 < 5): old 00000000fffffff0 word fffffff011111111 OK
+  T12 MAXU.W (unsigned: 0xFFFFFFF0 > 5): old 00000000fffffff0 word fffffff011111111 OK
+  T12 ADD.W (wraps at 32 bits): old 00000000fffffff0 word 0000001011111111 OK
+  T12 MAX.W (signed: 5 > -16): old 00000000fffffff0 word 0000000511111111 OK
+[0] L1D B0 S0 NOTE: booked 00001 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00001 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00001 cancelled (source offer changed): bubble
+cycles (this test's count, hit): load 5, store 5, LR 5, SC success 5, SC fail 5, AMO 5
+TEST PASSED: tb_l1d_atomic
+tb/tests/tb_l1d_atomic.v:160: $finish called at 10180000 (1ps)
+PASS tb_l1d_atomic
+--- tb_l1d_snoop ---
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+cycles: snoop answer after the snoop handshake: hit E 7, hit M with data 7, absent 7
+cycles: load miss 31, store miss 31, store on S (upgrade) 31
+TEST PASSED: tb_l1d_snoop
+tb/tests/tb_l1d_snoop.v:169: $finish called at 10910000 (1ps)
+PASS tb_l1d_snoop
+--- tb_l1d_coh ---
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+flush finished after 1304 cycles
+memory matches the reference after flush
+events: snoop tag hits 956 (M handed over 340), snoop on VC slot 656, snoop waits install 30 / writeback 7, snoop vs MSHR still fetching 781
+        S installs 929, upgrades 356, cycles with a snoop buffered while a lock holds snoops 0, refill victim moved off the locked line 0
+TEST PASSED: tb_l1d_coh (4960 requests, 3828 snoops, mode A, seed 1)
+tb/tests/tb_l1d_coh.v:679: $finish called at 658480000 (1ps)
+PASS tb_l1d_coh
+--- tb_l1d_coh_MODEB ---
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+flush finished after 1301 cycles
+memory matches the reference after flush
+events: snoop tag hits 884 (M handed over 345), snoop on VC slot 681, snoop waits install 25 / writeback 10, snoop vs MSHR still fetching 690
+        S installs 868, upgrades 315, cycles with a snoop buffered while a lock holds snoops 0, refill victim moved off the locked line 0
+TEST PASSED: tb_l1d_coh (4960 requests, 3726 snoops, mode B, seed 1)
+tb/tests/tb_l1d_coh.v:679: $finish called at 635750000 (1ps)
+PASS tb_l1d_coh_MODEB
+--- tb_l1d_coh_TINY ---
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+flush finished after 75 cycles
+memory matches the reference after flush
+events: snoop tag hits 948 (M handed over 403), snoop on VC slot 303, snoop waits install 27 / writeback 12, snoop vs MSHR still fetching 666
+        S installs 582, upgrades 215, cycles with a snoop buffered while a lock holds snoops 0, refill victim moved off the locked line 0
+TEST PASSED: tb_l1d_coh (4448 requests, 3726 snoops, mode A, seed 1)
+tb/tests/tb_l1d_coh.v:679: $finish called at 610990000 (1ps)
+PASS tb_l1d_coh_TINY
+--- tb_l1d_coh_TINY_MODEB_SEED_3 ---
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+flush finished after 57 cycles
+memory matches the reference after flush
+events: snoop tag hits 859 (M handed over 330), snoop on VC slot 289, snoop waits install 30 / writeback 18, snoop vs MSHR still fetching 662
+        S installs 592, upgrades 196, cycles with a snoop buffered while a lock holds snoops 0, refill victim moved off the locked line 0
+TEST PASSED: tb_l1d_coh (4449 requests, 3559 snoops, mode B, seed 3)
+tb/tests/tb_l1d_coh.v:679: $finish called at 590010000 (1ps)
+PASS tb_l1d_coh_TINY_MODEB_SEED_3
+--- tb_l1d_coh_TINY_MODEB_SNP_20_SEED_11 ---
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+flush finished after 49 cycles
+memory matches the reference after flush
+events: snoop tag hits 1804 (M handed over 656), snoop on VC slot 559, snoop waits install 71 / writeback 28, snoop vs MSHR still fetching 1393
+        S installs 627, upgrades 268, cycles with a snoop buffered while a lock holds snoops 0, refill victim moved off the locked line 0
+TEST PASSED: tb_l1d_coh (4448 requests, 7891 snoops, mode B, seed 11)
+tb/tests/tb_l1d_coh.v:679: $finish called at 646870000 (1ps)
+PASS tb_l1d_coh_TINY_MODEB_SNP_20_SEED_11
+--- tb_l1d_coh_TINY_L1D_DEBUG_NOPS_300 ---
+[0] L1D VC   tb_l1d_coh.dut.u_ports.u_dcache.g_bank[0].u_bank.u_vc insert slot 0 line=0000000000001200 dirty=0 as  VALID (old state VALID)
+[0] L1D B0 S2 EVICT line=0000000000001200
+[0] L1D B0 S2 REFILL mshr=0 line=0000000000001a00 INSTALLED (line + tag written), entry freed
+[0] L1D B0 S2 victim line 0000000000001200 (dirty=0 shared=0) -> victim-cache slot 0
+[0] L1D DATA tb_l1d_coh.dut.u_ports.u_dcache.g_bank[0].u_bank.u_r.u_data word write set/way=2/0 data=17bef72423a011827598bfc2e90c53769da0c7ea31547b9ea5c8ef32597c83a6cd10375a6184abce15385f6289acf3163d40678ad1f41b3e45688fd2f91c23466db0d7fa01244b6e
+[0] L1D TAG  tb_l1d_coh.dut.u_ports.u_dcache.g_bank[0].u_bank.u_r.u_tags write set=2 ways=01 word=00c0000000000006
+[0] L1D TOP  DONE  port 0 idx=0 LD C  addr=00000000000019f8 latency=17 cycles
+[0] L1D MSHR tb_l1d_coh.dut.u_ports.u_dcache.g_bank[0].u_bank.u_mshr.g_entry[0].u_entry: INSTALL -> IDLE  line=0000000000001a00 fetch primary idx=0 LD err=0
+events: snoop tag hits 53 (M handed over 28), snoop on VC slot 17, snoop waits install 1 / writeback 2, snoop vs MSHR still fetching 58
+        S installs 47, upgrades 11, cycles with a snoop buffered while a lock holds snoops 0, refill victim moved off the locked line 0
+TEST PASSED: tb_l1d_coh (748 requests, 243 snoops, mode A, seed 1)
+tb/tests/tb_l1d_coh.v:679: $finish called at 58740000 (1ps)
+PASS tb_l1d_coh_TINY_L1D_DEBUG_NOPS_300
+--- tb_l1d_random_TINY_SEED_11_NOPS_6000 ---
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+flush finished after 59 cycles
+memory matches the reference after flush
+events: hits 3412, line fetches 4530, victim-cache load hits 356, swaps 358, writebacks 2284
+        wait-for-MSHR 1284, MSHR full 2140, wait-for-writeback 52, refill held 4, NC accesses 517
+        v2: lines installed S 0, S-to-M upgrades 0
+TEST PASSED: tb_l1d_random (7496 requests, seed 11)
+tb/tests/tb_l1d_random.v:361: $finish called at 889360000 (1ps)
+PASS tb_l1d_random_TINY_SEED_11_NOPS_6000
+--- tb_l1d_random_TINY_SEED_23_SHARED_40_NOPS_6000 ---
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+flush finished after 110 cycles
+memory matches the reference after flush
+events: hits 3036, line fetches 4983, victim-cache load hits 351, swaps 368, writebacks 2268
+        wait-for-MSHR 1275, MSHR full 2526, wait-for-writeback 44, refill held 0, NC accesses 547
+        v2: lines installed S 1411, S-to-M upgrades 307
+TEST PASSED: tb_l1d_random (7496 requests, seed 23)
+tb/tests/tb_l1d_random.v:361: $finish called at 978510000 (1ps)
+PASS tb_l1d_random_TINY_SEED_23_SHARED_40_NOPS_6000
+--- tb_l1d_coh_TINY_SEED_21 ---
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+flush finished after 60 cycles
+memory matches the reference after flush
+events: snoop tag hits 889 (M handed over 371), snoop on VC slot 293, snoop waits install 33 / writeback 8, snoop vs MSHR still fetching 741
+        S installs 576, upgrades 184, cycles with a snoop buffered while a lock holds snoops 0, refill victim moved off the locked line 0
+TEST PASSED: tb_l1d_coh (4449 requests, 3708 snoops, mode A, seed 21)
+tb/tests/tb_l1d_coh.v:679: $finish called at 620760000 (1ps)
+PASS tb_l1d_coh_TINY_SEED_21
+--- tb_l1d_coh_TINY_MODEB_SEED_33_SNP_30 ---
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+flush finished after 52 cycles
+memory matches the reference after flush
+events: snoop tag hits 2258 (M handed over 773), snoop on VC slot 803, snoop waits install 75 / writeback 27, snoop vs MSHR still fetching 1930
+        S installs 693, upgrades 289, cycles with a snoop buffered while a lock holds snoops 0, refill victim moved off the locked line 0
+TEST PASSED: tb_l1d_coh (4448 requests, 10469 snoops, mode B, seed 33)
+tb/tests/tb_l1d_coh.v:679: $finish called at 672610000 (1ps)
+PASS tb_l1d_coh_TINY_MODEB_SEED_33_SNP_30
+--- tb_l1d_coh_SEED_45_SNP_25 ---
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+flush finished after 1302 cycles
+memory matches the reference after flush
+events: snoop tag hits 2175 (M handed over 687), snoop on VC slot 1609, snoop waits install 67 / writeback 20, snoop vs MSHR still fetching 1919
+        S installs 1010, upgrades 407, cycles with a snoop buffered while a lock holds snoops 0, refill victim moved off the locked line 0
+TEST PASSED: tb_l1d_coh (4960 requests, 9860 snoops, mode A, seed 45)
+tb/tests/tb_l1d_coh.v:679: $finish called at 728900000 (1ps)
+PASS tb_l1d_coh_SEED_45_SNP_25
+--- tb_ports ---
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+memory matches the reference after flush
+events: cycles with 2+ banks seating 308, seated from a waiting line 457, cycles with 2+ ports answering 220, stop cycles 19131
+TEST PASSED: tb_ports (6826 requests, seed 1)
+tb/tests/tb_ports.v:519: $finish called at 699450000 (1ps)
+PASS tb_ports
+--- tb_ports_TINY ---
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+memory matches the reference after flush
+events: cycles with 2+ banks seating 309, seated from a waiting line 1008, cycles with 2+ ports answering 183, stop cycles 33699
+TEST PASSED: tb_ports (6814 requests, seed 1)
+tb/tests/tb_ports.v:519: $finish called at 654550000 (1ps)
+PASS tb_ports_TINY
+--- tb_ports_TINY_SEED_9_NOPS_8000 ---
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+memory matches the reference after flush
+events: cycles with 2+ banks seating 377, seated from a waiting line 1493, cycles with 2+ ports answering 225, stop cycles 49713
+TEST PASSED: tb_ports (8814 requests, seed 9)
+tb/tests/tb_ports.v:519: $finish called at 877970000 (1ps)
+PASS tb_ports_TINY_SEED_9_NOPS_8000
+--- tb_ports_SEED_4_NOPS_10000 ---
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+memory matches the reference after flush
+events: cycles with 2+ banks seating 502, seated from a waiting line 747, cycles with 2+ ports answering 322, stop cycles 30060
+TEST PASSED: tb_ports (10826 requests, seed 4)
+tb/tests/tb_ports.v:519: $finish called at 1094400000 (1ps)
+PASS tb_ports_SEED_4_NOPS_10000
+--- tb_ports_order_NOPS_1500 ---
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+memory matches the reference after flush
+coverage: read-after-write across ports 1080, write-after-read 925, write-after-write 0, seated from a line 286
+stats: 2514 requests (LD 1721, ST 793, LR 0, SC 0, AMO 0), 2514 answered; max latency per port: P0 1258 P1 1171 P2 1099 P3 0
+latency histogram (cycles 4 | 5 | 6-7 | 8-11 | 12-23 | 24-63 | 64-255 | more): 538 182 121 273 431 360 386 223
+TEST PASSED: tb_ports_order (2514 requests, seed 1)
+tb/common/tb_ports_common.vh:701: $finish called at 113450000 (1ps)
+PASS tb_ports_order_NOPS_1500
+--- tb_ports_order_TINY_ONEBANK_STALL_NOPS_1500_SEED_2 ---
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+memory matches the reference after flush
+coverage: read-after-write across ports 1361, write-after-read 1386, write-after-write 0, seated from a line 1893
+stats: 2514 requests (LD 1697, ST 817, LR 0, SC 0, AMO 0), 2514 answered; max latency per port: P0 328 P1 282 P2 326 P3 0
+latency histogram (cycles 4 | 5 | 6-7 | 8-11 | 12-23 | 24-63 | 64-255 | more): 85 16 24 42 91 484 1744 28
+TEST PASSED: tb_ports_order (2514 requests, seed 2)
+tb/common/tb_ports_common.vh:701: $finish called at 203260000 (1ps)
+PASS tb_ports_order_TINY_ONEBANK_STALL_NOPS_1500_SEED_2
+--- tb_ports_amo_NOPS_600_NLR_70 ---
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+memory matches the reference after flush
+stats: 1706 requests (LD 1023, ST 142, LR 80, SC 90, AMO 371), 1706 answered; max latency per port: P0 108 P1 125 P2 104 P3 0
+latency histogram (cycles 4 | 5 | 6-7 | 8-11 | 12-23 | 24-63 | 64-255 | more): 322 41 25 81 97 1116 24 0
+TEST PASSED: tb_ports_amo (1706 requests, seed 1)
+tb/common/tb_ports_common.vh:701: $finish called at 79070000 (1ps)
+PASS tb_ports_amo_NOPS_600_NLR_70
+--- tb_ports_amo_TINY_NOPS_600_NLR_70_SEED_3 ---
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+memory matches the reference after flush
+stats: 1716 requests (LD 1038, ST 135, LR 80, SC 90, AMO 373), 1716 answered; max latency per port: P0 160 P1 136 P2 127 P3 0
+latency histogram (cycles 4 | 5 | 6-7 | 8-11 | 12-23 | 24-63 | 64-255 | more): 315 44 31 95 75 1099 57 0
+TEST PASSED: tb_ports_amo (1716 requests, seed 3)
+tb/common/tb_ports_common.vh:701: $finish called at 57100000 (1ps)
+PASS tb_ports_amo_TINY_NOPS_600_NLR_70_SEED_3
+--- tb_ports_coh_TINY_NOPS_1200_SEED_2 ---
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+memory matches the reference after final flush
+snoops: 878 sent (450 invalidate), 878 answered (317 present, 72 dirty, 561 absent), 1 cancelled
+stats: 1648 requests (LD 1268, ST 336, LR 0, SC 0, AMO 44), 1648 answered; max latency per port: P0 706 P1 811 P2 733 P3 0
+latency histogram (cycles 4 | 5 | 6-7 | 8-11 | 12-23 | 24-63 | 64-255 | more): 117 65 63 17 87 264 670 365
+TEST PASSED: tb_ports_coh (1648 requests, seed 2)
+tb/common/tb_ports_common.vh:701: $finish called at 147140000 (1ps)
+PASS tb_ports_coh_TINY_NOPS_1200_SEED_2
+--- tb_ports_coh_TINY_MODEB_MAINT_NOPS_1200_SEED_4 ---
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+memory matches the reference after final flush
+snoops: 78 sent (46 invalidate), 78 answered (14 present, 0 dirty, 64 absent), 0 cancelled
+ERROR: the snoop traffic never produced a present and a dirty answer (see the counts above)
+stats: 1648 requests (LD 1290, ST 323, LR 0, SC 0, AMO 35), 1648 answered; max latency per port: P0 614 P1 603 P2 774 P3 0
+latency histogram (cycles 4 | 5 | 6-7 | 8-11 | 12-23 | 24-63 | 64-255 | more): 140 61 49 32 87 307 618 354
+TEST FAILED: tb_ports_coh (1 errors)
+tb/common/tb_ports_common.vh:701: $finish called at 133760000 (1ps)
+FAIL tb_ports_coh_TINY_MODEB_MAINT_NOPS_1200_SEED_4
+--- tb_ports_stall ---
+=== S2b: P1 stalls for 800 cycles, the others use P1's bank (information) ===
+INFO S2b: completed in the window while P1 stalls: P0 7, P1 0, P2 4  -> the stalled port blocks the bank for the other ports
+  ok: all stops are 0 when idle, after S2b
+=== S3: three scalar ports, one bank, highest rate, 3000 cycles ===
+  completed: P0 606, P1 606, P2 606; largest latency per port: 10 10 32 (bound 64)
+  ok: S3 no answer takes longer than LAT_BOUND cycles
+  ok: S3 every port completes at least 60 % of the busiest port's count
+  ok: all stops are 0 when idle, after S3
+stats: 2875 requests (LD 2078, ST 797, LR 0, SC 0, AMO 0), 2875 answered; max latency per port: P0 10 P1 10 P2 32 P3 0
+latency histogram (cycles 4 | 5 | 6-7 | 8-11 | 12-23 | 24-63 | 64-255 | more): 804 1 15 1206 10 765 4 70
+TEST PASSED: tb_ports_stall (2875 requests, seed 1)
+tb/common/tb_ports_common.vh:701: $finish called at 59400000 (1ps)
+PASS tb_ports_stall
+--- tb_ports_stall_TINY ---
+=== S2b: P1 stalls for 800 cycles, the others use P1's bank (information) ===
+INFO S2b: completed in the window while P1 stalls: P0 5, P1 0, P2 2  -> the stalled port blocks the bank for the other ports
+  ok: all stops are 0 when idle, after S2b
+=== S3: three scalar ports, one bank, highest rate, 3000 cycles ===
+  completed: P0 606, P1 606, P2 606; largest latency per port: 11 12 32 (bound 96)
+  ok: S3 no answer takes longer than LAT_BOUND cycles
+  ok: S3 every port completes at least 60 % of the busiest port's count
+  ok: all stops are 0 when idle, after S3
+stats: 2339 requests (LD 1546, ST 793, LR 0, SC 0, AMO 0), 2339 answered; max latency per port: P0 11 P1 12 P2 32 P3 0
+latency histogram (cycles 4 | 5 | 6-7 | 8-11 | 12-23 | 24-63 | 64-255 | more): 5 1 9 1212 280 762 5 65
+TEST PASSED: tb_ports_stall (2339 requests, seed 1)
+tb/common/tb_ports_common.vh:701: $finish called at 59520000 (1ps)
+PASS tb_ports_stall_TINY
+--- tb_ports_vpu ---
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+memory matches the reference after final flush
+coverage: vector store upgrades (CC-14) 1, vector store misses (CC-15) 187, vector loads from the victim cache 69, bank door waits 61
+stats: 3156 requests (LD 1548, ST 680, LR 0, SC 0, AMO 65), 3156 answered; max latency per port: P0 1125 P1 1424 P2 1530 P3 0
+latency histogram (cycles 4 | 5 | 6-7 | 8-11 | 12-23 | 24-63 | 64-255 | more): 255 77 59 77 146 255 654 770
+VPU: 491 vector loads, 372 vector stores, 863 answered; latency max 1229, mean 201, 101 answers in exactly 4 cycles
+TEST PASSED: tb_ports_vpu (3156 requests, seed 1)
+tb/common/tb_ports_common.vh:701: $finish called at 323590000 (1ps)
+PASS tb_ports_vpu
+--- tb_ports_vpu_TINY_SEED_3_NOPS_4000 ---
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+memory matches the reference after final flush
+coverage: vector store upgrades (CC-14) 1, vector store misses (CC-15) 260, vector loads from the victim cache 55, bank door waits 81
+stats: 4090 requests (LD 2082, ST 969, LR 0, SC 0, AMO 85), 4090 answered; max latency per port: P0 881 P1 1036 P2 838 P3 0
+latency histogram (cycles 4 | 5 | 6-7 | 8-11 | 12-23 | 24-63 | 64-255 | more): 249 75 58 43 112 283 1210 1106
+VPU: 512 vector loads, 442 vector stores, 954 answered; latency max 914, mean 216, 69 answers in exactly 4 cycles
+TEST PASSED: tb_ports_vpu (4090 requests, seed 3)
+tb/common/tb_ports_common.vh:701: $finish called at 455780000 (1ps)
+PASS tb_ports_vpu_TINY_SEED_3_NOPS_4000
+--- tb_ports_vpu_TINY_SNOOP_SEED_5_NOPS_2500 ---
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+memory matches the reference after final flush
+coverage: vector store upgrades (CC-14) 16, vector store misses (CC-15) 171, vector loads from the victim cache 36, bank door waits 53
+stats: 2590 requests (LD 1340, ST 576, LR 0, SC 0, AMO 56), 2590 answered; max latency per port: P0 678 P1 701 P2 949 P3 0
+latency histogram (cycles 4 | 5 | 6-7 | 8-11 | 12-23 | 24-63 | 64-255 | more): 120 45 44 25 41 172 797 728
+VPU: 354 vector loads, 264 vector stores, 618 answered; latency max 1147, mean 220, 46 answers in exactly 4 cycles
+TEST PASSED: tb_ports_vpu (2590 requests, seed 5)
+tb/common/tb_ports_common.vh:701: $finish called at 298900000 (1ps)
+PASS tb_ports_vpu_TINY_SNOOP_SEED_5_NOPS_2500
+--- tb_ports_vpu_TINY_TBP_SHARED_30_SEED_7 ---
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+memory matches the reference after final flush
+coverage: vector store upgrades (CC-14) 39, vector store misses (CC-15) 202, vector loads from the victim cache 37, bank door waits 82
+stats: 3090 requests (LD 1648, ST 672, LR 0, SC 0, AMO 69), 3090 answered; max latency per port: P0 896 P1 907 P2 725 P3 0
+latency histogram (cycles 4 | 5 | 6-7 | 8-11 | 12-23 | 24-63 | 64-255 | more): 187 78 53 34 54 219 939 825
+VPU: 372 vector loads, 329 vector stores, 701 answered; latency max 981, mean 215, 46 answers in exactly 4 cycles
+TEST PASSED: tb_ports_vpu (3090 requests, seed 7)
+tb/common/tb_ports_common.vh:701: $finish called at 342020000 (1ps)
+PASS tb_ports_vpu_TINY_TBP_SHARED_30_SEED_7
+--- tb_s0_skid ---
+memory matches the reference after flush
+coverage: skid full P0 294 P1 90 P2 71, late sends 46, ring max 6, from ring 92, replay max 8
+coverage: pipe conflicts 0, replay conflicts 31, replay entries held 1141, replay credit stalls 0
+monitor errors: skid 0, order 0, replay 0, stage R cancel 0
+  ok: coverage: the skid of P0 held 2 requests
+  ok: coverage: the skid of P1 held 2 requests
+  ok: coverage: the skid of P2 held 2 requests
+  ok: coverage: requests were sent while their stop was 1 (late LSU)
+stats: 100 requests (LD 68, ST 32, LR 0, SC 0, AMO 0), 100 answered; max latency per port: P0 95 P1 103 P2 105 P3 0
+latency histogram (cycles 4 | 5 | 6-7 | 8-11 | 12-23 | 24-63 | 64-255 | more): 0 0 0 0 0 27 73 0
+TEST PASSED: tb_s0_skid (100 requests, seed 1)
+tb/common/tb_ports_common.vh:701: $finish called at 17340000 (1ps)
+PASS tb_s0_skid
+--- tb_s0_skid_TINY_SEED_2 ---
+memory matches the reference after flush
+coverage: skid full P0 327 P1 314 P2 290, late sends 26, ring max 6, from ring 53, replay max 8
+coverage: pipe conflicts 0, replay conflicts 18, replay entries held 1291, replay credit stalls 2
+monitor errors: skid 0, order 0, replay 0, stage R cancel 0
+  ok: coverage: the skid of P0 held 2 requests
+  ok: coverage: the skid of P1 held 2 requests
+  ok: coverage: the skid of P2 held 2 requests
+  ok: coverage: requests were sent while their stop was 1 (late LSU)
+stats: 61 requests (LD 42, ST 19, LR 0, SC 0, AMO 0), 61 answered; max latency per port: P0 138 P1 145 P2 234 P3 0
+latency histogram (cycles 4 | 5 | 6-7 | 8-11 | 12-23 | 24-63 | 64-255 | more): 0 0 0 0 0 8 53 0
+TEST PASSED: tb_s0_skid (61 requests, seed 2)
+tb/common/tb_ports_common.vh:701: $finish called at 5040000 (1ps)
+PASS tb_s0_skid_TINY_SEED_2
+--- tb_s0_order ---
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+memory matches the reference after flush
+coverage: skid full P0 164 P1 185 P2 138, late sends 50, ring max 6, from ring 113, replay max 8
+coverage: pipe conflicts 0, replay conflicts 84, replay entries held 1861, replay credit stalls 0
+monitor errors: skid 0, order 0, replay 0, stage R cancel 0
+  ok: coverage: an order ring held 4 or more requests
+  ok: coverage: requests were granted from an order ring
+stats: 121 requests (LD 82, ST 39, LR 0, SC 0, AMO 0), 121 answered; max latency per port: P0 111 P1 145 P2 155 P3 0
+latency histogram (cycles 4 | 5 | 6-7 | 8-11 | 12-23 | 24-63 | 64-255 | more): 0 0 0 0 1 69 51 0
+TEST PASSED: tb_s0_order (121 requests, seed 1)
+tb/common/tb_ports_common.vh:701: $finish called at 17380000 (1ps)
+PASS tb_s0_order
+--- tb_s0_order_TINY_SEED_4 ---
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+memory matches the reference after flush
+coverage: skid full P0 336 P1 241 P2 262, late sends 31, ring max 6, from ring 62, replay max 8
+coverage: pipe conflicts 0, replay conflicts 42, replay entries held 1853, replay credit stalls 2
+monitor errors: skid 0, order 0, replay 0, stage R cancel 0
+  ok: coverage: an order ring held 4 or more requests
+  ok: coverage: requests were granted from an order ring
+stats: 70 requests (LD 49, ST 21, LR 0, SC 0, AMO 0), 70 answered; max latency per port: P0 154 P1 156 P2 155 P3 0
+latency histogram (cycles 4 | 5 | 6-7 | 8-11 | 12-23 | 24-63 | 64-255 | more): 0 0 0 0 0 7 63 0
+TEST PASSED: tb_s0_order (70 requests, seed 4)
+tb/common/tb_ports_common.vh:701: $finish called at 5070000 (1ps)
+PASS tb_s0_order_TINY_SEED_4
+--- tb_s0_replay_TINY ---
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+memory matches the reference after flush
+coverage: skid full P0 0 P1 0 P2 0, late sends 0, ring max 3, from ring 129, replay max 8
+coverage: pipe conflicts 0, replay conflicts 117, replay entries held 7908, replay credit stalls 2
+monitor errors: skid 0, order 0, replay 0, stage R cancel 0
+  ok: coverage: a request tracker held 2 or more entries (was the replay queue)
+  ok: overage: an arriving request got a dependency on an older same-set tracker entry
+stats: 137 requests (LD 95, ST 36, LR 0, SC 0, AMO 6), 137 answered; max latency per port: P0 261 P1 207 P2 252 P3 0
+latency histogram (cycles 4 | 5 | 6-7 | 8-11 | 12-23 | 24-63 | 64-255 | more): 0 0 0 0 1 9 126 1
+TEST PASSED: tb_s0_replay (137 requests, seed 1)
+tb/common/tb_ports_common.vh:701: $finish called at 16950000 (1ps)
+PASS tb_s0_replay_TINY
+--- tb_s0_replay_SEED_6 ---
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+memory matches the reference after flush
+coverage: skid full P0 0 P1 0 P2 0, late sends 0, ring max 3, from ring 162, replay max 8
+coverage: pipe conflicts 0, replay conflicts 121, replay entries held 9165, replay credit stalls 0
+monitor errors: skid 0, order 0, replay 0, stage R cancel 0
+  ok: coverage: a request tracker held 2 or more entries (was the replay queue)
+  ok: overage: an arriving request got a dependency on an older same-set tracker entry
+stats: 170 requests (LD 121, ST 44, LR 0, SC 0, AMO 5), 170 answered; max latency per port: P0 417 P1 281 P2 338 P3 0
+latency histogram (cycles 4 | 5 | 6-7 | 8-11 | 12-23 | 24-63 | 64-255 | more): 0 0 0 0 6 40 116 8
+TEST PASSED: tb_s0_replay (170 requests, seed 6)
+tb/common/tb_ports_common.vh:701: $finish called at 29860000 (1ps)
+PASS tb_s0_replay_SEED_6
+--- tb_s0_replay_TINY_SEED_9_NCYC_3000 ---
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+memory matches the reference after flush
+coverage: skid full P0 0 P1 0 P2 0, late sends 0, ring max 3, from ring 271, replay max 8
+coverage: pipe conflicts 0, replay conflicts 213, replay entries held 15654, replay credit stalls 2
+monitor errors: skid 0, order 0, replay 0, stage R cancel 0
+  ok: coverage: a request tracker held 2 or more entries (was the replay queue)
+  ok: overage: an arriving request got a dependency on an older same-set tracker entry
+stats: 279 requests (LD 193, ST 81, LR 0, SC 0, AMO 5), 279 answered; max latency per port: P0 274 P1 267 P2 261 P3 0
+latency histogram (cycles 4 | 5 | 6-7 | 8-11 | 12-23 | 24-63 | 64-255 | more): 0 0 0 0 4 34 236 5
+TEST PASSED: tb_s0_replay (279 requests, seed 9)
+tb/common/tb_ports_common.vh:701: $finish called at 32550000 (1ps)
+PASS tb_s0_replay_TINY_SEED_9_NCYC_3000
+--- tb_s0_sameset ---
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+memory matches the reference after flush
+coverage: skid full P0 0 P1 0 P2 0, late sends 0, ring max 3, from ring 126, replay max 8
+coverage: pipe conflicts 4, replay conflicts 88, replay entries held 8698, replay credit stalls 27
+monitor errors: skid 0, order 0, replay 0, stage R cancel 0
+  ok: a fresh request was cancelled in stage R by a same-set hazard (ghost, re-issued)
+  ok: stage R never saw a hazard on a BOOKED request
+stats: 144 requests (LD 64, ST 64, LR 0, SC 0, AMO 16), 144 answered; max latency per port: P0 92 P1 219 P2 215 P3 0
+latency histogram (cycles 4 | 5 | 6-7 | 8-11 | 12-23 | 24-63 | 64-255 | more): 0 0 0 0 0 44 100 0
+TEST PASSED: tb_s0_sameset (144 requests, seed 1)
+tb/common/tb_ports_common.vh:701: $finish called at 28100000 (1ps)
+PASS tb_s0_sameset
+--- tb_s0_sameset_TINY_SEED_5 ---
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+memory matches the reference after flush
+coverage: skid full P0 0 P1 0 P2 0, late sends 0, ring max 3, from ring 135, replay max 8
+coverage: pipe conflicts 2, replay conflicts 84, replay entries held 9566, replay credit stalls 34
+monitor errors: skid 0, order 0, replay 0, stage R cancel 0
+  ok: a fresh request was cancelled in stage R by a same-set hazard (ghost, re-issued)
+  ok: stage R never saw a hazard on a BOOKED request
+stats: 144 requests (LD 64, ST 64, LR 0, SC 0, AMO 16), 144 answered; max latency per port: P0 81 P1 201 P2 197 P3 0
+latency histogram (cycles 4 | 5 | 6-7 | 8-11 | 12-23 | 24-63 | 64-255 | more): 0 0 0 0 0 49 95 0
+TEST PASSED: tb_s0_sameset (144 requests, seed 5)
+tb/common/tb_ports_common.vh:701: $finish called at 17110000 (1ps)
+PASS tb_s0_sameset_TINY_SEED_5
+--- tb_s0_stress ---
+monitor errors: skid 0, order 0, replay 0, stage R cancel 0
+  ok: coverage: the skid of every scalar port held 2 requests
+  ok: coverage: requests were sent while their stop was 1 (late LSU)
+  ok: coverage: an order ring held 4 or more requests
+  ok: coverage: requests were granted from an order ring
+  ok: coverage: a request tracker held 2 or more entries (was the replay queue)
+  ok: a fresh request was cancelled in stage R by a same-set hazard (ghost, re-issued)
+  ok: overage: an arriving request got a dependency on an older same-set tracker entry
+stats: 3224 requests (LD 2188, ST 926, LR 0, SC 0, AMO 110), 3224 answered; max latency per port: P0 760 P1 1114 P2 844 P3 0
+latency histogram (cycles 4 | 5 | 6-7 | 8-11 | 12-23 | 24-63 | 64-255 | more): 135 80 88 101 205 495 1335 785
+TEST PASSED: tb_s0_stress (3224 requests, seed 1)
+tb/common/tb_ports_common.vh:701: $finish called at 291800000 (1ps)
+PASS tb_s0_stress
+--- tb_s0_stress_TINY_SEED_3 ---
+monitor errors: skid 0, order 0, replay 0, stage R cancel 0
+  ok: coverage: the skid of every scalar port held 2 requests
+  ok: coverage: requests were sent while their stop was 1 (late LSU)
+  ok: coverage: an order ring held 4 or more requests
+  ok: coverage: requests were granted from an order ring
+  ok: coverage: a request tracker held 2 or more entries (was the replay queue)
+  ok: a fresh request was cancelled in stage R by a same-set hazard (ghost, re-issued)
+  ok: overage: an arriving request got a dependency on an older same-set tracker entry
+stats: 3203 requests (LD 2195, ST 898, LR 0, SC 0, AMO 110), 3203 answered; max latency per port: P0 543 P1 520 P2 494 P3 0
+latency histogram (cycles 4 | 5 | 6-7 | 8-11 | 12-23 | 24-63 | 64-255 | more): 86 44 56 42 72 359 1895 649
+TEST PASSED: tb_s0_stress (3203 requests, seed 3)
+tb/common/tb_ports_common.vh:701: $finish called at 305130000 (1ps)
+PASS tb_s0_stress_TINY_SEED_3
+--- tb_s0_stress_TINY_SEED_8_NOPS_5000 ---
+monitor errors: skid 0, order 0, replay 0, stage R cancel 0
+  ok: coverage: the skid of every scalar port held 2 requests
+  ok: coverage: requests were sent while their stop was 1 (late LSU)
+  ok: coverage: an order ring held 4 or more requests
+  ok: coverage: requests were granted from an order ring
+  ok: coverage: a request tracker held 2 or more entries (was the replay queue)
+  ok: a fresh request was cancelled in stage R by a same-set hazard (ghost, re-issued)
+  ok: overage: an arriving request got a dependency on an older same-set tracker entry
+stats: 5195 requests (LD 3553, ST 1481, LR 0, SC 0, AMO 161), 5195 answered; max latency per port: P0 537 P1 560 P2 503 P3 0
+latency histogram (cycles 4 | 5 | 6-7 | 8-11 | 12-23 | 24-63 | 64-255 | more): 139 74 67 86 137 594 3099 999
+TEST PASSED: tb_s0_stress (5195 requests, seed 8)
+tb/common/tb_ports_common.vh:701: $finish called at 478230000 (1ps)
+PASS tb_s0_stress_TINY_SEED_8_NOPS_5000
+--- tb_smoke_L1D_SINGLE_PORT_TOP ---
+TEST PASSED: tb_smoke
+tb/tests/tb_smoke.sv:106: $finish called at 545000 (1ps)
+PASS tb_smoke_L1D_SINGLE_PORT_TOP
+--- tb_latency_L1D_SINGLE_PORT_TOP ---
+    c0+6  S2  seat 1 -> action 0 (1=WMSHR 2=WANY 3=WVC 4=WNC 5=OWNED) id 0              
+    c0+8  G   issue BOOKED tracker entry (waited, or arrived behind another request)
+    c0+10  S1  tag hit way 0 (                      load)
+    c0+11  S2  response built (  data array)
+    c0+11  S2  answer pushed to the merger (pipeline), seat 1 freed
+    c0+12  OUT response idx 1 (load data)
+  RESULT 17: store hit: latency 4 cycles (expected 4) OK
+  RESULT  of the stored bytes (blocked one cycle): latency 9 cycles (expected 9) OK
+  RESULT 17: load returns the store's data 000045185a5a0000 OK
+
+TEST PASSED
+tb/tests/tb_latency.v:477: $finish called at 15710000 (1ps)
+PASS tb_latency_L1D_SINGLE_PORT_TOP
+--- tb_l1d_random_L1D_SINGLE_PORT_TOP ---
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+flush finished after 1306 cycles
+memory matches the reference after flush
+events: hits 3697, line fetches 3341, victim-cache load hits 550, swaps 1007, writebacks 1670
+        wait-for-MSHR 1802, MSHR full 0, wait-for-writeback 12, refill held 0, NC accesses 393
+        v2: lines installed S 0, S-to-M upgrades 0
+TEST PASSED: tb_l1d_random (6520 requests, seed 1)
+tb/tests/tb_l1d_random.v:361: $finish called at 684410000 (1ps)
+PASS tb_l1d_random_L1D_SINGLE_PORT_TOP
+--- tb_l1d_random_L1D_SINGLE_PORT_TOP_TINY_SEED_5 ---
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+flush finished after 76 cycles
+memory matches the reference after flush
+events: hits 2659, line fetches 3240, victim-cache load hits 248, swaps 252, writebacks 1608
+        wait-for-MSHR 973, MSHR full 1517, wait-for-writeback 31, refill held 2, NC accesses 359
+        v2: lines installed S 0, S-to-M upgrades 0
+TEST PASSED: tb_l1d_random (5496 requests, seed 5)
+tb/tests/tb_l1d_random.v:361: $finish called at 639220000 (1ps)
+PASS tb_l1d_random_L1D_SINGLE_PORT_TOP_TINY_SEED_5
+--- tb_l1d_random_L1D_SINGLE_PORT_TOP_TINY_SHARED_40_SEED_7 ---
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+flush finished after 69 cycles
+memory matches the reference after flush
+events: hits 2372, line fetches 3467, victim-cache load hits 279, swaps 259, writebacks 1576
+        wait-for-MSHR 949, MSHR full 1665, wait-for-writeback 32, refill held 1, NC accesses 364
+        v2: lines installed S 990, S-to-M upgrades 227
+TEST PASSED: tb_l1d_random (5496 requests, seed 7)
+tb/tests/tb_l1d_random.v:361: $finish called at 683230000 (1ps)
+PASS tb_l1d_random_L1D_SINGLE_PORT_TOP_TINY_SHARED_40_SEED_7
+--- tb_l1d_atomic_L1D_SINGLE_PORT_TOP ---
+  T11 MINU: old 8000000000000005 new 0000000000000007 OK
+  T11 MAXU: old 8000000000000005 new 8000000000000005 OK
+  T12 MIN.W (signed: -16 < 5): old 00000000fffffff0 word fffffff011111111 OK
+  T12 MAXU.W (unsigned: 0xFFFFFFF0 > 5): old 00000000fffffff0 word fffffff011111111 OK
+  T12 ADD.W (wraps at 32 bits): old 00000000fffffff0 word 0000001011111111 OK
+  T12 MAX.W (signed: 5 > -16): old 00000000fffffff0 word 0000000511111111 OK
+[0] L1D B0 S0 NOTE: booked 00001 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00001 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00001 cancelled (source offer changed): bubble
+cycles (this test's count, hit): load 5, store 5, LR 5, SC success 5, SC fail 5, AMO 5
+TEST PASSED: tb_l1d_atomic
+tb/tests/tb_l1d_atomic.v:160: $finish called at 10180000 (1ps)
+PASS tb_l1d_atomic_L1D_SINGLE_PORT_TOP
+--- tb_l1d_snoop_L1D_SINGLE_PORT_TOP ---
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+cycles: snoop answer after the snoop handshake: hit E 7, hit M with data 7, absent 7
+cycles: load miss 31, store miss 31, store on S (upgrade) 31
+TEST PASSED: tb_l1d_snoop
+tb/tests/tb_l1d_snoop.v:169: $finish called at 10910000 (1ps)
+PASS tb_l1d_snoop_L1D_SINGLE_PORT_TOP
+--- tb_l1d_coh_L1D_SINGLE_PORT_TOP ---
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+flush finished after 1304 cycles
+memory matches the reference after flush
+events: snoop tag hits 956 (M handed over 340), snoop on VC slot 656, snoop waits install 30 / writeback 7, snoop vs MSHR still fetching 781
+        S installs 929, upgrades 356, cycles with a snoop buffered while a lock holds snoops 0, refill victim moved off the locked line 0
+TEST PASSED: tb_l1d_coh (4960 requests, 3828 snoops, mode A, seed 1)
+tb/tests/tb_l1d_coh.v:679: $finish called at 658480000 (1ps)
+PASS tb_l1d_coh_L1D_SINGLE_PORT_TOP
+--- tb_l1d_coh_L1D_SINGLE_PORT_TOP_TINY_MODEB_SEED_3 ---
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+flush finished after 62 cycles
+memory matches the reference after flush
+events: snoop tag hits 940 (M handed over 361), snoop on VC slot 282, snoop waits install 21 / writeback 13, snoop vs MSHR still fetching 667
+        S installs 569, upgrades 184, cycles with a snoop buffered while a lock holds snoops 0, refill victim moved off the locked line 0
+TEST PASSED: tb_l1d_coh (4448 requests, 3653 snoops, mode B, seed 3)
+tb/tests/tb_l1d_coh.v:679: $finish called at 595880000 (1ps)
+PASS tb_l1d_coh_L1D_SINGLE_PORT_TOP_TINY_MODEB_SEED_3
+SKIP tb_l1d_soc -d L1D_V14_COMPAT_TOP
+SKIP tb_l1d_soc -d L1D_V14_COMPAT_TOP -d L1D_DEBUG -d "NOPS=200"
+--- tb_tracker ---
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+memory matches the reference after  after the flush
+stats: 3033 requests (LD 2103, ST 930, LR 0, SC 0, AMO 0), 3033 answered; max latency per port: P0 605 P1 513 P2 525 P3 0
+latency histogram (cycles 4 | 5 | 6-7 | 8-11 | 12-23 | 24-63 | 64-255 | more): 252 180 173 310 861 966 260 31
+TEST PASSED: tb_tracker (3033 requests, seed 1)
+tb/common/tb_ports_common.vh:701: $finish called at 76460000 (1ps)
+PASS tb_tracker
+--- tb_tracker_SEED_7_NOPS_6000 ---
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+memory matches the reference after  after the flush
+stats: 6033 requests (LD 4156, ST 1877, LR 0, SC 0, AMO 0), 6033 answered; max latency per port: P0 538 P1 550 P2 778 P3 0
+latency histogram (cycles 4 | 5 | 6-7 | 8-11 | 12-23 | 24-63 | 64-255 | more): 444 294 261 667 1750 2156 431 30
+TEST PASSED: tb_tracker (6033 requests, seed 7)
+tb/common/tb_ports_common.vh:701: $finish called at 129270000 (1ps)
+PASS tb_tracker_SEED_7_NOPS_6000
+--- tb_ecc ---
+=== 5. store hit, then load: new data, new check bits, no ECC event ===
+
+=== 5 ===
+  CHECK 5: the load returns the stored data: OK
+  CHECK 5: no ECC event (the store wrote good check bits): OK
+=== 6. two data bits flipped in one granule (line bits 70 and 75) ===
+
+=== 6 ===
+  load with a double-bit data error: data 000045085a5a0840 (not checked), latency 4
+  CHECK 6: ecc_uncorrectable_sticky is set: OK
+TEST PASSED: tb_ecc
+tb/tests/tb_ecc.v:385: $finish called at 5000000 (1ps)
+PASS tb_ecc
+--- tb_prefetch ---
+
+=== walk ===
+
+=== walk ===
+  hits 44, misses 4, wrong data 0
+  prefetch feedback: issued 49, in cache 88, in flight 48, dropped 0; demand hits on prefetched lines 45
+  CHECK 2: every load returns the memory data: OK
+  CHECK 2: prefetches were issued (MSHR entries allocated): OK
+  CHECK 2: some demand loads hit lines fetched ahead: OK
+  CHECK 2: the banks reported first-use hits on prefetched lines (training feedback): OK
+TEST PASSED: tb_prefetch
+tb/tests/tb_prefetch.v:340: $finish called at 29520000 (1ps)
+PASS tb_prefetch
+=== Summary: 63 passed, 1 failed, 2 skipped ===
+  RESULT load miss: latency 27 cycles (expected 27) OK
+  RESULT load hit: latency 4 cycles (expected 4) OK
+  RESULT store hit: latency 4 cycles (expected 4) OK
+  RESULT store miss: latency 27 cycles (expected 27) OK
+  RESULT load A: latency 4 cycles (expected 4) OK
+  RESULT load B (same line): latency 4 cycles (expected 4) OK
+  RESULT load: latency 4 cycles (expected 4) OK
+  RESULT store behind load: latency 9 cycles (expected 9) OK
+  RESULT primary miss: latency 27 cycles (expected 27) OK
+  RESULT secondary miss (waits for install): latency 36 cycles (expected 36) OK
+  RESULT victim-cache load hit: latency 4 cycles (expected 4) OK
+  RESULT victim-cache store hit: latency 14 cycles (expected 14) OK
+  RESULT NC load: latency 21 cycles (expected 21) OK
+  RESULT NC store: latency 17 cycles (expected 17) OK
+  load 0: issued c0+0, answered c0+4, latency 4
+  load 1: issued c0+1, answered c0+5, latency 4
+  load 2: issued c0+2, answered c0+6, latency 4
+  load 3: issued c0+3, answered c0+7, latency 4
+  load 4: issued c0+4, answered c0+8, latency 4
+  load 5: issued c0+5, answered c0+9, latency 4
+  load 6: issued c0+6, answered c0+10, latency 4
+  load 7: issued c0+7, answered c0+11, latency 4
+  RESULT 12: load 0: latency 4 cycles (expected 4) OK
+  RESULT 12: load 3: latency 4 cycles (expected 4) OK
+  RESULT 12: load 4: latency 4 cycles (expected 4) OK
+  RESULT 12: load 7: latency 4 cycles (expected 4) OK
+  load 0 (bank 0): issued c0+0, answered c0+4, latency 4
+  load 1 (bank 1): issued c0+1, answered c0+5, latency 4
+  load 2 (bank 2): issued c0+2, answered c0+6, latency 4
+  load 3 (bank 3): issued c0+3, answered c0+7, latency 4
+  load 4 (bank 0): issued c0+4, answered c0+8, latency 4
+  load 5 (bank 1): issued c0+5, answered c0+9, latency 4
+  load 6 (bank 2): issued c0+6, answered c0+10, latency 4
+  load 7 (bank 3): issued c0+7, answered c0+11, latency 4
+  RESULT 13: load: latency 4 cycles (expected 4) OK
+  RESULT 13: load: latency 4 cycles (expected 4) OK
+  RESULT 13: load: latency 4 cycles (expected 4) OK
+  RESULT 13: load: latency 4 cycles (expected 4) OK
+  RESULT 13: load: latency 4 cycles (expected 4) OK
+  RESULT 13: load: latency 4 cycles (expected 4) OK
+  RESULT 13: load: latency 4 cycles (expected 4) OK
+  RESULT 13: load: latency 4 cycles (expected 4) OK
+  load 0: issued c0+0, answered c0+20, latency 20
+  load 1: issued c0+1, answered c0+21, latency 20
+  load 2: issued c0+2, answered c0+22, latency 20
+  load 3: issued c0+3, answered c0+23, latency 20
+  load 4: issued c0+4, answered c0+24, latency 20
+  load 5: issued c0+5, answered c0+26, latency 21
+  RESULT 15: miss: latency 27 cycles (expected 27) OK
+  RESULT 15: hit behind refill token: latency 4 cycles (expected 4) OK
+  RESULT 16: store hit: latency 4 cycles (expected 4) OK
+  RESULT : load hit, other line, during the write: latency 4 cycles (expected 4) OK
+  RESULT 17: store hit: latency 4 cycles (expected 4) OK
+  RESULT  of the stored bytes (blocked one cycle): latency 9 cycles (expected 9) OK
+  RESULT 17: load returns the store's data 000045185a5a0000 OK

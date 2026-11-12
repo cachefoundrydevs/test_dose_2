@@ -1,0 +1,46 @@
+=== scenario SKID: late stop, answers stalled, 400 cycles ===
+  skid full (port-cycles): P0 327 P1 314 P2 290; late sends 26
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+memory matches the reference after flush
+coverage: skid full P0 327 P1 314 P2 290, late sends 26, ring max 6, from ring 53, replay max 8
+coverage: pipe conflicts 0, replay conflicts 18, replay entries held 1291, replay credit stalls 2
+monitor errors: skid 0, order 0, replay 0, stage R cancel 0
+  ok: coverage: the skid of P0 held 2 requests
+  ok: coverage: the skid of P1 held 2 requests
+  ok: coverage: the skid of P2 held 2 requests
+  ok: coverage: requests were sent while their stop was 1 (late LSU)
+stats: 61 requests (LD 42, ST 19, LR 0, SC 0, AMO 0), 61 answered; max latency per port: P0 138 P1 145 P2 234 P3 0
+latency histogram (cycles 4 | 5 | 6-7 | 8-11 | 12-23 | 24-63 | 64-255 | more): 0 0 0 0 0 8 53 0
+TEST PASSED: tb_s0_skid (61 requests, seed 2)
+tb/common/tb_ports_common.vh:701: $finish called at 5040000 (1ps)

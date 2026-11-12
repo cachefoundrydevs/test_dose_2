@@ -1,0 +1,206 @@
+=== 1. sequential walk of 48 lines, prefetch OFF (reference) ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+  hits 0, misses 48, wrong data 0; feedback issued 0
+  CHECK 1: every load returns the memory data: OK
+  CHECK 1: no hit without prefetch (cold lines): OK
+  CHECK 1: no prefetch issued while pf_enable = 0: OK
+=== 2. sequential walk of 48 new lines, prefetch ON ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+
+=== walk ===
+  hits 44, misses 4, wrong data 0
+  prefetch feedback: issued 49, in cache 88, in flight 48, dropped 0; demand hits on prefetched lines 45
+  CHECK 2: every load returns the memory data: OK
+  CHECK 2: prefetches were issued (MSHR entries allocated): OK
+  CHECK 2: some demand loads hit lines fetched ahead: OK
+  CHECK 2: the banks reported first-use hits on prefetched lines (training feedback): OK
+TEST PASSED: tb_prefetch
+tb/tests/tb_prefetch.v:340: $finish called at 29520000 (1ps)

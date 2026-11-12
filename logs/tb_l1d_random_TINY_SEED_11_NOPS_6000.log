@@ -1,0 +1,78 @@
+[0] L1D B2 S0 NOTE: booked 00010 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00010 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00010 cancelled (source offer changed): bubble
+random phase: 6000 requests (3033 loads, 2492 stores, 475 non-cacheable), 6000 answered
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+clean finished after 66 cycles
+memory matches the reference after clean
+[0] L1D B0 S0 NOTE: booked 00010 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+flush finished after 59 cycles
+memory matches the reference after flush
+events: hits 3412, line fetches 4530, victim-cache load hits 356, swaps 358, writebacks 2284
+        wait-for-MSHR 1284, MSHR full 2140, wait-for-writeback 52, refill held 4, NC accesses 517
+        v2: lines installed S 0, S-to-M upgrades 0
+TEST PASSED: tb_l1d_random (7496 requests, seed 11)
+tb/tests/tb_l1d_random.v:361: $finish called at 889360000 (1ps)

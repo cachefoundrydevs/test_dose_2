@@ -1,0 +1,400 @@
+[0] L1D PF   hint to bank 0 line=0000000000001900 unique=0
+[0] L1D B3 S1 LSU entry=0 idx=5 LD C  addr=00000000000018c0 set=0 ->           HIT way=0 state=2                                                     
+[0] L1D META tb_l1d_random.dut.u_ports.u_dcache.g_bank[3].u_bank.u_s1.u_meta set=0 way=0 pf_bit -> 0
+[0] L1D TRACKER bank 3: entry 0 freed (free next = 1)
+[0] L1D B3 S0 ISSUE BOOKED entry 1 port 0 idx=1 LD addr=00000000000018c8
+[0] L1D B3 S2 LSU  idx=5 LD   addr=00000000000018c0 -> HIT way=0 data=a8f5123f44618eab                         
+[0] L1D B3 S3 RESP from pipeline  seat=0 idx=5     LD data=a8f5123f44618eab (resp_free=170)
+[0] L1D MERGE bank 3 -> output  idx=5     LD (visible next cycle)
+[0] L1D TOP  DONE  port 0 idx=5 LD C  addr=00000000000018c0 latency=37 cycles
+[0] L1D TRACKER bank 0: source 0 (port 0) -> entry 00000001 rank 0       deps=00000000
+[0] L1D B0 S0 ISSUE PREFETCH line=0000000000001900 unique=0
+[0] L1D B3 S1 LSU entry=1 idx=1 LD C  addr=00000000000018c8 set=0 ->           HIT way=0 state=2                                                     
+[0] L1D MERGE bank 3 -> output  idx=1     LD (visible next cycle)
+[0] L1D B3 S3 RESP from pipeline  seat=1 idx=1     LD data=7c73ca173c596683 (resp_free=170)
+[0] L1D B3 S2 LSU  idx=1 LD   addr=00000000000018c8 -> HIT way=0 data=7c73ca173c596683                         
+[0] L1D B3 S0 ISSUE BOOKED entry 2 port 0 idx=2 LD addr=00000000000018d0
+[0] L1D TRACKER bank 3: entry 1 freed (free next = 2)
+[0] L1D B0 S0 ISSUE BOOKED entry 0 port 0 idx=5 LD addr=0000000000001900
+[0] L1D B0 S1 PF  entry=0 idx=0 LD C  addr=0000000000001900 set=1 ->           HIT way=0 state=2                                                     
+[0] L1D TOP  DONE  port 0 idx=1 LD C  addr=00000000000018c8 latency=37 cycles
+[0] L1D B3 S1 LSU entry=2 idx=2 LD C  addr=00000000000018d0 set=0 ->           HIT way=0 state=2                                                     
+[0] L1D B0 S2 PF   line=0000000000001900 unique=0 ->        dropped: in the cache
+[0] L1D B0 S1 LSU entry=0 idx=5 LD C  addr=0000000000001900 set=1 ->           HIT way=0 state=2                                                     
+[0] L1D META tb_l1d_random.dut.u_ports.u_dcache.g_bank[0].u_bank.u_s1.u_meta set=1 way=0 pf_bit -> 0
+[0] L1D TRACKER bank 0: source 0 (port 0) -> entry 00000010 rank 0       deps=00000000
+[0] L1D TRACKER bank 0: entry 0 freed (free next = 7)
+[0] L1D B0 S0 ISSUE BOOKED entry 1 port 0 idx=1 LD addr=0000000000001908
+[0] L1D B0 S2 LSU  idx=5 LD   addr=0000000000001900 -> HIT way=0 data=3fef637fbc8a9e79                         
+[0] L1D B0 S2 TRAIN port=0 pc=0000000000000000 addr=0000000000001900 LD miss=0 pf_hit=1           
+[0] L1D B0 S3 RESP from pipeline  seat=0 idx=5     LD data=3fef637fbc8a9e79 (resp_free=170)
+[0] L1D TRACKER bank 3: entry 2 freed (free next = 3)
+[0] L1D B3 S0 ISSUE BOOKED entry 3 port 0 idx=0 LD addr=00000000000018d8
+[0] L1D B3 S2 LSU  idx=2 LD   addr=00000000000018d0 -> HIT way=0 data=10014b2014315e7b                         
+[0] L1D B3 S3 RESP from pipeline  seat=2 idx=2     LD data=10014b2014315e7b (resp_free=170)
+[0] L1D MERGE bank 0 -> output  idx=5     LD (visible next cycle)
+[0] L1D MERGE bank 3 -> output  idx=2     LD (visible next cycle)
+[0] L1D TOP  DONE  port 0 idx=5 LD C  addr=0000000000001900 latency=5 cycles
+[0] L1D TRACKER bank 0: source 0 (port 0) -> entry 00000001 rank 0       deps=00000000
+[0] L1D B0 S1 LSU entry=1 idx=1 LD C  addr=0000000000001908 set=1 ->           HIT way=0 state=2                                                     
+[0] L1D B3 S1 LSU entry=3 idx=0 LD C  addr=00000000000018d8 set=0 ->           HIT way=0 state=2                                                     
+[0] L1D TOP  DONE  port 0 idx=2 LD C  addr=00000000000018d0 latency=38 cycles
+[0] L1D MERGE bank 0 -> output  idx=1     LD (visible next cycle)
+[0] L1D B3 S3 RESP from pipeline  seat=3 idx=0     LD data=507d9aa7cce93615 (resp_free=170)
+[0] L1D B3 S2 LSU  idx=0 LD   addr=00000000000018d8 -> HIT way=0 data=507d9aa7cce93615                         
+[0] L1D B3 S0 ISSUE BOOKED entry 4 port 0 idx=4 LD addr=00000000000018e0
+[0] L1D TRACKER bank 3: entry 3 freed (free next = 4)
+[0] L1D B0 S3 RESP from pipeline  seat=1 idx=1     LD data=f14888e26dd2c1db (resp_free=170)
+[0] L1D B0 S2 LSU  idx=1 LD   addr=0000000000001908 -> HIT way=0 data=f14888e26dd2c1db                         
+[0] L1D B0 S2 TRAIN port=0 pc=0000000000000000 addr=0000000000001908 LD miss=0 pf_hit=0           
+[0] L1D B0 S0 ISSUE BOOKED entry 0 port 0 idx=5 LD addr=0000000000001910
+[0] L1D TRACKER bank 0: source 0 (port 0) -> entry 00000100 rank 0       deps=00000000
+[0] L1D TRACKER bank 0: entry 1 freed (free next = 6)
+[0] L1D MERGE bank 3 -> output  idx=0     LD (visible next cycle)
+[0] L1D TOP  DONE  port 0 idx=1 LD C  addr=0000000000001908 latency=5 cycles
+[0] L1D B3 S1 LSU entry=4 idx=4 LD C  addr=00000000000018e0 set=0 ->           HIT way=0 state=2                                                     
+[0] L1D B0 S1 LSU entry=0 idx=5 LD C  addr=0000000000001910 set=1 ->           HIT way=0 state=2                                                     
+[0] L1D TRACKER bank 0: source 0 (port 0) -> entry 00000010 rank 0       deps=00000000
+[0] L1D TOP  DONE  port 0 idx=0 LD C  addr=00000000000018d8 latency=38 cycles
+[0] L1D TRACKER bank 0: source 0 (port 0) -> entry 00001000 rank 0       deps=00000000
+[0] L1D TRACKER bank 0: entry 0 freed (free next = 5)
+[0] L1D B0 S0 ISSUE BOOKED entry 2 port 0 idx=2 LD addr=0000000000001918
+[0] L1D B0 S2 LSU  idx=5 LD   addr=0000000000001910 -> HIT way=0 data=3b46618cd7f23138                         
+[0] L1D B0 S2 TRAIN port=0 pc=0000000000000000 addr=0000000000001910 LD miss=0 pf_hit=0           
+[0] L1D B0 S3 RESP from pipeline  seat=0 idx=5     LD data=3b46618cd7f23138 (resp_free=170)
+[0] L1D TRACKER bank 3: entry 4 freed (free next = 5)
+[0] L1D B3 S0 ISSUE BOOKED entry 5 port 0 idx=7 LD addr=00000000000018e8
+[0] L1D B3 S2 LSU  idx=4 LD   addr=00000000000018e0 -> HIT way=0 data=32d7729fa4c1ee0b                         
+[0] L1D B3 S3 RESP from pipeline  seat=4 idx=4     LD data=32d7729fa4c1ee0b (resp_free=170)
+[0] L1D PF   stream request line=0000000000001a00 unique=1 captured
+[0] L1D MERGE bank 0 -> output  idx=5     LD (visible next cycle)
+[0] L1D MERGE bank 3 -> output  idx=4     LD (visible next cycle)
+[0] L1D PF   hint to bank 0 line=0000000000001a00 unique=1
+[0] L1D TOP  DONE  port 0 idx=5 LD C  addr=0000000000001910 latency=5 cycles
+[0] L1D TRACKER bank 0: source 0 (port 0) -> entry 00000001 rank 0       deps=00000000
+[0] L1D B0 S1 LSU entry=2 idx=2 LD C  addr=0000000000001918 set=1 ->           HIT way=0 state=2                                                     
+[0] L1D B3 S1 LSU entry=5 idx=7 LD C  addr=00000000000018e8 set=0 ->           HIT way=0 state=2                                                     
+[0] L1D TOP  DONE  port 0 idx=4 LD C  addr=00000000000018e0 latency=38 cycles
+[0] L1D MERGE bank 0 -> output  idx=2     LD (visible next cycle)
+[0] L1D B3 S3 RESP from pipeline  seat=5 idx=7     LD data=a17a72429cb9c6e3 (resp_free=170)
+[0] L1D B3 S2 LSU  idx=7 LD   addr=00000000000018e8 -> HIT way=0 data=a17a72429cb9c6e3                         
+[0] L1D B3 S0 ISSUE BOOKED entry 6 port 0 idx=3 LD addr=00000000000018f0
+[0] L1D TRACKER bank 3: entry 5 freed (free next = 6)
+[0] L1D B0 S3 RESP from pipeline  seat=2 idx=2     LD data=2a3e59648faaf532 (resp_free=170)
+[0] L1D B0 S2 LSU  idx=2 LD   addr=0000000000001918 -> HIT way=0 data=2a3e59648faaf532                         
+[0] L1D B0 S2 TRAIN port=0 pc=0000000000000000 addr=0000000000001918 LD miss=0 pf_hit=0           
+[0] L1D B0 S0 ISSUE BOOKED entry 1 port 0 idx=1 LD addr=0000000000001920
+[0] L1D TRACKER bank 0: source 0 (port 0) -> entry 00010000 rank 0       deps=00000000
+[0] L1D TRACKER bank 0: entry 2 freed (free next = 4)
+[0] L1D B0 S0 ISSUE PREFETCH line=0000000000001a00 unique=1
+[0] L1D MERGE bank 3 -> output  idx=7     LD (visible next cycle)
+[0] L1D TOP  DONE  port 0 idx=2 LD C  addr=0000000000001918 latency=7 cycles
+[0] L1D B3 S1 LSU entry=6 idx=3 LD C  addr=00000000000018f0 set=0 ->           HIT way=0 state=2                                                     
+[0] L1D B1 S0 ISSUE FRESH entry 0 port 0 idx=2 LD addr=0000000000001940
+[0] L1D TRACKER bank 1: source 0 (port 0) -> entry 00000001 rank 0 FRESH deps=00000000
+[0] L1D B0 S1 LSU entry=1 idx=1 LD C  addr=0000000000001920 set=1 ->           HIT way=0 state=2                                                     
+[0] L1D B0 S0 ISSUE PREFETCH line=0000000000001a00 unique=1
+[0] L1D TOP  DONE  port 0 idx=7 LD C  addr=00000000000018e8 latency=35 cycles
+[0] L1D TRACKER bank 0: entry 1 freed (free next = 5)
+[0] L1D B0 S0 ISSUE BOOKED entry 3 port 0 idx=0 LD addr=0000000000001928
+[0] L1D B0 S1 PF  entry=0 idx=0 LD C  addr=0000000000001a00 set=2 ->          MISS way=0 state=2                                                     
+[0] L1D B0 S2 LSU  idx=1 LD   addr=0000000000001920 -> HIT way=0 data=cb48315c6782adc8                         
+[0] L1D B0 S2 TRAIN port=0 pc=0000000000000000 addr=0000000000001920 LD miss=0 pf_hit=0           
+[0] L1D B0 S3 RESP from pipeline  seat=1 idx=1     LD data=cb48315c6782adc8 (resp_free=170)
+[0] L1D TRACKER bank 1: source 0 (port 0) -> entry 00000010 rank 0       deps=00000000
+[0] L1D TRACKER bank 3: entry 6 freed (free next = 7)
+[0] L1D B3 S0 ISSUE BOOKED entry 7 port 0 idx=6 LD addr=00000000000018f8
+[0] L1D B3 S2 LSU  idx=3 LD   addr=00000000000018f0 -> HIT way=0 data=d8e5022f7491bedb                         
+[0] L1D B3 S3 RESP from pipeline  seat=6 idx=3     LD data=d8e5022f7491bedb (resp_free=170)
+[0] L1D MERGE bank 0 -> output  idx=1     LD (visible next cycle)
+[0] L1D MERGE bank 3 -> output  idx=3     LD (visible next cycle)
+[0] L1D B1 S1 LSU entry=0 idx=2 LD C  addr=0000000000001940 set=1 ->           HIT way=0 state=2                                                     
+[0] L1D META tb_l1d_random.dut.u_ports.u_dcache.g_bank[1].u_bank.u_s1.u_meta set=1 way=0 pf_bit -> 0
+[0] L1D B0 S2 PF   line=0000000000001a00 unique=1 -> ISSUED (prefetch MSHR entry)
+[0] L1D B0 S1 PF  entry=0 idx=0 LD C  addr=0000000000001a00 set=2 ->          MISS way=0 state=2                                                     
+[0] L1D TOP  DONE  port 0 idx=1 LD C  addr=0000000000001920 latency=8 cycles
+[0] L1D B0 S1 LSU entry=3 idx=0 LD C  addr=0000000000001928 set=1 ->           HIT way=0 state=2                                                     
+[0] L1D B0 S2 PF   line=0000000000001a00 unique=1 -> dropped: already in the MSHR
+[0] L1D MSHR tb_l1d_random.dut.u_ports.u_dcache.g_bank[0].u_bank.u_mshr.g_entry[0].u_entry: IDLE -> AR  line=0000000000001a00 fetch primary idx=0 LD err=0
+[0] L1D TRACKER bank 1: source 0 (port 0) -> entry 00000100 rank 0       deps=00000000
+[0] L1D TRACKER bank 1: entry 0 freed (free next = 6)
+[0] L1D B1 S0 ISSUE BOOKED entry 1 port 0 idx=7 LD addr=0000000000001948
+[0] L1D B1 S2 LSU  idx=2 LD   addr=0000000000001940 -> HIT way=0 data=2b7691bcc2e20d28                         
+[0] L1D B1 S2 TRAIN port=0 pc=0000000000000000 addr=0000000000001940 LD miss=0 pf_hit=1           
+[0] L1D B1 S3 RESP from pipeline  seat=0 idx=2     LD data=2b7691bcc2e20d28 (resp_free=170)
+[0] L1D B3 S1 LSU entry=7 idx=6 LD C  addr=00000000000018f8 set=0 ->           HIT way=0 state=2                                                     
+[0] L1D MERGE bank 1 -> output  idx=2     LD (visible next cycle)
+[0] L1D TOP  DONE  port 0 idx=3 LD C  addr=00000000000018f0 latency=35 cycles
+[0] L1D L2P  REQ RD line bank 0 sub 0 tid 0 us 1 addr 0000000000001a00
+[0] L1D MERGE bank 3 -> output  idx=6     LD (visible next cycle)
+[0] L1D B3 S3 RESP from pipeline  seat=7 idx=6     LD data=b0ddfa072c491637 (resp_free=170)
+[0] L1D B3 S2 LSU  idx=6 LD   addr=00000000000018f8 -> HIT way=0 data=b0ddfa072c491637                         
+[0] L1D TRACKER bank 3: entry 7 freed (free next = 8)
+[0] L1D TRACKER bank 1: source 0 (port 0) -> entry 00000001 rank 0       deps=00000000
+[0] L1D MSHR tb_l1d_random.dut.u_ports.u_dcache.g_bank[0].u_bank.u_mshr.g_entry[0].u_entry: AR -> DATA  line=0000000000001a00 fetch primary idx=0 LD err=0
+[0] L1D B0 S3 RESP from pipeline  seat=3 idx=0     LD data=e71864ceae6eaa5c (resp_free=170)
+[0] L1D B0 S2 LSU  idx=0 LD   addr=0000000000001928 -> HIT way=0 data=e71864ceae6eaa5c                         
+[0] L1D B0 S2 TRAIN port=0 pc=0000000000000000 addr=0000000000001928 LD miss=0 pf_hit=0           
+[0] L1D B0 S0 ISSUE BOOKED entry 0 port 0 idx=5 LD addr=0000000000001930
+[0] L1D TRACKER bank 0: entry 3 freed (free next = 6)
+[0] L1D TOP  DONE  port 0 idx=2 LD C  addr=0000000000001940 latency=4 cycles
+[0] L1D TRACKER bank 1: source 0 (port 0) -> entry 00001000 rank 0       deps=00000000
+[0] L1D B1 S1 LSU entry=1 idx=7 LD C  addr=0000000000001948 set=1 ->           HIT way=0 state=2                                                     
+[0] L1D MERGE bank 0 -> output  idx=0     LD (visible next cycle)
+[0] L1D TOP  DONE  port 0 idx=6 LD C  addr=00000000000018f8 latency=34 cycles
+[0] L1D MERGE bank 1 -> output  idx=7     LD (visible next cycle)
+[0] L1D B1 S3 RESP from pipeline  seat=1 idx=7     LD data=032e0ca8bfda4400 (resp_free=170)
+[0] L1D B1 S2 LSU  idx=7 LD   addr=0000000000001948 -> HIT way=0 data=032e0ca8bfda4400                         
+[0] L1D B1 S2 TRAIN port=0 pc=0000000000000000 addr=0000000000001948 LD miss=0 pf_hit=0           
+[0] L1D B1 S0 ISSUE BOOKED entry 2 port 0 idx=1 LD addr=0000000000001950
+[0] L1D TRACKER bank 1: source 0 (port 0) -> entry 00010000 rank 0       deps=00000000
+[0] L1D TRACKER bank 1: entry 1 freed (free next = 4)
+[0] L1D B0 S1 LSU entry=0 idx=5 LD C  addr=0000000000001930 set=1 ->           HIT way=0 state=2                                                     
+[0] L1D TOP  DONE  port 0 idx=0 LD C  addr=0000000000001928 latency=11 cycles
+[0] L1D TRACKER bank 0: entry 0 freed (free next = 7)
+[0] L1D B0 S0 ISSUE BOOKED entry 4 port 0 idx=4 LD addr=0000000000001938
+[0] L1D B0 S2 LSU  idx=5 LD   addr=0000000000001930 -> HIT way=0 data=9ba6c1ec37527d98                         
+[0] L1D B0 S2 TRAIN port=0 pc=0000000000000000 addr=0000000000001930 LD miss=0 pf_hit=0           
+[0] L1D B0 S3 RESP from pipeline  seat=0 idx=5     LD data=9ba6c1ec37527d98 (resp_free=170)
+[0] L1D TRACKER bank 1: source 0 (port 0) -> entry 00000010 rank 0       deps=00000000
+[0] L1D MERGE bank 0 -> output  idx=5     LD (visible next cycle)
+[0] L1D TOP  DONE  port 0 idx=7 LD C  addr=0000000000001948 latency=6 cycles
+[0] L1D B1 S1 LSU entry=2 idx=1 LD C  addr=0000000000001950 set=1 ->           HIT way=0 state=2                                                     
+[0] L1D TRACKER bank 1: source 0 (port 0) -> entry 00100000 rank 0       deps=00000000
+[0] L1D TOP  DONE  port 0 idx=5 LD C  addr=0000000000001930 latency=11 cycles
+[0] L1D B0 S1 LSU entry=4 idx=4 LD C  addr=0000000000001938 set=1 ->           HIT way=0 state=2                                                     
+[0] L1D TRACKER bank 1: entry 2 freed (free next = 3)
+[0] L1D B1 S0 ISSUE BOOKED entry 0 port 0 idx=3 LD addr=0000000000001958
+[0] L1D B1 S2 LSU  idx=1 LD   addr=0000000000001950 -> HIT way=0 data=fb06214c9bb2ddf8                         
+[0] L1D B1 S2 TRAIN port=0 pc=0000000000000000 addr=0000000000001950 LD miss=0 pf_hit=0           
+[0] L1D B1 S3 RESP from pipeline  seat=2 idx=1     LD data=fb06214c9bb2ddf8 (resp_free=170)
+[0] L1D TRACKER bank 2: source 0 (port 0) -> entry 00000001 rank 0 FRESH deps=00000000
+[0] L1D B2 S0 ISSUE FRESH entry 0 port 0 idx=5 LD addr=0000000000001980
+[0] L1D MERGE bank 1 -> output  idx=1     LD (visible next cycle)
+[0] L1D MERGE bank 0 -> output  idx=4     LD (visible next cycle)
+[0] L1D B0 S3 RESP from pipeline  seat=4 idx=4     LD data=739eb9c4ef0a557e (resp_free=170)
+[0] L1D B0 S2 LSU  idx=4 LD   addr=0000000000001938 -> HIT way=0 data=739eb9c4ef0a557e                         
+[0] L1D B0 S2 TRAIN port=0 pc=0000000000000000 addr=0000000000001938 LD miss=0 pf_hit=0           
+[0] L1D TRACKER bank 0: entry 4 freed (free next = 8)
+[0] L1D TOP  DONE  port 0 idx=1 LD C  addr=0000000000001950 latency=7 cycles
+[0] L1D B1 S1 LSU entry=0 idx=3 LD C  addr=0000000000001958 set=1 ->           HIT way=0 state=2                                                     
+[0] L1D TRACKER bank 2: source 0 (port 0) -> entry 00000010 rank 0       deps=00000000
+[0] L1D META tb_l1d_random.dut.u_ports.u_dcache.g_bank[2].u_bank.u_s1.u_meta set=1 way=1 pf_bit -> 0
+[0] L1D B2 S1 LSU entry=0 idx=5 LD C  addr=0000000000001980 set=1 ->           HIT way=1 state=2                                                     
+[0] L1D TOP  DONE  port 0 idx=4 LD C  addr=0000000000001938 latency=13 cycles
+[0] L1D MERGE bank 1 -> output  idx=3     LD (visible next cycle)
+[0] L1D B2 S3 RESP from pipeline  seat=0 idx=5     LD data=ea37507d5d76cce9 (resp_free=170)
+[0] L1D B2 S2 LSU  idx=5 LD   addr=0000000000001980 -> HIT way=1 data=ea37507d5d76cce9                         
+[0] L1D B2 S2 TRAIN port=0 pc=0000000000000000 addr=0000000000001980 LD miss=0 pf_hit=1           
+[0] L1D B2 S0 ISSUE BOOKED entry 1 port 0 idx=1 LD addr=0000000000001988
+[0] L1D TRACKER bank 2: source 0 (port 0) -> entry 00000100 rank 0       deps=00000000
+[0] L1D TRACKER bank 2: entry 0 freed (free next = 6)
+[0] L1D B1 S3 RESP from pipeline  seat=0 idx=3     LD data=6a6619244f6ab5d0 (resp_free=170)
+[0] L1D B1 S2 LSU  idx=3 LD   addr=0000000000001958 -> HIT way=0 data=6a6619244f6ab5d0                         
+[0] L1D B1 S2 TRAIN port=0 pc=0000000000000000 addr=0000000000001958 LD miss=0 pf_hit=0           
+[0] L1D B1 S0 ISSUE BOOKED entry 3 port 0 idx=2 LD addr=0000000000001960
+[0] L1D TRACKER bank 1: entry 0 freed (free next = 4)
+[0] L1D MERGE bank 2 -> output  idx=5     LD (visible next cycle)
+[0] L1D TOP  DONE  port 0 idx=3 LD C  addr=0000000000001958 latency=9 cycles
+[0] L1D B2 S1 LSU entry=1 idx=1 LD C  addr=0000000000001988 set=1 ->           HIT way=1 state=2                                                     
+[0] L1D TRACKER bank 2: source 0 (port 0) -> entry 00000001 rank 0       deps=00000000
+[0] L1D B1 S1 LSU entry=3 idx=2 LD C  addr=0000000000001960 set=1 ->           HIT way=0 state=2                                                     
+[0] L1D TOP  DONE  port 0 idx=5 LD C  addr=0000000000001980 latency=5 cycles
+[0] L1D TRACKER bank 1: entry 3 freed (free next = 5)
+[0] L1D B1 S0 ISSUE BOOKED entry 4 port 0 idx=6 LD addr=0000000000001968
+[0] L1D B1 S2 LSU  idx=2 LD   addr=0000000000001960 -> HIT way=0 data=8bd6f11c27426dc5                         
+[0] L1D B1 S2 TRAIN port=0 pc=0000000000000000 addr=0000000000001960 LD miss=0 pf_hit=0           
+[0] L1D B1 S3 RESP from pipeline  seat=3 idx=2     LD data=8bd6f11c27426dc5 (resp_free=170)
+[0] L1D TRACKER bank 2: source 0 (port 0) -> entry 00001000 rank 0       deps=00000000
+[0] L1D TRACKER bank 2: entry 1 freed (free next = 5)
+[0] L1D B2 S0 ISSUE BOOKED entry 2 port 0 idx=4 LD addr=0000000000001990
+[0] L1D B2 S2 LSU  idx=1 LD   addr=0000000000001988 -> HIT way=1 data=c2ef08557e9ba4c1                         
+[0] L1D B2 S2 TRAIN port=0 pc=0000000000000000 addr=0000000000001988 LD miss=0 pf_hit=0           
+[0] L1D B2 S3 RESP from pipeline  seat=1 idx=1     LD data=c2ef08557e9ba4c1 (resp_free=170)
+[0] L1D MERGE bank 1 -> output  idx=2     LD (visible next cycle)
+[0] L1D MERGE bank 2 -> output  idx=1     LD (visible next cycle)
+[0] L1D TOP  DONE  port 0 idx=2 LD C  addr=0000000000001960 latency=11 cycles
+[0] L1D B1 S1 LSU entry=4 idx=6 LD C  addr=0000000000001968 set=1 ->           HIT way=0 state=2                                                     
+[0] L1D TRACKER bank 2: source 0 (port 0) -> entry 00000010 rank 0       deps=00000000
+[0] L1D B2 S1 LSU entry=2 idx=4 LD C  addr=0000000000001990 set=1 ->           HIT way=1 state=2                                                     
+[0] L1D TOP  DONE  port 0 idx=1 LD C  addr=0000000000001988 latency=6 cycles
+[0] L1D MERGE bank 1 -> output  idx=6     LD (visible next cycle)
+[0] L1D B2 S3 RESP from pipeline  seat=2 idx=4     LD data=bac7e00d56739cb9 (resp_free=170)
+[0] L1D B2 S2 LSU  idx=4 LD   addr=0000000000001990 -> HIT way=1 data=bac7e00d56739cb9                         
+[0] L1D B2 S2 TRAIN port=0 pc=0000000000000000 addr=0000000000001990 LD miss=0 pf_hit=0           
+[0] L1D B2 S0 ISSUE BOOKED entry 0 port 0 idx=3 LD addr=0000000000001998
+[0] L1D TRACKER bank 2: source 0 (port 0) -> entry 00010000 rank 0       deps=00000000
+[0] L1D TRACKER bank 2: entry 2 freed (free next = 4)
+[0] L1D B1 S3 RESP from pipeline  seat=4 idx=6     LD data=638ea9f41f3a4560 (resp_free=170)
+[0] L1D B1 S2 LSU  idx=6 LD   addr=0000000000001968 -> HIT way=0 data=638ea9f41f3a4560                         
+[0] L1D B1 S2 TRAIN port=0 pc=0000000000000000 addr=0000000000001968 LD miss=0 pf_hit=0           
+[0] L1D B1 S0 ISSUE BOOKED entry 1 port 0 idx=0 LD addr=0000000000001970
+[0] L1D TRACKER bank 1: entry 4 freed (free next = 6)
+[0] L1D MERGE bank 2 -> output  idx=4     LD (visible next cycle)
+[0] L1D TOP  DONE  port 0 idx=6 LD C  addr=0000000000001968 latency=13 cycles
+[0] L1D B2 S1 LSU entry=0 idx=3 LD C  addr=0000000000001998 set=1 ->           HIT way=1 state=2                                                     
+[0] L1D TRACKER bank 2: source 0 (port 0) -> entry 00000100 rank 0       deps=00000000
+[0] L1D B1 S1 LSU entry=1 idx=0 LD C  addr=0000000000001970 set=1 ->           HIT way=0 state=2                                                     
+[0] L1D TOP  DONE  port 0 idx=4 LD C  addr=0000000000001990 latency=8 cycles
+[0] L1D TRACKER bank 1: entry 1 freed (free next = 7)
+[0] L1D B1 S0 ISSUE BOOKED entry 5 port 0 idx=7 LD addr=0000000000001978
+[0] L1D B1 S2 LSU  idx=0 LD   addr=0000000000001970 -> HIT way=0 data=5b66b5acf7123d58                         
+[0] L1D B1 S2 TRAIN port=0 pc=0000000000000000 addr=0000000000001970 LD miss=0 pf_hit=0           
+[0] L1D B1 S3 RESP from pipeline  seat=1 idx=0     LD data=5b66b5acf7123d58 (resp_free=170)
+[0] L1D TRACKER bank 2: entry 0 freed (free next = 4)
+[0] L1D B2 S0 ISSUE BOOKED entry 3 port 0 idx=5 LD addr=00000000000019a0
+[0] L1D B2 S2 LSU  idx=3 LD   addr=0000000000001998 -> HIT way=1 data=92bfd8e50e2b7491                         
+[0] L1D B2 S2 TRAIN port=0 pc=0000000000000000 addr=0000000000001998 LD miss=0 pf_hit=0           
+[0] L1D B2 S3 RESP from pipeline  seat=0 idx=3     LD data=92bfd8e50e2b7491 (resp_free=170)
+[0] L1D TRACKER bank 3: source 0 (port 0) -> entry 00000001 rank 0 FRESH deps=00000000
+[0] L1D B3 S0 ISSUE FRESH entry 0 port 0 idx=4 LD addr=00000000000019c0
+[0] L1D MERGE bank 1 -> output  idx=0     LD (visible next cycle)
+[0] L1D MERGE bank 2 -> output  idx=3     LD (visible next cycle)
+[0] L1D TOP  DONE  port 0 idx=0 LD C  addr=0000000000001970 latency=15 cycles
+[0] L1D B1 S1 LSU entry=5 idx=7 LD C  addr=0000000000001978 set=1 ->           HIT way=0 state=2                                                     
+[0] L1D B2 S1 LSU entry=3 idx=5 LD C  addr=00000000000019a0 set=1 ->           HIT way=1 state=2                                                     
+[0] L1D TRACKER bank 3: source 0 (port 0) -> entry 00000010 rank 0       deps=00000000
+[0] L1D META tb_l1d_random.dut.u_ports.u_dcache.g_bank[3].u_bank.u_s1.u_meta set=1 way=0 pf_bit -> 0
+[0] L1D B3 S1 LSU entry=0 idx=4 LD C  addr=00000000000019c0 set=1 ->           HIT way=0 state=2                                                     
+[0] L1D TOP  DONE  port 0 idx=3 LD C  addr=0000000000001998 latency=9 cycles
+[0] L1D MERGE bank 3 -> output  idx=4     LD (visible next cycle)
+[0] L1D B3 S3 RESP from pipeline  seat=0 idx=4     LD data=b7cc746f03de2507 (resp_free=170)
+[0] L1D B3 S2 LSU  idx=4 LD   addr=00000000000019c0 -> HIT way=0 data=b7cc746f03de2507                         
+[0] L1D B3 S2 TRAIN port=0 pc=0000000000000000 addr=00000000000019c0 LD miss=0 pf_hit=1           
+[0] L1D B3 S0 ISSUE BOOKED entry 1 port 0 idx=0 LD addr=00000000000019c8
+[0] L1D TRACKER bank 3: source 0 (port 0) -> entry 00000100 rank 0       deps=00000000
+[0] L1D TRACKER bank 3: entry 0 freed (free next = 6)
+[0] L1D B2 S3 RESP from pipeline  seat=3 idx=5     LD data=4a97b0dde6032c49 (resp_free=170)
+[0] L1D B2 S2 LSU  idx=5 LD   addr=00000000000019a0 -> HIT way=1 data=4a97b0dde6032c49                         
+[0] L1D B2 S2 TRAIN port=0 pc=0000000000000000 addr=00000000000019a0 LD miss=0 pf_hit=0           
+[0] L1D B2 S0 ISSUE BOOKED entry 1 port 0 idx=2 LD addr=00000000000019a8
+[0] L1D TRACKER bank 2: entry 3 freed (free next = 5)
+[0] L1D B1 S3 RESP from pipeline  seat=5 idx=7     LD data=f01b7ce026c43f4d (resp_free=170)
+[0] L1D B1 S2 LSU  idx=7 LD   addr=0000000000001978 -> HIT way=0 data=f01b7ce026c43f4d                         
+[0] L1D B1 S2 TRAIN port=0 pc=0000000000000000 addr=0000000000001978 LD miss=0 pf_hit=0           
+[0] L1D TRACKER bank 1: entry 5 freed (free next = 8)
+[0] L1D MERGE bank 1 -> output  idx=7     LD (visible next cycle)
+[0] L1D TOP  DONE  port 0 idx=4 LD C  addr=00000000000019c0 latency=4 cycles
+[0] L1D L2P  RESP tid 0 RD bank 0 sub 0 us 0 err 0
+[0] L1D MERGE bank 2 -> output  idx=5     LD (visible next cycle)
+[0] L1D B3 S1 LSU entry=1 idx=0 LD C  addr=00000000000019c8 set=1 ->           HIT way=0 state=2                                                     
+[0] L1D TRACKER bank 3: source 0 (port 0) -> entry 00000001 rank 0       deps=00000000
+[0] L1D B2 S1 LSU entry=1 idx=2 LD C  addr=00000000000019a8 set=1 ->           HIT way=1 state=2                                                     
+[0] L1D MSHR tb_l1d_random.dut.u_ports.u_dcache.g_bank[0].u_bank.u_mshr.g_entry[0].u_entry R beat 0 of 4 last=0 err=0 data=45688fd2f91c23466db0d7fa01244b6e
+[0] L1D TOP  DONE  port 0 idx=7 LD C  addr=0000000000001978 latency=18 cycles
+[0] L1D MSHR tb_l1d_random.dut.u_ports.u_dcache.g_bank[0].u_bank.u_mshr.g_entry[0].u_entry R beat 1 of 4 last=0 err=0 data=15385f6289acf3163d40678ad1f41b3e
+[0] L1D TRACKER bank 2: entry 1 freed (free next = 6)
+[0] L1D B2 S0 ISSUE BOOKED entry 4 port 0 idx=1 LD addr=00000000000019b0
+[0] L1D B2 S2 LSU  idx=2 LD   addr=00000000000019a8 -> HIT way=1 data=3b42c5769bb6be37                         
+[0] L1D B2 S2 TRAIN port=0 pc=0000000000000000 addr=00000000000019a8 LD miss=0 pf_hit=0           
+[0] L1D B2 S3 RESP from pipeline  seat=1 idx=2     LD data=3b42c5769bb6be37 (resp_free=170)
+[0] L1D TRACKER bank 3: source 0 (port 0) -> entry 00001000 rank 0       deps=00000000
+[0] L1D TRACKER bank 3: entry 1 freed (free next = 5)
+[0] L1D B3 S0 ISSUE BOOKED entry 2 port 0 idx=3 LD addr=00000000000019d0
+[0] L1D B3 S2 LSU  idx=0 LD   addr=00000000000019c8 -> HIT way=0 data=82afc8153e5b6481                         
+[0] L1D B3 S2 TRAIN port=0 pc=0000000000000000 addr=00000000000019c8 LD miss=0 pf_hit=0           
+[0] L1D B3 S3 RESP from pipeline  seat=1 idx=0     LD data=82afc8153e5b6481 (resp_free=170)
+[0] L1D MERGE bank 3 -> output  idx=0     LD (visible next cycle)
+[0] L1D TOP  DONE  port 0 idx=5 LD C  addr=00000000000019a0 latency=12 cycles
+[0] L1D MERGE bank 2 -> output  idx=2     LD (visible next cycle)
+[0] L1D TRACKER bank 3: source 0 (port 0) -> entry 00000010 rank 0       deps=00000000
+[0] L1D MSHR tb_l1d_random.dut.u_ports.u_dcache.g_bank[0].u_bank.u_mshr.g_entry[0].u_entry R beat 2 of 4 last=0 err=0 data=a5c8ef32597c83a6cd10375a6184abce
+[0] L1D TOP  DONE  port 0 idx=0 LD C  addr=00000000000019c8 latency=5 cycles
+[0] L1D MSHR tb_l1d_random.dut.u_ports.u_dcache.g_bank[0].u_bank.u_mshr.g_entry[0].u_entry R beat 3 of 4 last=1 err=0 data=7598bfc2e90c53769da0c7ea31547b9e
+[0] L1D B2 S1 LSU entry=4 idx=1 LD C  addr=00000000000019b0 set=1 ->           HIT way=1 state=2                                                     
+[0] L1D TRACKER bank 3: source 0 (port 0) -> entry 00010000 rank 0       deps=00000000
+[0] L1D B3 S1 LSU entry=2 idx=3 LD C  addr=00000000000019d0 set=1 ->           HIT way=0 state=2                                                     
+[0] L1D TOP  DONE  port 0 idx=2 LD C  addr=00000000000019a8 latency=12 cycles
+[0] L1D MERGE bank 3 -> output  idx=3     LD (visible next cycle)
+[0] L1D B3 S3 RESP from pipeline  seat=2 idx=3     LD data=7a87a0cd16335c79 (resp_free=170)
+[0] L1D B3 S2 LSU  idx=3 LD   addr=00000000000019d0 -> HIT way=0 data=7a87a0cd16335c79                         
+[0] L1D B3 S2 TRAIN port=0 pc=0000000000000000 addr=00000000000019d0 LD miss=0 pf_hit=0           
+[0] L1D B3 S0 ISSUE BOOKED entry 0 port 0 idx=4 LD addr=00000000000019d8
+[0] L1D TRACKER bank 3: source 0 (port 0) -> entry 00100000 rank 0       deps=00000000
+[0] L1D TRACKER bank 3: entry 2 freed (free next = 3)
+[0] L1D B2 S3 RESP from pipeline  seat=4 idx=1     LD data=1a27406db6d3fc19 (resp_free=170)
+[0] L1D B2 S2 LSU  idx=1 LD   addr=00000000000019b0 -> HIT way=1 data=1a27406db6d3fc19                         
+[0] L1D B2 S2 TRAIN port=0 pc=0000000000000000 addr=00000000000019b0 LD miss=0 pf_hit=0           
+[0] L1D B2 S0 ISSUE BOOKED entry 2 port 0 idx=6 LD addr=00000000000019b8
+[0] L1D TRACKER bank 2: entry 4 freed (free next = 7)
+[0] L1D MSHR tb_l1d_random.dut.u_ports.u_dcache.g_bank[0].u_bank.u_mshr.g_entry[0].u_entry: DATA -> MERGE  line=0000000000001a00 fetch primary idx=0 LD err=0
+[0] L1D MSHR tb_l1d_random.dut.u_ports.u_dcache.g_bank[0].u_bank.u_mshr.g_entry[0].u_entry: MERGE -> TOKEN  line=0000000000001a00 fetch primary idx=0 LD err=0
+[0] L1D PF   stride request line=0000000000001980 unique=0 captured
+[0] L1D MERGE bank 2 -> output  idx=1     LD (visible next cycle)
+[0] L1D TOP  DONE  port 0 idx=3 LD C  addr=00000000000019d0 latency=7 cycles
+[0] L1D PF   hint to bank 2 line=0000000000001980 unique=0
+[0] L1D B3 S1 LSU entry=0 idx=4 LD C  addr=00000000000019d8 set=1 ->           HIT way=0 state=2                                                     
+[0] L1D B2 S1 LSU entry=2 idx=6 LD C  addr=00000000000019b8 set=1 ->           HIT way=1 state=2                                                     
+[0] L1D B0 S0 ISSUE refill token  mshr=0 line=0000000000001a00
+[0] L1D TOP  DONE  port 0 idx=1 LD C  addr=00000000000019b0 latency=14 cycles
+[0] L1D MSHR tb_l1d_random.dut.u_ports.u_dcache.g_bank[0].u_bank.u_mshr.g_entry[0].u_entry: TOKEN -> INSTALL  line=0000000000001a00 fetch primary idx=0 LD err=0
+[0] L1D TRACKER bank 2: entry 2 freed (free next = 8)
+[0] L1D B2 S2 LSU  idx=6 LD   addr=00000000000019b8 -> HIT way=1 data=73d8bbe76e8bd4f1                         
+[0] L1D B2 S2 TRAIN port=0 pc=0000000000000000 addr=00000000000019b8 LD miss=0 pf_hit=0           
+[0] L1D B2 S3 RESP from pipeline  seat=2 idx=6     LD data=73d8bbe76e8bd4f1 (resp_free=170)
+[0] L1D TRACKER bank 3: entry 0 freed (free next = 4)
+[0] L1D B3 S0 ISSUE BOOKED entry 3 port 0 idx=7 LD addr=00000000000019e0
+[0] L1D B3 S2 LSU  idx=4 LD   addr=00000000000019d8 -> HIT way=0 data=527f98a5098b1b13                         
+[0] L1D B3 S2 TRAIN port=0 pc=0000000000000000 addr=00000000000019d8 LD miss=0 pf_hit=0           
+[0] L1D B3 S3 RESP from pipeline  seat=0 idx=4     LD data=527f98a5098b1b13 (resp_free=170)
+[0] L1D MERGE bank 3 -> output  idx=4     LD (visible next cycle)
+[0] L1D MERGE bank 2 -> output  idx=6     LD (visible next cycle)
+[0] L1D B0 S1 REFILL mshr=0 line=0000000000001a00 set=2 victim way=0 state=2 swap=0 slot=1 install=2 pf=1        
+[0] L1D TOP  DONE  port 0 idx=4 LD C  addr=00000000000019d8 latency=8 cycles
+[0] L1D TAG  tb_l1d_random.dut.u_ports.u_dcache.g_bank[0].u_bank.u_r.u_tags write set=2 ways=01 word=00c0000000000006
+[0] L1D DATA tb_l1d_random.dut.u_ports.u_dcache.g_bank[0].u_bank.u_r.u_data word write set/way=2/0 data=17bef72423a011827598bfc2e90c53769da0c7ea31547b9ea5c8ef32597c83a6cd10375a6184abce15385f6289acf3163d40678ad1f41b3e45688fd2f91c23466db0d7fa01244b6e
+[0] L1D B0 S2 EVICT line=0000000000001200
+[0] L1D B0 S2 REFILL mshr=0 line=0000000000001a00 INSTALLED (line + tag written), entry freed
+[0] L1D B0 S2 victim line 0000000000001200 (dirty=0 shared=0) -> victim-cache slot 1
+[0] L1D VC   tb_l1d_random.dut.u_ports.u_dcache.g_bank[0].u_bank.u_vc insert slot 1 line=0000000000001200 dirty=0 as  VALID (old state VALID)
+[0] L1D B2 S0 ISSUE PREFETCH line=0000000000001980 unique=0
+[0] L1D B3 S1 LSU entry=3 idx=7 LD C  addr=00000000000019e0 set=1 ->           HIT way=0 state=2                                                     
+[0] L1D TOP  DONE  port 0 idx=6 LD C  addr=00000000000019b8 latency=15 cycles
+[0] L1D MERGE bank 3 -> output  idx=7     LD (visible next cycle)
+[0] L1D B3 S3 RESP from pipeline  seat=3 idx=7     LD data=78d501f173b8c7e7 (resp_free=170)
+[0] L1D B3 S2 LSU  idx=7 LD   addr=00000000000019e0 -> HIT way=0 data=78d501f173b8c7e7                         
+[0] L1D B3 S2 TRAIN port=0 pc=0000000000000000 addr=00000000000019e0 LD miss=0 pf_hit=0           
+[0] L1D B3 S0 ISSUE BOOKED entry 1 port 0 idx=5 LD addr=00000000000019e8
+[0] L1D TRACKER bank 3: entry 3 freed (free next = 5)
+[0] L1D B2 S0 ISSUE PREFETCH line=0000000000001980 unique=0
+[0] L1D MSHR tb_l1d_random.dut.u_ports.u_dcache.g_bank[0].u_bank.u_mshr.g_entry[0].u_entry: INSTALL -> IDLE  line=0000000000001a00 fetch primary idx=0 LD err=0
+[0] L1D B2 S1 PF  entry=0 idx=0 LD C  addr=0000000000001980 set=1 ->           HIT way=1 state=2                                                     
+[0] L1D B3 S1 LSU entry=1 idx=5 LD C  addr=00000000000019e8 set=1 ->           HIT way=0 state=2                                                     
+[0] L1D B2 S2 PF   line=0000000000001980 unique=0 ->        dropped: in the cache
+[0] L1D B2 S1 PF  entry=0 idx=0 LD C  addr=0000000000001980 set=1 ->           HIT way=1 state=2                                                     
+[0] L1D TOP  DONE  port 0 idx=7 LD C  addr=00000000000019e0 latency=11 cycles
+[0] L1D B2 S2 PF   line=0000000000001980 unique=0 ->        dropped: in the cache
+[0] L1D TRACKER bank 3: entry 1 freed (free next = 6)
+[0] L1D B3 S0 ISSUE BOOKED entry 4 port 0 idx=0 LD addr=00000000000019f0
+[0] L1D B3 S2 LSU  idx=5 LD   addr=00000000000019e8 -> HIT way=0 data=570f28759ebbc4e1                         
+[0] L1D B3 S2 TRAIN port=0 pc=0000000000000000 addr=00000000000019e8 LD miss=0 pf_hit=0           
+[0] L1D B3 S3 RESP from pipeline  seat=1 idx=5     LD data=570f28759ebbc4e1 (resp_free=170)
+[0] L1D MERGE bank 3 -> output  idx=5     LD (visible next cycle)
+[0] L1D PF   stride request line=00000000000019c0 unique=0 captured
+[0] L1D B3 S1 LSU entry=4 idx=0 LD C  addr=00000000000019f0 set=1 ->           HIT way=0 state=2                                                     
+[0] L1D PF   hint to bank 3 line=00000000000019c0 unique=0
+[0] L1D TOP  DONE  port 0 idx=5 LD C  addr=00000000000019e8 latency=13 cycles
+[0] L1D MERGE bank 3 -> output  idx=0     LD (visible next cycle)
+[0] L1D B3 S3 RESP from pipeline  seat=4 idx=0     LD data=b2868865511f13a2 (resp_free=170)
+[0] L1D B3 S2 LSU  idx=0 LD   addr=00000000000019f0 -> HIT way=0 data=b2868865511f13a2                         
+[0] L1D B3 S2 TRAIN port=0 pc=0000000000000000 addr=00000000000019f0 LD miss=0 pf_hit=0           
+[0] L1D B3 S0 ISSUE BOOKED entry 5 port 0 idx=2 LD addr=00000000000019f8
+[0] L1D TRACKER bank 3: entry 4 freed (free next = 7)
+[0] L1D TOP  DONE  port 0 idx=0 LD C  addr=00000000000019f0 latency=14 cycles
+[0] L1D B3 S1 LSU entry=5 idx=2 LD C  addr=00000000000019f8 set=1 ->           HIT way=0 state=2                                                     
+[0] L1D B3 S0 ISSUE PREFETCH line=00000000000019c0 unique=0
+[0] L1D TRACKER bank 3: entry 5 freed (free next = 8)
+[0] L1D B3 S0 ISSUE PREFETCH line=00000000000019c0 unique=0
+[0] L1D B3 S2 LSU  idx=2 LD   addr=00000000000019f8 -> HIT way=0 data=0be61117440bad88                         
+[0] L1D B3 S2 TRAIN port=0 pc=0000000000000000 addr=00000000000019f8 LD miss=0 pf_hit=0           
+[0] L1D B3 S3 RESP from pipeline  seat=5 idx=2     LD data=0be61117440bad88 (resp_free=170)
+[0] L1D MERGE bank 3 -> output  idx=2     LD (visible next cycle)
+[0] L1D B3 S1 PF  entry=0 idx=0 LD C  addr=00000000000019c0 set=1 ->           HIT way=0 state=2                                                     
+[0] L1D B3 S1 PF  entry=0 idx=0 LD C  addr=00000000000019c0 set=1 ->           HIT way=0 state=2                                                     
+[0] L1D B3 S2 PF   line=00000000000019c0 unique=0 ->        dropped: in the cache
+[0] L1D TOP  DONE  port 0 idx=2 LD C  addr=00000000000019f8 latency=17 cycles
+events: hits 1194, line fetches 730, victim-cache load hits 46, swaps 46, writebacks 327
+        wait-for-MSHR 482, MSHR full 302, wait-for-writeback 3, refill held 1, NC accesses 77
+        v2: lines installed S 0, S-to-M upgrades 0
+TEST PASSED: tb_l1d_random (1796 requests, seed 1)
+tb/tests/tb_l1d_random.v:361: $finish called at 149100000 (1ps)

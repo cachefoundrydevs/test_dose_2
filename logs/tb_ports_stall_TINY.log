@@ -1,0 +1,49 @@
+=== S0: requests at the pins during reset ===
+  ok: S0 no answer for a request that was sent during reset
+  ok: S0 the first request after reset is answered
+  ok: all stops are 0 when idle, after S0
+=== S1: all three scalar ports stall for 600 cycles ===
+  sent during the stall: P0 8, P1 8, P2 8 (at most 8 each)
+  ok: S1 every port could send before its stop
+  ok: S1 no answer was taken or lost during the stall
+SLOW 8475000: port 0 idx 0 kind 0 @0000000000000000 took 599 cycles (sent at cycle 248)
+SLOW 8475000: port 1 idx 0 kind 0 @0000000000000040 took 599 cycles (sent at cycle 248)
+SLOW 8475000: port 2 idx 0 kind 1 @00000000000001b0 took 599 cycles (sent at cycle 248)
+SLOW 8485000: port 0 idx 1 kind 0 @0000000000000038 took 599 cycles (sent at cycle 249)
+SLOW 8485000: port 1 idx 1 kind 0 @0000000000000070 took 599 cycles (sent at cycle 249)
+SLOW 8485000: port 2 idx 1 kind 1 @0000000000000198 took 599 cycles (sent at cycle 249)
+SLOW 8495000: port 0 idx 2 kind 0 @0000000000000038 took 599 cycles (sent at cycle 250)
+SLOW 8495000: port 1 idx 2 kind 0 @0000000000000048 took 599 cycles (sent at cycle 250)
+SLOW 8525000: port 2 idx 2 kind 1 @00000000000001b0 took 602 cycles (sent at cycle 250)
+SLOW 8535000: port 0 idx 3 kind 0 @0000000000000008 took 602 cycles (sent at cycle 251)
+SLOW 8535000: port 1 idx 3 kind 0 @0000000000000070 took 602 cycles (sent at cycle 251)
+SLOW 8565000: port 0 idx 4 kind 0 @0000000000000018 took 604 cycles (sent at cycle 252)
+SLOW 8565000: port 1 idx 4 kind 0 @0000000000000060 took 604 cycles (sent at cycle 252)
+SLOW 8575000: port 2 idx 3 kind 1 @00000000000001b8 took 606 cycles (sent at cycle 251)
+SLOW 8595000: port 0 idx 5 kind 0 @0000000000000008 took 606 cycles (sent at cycle 253)
+SLOW 8595000: port 1 idx 5 kind 0 @0000000000000040 took 606 cycles (sent at cycle 253)
+SLOW 8625000: port 0 idx 6 kind 0 @0000000000000030 took 608 cycles (sent at cycle 254)
+SLOW 8625000: port 1 idx 6 kind 0 @0000000000000050 took 608 cycles (sent at cycle 254)
+SLOW 8625000: port 2 idx 4 kind 1 @00000000000001a0 took 610 cycles (sent at cycle 252)
+SLOW 8655000: port 0 idx 7 kind 0 @0000000000000008 took 610 cycles (sent at cycle 255)
+  ok: all stops are 0 when idle, after S1
+=== S1L: stop seen one cycle late, three ports to one bank, answers stalled ===
+  sent during the stall: P0 7, P1 7, P2 6
+  ok: S1L no answer was taken or lost during the stall
+  ok: all stops are 0 when idle, after S1L
+=== S2a: P1 stalls for 800 cycles, the others work on other banks ===
+  completed in the window: P0 265, P1 0, P2 159
+  ok: S2a the other ports go on working while P1 stalls (>= 100 each)
+  ok: all stops are 0 when idle, after S2a
+=== S2b: P1 stalls for 800 cycles, the others use P1's bank (information) ===
+INFO S2b: completed in the window while P1 stalls: P0 5, P1 0, P2 2  -> the stalled port blocks the bank for the other ports
+  ok: all stops are 0 when idle, after S2b
+=== S3: three scalar ports, one bank, highest rate, 3000 cycles ===
+  completed: P0 606, P1 606, P2 606; largest latency per port: 11 12 32 (bound 96)
+  ok: S3 no answer takes longer than LAT_BOUND cycles
+  ok: S3 every port completes at least 60 % of the busiest port's count
+  ok: all stops are 0 when idle, after S3
+stats: 2339 requests (LD 1546, ST 793, LR 0, SC 0, AMO 0), 2339 answered; max latency per port: P0 11 P1 12 P2 32 P3 0
+latency histogram (cycles 4 | 5 | 6-7 | 8-11 | 12-23 | 24-63 | 64-255 | more): 5 1 9 1212 280 762 5 65
+TEST PASSED: tb_ports_stall (2339 requests, seed 1)
+tb/common/tb_ports_common.vh:701: $finish called at 59520000 (1ps)

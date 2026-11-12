@@ -1,0 +1,104 @@
+  ok: D1 vector load hit answered in 4 cycles
+  ok: D2 vector store hit acknowledged in 4 cycles
+  ok: D3 scalar loads see the vector store data
+  ok: D4 a vector load sees eight scalar stores from the store port
+  ok: D5 vector store miss fetched its line (CC-15)
+  ok: D6 vector store on an S line took the upgrade path (CC-14)
+  D7 vector loads answered from the victim cache so far: 1
+  D8 cycles a vector store waited at the bank door for a data place: 2
+  ok: D8 vector stores beyond the data places all completed
+SLOW 10645000: port 1 idx 4 kind 0 @0000000000001168 took 409 cycles (sent at cycle 655)
+SLOW 11985000: port 2 idx 1 kind 1 @000000000000119e took 410 cycles (sent at cycle 788)
+SLOW 12995000: port 2 idx 3 kind 1 @0000000000000d78 took 510 cycles (sent at cycle 789)
+SLOW 13345000: port 2 idx 6 kind 1 @0000000000001947 took 540 cycles (sent at cycle 794)
+SLOW 13745000: port 1 idx 3 kind 0 @0000000000000460 took 488 cycles (sent at cycle 886)
+SLOW 13965000: port 1 idx 1 kind 0 @0000000000001558 took 405 cycles (sent at cycle 991)
+SLOW 15615000: port 0 idx 0 kind 0 @000000000000084c took 504 cycles (sent at cycle 1057)
+SLOW 15715000: port 1 idx 4 kind 0 @0000000000000860 took 503 cycles (sent at cycle 1068)
+SLOW 15725000: VPU idx 2  load @0000000000000840 took 503 cycles
+SLOW 15915000: VPU idx 4  load @0000000000000440 took 412 cycles
+SLOW 15925000: port 0 idx 3 kind 0 @0000000000000448 took 407 cycles (sent at cycle 1185)
+SLOW 16185000: port 2 idx 2 kind 1 @0000000000000c5c took 452 cycles (sent at cycle 1166)
+SLOW 16275000: port 1 idx 5 kind 0 @0000000000000c68 took 452 cycles (sent at cycle 1175)
+SLOW 22545000: port 1 idx 3 kind 0 @0000000000000860 took 424 cycles (sent at cycle 1830)
+SLOW 27235000: port 0 idx 2 kind 0 @00000000000800d1 took 491 cycles (sent at cycle 2232)
+SLOW 27865000: port 0 idx 4 kind 0 @00000000000000b6 took 437 cycles (sent at cycle 2349)
+SLOW 29075000: port 2 idx 2 kind 1 @0000000000001010 took 514 cycles (sent at cycle 2393)
+SLOW 29555000: VPU idx 5  load @0000000000001480 took 471 cycles
+SLOW 29745000: VPU idx 6 store @0000000000000440 took 481 cycles
+SLOW 29855000: port 0 idx 5 kind 0 @000000000000080e took 471 cycles (sent at cycle 2514)
+[0] L1D B3 S0 NOTE: booked 00010 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+memory matches the reference after flush
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+memory matches the reference after final flush
+coverage: vector store upgrades (CC-14) 1, vector store misses (CC-15) 260, vector loads from the victim cache 55, bank door waits 81
+stats: 4090 requests (LD 2082, ST 969, LR 0, SC 0, AMO 85), 4090 answered; max latency per port: P0 881 P1 1036 P2 838 P3 0
+latency histogram (cycles 4 | 5 | 6-7 | 8-11 | 12-23 | 24-63 | 64-255 | more): 249 75 58 43 112 283 1210 1106
+VPU: 512 vector loads, 442 vector stores, 954 answered; latency max 914, mean 216, 69 answers in exactly 4 cycles
+TEST PASSED: tb_ports_vpu (4090 requests, seed 3)
+tb/common/tb_ports_common.vh:701: $finish called at 455780000 (1ps)

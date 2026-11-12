@@ -1,0 +1,50 @@
+=== 1. cold miss of A, then a hit ===
+
+=== 1 ===
+  CHECK 1: miss returns the memory data: OK
+
+=== 1b ===
+  CHECK 1: hit returns the same data: OK
+  CHECK 1: hit latency 4: OK
+  CHECK 1: no ECC event on clean lines: OK
+  CHECK 1: no uncorrectable error: OK
+=== 2. one data bit flipped in A's granule (line bit 70) ===
+  CHECK 2: the SRAM word is now wrong: OK
+
+=== 2 ===
+  load with a single-bit data error: data 0000000000004500, latency 9
+  CHECK 2: the CPU gets the corrected data: OK
+  CHECK 2: the load took the scrub path (re-issued): OK
+  CHECK 2: exactly one ecc_correctable_pulse: OK
+  CHECK 2: the SRAM word was repaired (scrub written): OK
+
+=== 2b ===
+  CHECK 2: next load hits in 4 cycles, right data: OK
+  CHECK 2: no new pulse after the repair: OK
+=== 3. one CHECK bit flipped (data word bit 512 + 9: granule 1, check bit 1) ===
+
+=== 3 ===
+  CHECK 3: the CPU gets the right data: OK
+  CHECK 3: one ecc_correctable_pulse: OK
+  CHECK 3: the check bit was repaired: OK
+=== 4. one TAG bit flipped (tag bit 3) ===
+  CHECK 4: the SRAM tag is now wrong: OK
+
+=== 4 ===
+  load with a single-bit tag error: data 0000000000004500, latency 9
+  CHECK 4: the CPU gets A's data (no false miss / hit): OK
+  CHECK 4: an ecc_correctable_pulse for the tag scrub: OK
+  CHECK 4: the SRAM tag was repaired: OK
+  CHECK 4: still no uncorrectable error: OK
+=== 5. store hit, then load: new data, new check bits, no ECC event ===
+
+=== 5 ===
+  CHECK 5: the load returns the stored data: OK
+  CHECK 5: no ECC event (the store wrote good check bits): OK
+=== 6. two data bits flipped in one granule (line bits 70 and 75) ===
+
+=== 6 ===
+  load with a double-bit data error: data 000045085a5a0840 (not checked), latency 4
+  CHECK 6: ecc_uncorrectable_sticky is set: OK
+TEST PASSED: tb_ecc
+tb/tests/tb_ecc.v:385: $finish called at 5000000 (1ps)

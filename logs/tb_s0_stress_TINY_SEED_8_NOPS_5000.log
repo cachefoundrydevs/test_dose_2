@@ -1,0 +1,78 @@
+=== scenario SKID: late stop, answers stalled, 200 cycles ===
+  skid full (port-cycles): P0 147 P1 136 P2 106; late sends 14
+=== scenario ORDER: three ports on bank 1, late stop, 200 cycles ===
+  largest order ring fill 6, 64 grants taken from a ring
+=== scenario REPLAY: miss flood on bank 2, 600 cycles ===
+  replay queue fill up to 8; held by a waiting entry 84; replay entry held 5150; no credit 6
+=== scenario SAME-SET: 24 directed pairs on bank 3 ===
+  port requests held against the pipeline 2 times
+=== scenario RANDOM: 5000 requests on two banks ===
+SLOW 23065000: port 2 idx 7 kind 1 @00000000000009b0 took 428 cycles (sent at cycle 1878)
+SLOW 23255000: port 1 idx 0 kind 0 @0000000000001180 took 443 cycles (sent at cycle 1882)
+SLOW 27995000: port 2 idx 7 kind 1 @0000000000001880 took 410 cycles (sent at cycle 2389)
+SLOW 53135000: port 2 idx 3 kind 1 @0000000000000890 took 445 cycles (sent at cycle 4868)
+SLOW 54115000: port 0 idx 6 kind 0 @0000000000000ca8 took 401 cycles (sent at cycle 5010)
+SLOW 75585000: port 0 idx 3 kind 0 @0000000000000070 took 401 cycles (sent at cycle 7157)
+SLOW 87295000: port 0 idx 6 kind 0 @0000000000001048 took 404 cycles (sent at cycle 8325)
+SLOW 109685000: port 2 idx 3 kind 1 @00000000000011b0 took 414 cycles (sent at cycle 10554)
+SLOW 114015000: port 2 idx 7 kind 1 @00000000000018b8 took 408 cycles (sent at cycle 10993)
+SLOW 115025000: port 1 idx 1 kind 0 @0000000000000c80 took 477 cycles (sent at cycle 11025)
+SLOW 121365000: port 0 idx 4 kind 0 @0000000000000d90 took 423 cycles (sent at cycle 11713)
+SLOW 123465000: port 1 idx 7 kind 0 @00000000000011b0 took 440 cycles (sent at cycle 11906)
+SLOW 137065000: port 1 idx 4 kind 0 @0000000000001498 took 405 cycles (sent at cycle 13301)
+SLOW 142455000: port 0 idx 1 kind 0 @0000000000000578 took 435 cycles (sent at cycle 13810)
+SLOW 142555000: port 1 idx 0 kind 0 @0000000000000560 took 425 cycles (sent at cycle 13830)
+SLOW 146385000: port 2 idx 4 kind 1 @0000000000000d70 took 438 cycles (sent at cycle 14200)
+SLOW 147445000: port 1 idx 3 kind 0 @0000000000000958 took 408 cycles (sent at cycle 14336)
+SLOW 148055000: port 1 idx 7 kind 0 @0000000000001468 took 409 cycles (sent at cycle 14396)
+SLOW 148245000: port 0 idx 3 kind 0 @0000000000001048 took 467 cycles (sent at cycle 14357)
+SLOW 148605000: port 0 idx 7 kind 0 @0000000000000040 took 404 cycles (sent at cycle 14456)
+[0] L1D B1 S0 NOTE: booked 00010 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00010 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B0 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B3 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B2 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+[0] L1D B1 S0 NOTE: booked 00100 cancelled (source offer changed): bubble
+memory matches the reference after flush
+coverage: skid full P0 5342 P1 4605 P2 3848, late sends 576, ring max 6, from ring 3182, replay max 8
+coverage: pipe conflicts 500, replay conflicts 3486, replay entries held 344753, replay credit stalls 903
+monitor errors: skid 0, order 0, replay 0, stage R cancel 0
+  ok: coverage: the skid of every scalar port held 2 requests
+  ok: coverage: requests were sent while their stop was 1 (late LSU)
+  ok: coverage: an order ring held 4 or more requests
+  ok: coverage: requests were granted from an order ring
+  ok: coverage: a request tracker held 2 or more entries (was the replay queue)
+  ok: a fresh request was cancelled in stage R by a same-set hazard (ghost, re-issued)
+  ok: overage: an arriving request got a dependency on an older same-set tracker entry
+stats: 5195 requests (LD 3553, ST 1481, LR 0, SC 0, AMO 161), 5195 answered; max latency per port: P0 537 P1 560 P2 503 P3 0
+latency histogram (cycles 4 | 5 | 6-7 | 8-11 | 12-23 | 24-63 | 64-255 | more): 139 74 67 86 137 594 3099 999
+TEST PASSED: tb_s0_stress (5195 requests, seed 8)
+tb/common/tb_ports_common.vh:701: $finish called at 478230000 (1ps)
